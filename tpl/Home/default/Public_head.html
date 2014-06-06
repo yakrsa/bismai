@@ -1,0 +1,45 @@
+<base href="{iMicms::C('site_url')}" />
+<link href="{iMicms::RES}/css/wxs.css" rel="stylesheet" type="text/css" media="all">
+<script src="{iMicms::RES}/js/niutuku.js"></script>
+
+ 
+</head>
+<body>
+
+<!--top begin-->
+<div class="topbg">
+	<div class="wrap topcon positionrelative">
+		<div class="logo"><a href="/"><img src="{iMicms::STATICS}/logo.png"></a></div>
+		<div class="nav">
+			<ul class="positionrelative">
+				<li ><a  <if condition="(ACTION_NAME eq 'index') and (GROUP_NAME eq 'Home')">class="icon_index hovers"</if> title="首页" href="/">首页</a></li>
+				<li><a <eq name="ACTION_NAME" value="about">class="icon_index hovers"</eq>title="服务项目" href="{iMicms::U('Home/Index/about')}">关于我们</a></li>
+				<li><a <eq name="ACTION_NAME" value="fc">class="icon_index hovers"</eq> title="功能介绍" href="{iMicms::U('Home/Index/fc')}">功能介绍</a></li>
+				<!--<li><a class="hot-red" title="微信本地生活通" href="bendishenghuobao.html">本地生活通</a></li>-->
+				<li><a title="案例介绍" href="http://www.husee.com.cn/case.html">合作伙伴</a></li>
+				<li><a title="案例介绍" href="http://www.husee.com.cn/case.html">管理中心</a></li>
+				<li><a title="联系我们" href="http://www.husee.com.cn/me.html">联系我们</a></li>
+			</ul> 
+		</div>
+		<div class="topdingwei">
+			<if condition="$_SESSION[uid]==false">
+			你好&nbsp;&nbsp;<span class="f_red">游客</span>&nbsp;&nbsp;
+			<a href="{iMicms::U('Index/login')}">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="{iMicms::U('Index/login')}">注册</a>
+			<else/>
+			你好,<a href="/#" hidefocus="true"  ><span style="color:red">{iMicms:$Think.session.uname}</span></a>（uid:{iMicms:$Think.session.uid}）
+			<a href="/#" onclick="Javascript:window.open('{iMicms::U('Admin/Admin/logout')}','_blank')" >退出</a>
+	</if>	
+			<span>微信e管家●官方微信号：<a href="javascript:showattention();">uslovedesign(点击关注)</a></span>
+			
+		 </div>
+		   <script type="text/javascript">
+		   function showattention(){
+				document.getElementById('attention').style.display = 'block';
+			}
+			function closeattention(){
+				document.getElementById('attention').style.display = 'none';
+			} 
+		   </script>
+	</div>
+</div>

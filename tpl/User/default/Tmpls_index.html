@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />
+ <!-- Mobile Devices Support @begin -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+ 
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/official.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+	<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+
+ 
+        <!--[if IE 7]>
+            <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="{iMicms::RES}/js/excanvas_min.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+            <script src="{iMicms::RES}/js/watermark.js"></script>
+        <![endif]-->
+    </head>
+    <body class="theme-satgreen">
+    <div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                  <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3><i class="icon-edit"></i>模板管理</h3>
+								<a class="btn preview pull-right btn-success" href="javascript:;">微官网预览</a>
+								<script type="text/javascript">
+									$("a.preview").click(function () {
+										if ($.browser.msie) {
+											alert("不支持在IE浏览器下预览，建议使用谷歌浏览器或者360极速浏览器或者直接在微信上预览。");
+											return;
+										}
+										var left = ($(window.parent.parent).width() - 450) / 2;
+																				 window.open("{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$info['token']}", "我的微官网", "height=650,width=450,top=0,left=" + left + ",toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
+									});
+								</script>
+                            </div>
+                        </div>
+
+                        <div class="box-content">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#column" data-toggle="tab">栏目首页模板风格</a></li>
+                                <li><a href="#list" data-toggle="tab">图文列表模板风格</a></li>
+                                <li><a href="#detailed" data-toggle="tab">图文详细页模板</a></li>
+								<li><a href="#menu" data-toggle="tab">菜单导航模板</a></li>
+
+                                <li><a href="#color" data-toggle="tab" style="display:none;">颜色选择</a></li>
+                            </ul>
+							<!--<div class="tab-content">
+              <div class="tab-pane fade active in" id="home">
+                <ul class="nav nav-tabs nav-tabs-google" style="border-bottom:none">
+                  <li class="active"><a href="/wei.php/microsite/template/aid/78/priv/1">免费模板</a> </li>
+                  <li > <a href="/wei.php/microsite/template/aid/78/priv/2">标准模板</a> </li>
+                  <li > <a href="/wei.php/microsite/template/aid/78/priv/3">商务模板</a> </li>
+                  <li > <a href="/wei.php/microsite/template/aid/78/priv/4">至尊模板</a> </li>
+                  <li > <a href="/wei.php/microsite/template/aid/78/priv/99">全部模板</a> </li>
+                </ul>
+                <div>
+                    <span style="color:red; font-weight:bold; font-size:14px;">提示：</span>&nbsp;免费模板支持免费版、标准版、商务版、至尊版及行业版使用。
+                </div>-->
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="column">
+								<ul class="nav nav-tabs nav-tabs-google" style="border-bottom:none"  id="mytab">
+							
+							<li class="active">
+								<a href="#tm1" data-toggle="tab">经典大方</a>
+							</li>
+							<li>
+								<a href="#tm2"  data-toggle="tab">简约时尚</a>
+							</li>
+							<li>
+								<a href="#tm3"  data-toggle="tab">五彩斑斓</a>
+							</li>
+							<li>
+								<a href="#tm4"  data-toggle="tab">行业专属</a>
+							</li>
+							<li>
+								<a href="#tm5"  data-toggle="tab">个性定制</a>
+							</li>
+							<li>
+								<a href="#tm6"  data-toggle="tab">音乐模板</a>
+							</li>
+								</ul>
+							<span style="color:red; font-weight:bold; font-size:14px;">提示：</span>&nbsp;经典模板只支持外链网址及图文，不支持活动等连接。活动等外链请到'一键拨号和版权'设置！
+							
+							<div class="tab-content">
+									 <!-----------第一组开始------------->
+									 <div  id="tm1"  class="tab-pane  active  fade in">
+                                    <ul class="cateradio unstyled">
+					                   <li <eq name="info.tpltypeid" value="1">class="active"</eq>>
+                                       <div class="mbtip">图片式模板，顶部幻灯片建议尺寸为宽640*高320或近似等比例的图片，分类图片为分类封面，建议尺寸宽150*150或等比例图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate101.png" alt="模板1" title="模板1"/>
+                                                <input type="radio" name="home" value="1"  <eq name="info.tpltypeid" value="1">checked="checked"</eq> >首页1                                            </label>
+                                        </li>
+                                        <li <eq name="info.tpltypeid" value="2">class="active"</eq>>
+                                            <div class="mbtip">图文式模板，顶部幻灯片建议尺寸为宽640*高320或近似等比例的图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate102.png" alt="模板2" title="模板2"/>
+                                                <input type="radio" name="home" value="2"  <eq name="info.tpltypeid" value="2">checked="checked"</eq> >首页2                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="3">class="active"</eq>>
+                                            <div class="mbtip">图文式模板，顶部幻灯片建议尺寸为宽640*高320或近似等比例的图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate103.png" alt="模板3" title="模板3"/>
+                                                <input type="radio" name="home" value="3"  <eq name="info.tpltypeid" value="3">checked="checked"</eq> >首页3                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="4">class="active"</eq>>
+                                            <div class="mbtip">分类的图片可以是720x400，或者同比例缩小尺寸320x178，或者更小的比例，请记住一定要相同的尺寸。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate104.png" alt="模板4" title="模板4"/>
+                                                <input type="radio" name="home" value="4"  <eq name="info.tpltypeid" value="4">checked="checked"</eq> >首页4                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="5">class="active"</eq>>
+                                            <div class="mbtip">图文式模板，顶部幻灯片建议尺寸为宽640*高320或近似等比例的图片，暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate105.png" alt="模板5" title="模板5"/>
+                                                <input type="radio" name="home" value="5"  <eq name="info.tpltypeid" value="5">checked="checked"</eq> >首页5                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="6">class="active"</eq>>
+                                            <div class="mbtip">可以使用正方形图标，120x120px大小就行了，减小图片尺寸，页面打开速度更快！ 圆角是系统自动生成，做图片做正方形就好了。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate106.png" alt="模板6" title="模板6"/>
+                                                <input type="radio" name="home" value="6"  <eq name="info.tpltypeid" value="6">checked="checked"</eq> >首页6                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="7">class="active"</eq>>
+                                            <div class="mbtip">可以一排三个，图片200x200px就好。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate107.png" alt="模板7" title="模板7"/>
+                                                <input type="radio" name="home" value="7"  <eq name="info.tpltypeid" value="7">checked="checked"</eq> >首页7                                            </label>
+                                        </li>
+										
+										
+										<li <eq name="info.tpltypeid" value="10">class="active"</eq>>
+                                            <div class="mbtip">棋盘风格，格子内图片可根据自己的需求自由修改</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate110.png" alt="模板10" title="模板10"/>
+                                                <input type="radio" name="home" value="10"  <eq name="info.tpltypeid" value="10">checked="checked"</eq> >首页10                                            </label>
+                                        </li>
+										<!--<li >
+                                            <div class="mbtip">左右图文式模版，顶部幻灯片建议使用尺寸为640*320或近似等比例图片；分类图片建议使用450*300或近似等比例图片，请不要使用高度大于或接近于宽度的图片。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate111.png" alt="模板11" title="模板11"/>
+                                                <input type="radio" name="home" value="11"  <eq name="info.tpltypeid" value="11">checked="checked"</eq> >首页11                                            </label>
+                                        </li>-->
+										
+										<li <eq name="info.tpltypeid" value="15">class="active"</eq>>
+                                            <div class="mbtip">分类的图片可以是720x400，或者同比例缩小尺寸320x178，或者更小的比例，请记住一定要相同的尺寸。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate115.png" alt="模板15" title="模板15"/>
+                                                <input type="radio" name="home" value="15"  <eq name="info.tpltypeid" value="15">checked="checked"</eq> >首页15                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="16">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，不用做成圆形图片，系统自己会显示为圆形图片。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate116.png" alt="模板16" title="模板16"/>
+                                                <input type="radio" name="home" value="16"  <eq name="info.tpltypeid" value="16">checked="checked"</eq> >首页16                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="17">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，不用做成圆角图片，系统自己会显示为圆角图片。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate117.png" alt="模板17" title="模板17"/>
+                                                <input type="radio" name="home" value="17"  <eq name="info.tpltypeid" value="17">checked="checked"</eq> >首页17                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="18">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，分类建议为3的倍数，否则影响展示效果</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate118.png" alt="模板18" title="模板18"/>
+                                                <input type="radio" name="home" value="18"  <eq name="info.tpltypeid" value="18">checked="checked"</eq> >首页18                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="19">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，不用做成圆形图片，系统自己会显示为圆形图片。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate119.png" alt="模板19" title="模板19"/>
+                                                <input type="radio" name="home" value="19"  <eq name="info.tpltypeid" value="19">checked="checked"</eq> >首页19                                            </label>
+                                        </li>
+										
+										<li <eq name="info.tpltypeid" value="21">class="active"</eq>>
+                                            <div class="mbtip">灯片建议尺寸为宽640*高320或近似等比例的图片，暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate121.png" alt="模板21" title="模板21"/>
+                                                <input type="radio" name="home" value="21"  <eq name="info.tpltypeid" value="21">checked="checked"</eq> >首页21                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="22">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，不用做成圆形图片，系统自己会显示为圆形图片。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate122.png" alt="模板22" title="模板22"/>
+                                                <input type="radio" name="home" value="22"  <eq name="info.tpltypeid" value="22">checked="checked"</eq> >首页22                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="23">class="active"</eq>>
+                                            <div class="mbtip">分类的图片建议为300x300正方形图片，保持一致尺寸。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate123.png" alt="模板23" title="模板23"/>
+                                                <input type="radio" name="home" value="23"  <eq name="info.tpltypeid" value="23">checked="checked"</eq> >首页23                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="24">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，不用做成圆角图片，系统自己会显示为圆角图片。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate124.png" alt="模板24" title="模板24"/>
+                                                <input type="radio" name="home" value="24"  <eq name="info.tpltypeid" value="24">checked="checked"</eq> >首页24                                            </label>
+                                        </li>
+										
+										
+										<li <eq name="info.tpltypeid" value="28">class="active"</eq>>
+                                            <div class="mbtip">图片建议尺寸为宽640*高320或近似等比例的图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate128.png" alt="模板28" title="模板28"/>
+                                                <input type="radio" name="home" value="28"  <eq name="info.tpltypeid" value="28">checked="checked"</eq> >首页28                                            </label>
+                                        </li>
+										
+										
+										
+										
+										<li <eq name="info.tpltypeid" value="37">class="active"</eq>>
+                                            <div class="mbtip">分类的图片为300x300正方形图片，记住一定要相同的尺寸，都是300x300。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate137.png" alt="模板37" title="模板37"/>
+                                                <input type="radio" name="home" value="37"  <eq name="info.tpltypeid" value="37">checked="checked"</eq> >首页37                                            </label>
+                                        </li>
+										
+										
+										<li <eq name="info.tpltypeid" value="40">class="active"</eq>>
+                                            <div class="mbtip">图片建议尺寸为宽640*高320或近似等比例的图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate140.png" alt="模板40" title="模板40"/>
+                                                <input type="radio" name="home" value="40"  <eq name="info.tpltypeid" value="40">checked="checked"</eq> >首页40                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="41">class="active"</eq>>
+                                            <div class="mbtip">头部幻灯片建议尺寸720x400，高度可以根据自己情况调整，图标要统一尺寸，最好是150x150px的正方形透明png图片外链，也可以是统一的大小的圆形图等</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate141.png" alt="模板41" title="模板41"/>
+                                                <input type="radio" name="home" value="41"  <eq name="info.tpltypeid" value="41">checked="checked"</eq> >首页41                                            </label>
+                                        </li>
+										
+										<li <eq name="info.tpltypeid" value="43">class="active"</eq>>
+                                            <div class="mbtip">头部幻灯片建议尺寸720x400，分类图标建议为统一大小PNG</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate143.png" alt="模板43" title="模板43"/>
+                                                <input type="radio" name="home" value="43"  <eq name="info.tpltypeid" value="43">checked="checked"</eq> >首页43                                            </label>
+                                        </li>
+										
+										<li <eq name="info.tpltypeid" value="46">class="active"</eq>>
+                                            <div class="mbtip">分类图片建议使用PNG图片效果更佳。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate146.png" alt="模板46" title="模板46"/>
+                                                <input type="radio" name="home" value="46"  <eq name="info.tpltypeid" value="46">checked="checked"</eq> >首页46                                            </label>
+                                        </li>
+										
+										
+										
+										
+                                         <!--<li>
+																																								<div class="mbtip">图标式模板，顶部幻灯片只支持一张，为首页幻灯片的第一张，建议上传图片的尺寸为宽640*高320或近似等比例的图片；切换导航在快捷与版权设置，首页一键拨号为快捷里设置的号码</div>
+																																								<label>
+																														<img src="{iMicms::RES}/img/home-56.png?v=7" alt="{iMicms::C('site_name')}推荐" title="{iMicms::C('site_name')}推荐">
+															<input type="radio" name="home" value="56"  <eq name="info.tpltypeid" value="56">checked="checked"</eq>>
+															{iMicms::C('site_name')}推荐																															<div style="padding:5px 0px 10px;">
+																	热度：<span style="color:red;"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span>
+																</div>
+																													</label>
+																									</li-->					
+                                                                            </ul>
+																			</div>
+									<!-------------第二组开始---------------->
+									<div class="tab-pane   fade in" id="tm2">
+										 <ul class="cateradio unstyled">
+					                   <li <eq name="info.tpltypeid" value="50">class="active"</eq>>
+                                            <div class="mbtip">暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate150.png" alt="模板50" title="模板50"/>
+                                                <input type="radio" name="home" value="50"  <eq name="info.tpltypeid" value="50">checked="checked"</eq> >首页50                                            </label>
+                                        </li>
+										
+										</ul>
+									</div>
+									<!-------------第三组开始---------------->
+									<div class="tab-pane   fade in" id="tm3">
+										 <ul class="cateradio unstyled">
+					                   <li <eq name="info.tpltypeid" value="9">class="active"</eq>>
+                                            <div class="mbtip">可以变成色块文字模式，暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate109.png" alt="模板9" title="模板9"/>
+                                                <input type="radio" name="home" value="9"  <eq name="info.tpltypeid" value="9">checked="checked"</eq> >首页9                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="25">class="active"</eq>>
+                                            <div class="mbtip">暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate125.png" alt="模板25" title="模板25"/>
+                                                <input type="radio" name="home" value="25"  <eq name="info.tpltypeid" value="25">checked="checked"</eq> >首页25                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="26">class="active"</eq>>
+                                            <div class="mbtip">图片建议尺寸为宽640*高320或近似等比例的图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate126.png" alt="模板26" title="模板26"/>
+                                                <input type="radio" name="home" value="26"  <eq name="info.tpltypeid" value="26">checked="checked"</eq> >首页26                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="48">class="active"</eq>>
+                                            <div class="mbtip">幻灯片建议尺寸720x400，分类图片建议PNG格式图标。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate148.png" alt="模板48" title="模板48"/>
+                                                <input type="radio" name="home" value="48"  <eq name="info.tpltypeid" value="48">checked="checked"</eq> >首页48                                            </label>
+                                        </li>
+										
+										</ul>
+									</div>
+									<!-------------第四组开始---------------->
+									<div class="tab-pane   fade in" id="tm4">
+										 <ul class="cateradio unstyled">
+					                   <li <eq name="info.tpltypeid" value="8">class="active"</eq>>
+                                            <div class="mbtip">可以利用好看的背景，做出不同风格的模版，根据css代码更改背景图片路径，图片尺寸以640x1000为佳，色调选择跟头部图片相呼应的就好 </div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate108.png" alt="模板8" title="模板8"/>
+                                                <input type="radio" name="home" value="8"  <eq name="info.tpltypeid" value="8">checked="checked"</eq> >首页8                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="29">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，分类建议为3的倍数</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate129.png" alt="模板29" title="模板29"/>
+                                                <input type="radio" name="home" value="29"  <eq name="info.tpltypeid" value="29">checked="checked"</eq> >首页29                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="31">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate131.png" alt="模板31" title="模板31"/>
+                                                <input type="radio" name="home" value="31"  <eq name="info.tpltypeid" value="31">checked="checked"</eq> >首页31                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="42">class="active"</eq>>
+                                            <div class="mbtip">头部幻灯片建议尺寸720x400，高度可以根据自己情况调整，图标要统一尺寸，最好是300x300px的正方形图片外链，系统自动显示圆形</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate142.png" alt="模板42" title="模板42"/>
+                                                <input type="radio" name="home" value="42"  <eq name="info.tpltypeid" value="42">checked="checked"</eq> >首页42                                            </label>
+                                        </li>
+										
+										</ul>
+									</div>
+									<!-------------第五组开始---------------->
+									<div class="tab-pane   fade in" id="tm5">
+										 <ul class="cateradio unstyled">
+					                  <li <eq name="info.tpltypeid" value="20">class="active"</eq>>
+                                            <div class="mbtip">分类的图片为300x300正方形图片，记住一定要相同的尺寸，都是300x300。暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate120.png" alt="模板20" title="模板20"/>
+                                                <input type="radio" name="home" value="20"  <eq name="info.tpltypeid" value="20">checked="checked"</eq> >首页20                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="27">class="active"</eq>>
+                                            <div class="mbtip">分类的图片统一相同尺寸300x300正方形图片，暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate127.png" alt="模板27" title="模板27"/>
+                                                <input type="radio" name="home" value="27"  <eq name="info.tpltypeid" value="27">checked="checked"</eq> >首页27                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="30">class="active"</eq>>
+                                            <div class="mbtip">分类控制在5个以内效果最佳</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate130.png" alt="模板30" title="模板30"/>
+                                                <input type="radio" name="home" value="30"  <eq name="info.tpltypeid" value="30">checked="checked"</eq> >首页30                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="32">class="active"</eq>>
+                                            <div class="mbtip">背景图片尺寸为640x1136px，小图标300x300px。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate132.png" alt="模板32" title="模板32"/>
+                                                <input type="radio" name="home" value="32"  <eq name="info.tpltypeid" value="32">checked="checked"</eq> >首页32                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="22">class="active"</eq>>
+                                            <div class="mbtip">分类的图片为300x300正方形图片，记住一定要相同的尺寸，都是300x300。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate133.png" alt="模板33" title="模板33"/>
+                                                <input type="radio" name="home" value="33"  <eq name="info.tpltypeid" value="33">checked="checked"</eq> >首页33                                            </label>
+                                        </li>
+										
+										<li <eq name="info.tpltypeid" value="35">class="active"</eq>>
+                                            <div class="mbtip">图片建议尺寸为宽640*高320或近似等比例的图片</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate135.png" alt="模板35" title="模板35"/>
+                                                <input type="radio" name="home" value="35"  <eq name="info.tpltypeid" value="35">checked="checked"</eq> >首页35                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="36">class="active"</eq>>
+                                            <div class="mbtip">图片建议尺寸为宽640*高320或近似等比例的图片，暂不支持底部一键拨号和版权</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate136.png" alt="模板36" title="模板36"/>
+                                                <input type="radio" name="home" value="36"  <eq name="info.tpltypeid" value="36">checked="checked"</eq> >首页36                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="39">class="active"</eq>>
+                                            <div class="mbtip">背景幻灯片尺寸为640x1136px，小图标300x300px</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate139.png" alt="模板39" title="模板39"/>
+                                                <input type="radio" name="home" value="39"  <eq name="info.tpltypeid" value="39">checked="checked"</eq> >首页39                                            </label>
+                                        </li>
+										</ul>
+									</div>
+
+								<!-------------第六组开始---------------->
+								<div class="tab-pane   fade in" id="tm6">
+										 <ul class="cateradio unstyled">
+					                   <li <eq name="info.tpltypeid" value="12">class="active"</eq>>
+                                            <div class="mbtip">背景图片尺寸为640x1136px，分类不要太多，多了影响整体美观。支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate112.png" alt="模板12" title="模板12"/>
+                                                <input type="radio" name="home" value="12"  <eq name="info.tpltypeid" value="12">checked="checked"</eq> >首页12                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="13">class="active"</eq>>
+                                            <div class="mbtip">背景图片尺寸为640x1136px，分类不要太多，多了影响整体美观。支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate113.png" alt="模板13" title="模板13"/>
+                                                <input type="radio" name="home" value="13"  <eq name="info.tpltypeid" value="13">checked="checked"</eq> >首页13                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="14">class="active"</eq>>
+                                            <div class="mbtip">背景图片尺寸为640x1136px，小图标300x300px，分类不要太多,建议9个以内，多了影响整体美观。支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate114.png" alt="模板14" title="模板14"/>
+                                                <input type="radio" name="home" value="14"  <eq name="info.tpltypeid" value="14">checked="checked"</eq> >首页14                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="34">class="active"</eq>>
+                                            <div class="mbtip">头部中间菜单 8个菜单以内效果比较好，支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate134.png" alt="模板34" title="模板34"/>
+                                                <input type="radio" name="home" value="34"  <eq name="info.tpltypeid" value="34">checked="checked"</eq> >首页34                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="38">class="active"</eq>>
+                                            <div class="mbtip">头部中间菜单建议3的倍数。暂不支持底部一键拨号和版权，支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate138.png" alt="模板38" title="模板38"/>
+                                                <input type="radio" name="home" value="38"  <eq name="info.tpltypeid" value="38">checked="checked"</eq> >首页38                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="44">class="active"</eq>>
+                                            <div class="mbtip">分类图片建议为PNG，7个以内效果最佳。暂不支持底部一键拨号和版权，支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate144.png" alt="模板44" title="模板44"/>
+                                                <input type="radio" name="home" value="44"  <eq name="info.tpltypeid" value="44">checked="checked"</eq> >首页44                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="45">class="active"</eq>>
+                                            <div class="mbtip">分类图片建议使用PNG，分类数量为3的倍数，暂不支持底部一键拨号和版权，支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate145.png" alt="模板45" title="模板45"/>
+                                                <input type="radio" name="home" value="45"  <eq name="info.tpltypeid" value="45">checked="checked"</eq> >首页45                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="47">class="active"</eq>>
+                                            <div class="mbtip">6个分类效果最佳，支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate147.png" alt="模板47" title="模板47"/>
+                                                <input type="radio" name="home" value="47"  <eq name="info.tpltypeid" value="47">checked="checked"</eq> >首页47                                            </label>
+                                        </li>
+										<li <eq name="info.tpltypeid" value="49">class="active"</eq>>
+                                            <div class="mbtip">分类可根据名称自动拉伸，支持背景音乐。</div>
+                                            <label>
+                                                <img src="{iMicms::RES}/images/cate149.png" alt="模板49" title="模板49"/>
+                                                <input type="radio" name="home" value="49"  <eq name="info.tpltypeid" value="49">checked="checked"</eq> >首页49                                            </label>
+                                        </li>
+
+									   
+									   </ul>
+									</div>
+                                </div>
+
+
+
+
+								</div>
+                                <div class="tab-pane fade" id="list">
+                                    <ul class="cateradio">
+                                                                                    <li class="active">
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-2.png?v=2" alt="模板0" title="模板0"/>
+                                                    <input type="radio" name="list" value="2"  <eq name="info.tpllistid" value="2">checked="checked"</eq>>列表0                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-1.png?v=2" alt="模板1" title="模板1"/>
+                                                    <input type="radio" name="list" value="1"  <eq name="info.tpllistid" value="1">checked="checked"</eq>>列表1                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-0.png?v=2" alt="模板2" title="模板2"/>
+                                                    <input type="radio" name="list" value="0"  <eq name="info.tpllistid" value="0">checked="checked"</eq>>列表2                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-3.png?v=2" alt="模板3" title="模板3"/>
+                                                    <input type="radio" name="list" value="3"  <eq name="info.tpllistid" value="3">checked="checked"</eq>>列表3                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-4.png?v=2" alt="模板4" title="模板4"/>
+                                                    <input type="radio" name="list" value="4" <eq name="info.tpllistid" value="4">checked="checked"</eq> >列表4                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-5.png?v=2" alt="模板5" title="模板5"/>
+                                                    <input type="radio" name="list" value="5"  <eq name="info.tpllistid" value="5">checked="checked"</eq>>列表5                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-6.png?v=2" alt="模板6" title="模板6"/>
+                                                    <input type="radio" name="list" value="6"  <eq name="info.tpllistid" value="6">checked="checked"</eq>>列表6                                                </label>
+                                            </li>
+                                           <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-7.png?v=2" alt="模板7" title="模板7"/>
+                                                    <input type="radio" name="list" value="7"  <eq name="info.tpllistid" value="7">checked="checked"</eq>>列表7                                                </label>
+                                            </li>
+					     <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/list-8.png?v=2" alt="模板8" title="模板8"/>
+                                                    <input type="radio" name="list" value="8"  <eq name="info.tpllistid" value="8">checked="checked"</eq>>列表8                                                </label>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                                <div class="tab-pane fade" id="detailed">
+                                    <ul class="cateradio">
+                                                                                    <li class="active">
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/detail-0.png?v=1" alt="模板0" title="模板0"/>
+                                                    <input type="radio" name="detail" value="0"  <eq name="info.tplcontentid" value="0">checked="checked"</eq>>详情0                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/detail-1.png?v=1" alt="模板1" title="模板1"/>
+                                                    <input type="radio" name="detail" value="1"  <eq name="info.tplcontentid" value="1">checked="checked"</eq>>详情1                                                </label>
+                                            </li>
+                                                                                    <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/detail-2.png?v=1" alt="模板2" title="模板2"/>
+                                                    <input type="radio" name="detail" value="2"  <eq name="info.tplcontentid" value="2">checked="checked"</eq>>详情2                                                </label>
+                                            </li>
+					     <li >
+                                                <div class="mbtip" style="display:none;"></div>
+                                                <label>
+                                                    <img src="{iMicms::RES}/img/detail-3.png?v=1" alt="模板3" title="模板3"/>
+                                                    <input type="radio" name="detail" value="3"  <eq name="info.tplcontentid" value="3">checked="checked"</eq>>详情3                                                </label>
+                                            </li>
+                                                                            </ul>
+                                </div>
+				
+				<div class="tab-pane fade" id="menu">
+									<ul class="cateradio">
+																					<li >
+												<div class="mbtip" style="display:none;"></div>
+												<label>
+													<img src="{iMicms::RES}/img/menu-0.png?v=7" alt="模板0" title="模板0"/>
+													<input type="radio" name="menu" value="0"  <eq name="info.menuid" value="0">checked="checked"</eq>>详情0												</label>
+											</li>
+																					<li >
+												<div class="mbtip" style="display:none;"></div>
+												<label>
+													<img src="{iMicms::RES}/img/menu-1.png?v=7" alt="模板1" title="模板1"/>
+													<input type="radio" name="menu" value="1"  <eq name="info.menuid" value="1">checked="checked"</eq>>详情1												</label>
+											</li>
+																					<li >
+												<div class="mbtip" style="display:none;"></div>
+												<label>
+													<img src="{iMicms::RES}/img/menu-2.png?v=7" alt="模板2" title="模板2"/>
+													<input type="radio" name="menu" value="2"  <eq name="info.menuid" value="2">checked="checked"</eq>>详情2												</label>
+											</li>
+																					<li class="active">
+												<div class="mbtip" style="display:none;"></div>
+												<label>
+													<img src="{iMicms::RES}/img/menu-3.png?v=7" alt="模板3" title="模板3"/>
+													<input type="radio" name="menu" value="3"  <eq name="info.menuid" value="3">checked="checked"</eq>>详情3												</label>
+											</li>
+																			</ul>
+								</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $("div.tab-pane input[type='radio']").click(function () {
+            var $this = $(this), $key = $this.attr("name"), $value = $this.val();
+	  
+            var _pli = $this.parents("li");
+            _pli.siblings().removeClass("active")
+            _pli.addClass("active");
+            $.post('index.php?g=User&m=Tmpls&a=UPdata', { key: $key, value: $value }, function (rs) {
+                if (1 != rs) {
+                    G.ui.tips.err(rs);
+                }
+            }, 'json');
+        })
+    })
+</script></html>

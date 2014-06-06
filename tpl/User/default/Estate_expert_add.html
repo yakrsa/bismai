@@ -1,0 +1,150 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>添加点评</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+<link rel="stylesheet" type="text/css" href="{iMicms::STATICS}/default_user_com.css" media="all">
+<script src="{iMicms::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{iMicms::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/formCheck/formcheck.js"> </script>
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#description', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+
+
+
+editor = K.create('#comment', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+});
+</script>
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+});
+</script>
+
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action="" >	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+				  <th valign="top"><span class="red">*</span>标题:</th>
+				  <td>
+					 <input type="text" id="title" name="title" value="{iMicms:$expert['title']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">尽量简单，不要超过20字</span></td>
+				</tr>
+				<tr>
+					<th width="120">显示顺序:</th>
+					<td> <input type="text" id="sort" name="sort" value="{iMicms:$expert['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">数值越大越靠前</span></td>
+				</tr>
+				<tr>
+					<th width="120">专家姓名：</th>
+					<td> <input type="text" id="name" name="name" value="{iMicms:$expert['name']}" class="input-large px" data-rule-required="true">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th width="120">专家职位：</th>
+					<td>  <input type="text" id="position" name="position" value="{iMicms:$expert['position']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th width="120">专家照片：</th>
+					<td>
+                                        <p>
+                                            <img class="thumb_img" id="face" src="{iMicms:$expert['face']}" style="max-height:100px;">
+										     <input type="text" name="face" value="{iMicms:$expert['face']}" class="input-xlarge"  id="pic" readonly="readonly" />
+											 <span class="help-inline">
+											 <span class="ke-button-common" id="upload" style="margin-top: -7px;margin-left: 5px;">
+											 <input type="button" class="ke-button-common ke-button" value="上传"></span
+                                                <span class="help-inline">建议尺寸：宽400像素，高400像素</span>
+                                            </span>
+                                        </p></td>
+				</tr>
+				<tr>
+					<th width="120">专家介绍：</th>
+					<td>  <textarea id="description" name="description" placeholder='专家描述' style="width:560px;height:75px" >{iMicms:$expert['description']}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-block">最多可150字</span></td>
+				</tr>
+				<tr>
+					<th>点评内容：</th>
+					<td>
+	 <textarea id="comment" name="comment" placeholder='点评内容' style="width:560px;height:75px" >{iMicms:$expert['comment']}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-block">最多可5k字</span>
+					</td>
+				</tr>
+				<th>&nbsp;</th>
+				  <if condition="$expert['id'] neq ''">
+                                    <input type="hidden" name="id" value="{iMicms:$expert['id']}" />
+                                </if>
+                                    <input type="hidden" name="pid" value="{iMicms:$pid}">
+					<td>
+						<button type="submit" name="button" class="btn btn-primary">保存</button>
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

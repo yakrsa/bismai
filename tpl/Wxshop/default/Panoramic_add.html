@@ -1,0 +1,248 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>{iMicms:$activityname}设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/formCheck/formcheck.js"> </script>
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#intro', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+</script>
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload2').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic2').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic2').val(url);
+						}else{
+							K('#pic2').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload3').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic3').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic3').val(url);
+						}else{
+							K('#pic3').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload4').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic4').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic4').val(url);
+						}else{
+							K('#pic4').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload5').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic5').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic5').val(url);
+						}else{
+							K('#pic5').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload6').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic6').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic6').val(url);
+						}else{
+							K('#pic6').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+});
+</script>
+				<div id="{iMicms::MODULE_NAME}" class="content {iMicms::MODULE_NAME}">
+					<form class="form" method="post" action="" enctype="multipart/form-data" >
+						
+						<div class="cLine hide">
+							<div class="pageNavigator left"></div>
+							<div class="clr"></div>
+						</div>
+						<div class="msgWrap bgfc"> 
+							<table class="userinfoArea" cellSpacing="0" cellPadding="0">
+								<tbody>
+									<tr>
+										<th valign="top" class="f_l_r"><span class="red">*</span>关键词：</th>
+										<td>
+											<input type="input" class="px" id="keyword" value="<if condition="$vo['keyword'] eq ''">{iMicms:$activityname}<else/>{iMicms:$vo.keyword}</if>" name="keyword" style="width:420px" ><br /><span class="red">只能写一个关键词</span>，用户输入此关键词将会触发此活动。
+										</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r"><span class="red">*</span>名称：</span></th>
+										<td><input type="input" class="px" id="name" value="" name="name" style="width:420px;">&nbsp;&nbsp;例：我家的客厅</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r"><span class="red">*</span>微信回复标题：</span></th>
+										<td><input type="input" class="px" id="title" value="{iMicms:$set.title}" name="title" style="width:420px;">&nbsp;&nbsp;例：全景客厅展示</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r"><span class="red">*</span>微信回复图片：</th>
+										<td>
+
+                                        <input type="text" name="picurl" value="{iMicms:$panoramic['picurl']}" class="input-xlarge"  id="pic" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span><br />例：http://www.iMicms.com/tpl/Static/images/w720_h400_1.jpg</td>
+										
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">顺序数字：</th>
+										<td><input type="input" class="px" id="sort" value="1" name="sort" style="width:50px;">&nbsp;&nbsp;由小到大排列</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">前：</th>
+
+										<td>
+										<input type="text" name="frontpic" value="<if condition="$panoramic['frontpic'] neq ''">{imicms:$panoramic['frontpic']}<else/>{iMicms::C
+('site_url')}/tpl/User/default/common/Panoramic/sample/pano_f.jpg</if>" class="input-xlarge"  id="pic1" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload1" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">右：</th>
+										<span class="help-inline">
+										
+										<td><input type="text" name="rightpic" value="<if condition="$panoramic['rightpic'] neq ''">{imicms:$panoramic['rightpic']}<else/>{iMicms::C
+('site_url')}/tpl/User/default/common/Panoramic/sample/pano_r.jpg</if>" class="input-xlarge"  id="pic2" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload2" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">后：</th>
+										
+										<td><input type="text" name="backpic" value="<if condition="$panoramic['backpic'] neq ''">{imicms:$panoramic['backpic']}<else/>{iMicms::C
+('site_url')}/tpl/User/default/common/Panoramic/sample/pano_b.jpg</if>" class="input-xlarge"  id="pic3" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload3" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">左：</th>
+										
+										<td><input type="text" name="leftpic" value="<if condition="$panoramic['leftpic'] neq ''">{imicms:$panoramic['leftpic']}<else/>{iMicms::C
+('site_url')}/tpl/User/default/common/Panoramic/sample/pano_l.jpg</if>" class="input-xlarge"  id="pic4" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload4" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">顶部：</th>
+										
+										<td><input type="text" name="toppic" value="<if condition="$panoramic['toppic'] neq ''">{imicms:$panoramic['toppic']}<else/>{iMicms::C
+('site_url')}/tpl/User/default/common/Panoramic/sample/pano_u.jpg</if>" class="input-xlarge"  id="pic5" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload5" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">底部：</th>
+										
+										<td><input type="text" name="bottompic" value="<if condition="$panoramic['bottompic'] neq ''">{imicms:$panoramic['bottompic']}<else/>{iMicms::C
+('site_url')}/tpl/User/default/common/Panoramic/sample/pano_d.jpg</if>" class="input-xlarge"  id="pic6" readonly="readonly" style="width:420px;"/><span class="ke-button-common" id="upload6" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<th valign="top" class="f_l_r">描述信息：</th>
+										<td><textarea name="intro" id="intro" class="px" style="width:420px; height:150px"></textarea></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="3">
+											<button type="submit" name="button" class="btn btn-primary">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+											
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="cLine hide">
+							<div class="pageNavigator right"></div>
+							<div class="clr"></div>
+						</div>
+						<input type="hidden" name="token" value="{iMicms:$token}" />
+					</form>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer" />

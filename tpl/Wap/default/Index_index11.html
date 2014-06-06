@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/111/css/snower.css?2013-12-11-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/111/css/weimob-ui-1-1.css?2013-12-11-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/111/css/common.css?2013-12-11-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/111/css/home-3.css?2013-12-11-1" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/css/111/js/maivl.js?2013-12-11-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/css/111/js/jQuery.js?2013-12-11-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/css/111/js/swipe.js?2013-12-11-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/css/111/js/zepto.js?2013-12-11-1"></script>
+<title>{iMicms:$tpl.wxname}</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/111/css/font-awesome.css?v=2013121116" media="all" />
+
+<div class="weimob-page" style="display:block; padding-bottom:56px;">
+		<!--
+	幻灯片管理
+	-->
+	    		<!--
+		用户分类管理
+		-->
+		<div class="weimob-content">
+            <div class="weimob-list">
+			<volist name="info" id="vo" offset="0" length="9" mod="5">
+			<li class="li{iMicms:$i-1}">
+				<a href="{iMicms:$vo.url}">
+					<div class="menubtn">
+						<div class="menumesg">
+							<div class="menutitle">{iMicms:$vo.name}</div>
+							<div class="menuico"></div>
+						</div>
+						<div class="menuimg">
+							<img src="{iMicms:$vo.img}" />
+							<div class="menutext">{iMicms:$vo.info}</div>
+						</div>
+					</div>
+				</a>
+			</li>
+			<eq name="mod" value="3"><php>$i = 0;</php></eq>
+			</volist>                   
+											 
+                                                </div>
+        </div>
+    </div>
+
+<!--
+导航菜单
+   后台设置的快捷菜单
+-->
+
+<!--
+分享前控制
+-->
+	
+					</div>
+	</body>
+</html>

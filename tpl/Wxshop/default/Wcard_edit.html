@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/uploadify_t.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/datepicker.css?2013-11-08-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/iinside.css?2013-11-08-1" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_ui_custom.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_uploadify.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jwupload.js?2013-10-21-2"></script> 
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap-datepicker.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_jplayer_min.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_mb_miniPlayer.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/iinside.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/map.js?2013-10-21-2"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	    <script src="http://api.map.baidu.com/api?key=24ffad3855e675265336a4cfb46d32b4&v=1.1&services=true" type="text/javascript" type="text/javascript"></script>
+
+    <link href="{iMicms::RES}/css/miniplayer.css" rel="stylesheet" />
+    <link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+  
+    <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+   
+    <script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script type="text/javascript" src="{iMicms::STATICS}/kindeditors/config.mp3.js"></script>
+<script type="text/javascript">
+    var ALBUMSID = 9998;
+</script>
+<div id="main">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <div class="span10">
+                            <h3><i class="icon-edit"></i>喜帖信息编辑</h3>
+                        </div>
+                        <div class="span2">
+                            <a class="btn" href="Javascript:window.history.go(-1)">返回</a> 
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <form action="{iMicms::U('Wcard/upsave')}" method="post" class='form-horizontal form-validate'>
+                            <input type="hidden" name="aid" id="aid" value="{iMicms:$info.id}" />
+                            <input type="hidden" name="id" id="id" value="{iMicms:$info.id}" />
+                            <input type="hidden" name="albums_id" id="abid" value="{iMicms:$info.id}">
+                            <input type="hidden" name="sytle" id="sytle" value="1" />
+			    <input type="hidden" name="cnt" id="cnt" value="{iMicms:$cnt}" />
+                            <div class="control-group">
+                                <label for="title" class="control-label">喜帖标题：</label>
+                                <div class="controls">
+                                    <input type="text" name="title" id="title" maxlength="10" class="input-large" value="{iMicms:$info.title}" data-rule-required="true" /><span class="maroon">*</span><span class="help-inline">喜帖标题限制在十个字以内</span>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="keyword" class="control-label">触发关键词：</label>
+                                <div class="controls">
+                                    <input type="text" name="keyword" id="keyword" class="input-large" data-rule-required="true" value="{iMicms:$info.keyword}" /><span class="maroon">*</span><span class="help-inline">如有多个关键字请用空格隔开</span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="picurl" class="control-label">喜帖封面：</label>
+                                <div class="controls">
+
+                                    <img class="thumb_img" src="{iMicms:$info.coverurl}" style="max-height: 100px;">
+                                    <input id="coverurl" type="text" name="coverurl" class="input-large hide" readonly="" value="{iMicms:$info.coverurl}" />
+                                    <span class="help-inline">
+                                        <button class="btn select_img" id="cover_click" type="button">选择封面</button></span><span class="help-inline"><span class="maroon">*</span>封面默认大小720*400</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="openpic" class="control-label">开场动画：</label>
+                                <div class="controls">
+
+                                    <img class="thumb_img" src="{iMicms:$info.openpic}" style="width: 180px; height: 180px;">
+                                    <input id="openpic" type="text" name="openpic" class="input-large hide" readonly="" value="{iMicms:$info.openpic}" />
+                                    <span class="help-inline">
+                                        <button class="btn select_img" id="openpic" type="button">选择封面</button></span><span class="help-inline"><span class="maroon">*</span>上传400*400左右的新郎新娘合影图,用于喜帖打开时的动画中,图片大小不超过300K</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="picurl" class="control-label">缩略图：</label>
+                                <div class="controls">
+                                    <img class="thumb_img" src="{iMicms:$info.picurl}" style="width: 40px; height: 40px;">
+                                    <input id="picurl" type="text" name="picurl" class="input-large hide" readonly="" value="{iMicms:$info.picurl}" />
+                                    <span class="help-inline">
+                                        <button class="btn select_img" id="pic_click" type="button">选择图片</button></span><span class="help-inline"><span class="maroon">*</span>默认40x40,显示在喜帖主页</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="address" class="control-label">新郎名字：</label>
+                                <div class="controls">
+                                    <input type="text" name="man" id="man" class="input-large" value="{iMicms:$info.man}" data-rule-required="true" /><span class="maroon">*</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">新娘名字：</label>
+                                <div class="controls">
+                                    <input type="text" name="woman" id="woman" class="input-large" value="{iMicms:$info.woman}" data-rule-required="true" /><span class="maroon">*</span>
+                                </div> 
+                            </div>
+                            <div class="control-group">
+                                <label for="typename" class="control-label"></label>
+                                <div class="controls">
+                                    <label class="radio inline">
+                                        <input type="radio" name="who_first" value="1"  <eq name="info.who_first" value="1"> checked="checked"</eq>   /><span class="help-inline">新郎名字在前</span>
+                                    </label>
+                                    <label class="radio inline">
+                                        <input type="radio" name="who_first"  value="2" <eq name="info.who_first" value="2"> checked="checked"</eq> /><span class="help-inline">新娘名字在前</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">联系电话：</label>
+                                <div class="controls">
+                                    <input type="text" name="phone" id="phone" class="input-large" value="{iMicms:$info.phone}" data-rule-required="true" data-rule-phone="true" /><span class="maroon">*</span><span class="help-inline">如021-88888888 </span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">婚宴日期：</label>
+                                <div class="controls"> 
+                                    <div class="input-prepend">
+                                    <span class="add-on"><i class="icon-calendar"></i></span>
+                                <input type="text" name="date" id="date" class="datepick input-medium" value="{iMicms:$info.date}" data-rule-required="true" readonly=""/> <span class="maroon">*</span> 
+                                </div></div>
+                            </div>
+							<div class="control-group">
+                                <label for="tel" class="control-label">婚宴时间：</label>
+                                <div class="controls"> 
+                                    <input type="text" name="hour" id="hour" class="input-large" value="{iMicms:$info.hour}" data-rule-required="true" />时<input type="text" name="min" id="min" class="input-large" value="{iMicms:$info.min}" data-rule-required="true" />分 <span class="maroon">*</span> 
+                                </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">宴席地址：</label>
+                                <div class="controls"> 
+                                    <div class="input-prepend">
+                                    <input type="text" name="place" id="place" class="input-xlarge" value="{iMicms:$info.place}" data-rule-required="true"/> <span class="maroon">*</span> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="suggestId">经纬地址</label>
+                                <div class="controls">
+                                    <div class="input-append">
+                                        <input type="text" id="suggestId" class="input-xlarge" value="广东省深圳市福田区侨城东路" data-rule-required="true" />
+                                        <button class="btn" type="button" id="positioning">搜索</button>
+                                    </div>
+
+                                    <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                    <div id="l-map">
+                                        <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                    </div>
+                                    <div id="r-result">
+                                        <input type="text" id="lng" name="lng" value="{iMicms:$info.lng}" /><input type="text" id="lat" name="lat" value="{iMicms:$info.lat}" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">喜帖视频：</label>
+                                <div class="controls"> 
+                                     <input type="text" name="video" id="video" class="input-xxlarge" value="{iMicms:$info.video}" /><span class="help-inline">例&lt;iframe width="480" height="405" src="<span style="color:#ff0000;">http://www.tudou.com/v/eWiObrQP_io/&bid=05&resourceId=0_05_05_99/v.swf</span>" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;(只复制红色部分)</span>
+                                    <!--<textarea rows="3" name="video" id="video" class="input-xxlarge" data-rule-maxlength="500">http://static.hd3p.com/mp3/yougetme.mp4</textarea><span class="help-inline">推荐使用腾讯视频</span>-->
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="mp3url">背景音乐</label>
+                                <div class="controls">
+                                    <div class="inline mp3">
+                                        <a id="m1" class="audio {skin:'blue'}" href="{iMicms:$info.mp3url}" >mp3</a>                                    </div>
+                                    <input type="hidden" name="mp3url" id="mp3url" value="{iMicms:$info.mp3url}"/>
+                                    <span class="help-inline">
+                                        <button class="btn addmp3" type="button">选择音乐</button>
+                                    </span>
+
+                                    <span class="help-inline">(保证浏览网页的加载速度,上传音乐最大为<span class="red">3MB</span>)</span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">婚纱图片：</label>
+                                <div class="controls">
+                                     
+                                    <div id="upimg_main">
+                                        <input id="file_upload" name="pics" type="file" />
+                                        <ul class="ipost-list ui-sortable" id="fileList">
+                                        <volist name="photo" id="photo" key="b">  
+ 					
+					<li class="imgbox" data-post-id="{iMicms:$photo.id}" data-url="{iMicms:$photo.picurl}"><a class="item_close" href="javascript:void(0)" title="删除"></a>  
+					<input type="hidden" value="{iMicms:$photo.id}" name="photoid[]"> 
+					<input type="hidden" value="{iMicms:$photo.picurl}" name="url[]"> <span class="item_box"><img src="{iMicms:$photo.picurl}" width="90" height="88"></span> 
+					<span class="item_input"> <textarea name="description[]"  <if condition="$b eq  1">class="bewrite valid"<else/>class="bewrite"</if> cols="3" rows="4" style="resize: none" data-rule-maxlength="150" placeholder="图片描述...">{iMicms:$photo.title}</textarea><i class="shadow hc"></i></span></li> 
+					</volist>  
+					</ul>
+                                        <div id="file_upload_queue" class="uploadifyQueue">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                             <div class="control-group">
+                                <label for="tel" class="control-label">密码：</label>
+                                <div class="controls">
+                                    <input type="text" name="password" id="password" class="input-large" value="{iMicms:$info.password}" data-rule-required="true"  /><span class="maroon">*</span><span class="help-inline">设置微信上查看来宾名单的验证密码</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">想要说的话：</label>
+                                <div class="controls">
+                                    <textarea rows="5" name="word" id="word" class="input-xxlarge" data-rule-required="true" data-rule-maxlength="200">{iMicms:$info.word}</textarea>
+                                    <span class="maroon">*</span><span class="help-inline">喜帖文字限制在200字以内</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="qr_code" class="control-label">二维码：</label>
+                                <div class="controls">
+                                    <img class="thumb_img" src="{iMicms:$info.qr_code}" style="width: 100px; height: 100px;">                                    
+				    <input id="qr_code" type="text" name="qr_code" class="input-large hide" readonly="" value="{iMicms:$info.qr_code}" />
+                                    <span class="help-inline">
+                                        <button class="btn select_img" id="pic_click" type="button">选择图片</button></span><span class="help-inline"><span class="maroon">*</span>默认100x100,显示在喜帖主页</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="copr" class="control-label">底部版权：</label>
+                                <div class="controls">
+                                    <input type="text" name="copr" id="copr" maxlength="20" class="input-large" value="{iMicms:$info.copr}" data-rule-required="true" /><span class="maroon">*</span><span class="help-inline">底部版权限制在二十个字以内</span>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                                <button type="button" class="btn" onclick="window.history.go(-1)">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script type="text/javascript">
+    
+    var pid = {iMicms:$info.id};
+    $(document).ready(function () {
+                                            initUpload($("#file_upload"), 
+					    10,
+					    {'type_id': 4,'pid':pid},
+					    "{iMicms::C('site_url')}/uploadify/uploadify.php",
+					    "{iMicms::C('site_url')}/index.php?g=User&m=Wcard&a=del",
+					    "{iMicms::C('site_url')}/uploadify/uploadify.swf");
+                                            imgSelectorInit();
+                                            ipostSortInit();
+                                            if ($("#fileList li").length > 0) {
+                                                if ($("#bsubmit").length == 0) { $('#file_upload-button').parent().add("#upimg_main").append('   <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn">保存</button>') }
+                                            }
+         var lat = {iMicms:$info.lat};
+	 var lng = {iMicms:$info.lng};
+	 var adr = "{iMicms:$info.place}";
+                var opp = { 
+            lat: lat,
+            lng: lng,
+            adr: adr
+        }
+        baidu_map(opp);
+            });
+</script>
+
+</body>
+</html>

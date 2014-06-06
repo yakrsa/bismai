@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css?2013-9-13-2" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js?2013-9-13-2"></script>
+<script src="{iMicms::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> {iMicms::C('site_title')} {iMicms::C('site_name')}</title>
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<script>var SITEURL='';</script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/style_2_common.css?BPm" />
+
+</head>
+<body id="nv_member" class="pg_CURMODULE" onkeydown="if(event.keyCode==27) return false;">
+ 
+    
+    
+ 
+
+ <link href="{iMicms::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<script>
+function ccolumns(value){
+	if(value=='alipay'){
+		$('.alipay').css('display','');
+		$('.tenpay').css('display','none');
+	}else{
+		$('.alipay').css('display','none');
+		$('.tenpay').css('display','');
+	}
+}
+</script>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>在线支付配置 <small>支持微信支付、财付通（WAP接口或者即时到帐接口）和支付宝支付（即时到帐接口）。请填写真实信息，否则支付中可能会出现错误</small></h3>
+                            </div>
+
+                        </div>
+				<div id="{:MODULE_NAME}" class="content {:MODULE_NAME}">
+					
+					<div class="cLine hide">
+						<div class="pageNavigator left"></div>
+						<div class="clr"></div>
+					</div>
+					<div class="msgWrap bgfc">
+	  <form class="form" method="post" action=""  enctype="multipart/form-data">	 
+	  
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+			<tr>
+					<th>支付开关：</th>
+					<td><select name="open"><option value="0" <if condition="$config.open eq 0">selected</if>>关闭支付</option><option value="1" <if condition="$config.open eq 1"> selected</if>>开启支付</option></select> 开启支付后，商城等b2c功能将有在线支付功能</td>
+				</tr>
+				<tr>
+					<th>支付方式：</th>
+					<td><select name="paytype" onchange="ccolumns(this.value)"><option value="weixin" <if condition="$config.paytype eq 'weixin'"> selected</if>>微信支付</option><option value="alipay" <if condition="$config.paytype eq 'alipay'">selected</if>>支付宝</option><option value="tenpay" <if condition="$config.paytype eq 'tenpay'"> selected</if>>财付通(WAP手机接口)</option><option value="tenpayComputer" <if condition="$config.paytype eq 'tenpayComputer'"> selected</if>>财付通(即时到帐接口)</option></select> </td>
+				</tr>
+				
+				<tr class="alipay" <if condition="$config.paytype neq 'alipay'">style="display:none"</if>>
+					<th width="120">帐号：</th>
+					<td><input type="text" name="name" value="{imicms:$config.name}" class="px" style="width:550px;"></td>
+				</tr>
+				<tr class="alipay" <if condition="$config.paytype neq 'alipay'">style="display:none"</if>>
+					<th width="120">PID：</th>
+					<td><input type="text" name="pid" value="{imicms:$config.pid}" class="px" style="width:550px;"></td>
+				</tr>
+				<tr class="alipay" <if condition="$config.paytype neq 'alipay'">style="display:none"</if>>
+					<th>KEY：</th>
+					<td><input type="text" name="key" value="{imicms:$config.key}" class="px" style="width:550px;"></td>
+				</tr>
+
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>appId：</th>
+					<td><input type="text" name="appid" value="{imicms:$config.appid}" class="px" style="width:350px;"> 公众号身份的唯一标识（使用财付通接口不用填写）</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>paySignKey：</th>
+					<td><input type="text" name="paysignkey" value="{imicms:$config.paysignkey}" class="px" style="width:350px;"> 公众号支付请求中用于加密的密钥Key（使用财付通接口不用填写）</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>AppSecret：</th>
+					<td><input type="text" name="appsecret" value="{imicms:$config.appsecret}" class="px" style="width:350px;"> （使用财付通接口不用填写）</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>partnerId：</th>
+					<td><input type="text" name="partnerid" value="{imicms:$config.partnerid}" class="px" style="width:350px;"> 财付通商户身份的标识</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>partnerKey：</th>
+					<td><input type="text" name="partnerkey" value="{imicms:$config.partnerkey}" class="px" style="width:350px;"> 财付通商户权限密钥Key</td>
+				</tr>
+				</if>
+				<th>&nbsp;</th>
+										<td>
+											<input type="hidden" name="token" value="{iMicms:$token}" />
+											<button type="submit" name="button" class="btn btn-primary">保存</button>&nbsp;&nbsp;<a href="javascript:history.go(-1);" class="btn">取消</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+					<div class="cLine hide">
+						<div class="pageNavigator right">
+							<div class="pages"></div>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer"/>

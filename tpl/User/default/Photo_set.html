@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />  
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstr
+		ap_responsive_min.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/album.css?2013-9-13-2" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/zeroclipboard_min.js?2013-9-13-2"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	
+    <div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3><i class="icon-cog"></i>微相册设置(回复：相册、3g相册，等等关键词触发此功能)</h3>
+								
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form action="" method="post" class="form-horizontal form-validate">
+								 
+				<input type="hidden" name="id" value="{iMicms:$uid}" />
+								 
+                                <div class="control-group">
+                                    <label class="control-label" for="cover">相册头部图片</label>
+                                    <div class="controls">
+                                        <img class="thumb_img" src="<if condition="$info['photo_head'] eq ''">{iMicms::C('site_url')}/tpl/static/images/albums_head_url.jpg<else/>{iMicms:$info.photo_head}</if>" style="max-height: 70px;" />
+                                        <input class="hide" type="text" name="head_url" value="<if condition="$info['photo_head'] eq ''">{iMicms::C('site_url')}/tpl/static/images/albums_head_url.jpg<else/>{iMicms:$info.photo_head}</if>" />
+                                        <span class="help-inline">
+                                            <button class="btn select_img" type="button">选择图片</button>
+                                        </span>
+										<span class="maroon">*</span>
+										<span class="help-inline">请选择尺寸720x150左右的图片,大小不超过300k</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group" style="display:none;">
+                                    <label class="control-label" for="sites">相册展示方式：</label>
+                                    <div class="controls">
+										<label class="radio inline">
+                                            <input type="radio" name="show_type" value="1"  checked="checked" />瀑布流
+                                        </label>
+										<label class="radio inline">
+                                            <input type="radio" name="show_type" value="2"  />单行
+                                        </label>
+                                        <label class="radio inline">
+                                            <input type="radio" name="show_type" value="3" />双排
+                                        </label>
+                                        
+                                    </div>
+                                </div>
+				
+                                <link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+                                <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+                                <script src="{iMicms::STATICS}/kindeditors/lang/cn.js"></script>
+				<script src="{iMicms::STATICS}/kindeditors/kindeditor_select_img.js"></script>
+                                
+                                <div class="form-actions">
+                                    <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></body>
+</html>

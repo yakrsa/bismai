@@ -1,0 +1,125 @@
+﻿安装説明：
+
+后台查看到的模块未启作用不用理会，新功能预留使用
+
+数据包上传到网站，运行/install即可安装。
+
+安装请使用管理员默认账号admin 默认密码 imicms
+------------------------
+修改管理员账号方法：
+安装后修改数据库imicms_user内的用户名和密码 密码为md5加密
+并修改Data\conf\Admin\config.php 内的管理员名
+------------------------
+
+网站预览请使用非IE内核浏览器！！！
+
+首次安装不要修改数据库表前缀，否则会导致无法访问网站！
+最后一步安装请不要刷新，正在写入数据库，否则会安装失败！！！
+
+如提示/data/Conf/db.php错误 请确认自己的系统
+win系统保证权限错误 LINUX系统看下面的说明
+
+Linux下wdcp安装请看帖子
+http://bbs.imicms.com/forum.php?mod=viewthread&tid=310
+
+windows下环境安装帖子
+http://bbs.imicms.com/forum.php?mod=viewthread&tid=222
+http://bbs.imicms.com/forum.php?mod=viewthread&tid=304
+
+QQ群 3035850
+
+
+如不使用install安装，可修改数据库配置文件Data\conf\db.php
+程序修改建议使用EditPlus 勿使用记事本写字板打开！！！
+
+后台访问地址imicms.php
+
+基础配置
+
+1、\Data\conf\Home\config.php
+    'DEFAULT_THEME'=>'weixin', 首页模板配置，可在管理员后台选择。
+    
+2、\Data\conf\db.php
+   修改数据库配置密码
+   
+3、网站总后台登陆账号配置
+    \Data\conf\Admin\config.php
+        修改 'SPECIAL_USER'=>'admin',
+	 修改后同时修改数据库iMicms_user内用户名即可
+ 
+4、修改登录后弹出窗口
+   tpl\User\default\Index_acount.html
+5、修改登录时提示信息
+   tpl\Home\weixin\common\reg\login.js
+6、修改定制开发页内信息及
+   tpl\User\default\Index_customdev.html
+7、修改首页400电话
+   tpl\Home\default\Index_index.html
+8、管理员登陆页面图片
+   tpl\Admin\common\img
+9、会员中心左上角图片
+   tpl\User\default\common\img\logo.png
+10、首页左上角图片
+   tpl\Home\weixin\common\img\logo.png
+11、管理登陆跳转提示文件
+   iMicms\Lib\Action\Admin\AdminAction.class.php
+
+自定义菜单不能使用请仔细检查设置是否正确，并保证开启
+allow_url_fopen
+allow_url_include
+curl open_ssl
+复制php_openssl.dll放到system32目录下
+
+
+缓存清理方法：
+删除 Data\logs\Cache目录下所有php文件 不要删除目录
+删除 Data\logs\Logs 目录下所有文件
+
+php组件开启配置 php.ini内的部分内容
+
+;extension=php_bz2.dll
+extension=php_curl.dll
+;extension=php_dba.dll
+;extension=php_dbase.dll
+;extension=php_exif.dll
+;extension=php_fdf.dll
+extension=php_gd2.dll
+;extension=php_gettext.dll
+;extension=php_gmp.dll
+;extension=php_ifx.dll
+;extension=php_imap.dll
+;extension=php_interbase.dll
+;extension=php_ldap.dll
+extension=php_mbstring.dll
+extension=php_mcrypt.dll
+;extension=php_mhash.dll
+;extension=php_mime_magic.dll
+;extension=php_ming.dll
+;extension=php_msql.dll
+;extension=php_mssql.dll
+extension=php_mysql.dll
+extension=php_mysqli.dll
+;extension=php_oci8.dll
+;extension=php_openssl.dll
+extension=php_pdo.dll
+;extension=php_pdo_firebird.dll
+;extension=php_pdo_mssql.dll
+extension=php_pdo_mysql.dll
+;extension=php_pdo_oci.dll
+;extension=php_pdo_oci8.dll
+;extension=php_pdo_odbc.dll
+;extension=php_pdo_pgsql.dll
+;extension=php_pdo_sqlite.dll
+;extension=php_pgsql.dll
+;extension=php_pspell.dll
+;extension=php_shmop.dll
+;extension=php_snmp.dll
+;extension=php_soap.dll
+;extension=php_sockets.dll
+;extension=php_sqlite.dll
+;extension=php_sybase_ct.dll
+;extension=php_tidy.dll
+;extension=php_xmlrpc.dll
+;extension=php_xsl.dll
+extension=php_zip.dll
+

@@ -1,0 +1,60 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>设置职员</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+			
+		</div>
+          <form method="post" action="" enctype="multipart/form-data">
+           <input type="hidden" name="formhash" value="9865d2e0" />
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="40%">
+  <THEAD>
+<TR>
+  <TH valign="top"><label for="keyword">姓名：</label></TH>
+  <TD width="320"><input type="input" class="px" id="name" value="{imicms:$item.name}" name="name" style="width:300px" ></TD>
+  </TR>
+  </THEAD>
+  <TBODY>
+  <TR>
+  	<TH>用户名：</TH>
+  	<TD><input type="input" class="px" id="username" name="username"  value="{imicms:$item.username}"  style="width:300px" /></TD>
+  <TR>
+  	<TH>密码：</TH>
+  	<TD><input type="password" class="px" id="password" name="password" value=""  style="width:300px" /> (修改时如果不想修改密码请留空)</TD>
+  <TR>
+   <TR>
+  	<th>电话：</th>
+  	<td><input type="input" class="px" id="tel" value="{imicms:$item.tel}"  name="tel" style="width:300px" /></td>
+  	</TR>
+   <TR>
+  <th>所属店铺：</th>
+  	<td> <select name="companyid" class="pt">
+	  	<option value="0" <if condition="$item['companyid'] eq 0">selected</if>>请选择</option>
+       <volist id="company" name="companys">
+       <option value="{imicms:$company.id}" <if condition="$item['companyid'] eq $company['id']">selected</if>>{imicms:$company.name}</option>
+       </volist>                            
+  	</select> <a href="/index.php?g=User&m=Company&a=index&token={imicms:$token}">点击这里添加店铺</a>
+  	</td>
+  	<th>  </th>
+  	<td> </td>
+  	</TR>
+   <tr>
+  	<th></th>
+  	<td><button type="submit"  name="button"  class="btn btn-primary" >保存</button></td>
+  	<td>&nbsp;</td>
+  	<td>&nbsp;</td>
+  	</tr>
+  </TBODY>
+</TABLE>
+          </form>
+        </div>
+<include file="Public:footer"/>

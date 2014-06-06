@@ -1,0 +1,399 @@
+<include file="Public:head"/>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+
+<style type="text/css">
+
+ .over_flort {
+	clear: both;
+}
+
+.warpper {
+	background-color:#FFFFFF;
+	padding:0 10px;
+}
+
+.warpper p{
+	font-family: "微软雅黑";
+	margin:0;
+}
+
+.warpper .war_top {
+	background-color: #0e57aa;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #104082;
+	width: 99.6%;
+	height: 46px;
+}
+
+.warpper .war_top ul{
+	margin:0;
+}
+
+.warpper .war_top li {
+	font-size: 18px;
+	line-height: 46px;
+	color: #FFFFFF;
+	text-align: center;
+	float: left;
+	height: 46px;
+	width: 25%;
+}
+
+.support {
+    background-image: url("{iMicms::C('site_url')}/tpl/Home/weixin/common/weixin/result_ok.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.nosuport {
+    background-image: url("{iMicms::C('site_url')}/tpl/Home/weixin/common/weixin/result_error.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.warpper .button_button{
+    float:left;
+    width:24.770%;
+	background:#FFFFFF;
+	height:101px;
+	border:1px solid #f3f3f3;
+	border-top-color:#FFFFFF;
+}
+
+.warpper #left_green{
+    float:left;
+    height:65px;
+	background-color:#FFFFFF;
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	width:24.60%;
+}
+
+.warpper #left_green_01{
+    float:left;
+    height:65px;
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	width:24.60%;
+	background-color:#ffffff;
+}
+
+.warpper #left_green_02{
+    float:left;
+    height:65px;
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	width:24.60%;
+}
+.warpper .contetn_lb{
+    float:left;
+    width:24.77%;
+	height:65px;
+}
+
+.lb_color1{
+	background-color: #eff5fd;
+}
+
+.lb_color2{
+	background-color: #faf3e3;
+}
+
+.lb_color3{
+	background-color: #feeee6;
+	border-right-width: 1px; 
+	border-right-color: #feeee6;
+}
+
+.warpper .content_lb_nr {
+	text-align: center;
+	line-height: 65px;
+	color: #000000;
+}
+.warpper .content_lb_zynr {
+	line-height: 75px;
+	text-align: center;
+	float: left;
+	height: 65px;
+	width: 24.77%;
+	color:#5BB75B;
+	font-weight:bold;
+	
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	border-left-color:#ffffff;
+}
+.warpper .content_lb_zynr img {
+	padding-top: 27px;
+}
+
+.warpper .content_lb_zynr_02 img {
+	padding-top: 27px;
+}
+.warpper .content_lb_zynr_02 {
+	line-height: 65px;
+	text-align: center;
+	float: left;
+	height: 65px;
+	width: 24.77%;
+	
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+}
+
+.warpper .bt {
+	font-size: 18px;
+	line-height: 46px;
+	color: #000000;
+	text-align: center;
+	width: 99.7%;
+	border:1px solid #f3f3f3;
+}
+
+ 
+.fix-buy{
+	position: fixed;
+    z-index: 999;
+	top:0;
+	margin:0 auto;
+}
+
+.fix-top-buy{
+	position: fixed;
+    z-index: 888;
+	top:46px;
+	margin:0 auto;
+}
+
+</style>
+
+
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		
+		
+});
+</script>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>添加车型</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+<link rel="stylesheet" type="text/css" href="{imicms::Common}/default_user_com.css" media="all">
+<link rel="stylesheet" type="text/css" href="{imicms::RES}/css/cymain.css" />
+
+<script src="{imicms::RES}/js/select/js/jquery.js"></script>
+<script src="{imicms::RES}/js/select/js/comm.js"></script>
+<script src="{imicms::RES}/js/select/js/linkagesel-min.js"></script>
+
+<script src="{imicms::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{imicms::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+
+<div class="content">
+
+
+ <!--tab start-->
+
+<!--tab end-->
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+      <form class="form" method="post" action=""  enctype="multipart/form-data">
+
+        <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody>
+                <tr>
+                    <th width="120">车型名称：</th>
+                    <td> <input type="text" name="name" id="name" class="input-medium px" data-rule-required="true" data-rule-maxlength="20" value="{imicms:$carmodel['name']}"/>
+                      <span class="maroon">*</span>
+                    </td>
+                </tr>
+               <tr>
+                    <th>品牌/车系：</th>
+                    <td>
+                    <select id="car_brands_id"  data-rule-required="true"></select>
+                    <input type='hidden' name='brand_serise' id="brand_serise"  value="{imicms:$carmodel['brand_serise']}"/>
+                    <input type='hidden' name='s_id' id="s_id" class='px' value="{imicms:$carmodel['s_id']}"/>
+                    <span class="maroon">选择品牌，车系会自动出来</span>
+                    <!--select name="car_series" id="car_series" class="input-medium px" data-rule-required="true"></select-->
+<script>
+    var opts = {
+            select: '#car_brands_id',
+            url: "{imicms::U('Car/get_car_brand',array('token'=>$token))}",
+            head:'请选择！',
+            autoHide:true
+
+    };
+
+    var linkageSel = new LinkageSel(opts);
+    linkageSel.onChange(function(){
+        var input = $("#brand_serise"),
+        d = this.getSelectedDataArr('name'),
+        s_id = linkageSel.getSelectedData('s_id'),
+        arr = [];
+        for (var i = 0, len = d.length; i < len; i++) {
+            arr.push(d[i]);
+        }
+        input.val(arr.join('/'));
+
+        $("#s_id").val(s_id);
+
+    });
+
+</script>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">年款：</th>
+                    <td>
+                         <select class="input-medium valid" name="model_year">
+                             <option value="2014">2022</option>
+                             <option value="2014">2021</option>
+                             <option value="2014">2020</option>
+                             <option value="2014">2019</option>
+                             <option value="2014">2018</option>
+                             <option value="2014">2017</option>
+                             <option value="2014">2016</option>
+                             <option value="2014">2015</option>
+                             <option value="2014" selected="">2014</option>
+                             <option value="2013" >2013</option>
+                             <option value="2012">2012</option>
+                             <option value="2011">2011</option>
+                             <option value="2010">2010</option>
+                             <option value="2009">2009</option>
+                             <option value="2008">2008</option>
+                             <option value="2007">2007</option>
+                             <option value="2006">2006</option>
+                             <option value="2005">2005</option>
+                             <option value="2004">2004</option>
+                             <option value="2003">2003</option>
+                             <option value="2002">2002</option>
+                             <option value="2001">2001</option>
+                            <option value="2001">2000</option>
+                         </select>
+                     </td>
+                </tr>
+                <tr>
+                    <th width="120">显示顺序：</th>
+                    <td>  <input type="text" id="sort" name="sort" value="{imicms:$carmodel['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true" /><span class="maroon">*</span>
+                                        <span class="help-inline">数字越大越靠前</span></td>
+                </tr>
+                <tr>
+                    <th>指导价：</th>
+                    <td> 
+                             <input type="text" id="prices" name="guide_price" value="{imicms:$carmodel['guide_price']}" class="input-mini px" data-rule-number="true" />
+                                        <span class="help-inline">(万元)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">经销商报价：</th>
+                    <td> <input type="text" id="Text1" name="dealer_price" class="input-medium px" value="{imicms:$carmodel['dealer_price']}"/>
+                         <span class="help-inline">(万元) 如:19.24-35.59</span></td>
+                </tr>
+
+				<tr> 
+                <th width="120">图片:</th> 
+                <td><p>
+		        <img class="thumb_img" id="pic_url_src" src="<if condition="$carmodel['pic_url'] neq ''">{imicms:$carmodel['pic_url']}<else/>{iMicms::C('site_url')}/tpl/User/default/common/car/lanbo.jpg</if>"  style="height:100px; width:160px;">
+		        <input type="text" name="pic_url" value="<if condition="$carmodel['pic_url'] neq ''">{imicms:$carmodel['pic_url']}<else/>{iMicms::C('site_url')}/tpl/User/default/common/car/lanbo.jpg</if>" class="px" style="width:200px;" id="pic1" readonly="readonly" />
+		        <span class="help-inline">
+		        <span class="ke-button-common" id="upload1" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span> 建议图片尺寸420*60，不超过300K</td> 
+                </tr>
+                  <tr>
+                    <th width="120">全景相册名称:</th>
+                    <td> 
+                         <select id="Panoramic_id" name="Panoramic_id" class="input-medium" data-rule-required="true"> 
+                                          <option value="0">请选择360全景相册</option> 
+                                            <volist name="Panoramic" id="vo">
+                                               <option value="{imicms:$vo['pid']}" <if condition="$vo['pid'] eq $carmodel['Panoramic_id']">selected="selected"</if>>{imicms:$vo['name']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到 <a href="{imicms::U('Panoramic/add',array('token'=>$token))}" class="btn"><strong><font color='red'>360°全景</strong></font></a>添加</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">排量：</th>
+                    <td><input type="text" id="pl" name="emission" class="px" value="{imicms:$carmodel['emission']}" data-rule-number="true" />
+                        <span class="help-inline">(L)</span></td>
+                <tr>
+                    <th width="120">挡位个数：</th>
+                    <td>  <input type="text" id="dwgs" name="stalls" class="px" value="{imicms:$carmodel['stalls']}" data-rule-integer="true" /></td>
+                </tr>
+                <tr>
+                    <th width="120">变速箱：</th>
+                    <td> 
+                            <select name="box" id="bsx" class="input-medium">
+                                <option value="1" <if condition="$carmodel['box'] eq 1">selected</if> >自动变速箱(AT)</option>
+                                <option value="2" <if condition="$carmodel['box'] eq 2">selected</if> >手动变速箱(MT)</option>
+                                <option value="3" <if condition="$carmodel['box'] eq 3">selected</if> >手自一体 </option>
+                                <option value="4" <if condition="$carmodel['box'] eq 4">selected</if> >无级变速箱(CVT)</option>
+                                <option value="5" <if condition="$carmodel['box'] eq 5">selected</if> >无级变速(VDT)</option>
+                                <option value="6" <if condition="$carmodel['box'] eq 6">selected</if> >双离合变速箱(DCT)</option>
+                                <option value="7" <if condition="$carmodel['box'] eq 7">selected</if> >序列变速箱(AMT)</option>
+                            </select>
+                    </td>
+                </tr>
+
+                  </tr>
+                    <td>
+                    <if condition="$carmodel['id'] neq ''">
+                    <input type="hidden" name="id" value="{imicms:$carmodel['id']}" />
+                    </if>
+                      <input type="hidden" name="token" value="{imicms:$token}" />
+                        <button type="submit" name="button" class="btn btn-primary">保存</button>
+                        <a href="javascript:history.go(-1);" class="btn">取消</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+  </div> 
+
+        </div>
+<include file="Public:footer"/>

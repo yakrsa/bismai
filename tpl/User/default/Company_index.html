@@ -1,0 +1,167 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/cymain.css" />
+<script src="/tpl/Static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/Static/artDialog/plugins/iframeTools.js"></script>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/formCheck/formcheck.js"> </script>
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>公司信息</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#intro', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : false,
+items : [
+'source','undo','clearhtml','hr',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+
+});
+</script>
+        <div class="content">
+<div class="cLineB">
+<h4 class="left">公司信息</h4>
+<div class="searchbar right">
+<form method="post" action="">
+
+<script>
+function selectall(name) {
+	var checkItems=$('.cbitem');
+	if ($("#check_box").attr('checked')==false) {
+		$.each(checkItems, function(i,val){
+			val.checked=false;
+		});
+		
+	} else {
+		$.each(checkItems, function(i,val){
+			val.checked=true;
+		});
+	}
+}
+function setlatlng(longitude,latitude){
+	art.dialog.data('longitude', longitude);
+	art.dialog.data('latitude', latitude);
+	// 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+	// document.getElementById('aInput').value = art.dialog.data('test');
+	art.dialog.open('{iMicms::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+}
+</script>
+<if condition="($parentid neq  '0') and ($parentid neq '')"><a href="{iMicms::U('Product/cats',array('token'=>$token,'parentid'=>$parentCat['parentid']))}" class="btnGreen" style="margin-top:-27px">返回上</a></if>
+</form>
+</div>
+<div class="clr"></div>
+</div>
+
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="<if condition="$isBranch neq 1">current</if> tabli" id="tab0"><a href="{iMicms::U('Company/index',array('token'=>$token))}">公司信息</a></li>
+<li class="<if condition="$isBranch eq 1">current</if> tabli" id="tab2"><a href="{iMicms::U('Company/branches',array('token'=>$token,'isBranch'=>1))}">分支机构</a></li>
+</ul>
+</div>
+<!--tab end-->
+<div class="msgWrap">
+<form action="" method="post" class="form-horizontal form-validate" enctype="multipart/form-data">
+<if condition="$isUpdate eq 1">
+<input type="hidden" name="id" value="{iMicms:$set.id}" />
+</if>
+<input type="hidden" name="discount" id="discount" value="{iMicms:$set.discount}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <th><span class="red">*</span>名称：</th> 
+        <td><input type="text" id="name" name="name" value="{iMicms:$set.name}" class="px require h23 w550" /></td> 
+       </tr>
+       <tr> 
+        <th><span class="red">*</span>简称：</th> 
+        <td><input type="text" id="shortname" name="shortname" value="{iMicms:$set.shortname}" class="px require h23 w550" /></td> 
+       </tr>
+       <tr> 
+        <th><span class="red">*</span>电话：</th> 
+        <td><input type="text" id="tel" name="tel" value="{iMicms:$set.tel}" class="px require h23 w550" /></td> 
+       </tr> 
+       <tr> 
+        <th><span class="red">*</span>手机：</th> 
+        <td><input type="text" id="mp" name="mp" value="{iMicms:$set.mp}" class="px require h23 w550" /></td> 
+       </tr> 
+       <tr> 
+        <th><span class="red">*</span>地址：</th> 
+        <td><input type="text" id="address" name="address" value="{iMicms:$set.address}" class="px require h23 w550" /></td> 
+       </tr> 
+       <tr> 
+        <th>Logo地址：</th> 
+        <td>
+		<div class="control-group">
+						<div class="controls">
+						<img id="thumb_img" src="{iMicms:$set.logourl}" style="max-height:100px;" />
+						<input type="hidden" id="thumb"  name="logourl" value="{iMicms:$set.logourl}" class="input-xlarge"  data-rule-required="true" data-rule-url="true" />
+                        <span class="help-inline"><a class="btn" id="insertimage">选择封面</a>（尺寸：宽100像素，高100像素） 小于500k;</span>
+				        </div>
+                  </div>
+				  </td> 
+       </tr>
+        <tr> 
+        <th><span class="red">*</span>经纬度：</th> 
+        <td>经度 <input type="text" id="longitude"  name="longitude" size="14" class="px" value="{iMicms:$set.longitude}" /> 纬度 <input type="text"  name="latitude" size="14" id="latitude" class="px" value="{iMicms:$set.latitude}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a></td> 
+       </tr>
+       <tr> 
+        <th><span class="red"></span>顺序：</th> 
+        <td><input type="text" id="taxis" name="taxis" value="{iMicms:$set.taxis}" class="px require" style="width:100px;" /></td> 
+       </tr>
+        <TR>
+                  <TH valign="top"><label for="info">图文详细页内容：</label></TH>
+                  <TD><textarea name="intro" id="intro"  rows="5" style="width:590px;height:360px">{iMicms:$set.intro}</textarea></TD>
+                </TR>  
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+       <if condition="$isBranch eq 1">
+      <input type="hidden" name="isbranch" value="1" />
+      </if>
+      <input type="hidden" name="token" value="{iMicms::$token}" />
+       <button type="submit" name="button" class="btn btn-primary">保存</button></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+
+
+</div>
+<div class="cLine">
+
+<div class="clr"></div>
+</div>
+</div>
+<script language="javascript">
+$(function(){
+	$("#form").valid([
+	{ name:"name",simple:"名称",require:true},
+	{ name:"mp",type:"mobile",message:"手机号输入不正确"}
+	],true,true);
+})
+
+</script>
+<include file="Public:footer"/>

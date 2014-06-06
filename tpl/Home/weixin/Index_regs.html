@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>金数据 - 注册</title>
+  <meta property="qc:admins" content="1360371351305256654" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/favicon-be31fc634083afa6c5e1a09c2e873631.ico">
+  <link href="/assets/site-ab6ef7dc84e64305fe3f7f59dd0105e1.css" media="screen" rel="stylesheet" type="text/css" />
+  <!--[if lte IE 8]> <link href="/assets/ie/lte-ie8-67ff2e25c21fee766f0a9c48144cd7ba.css" media="screen" rel="stylesheet" type="text/css" /> <![endif]-->
+  <!--[if IE 7]> <link href="/assets/font-awesome-ie7.min-6019214dbab3e9cddbca14c3cd362dd6.css" media="screen" rel="stylesheet" type="text/css" /> <![endif]-->
+  <script src="/assets/site/application-0bec252879414cf448d5e6d5f2d50c40.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/" data-no-turbolink>
+        </a>
+        <div class="navbar-text pull-right">
+          <a href="/signup?utm_campaign=jul&amp;utm_medium=top_nav&amp;utm_source=site" class="signup-link active"><i class='icon-user'></i>注册</a>
+          <a href="/login" class="login-link ">登录</a>
+        </div>
+        <div class="nav-collapse collapse clearfix">
+
+          <ul class="nav clearfix">
+            <li class="">
+              <a href="/">首页</a>
+            </li>
+            <li class="">
+              <a href="/stories">用户故事</a>
+            </li>
+            <li class="">
+              <a href="/feature">功能特性</a>
+            </li>
+            <li class="">
+              <a href="/plan">套餐价格</a>
+            </li>
+            <li>
+              <a href="http://bbs.jinshuju.net/" target="_blank" data-no-turbolink=true>论坛</a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+
+<div class="bg-wrap bg-login">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span10 offset3 login-page">
+        <div class="row-fluid">
+          <div class="span16">
+            <h1 class="login-title">注册</h1>
+            <section class="login-panel hide">
+  <form accept-charset="UTF-8" action="/auth/identity/callback" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Q0zbN/ejSdVlKyUNrtZD4ODhZXC2AzmriNZectn/zX4=" /></div>
+    <div class="field">
+      <label for="auth_key">邮箱</label>
+      <input autofocus="autofocus" id="auth_key" name="auth_key" type="email" />
+    </div>
+
+    <div class="field">
+      <label for="password">密码</label>
+      <input autocomplete="off" id="password" name="password" size="6" type="password" />
+      <a href="/password_reset" class="forget-password" tabindex="-1">忘记密码?</a>
+    </div>
+
+    <label class="auto-login">
+      <input id="remember_me" name="remember_me" type="checkbox" value="1" />
+      下次自动登录
+    </label>
+    <input id="auth_token" name="auth_token" type="hidden" />
+    <input id="origin" name="origin" type="hidden" />
+    <input class="login large-btn" name="commit" type="submit" value="登录" />
+
+    <div class="form-bottom">
+      没有金数据账号？ <a href="javascript:void(0)" class="invitation" data-for="signup-panel" tabindex="-1">立即注册金数据</a>
+    </div>
+</form></section>
+            <section class="signup-panel  ">
+  <form accept-charset="UTF-8" action="/auth/identity/register" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Q0zbN/ejSdVlKyUNrtZD4ODhZXC2AzmriNZectn/zX4=" /></div>
+    <div class="field">
+      <label for="email">邮箱</label>
+      <input autofocus="autofocus" id="email" name="email" type="email" />
+    </div>
+
+    <div class="field">
+      <label for="nick_name">昵称</label>
+      <input autocomplete="off" id="nick_name" name="nick_name" type="text" />
+    </div>
+
+    <div class="field">
+      <label for="password">密码</label>
+      <input autocomplete="off" id="password" name="password" type="password" />
+    </div>
+
+    <div class="field">
+      <label for="password_confirmation">请确认密码</label>
+      <input autocomplete="off" id="password_confirmation" name="password_confirmation" type="password" />
+    </div>
+
+    <input id="auth_token" name="auth_token" type="hidden" />
+    <input id="origin" name="origin" type="hidden" />
+    <p class="agreement">注册即代表您已阅读并同意《<a href="/terms" target="_blank">使用协议</a>》</p>
+
+    <input class="login large-btn" name="commit" type="submit" value="注册" />
+
+    <div class="form-bottom">
+      已有金数据账号？ <a href="javascript:void(0)" class="invitation" data-for="login-panel" tabindex="-1">立即登录</a>
+    </div>
+</form></section>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span16">
+            <section class="social-login">
+  <h5>其他方式登录</h5>
+  <div>
+    <a href="/auth/weibo?auth_token=&amp;origin=" class="social-account account-sina" title="新浪微博登录"></a>
+    <a href="/auth/qq_connect?auth_token=&amp;origin=" class="social-account account-qq" title="QQ账号登录"></a>
+    <a href="/auth/renren?auth_token=&amp;origin=" class="social-account account-renren" title="人人网账号登录"></a>
+  </div>
+</section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="user-feedback hidden-phone"><a href="http://jinshuju.net/f/50c6e5b724290a20f70065e0" target="_blank">意见反馈</a></div>
+
+<footer>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="site-map clearfix">
+        <dl class="span2 hidden-phone">
+          <dt>关于金数据</dt>
+          <dd><a href="http://bbs.jinshuju.net/" target="_blank">论坛</a></dd>
+          <dd><a href="/faq">常见问题</a></dd>
+          <dd><a href="/terms">使用协议</a></dd>
+          <dd><a href="/privacy">隐私条款</a></dd>
+          <dd><a href="http://jinshuju.net/f/50c6e5b724290a20f70065e0">意见反馈</a></dd>
+        </dl>
+        <dl class="span2 hidden-phone">
+          <dt>金数据团队</dt>
+          <dd><a href="http://weibo.com/u/3166713675" target="_blank">新浪微博</a></dd>
+          <dd><a href="/about">关于我们</a></dd>
+        </dl>
+        <dl class="span2 hidden-phone">
+          <dt>用户故事</dt>
+          <dd><a href="/stories/weixin">收集订单</a></dd>
+          <dd><a href="/stories/hr">在线报名</a></dd>
+          <dd><a href="/stories/management">销售统计</a></dd>
+          <dd><a href="/stories/newspaper">信息搜集</a></dd>
+        </dl>
+        <dl class="span2 hidden-phone">
+          <dt>更多</dt>
+          <dd><a href="/feature">功能特性</a></dd>
+          <dd><a href="/plan">套餐价格</a></dd>
+        </dl>
+        <div class="span7 offset1">
+          <h3>联系我们</h3>
+
+          <p>客服电话：029-68659559 (周一至周五: 09:00 - 18:00)<br/>
+            客服QQ：1728106147<br/>
+            微博：<a href="http://weibo.com/iamjinshuju">@金数据</a> <br/>
+            邮箱：<a href="mailto:supprot@jinshuju.net">support@jinshuju.net</a> <br/>            
+            地址：西安市高新区锦业一路国家服务外包示范基地二区IT孵化器H座1501<br/>
+            邮编：710062
+          </p>
+        </div>
+      </div>
+      <p><span>2013 思特沃克软件技术(西安)有限公司版权所有 </span> | <span> 京ICP备10215959号-3</span></p>
+      <p><a class="visible-phone feedback-link" href="http://jinshuju.net/f/50c6e5b724290a20f70065e0">意见反馈</a></p>
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+ 
+ </body>
+</html>

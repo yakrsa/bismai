@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" 
+media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/style_2_common.css" />
+<link href="{iMicms::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+</head>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>新增语音回复 <small> 建议使用mp3格式外链</small></h3>
+                            </div><div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div></div>
+ <div class="content">
+
+<div class="msgWrap">
+<form action="{iMicms::U('Voiceresponse/insert')}" method="post" class="form-horizontal form-validate" enctype="multipart/form-data">
+
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+  <THEAD>
+                          <TR>
+  <TH valign="top"><span class="red">*</span><label for="keyword">关键词：</label></TH>
+  <TD><input type="input" class="px" id="keyword" value="" name="keyword" style="width:600px" ><br />
+                  多个关键词请用空格格开：例如: 美丽&nbsp;漂亮&nbsp;好看</TD>
+</TR>
+<TR>
+  <TH valign="top"><span class="red">*</span><label for="Title">音乐标题：</label></TH>
+  <TD><input type="input" class="px" id="Title" value="" name="title" style="width:600px" > <p>注明：添加QQ音乐因为腾讯防盗链，<span class="red">后台无法试听,但微信可以播放!</span></p>
+                  </TD>
+</TR>
+                            <TR>
+  <TH valign="top"><span class="red">*</span><label for="MusicUrl">音乐链接：</label></TH>
+  <TD><input type="input" class="px" id="MusicUrl" value="" name="musicurl" style="width:600px" ><br />
+                  </TD>
+</TR>
+                            <TR>
+  <TH valign="top"><span class="red">*</span><label for="HQMusicUrl">高品质音乐链接：</label></TH>
+  <TD><input type="input" class="px" id="HQMusicUrl" value="" name="hqmusicurl" style="width:600px" ><br />没有高品质音乐链接，请直接再填一遍音乐链接。（高质量音乐链接，WIFI环境优先使用该链接播放音乐）
+                  </TD>
+</TR>
+  </THEAD>
+  <TBODY>
+<TR>
+  <TH valign="top"><label for="Description">音乐描述：</label></TH>
+  <TD><textarea  class="px" id="Hfcontent" name="description" style="width:600px;"></textarea><br />请不要多于30字否则无法发送!
+ 
+ 
+
+</TD>
+   
+<TR>
+  <TH></TH>
+  <TD><button type="submit"  name="button"  class="btn btn-primary" >保存</button>　<a href="{iMicms::U('Voiceresponse/index')}"  class="btn">取消</a>
+  <div class="clr"></div>
+</TD>
+</TR>
+  </TBODY>
+</TABLE>
+  </form>
+
+<script type="text/javascript">
+
+function addvotetouser(obj, type) {
+
+document.getElementById("Title").value =obj.getAttribute('user');
+document.getElementById("HQMusicUrl").value =obj.value;
+document.getElementById("MusicUrl").value =obj.value;
+document.getElementById("Hfcontent").value =obj.getAttribute('user');
+}
+
+
+
+
+
+</script>
+
+
+  </div> 
+
+        </div>   
+   
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

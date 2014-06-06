@@ -1,0 +1,69 @@
+<include file="Public:head"/>
+
+<div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3>
+                                    <i class="icon-table"></i>淘宝天猫店铺配置 <small>只需要填写天猫或淘宝店铺的手机站点地址,简单配置关键词,再在功能管理页面开启此功能,就可以直接通过微信检索店铺内的商品.</small>
+                                </h3>
+								
+                            </div>
+                        </div>
+<div class="content">
+
+    <div class="msgWrap form"><form method="post"   action="<if condition="$taobao['keyword'] neq ''">index.php?g=User&m=Taobao&a=edit&token={iMicms:$Think.get.token}</if>"  enctype="multipart/form-data" >  
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="userinfoArea">
+              <tbody>
+               <tr>
+                  <th valign="top"><span class="red">*</span>店内常用关键词:</th>
+                  <td><input type="text"  name="keyword"  id="title" value="{iMicms:$taobao.keyword}"   class="px" tabindex="1" size="80"><br />例如：衣服|靴子|袜子|内衣 <span class="red">（触发类型为包含匹配）</span></td>
+                </tr>
+                <tr>
+                  <th><span class="red">*</span>店铺名称:</th>
+                  <td><input type="text"  name="title"  id="title" value="{iMicms:$taobao.title}"   class="px" tabindex="1" size="80"> </td>
+                </tr>
+                 <tr>
+                  <th><span class="red">*</span>店铺封面图片：</th>
+                  <td><div class="control-group">
+						<div class="controls">
+						<img id="thumb_img" src="{iMicms:$taobao.picurl}" style="max-height:100px;" />
+						<!--<input type="text" name="homebgurl" value="{iMicms:$home.homebgurl}" class="px h23 w550 fl"><div class="upload_widget"><input type="file" class="btnFile btnGreen" id="upfile" value="本地上传" name="file" ><div class="btnFile btnGreen">本地上传</div></div>-->
+						<input type="hidden" id="thumb"  name="picurl" value="{iMicms:$taobao.picurl}" class="input-xlarge"  data-rule-required="true" data-rule-url="true" />
+                        <span class="help-inline"><a class="btn" id="insertimage">选择封面</a></span> 填写外链图片地址
+						<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+                        <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+                        <script src="{iMicms::STATICS}/kindeditors/lang/cn.js"></script>
+                        <script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script></td>
+                </tr>
+                <tr>
+                  <th><span class="red">*</span>店铺地址：</th>
+                  <td><input type="text"  name="homeurl"  id="homeurl" value="{iMicms:$taobao.homeurl}"   class="px" tabindex="1" size="80"> 请填写天猫或淘宝的店铺地址</td>
+                </tr>
+                <tr>
+                  <th valign="top"></th>
+                  <td>例如：天猫3G店铺地址通常为：<a href="http://alipay.m.tmall.com/" target="_blank">http://alipay.m.tmall.com/</a>　 淘宝的3G店铺地址为：<a href="http://shop101010101.m.taobao.com/" target="_blank">http://shop101010101.m.taobao.com/</a><br />    
+                  	</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><div class="form-actions"><button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button></div></td>
+                </tr>
+              </tbody>
+            </table>
+</form>
+            </div>
+            </div>        <div class="clr"></div>
+      </div>
+    </div>
+ 
+  </div>
+   
+  
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>  
+ 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />
+<!-- Mobile Devices Support @begin -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/reg.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/style.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/reg/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/bootstrap.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/omvalidate.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/getpass.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/placeholder.js"></script>
+<title>找回密码-{iMicms::C('site_name')}</title>
+        <!--[if IE 7]>
+            <link href="{iMicms::RES}/reg/font_awesome_ie7.css" rel="stylesheet" />
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="{iMicms::RES}/reg/excanvas_min.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+            <script src="{iMicms::RES}/reg/watermark.js"></script>
+        <![endif]-->
+    </head>
+    
+	<div class="header">
+	</div>
+	<div class="mainbody">
+		<div class="top">
+
+        <div id="hd" class="clearfix">
+            <div class="logo"><a href="/" hidefocus="true" onfocus="this.blur();"></a></div>
+        </div>
+
+        <div class="info">
+        <span><a href="/" target="_blank" title="首页" hidefocus="true" onfocus="this.blur();">艾米微管家首页</a></span>
+        <span class="split">|</span>
+        <span><a href="/index.php?m=Index&a=login" class="registerNew" title="登录" hidefocus="true" onfocus="this.blur();">登录</a></span>
+    </div>
+    <div style="clear:both;"></div>
+		</div>
+     <div class="reg-wrapper2">
+	<form id="regform" class="form-horizontal" action="#" method="post">
+		  <div class="control-group error">
+		    <label class="control-label" for="username">用户名</label>
+		    <div class="controls">
+		      <input type="text" name="username" id="username" title="请输入用户名">
+		      <span class="maroon">*</span><span class="help-inline">长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成</span>
+		    </div>
+		  </div>
+		 
+		  <div class="control-group error">
+		    <label class="control-label" for="email">邮箱</label>
+		    <div class="controls">
+		      <input type="text" name="email" id="email" title="请输入邮箱">
+		      <span class="maroon">*</span><span class="help-inline">请填写注册的邮箱</span>
+		    </div>
+		  </div>
+		  
+		 
+                  
+		  
+		  <div class="control-group">
+		  	<div class="controls">
+			    <button type="submit" id="reg-btn" class="btn-pass"   style="display:"></button>
+                            <button type="button" class="btn-pass" onclick="validityInvitecode(this); return false;" style="display:none;"></button>
+		  	</div>
+		  </div>
+		</form>
+     </div>
+	</div>
+<script type="text/javascript" src="/tpl/static/huishuo.js"></script>
+<script type="text/javascript">
+	$(function(){
+	    $('#username').focus();
+
+	});
+function refresh()
+{
+        var randomRZ = Math.random();
+        $("#imgCheckB").attr("src", "/index.php?g=Admin&m=Admin&a=verify&rz=" + randomRZ);
+}
+  function validityInvitecode(obj){
+        obj = $(obj);
+        obj.attr('disabled', 'true');
+        $.post('/index.php?g=Admin&m=Admin&a=checkverify&vcode='+$('#captcha').val(), function(rs){
+	 
+            alert(rs);
+            $('#reg-btn').click();
+            obj.removeAttr('disabled');
+        }, 'json');
+	 
+    }
+ 
+</script></html>

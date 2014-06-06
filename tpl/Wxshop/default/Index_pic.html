@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />    
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/FusionCharts.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+	<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	
+    <div id="main">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box ">
+                    <div class="box-title">
+                        <div class="span8">
+                            <h3><i class="icon-bar-chart"></i>运营图表</h3>
+                        </div>
+                        <div class="span4">
+                            按月份查看
+                            <select class="input-small" name="period" id="period">
+
+                                <option value="01" <eq name="month" value="01">selected="selected"</eq>>1月</option>
+                                <option value="02" <eq name="month" value="02">selected="selected"</eq>>2月</option>
+                                <option value="03" <eq name="month" value="03">selected="selected"</eq>>3月</option>
+                                <option value="04" <eq name="month" value="04">selected="selected"</eq>>4月</option>
+                                <option value="05" <eq name="month" value="05">selected="selected"</eq>>5月</option>
+                                <option value="06" <eq name="month" value="06">selected="selected"</eq>>6月</option>
+                                <option value="07" <eq name="month" value="07">selected="selected"</eq>>7月</option>
+                                <option value="08" <eq name="month" value="08">selected="selected"</eq> >8月</option>
+                                <option value="09" <eq name="month" value="09">selected="selected"</eq>>9月</option>
+                                <option value="10" <eq name="month" value="10">selected="selected"</eq>>10月</option>
+                                <option value="11" <eq name="month" value="11">selected="selected"</eq>>11月</option>
+                                <option value="12" <eq name="month" value="12">selected="selected"</eq>>12月</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div id="chartdiv" class="box-content">
+                    </div>
+
+                    <div id="chartdiv2" class="box-content">
+                    </div>
+
+
+
+					<script type="text/javascript">
+                        var chart = new FusionCharts("/tpl/static/MSLine.swf", "ChartId", "100%", "400", "0", "0");
+                        chart.setXMLUrl('/index.php?g=User&m=Index&a=chat&month={iMicms:$month}');
+                        chart.render("chartdiv");
+                        chart.addEventListener("Rendered", function (e) {
+                            var chart = new FusionCharts("/tpl/static/MSLine.swf", "ChartId", "100%", "400", "0", "0");
+                            chart.setXMLUrl('/index.php?g=User&m=Index&a=chatuser&month={iMicms:$month}');
+                            chart.render("chartdiv2");
+                        })
+                    </script>
+
+
+
+                    <div id="table" class="box-content" style="display:none;">
+                        <table class="table table-bordered table-hover  dataTable">
+                            <thead>
+                                <tr>
+                                    <th>3G网站浏览量</th>
+                                    <th>文本请求数</th>
+                                    <th>图文请求数</th>
+                                    <th>语音请求数</th>
+                                    <th>总请求数/日</th>
+                                    <th>取消关注人数</th>
+                                    <th>新增关注人数</th>
+                                    <th>净增长人数</th>
+
+                                    <th>日期</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <tr>
+                                    <td>11</td>
+                                    <td>0</td>
+                                    <td>6</td>
+                                    <td>0</td>
+                                    <td>21</td>
+
+                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>2</td>
+
+                                    <td>2013-08-12</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>5</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>6</td>
+
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>-1</td>
+
+                                    <td>2013-08-11</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>47</td>
+                                    <td>0</td>
+                                    <td>9</td>
+                                    <td>0</td>
+                                    <td>63</td>
+
+                                    <td>4</td>
+                                    <td>3</td>
+                                    <td>-1</td>
+
+                                    <td>2013-08-10</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>55</td>
+                                    <td>1</td>
+                                    <td>16</td>
+                                    <td>0</td>
+                                    <td>77</td>
+
+                                    <td>1</td>
+                                    <td>4</td>
+                                    <td>3</td>
+
+                                    <td>2013-08-09</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>125</td>
+                                    <td>0</td>
+                                    <td>8</td>
+                                    <td>0</td>
+                                    <td>137</td>
+
+                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>2</td>
+
+                                    <td>2013-08-08</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>22</td>
+                                    <td>4</td>
+                                    <td>21</td>
+                                    <td>0</td>
+                                    <td>57</td>
+
+                                    <td>1</td>
+                                    <td>9</td>
+                                    <td>8</td>
+
+                                    <td>2013-08-07</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>119</td>
+                                    <td>0</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>128</td>
+
+                                    <td>1</td>
+                                    <td>4</td>
+                                    <td>3</td>
+
+                                    <td>2013-08-01</td>
+                                </tr>
+
+                            </tbody>
+                            <tfoot>
+
+                                <tr>
+                                    <td>384</td>
+                                    <td>5</td>
+                                    <td>64</td>
+                                    <td>0</td>
+                                    <td>489</td>
+                                    <td>10</td>
+                                    <td>26</td>
+                                    <td>16</td>
+
+                                    <td>本月总和</td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/ecmascript">
+        $(function () {
+            $("#period").change(function () {
+                window.location = "/index.php?g=User&m=Index&a=pic&month=" + $(this).val();
+            })
+
+        })
+    </script></body>
+</html>

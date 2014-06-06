@@ -1,0 +1,70 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>{iMicms:$activityname}SN码发放管理</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+				<div class="content">
+					
+					<div class="cLineB">
+						本次活动奖品总数：<span class="redamount">{iMicms:$datacount}</span>个&nbsp;&nbsp;中奖人数：<span class="redamount">{iMicms:$recordcount}</span>个&nbsp;&nbsp;已领取奖品：<span class="redamount">{iMicms::$sendCount}</span>个</div>
+					<div class="cLine" style=" padding: 8px 0"></div>
+					<div class="msgWrap">
+						<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+							<thead>
+								<tr style="text-align: center;">
+									<th style="text-align:center">序号</th>
+									<th style="text-align:center">SN码(中奖号)</th>
+									<th style="text-align:center">奖项</th>
+									<th style="text-align:center">是否已发奖品</th>
+									<th style="text-align:center">奖品发送时间</th>
+									<th style="text-align:center">中奖者手机号</th>
+									<th style="text-align:center">中奖者微信码</th>
+									<th style="text-align:center">中奖时间</th>
+									<th style="text-align:center">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="record" id="val">
+								<volist name="val.snlist" id="record">
+								<tr style="line-height:30px;height: 43px;line-height: 59px;">
+									<td align="center">{iMicms:$record.id}</td>
+									<td align="center">{iMicms:$record.sn}</td>
+									<td align="center">{iMicms:$record.prize}</td>
+									<td align="center">
+									<if condition="$record['sendstutas'] eq 0">否<else/>是</if>
+									</td>
+									<td align="center"><if condition="$record['sendtime'] eq 0"> <else/>{iMicms:$record.sendtime|date='Y-m-d H:i:s',###}</if></td>
+									<td align="center">{iMicms:$record.phone}</td>
+									<td align="center">{iMicms:$record.wecha_name}</td>
+									<td align="center">{iMicms:$record.createtime|date='Y-m-d H:i:s',###}</td>
+									<td align="center">
+										<if condition="$record['sendstutas'] eq 0"><a href="{iMicms::U('sendprize',array('id'=>$record['id'],'lid'=>$_GET['id'],'wecha_id'=>$record['wecha_id']))}">发奖</a><else/><a href="{iMicms::U('sendnull',array('id'=>$record['id'],'lid'=>$_GET['id'],'wecha_id'=>$record['wecha_id']))}">取消发奖</a></if>
+									</td>
+								</tr>
+								</volist>
+								</volist>
+							</tbody>
+						</table>
+					</div>
+					<div class="cLine">
+						<div class="pageNavigator right">
+							<div class="pages"></div>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer"/>

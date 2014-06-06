@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+ 
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/house/3dview.css?2013-10-21-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/house/back.css?2013-10-21-2" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/house/skin.js?2013-10-21-2"></script>
+<title>{iMicms:$info.title}全景图</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        <meta name="Keywords" content="微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+        <meta name="Description" content="国内最大的微信公众智能服务平台，八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    </head>
+ 
+ <body onselectstart="return true;" ondragstart="return false;">
+    
+ 
+ <div id="container" style="width:99%;height:99%;">
+	This content requires HTML5/CSS3, WebGL, or Adobe Flash Player Version 9 or higher.
+</div>
+<script type="text/javascript">
+         var xmlf = "/Data/upload/{iMicms:$gtoken}/{iMicms:$gtoken}-{iMicms:$id}.xml";
+	if (ggHasHtml5Css3D() || ggHasWebGL()) {
+		pano=new pano2vrPlayer("container");
+		skin=new pano2vrSkin(pano);
+		pano.readConfigUrl(xmlf);
+	} else{
+		alert("not support 360view");
+	}
+</script>
+<noscript>
+	<p><b>Please enable Javascript!</b></p>
+</noscript>
+<div class='view_change'><a href='javascript:history.go(-1);'>切换房间</a></div>
+
+<a href="javascript:history.go(-1);" class="back360" style="">&nbsp;</a>        		<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

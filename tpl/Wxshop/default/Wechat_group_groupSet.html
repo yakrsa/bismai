@@ -1,0 +1,51 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3>
+                                    <i class="icon-table"></i>设置粉丝分组
+                                </h3>
+								<div class="searchbar right">
+<a href="javascript:history.go(-1);"  class="right btn"  >返回</a>
+</div>
+                            </div>
+                        </div>
+<div class="content">
+         
+         
+          <form method="post"   action=""  enctype="multipart/form-data" >
+          <div class="msgWrap form">
+            <TABLE class="userinfoArea" border="0" cellSpacing="0" cellPadding="0" width="100%">
+                          <TR>
+                  <TH valign="top"><label for="pic">名称：</label></TH>
+                  <TD><input class="px"  name="name" id="name" value="{imicms:$thisGroup['name']}" style="width:200px;"  />
+</TD>
+                </TR>
+                <TR>
+                  <TH valign="top"><label for="info">简介：</label></TH>
+                  <TD><textarea name="intro" id="intro" class="px"  rows="5" style="width:490px;height:80px">{imicms:$thisGroup['intro']}</textarea></TD>
+                </TR>  
+                
+                <TR>
+                  <TH></TH>
+                  <TD><if condition="$thisGroup"><input type="hidden" name="id" value="{imicms:$thisGroup['id']}" /></if><input type="submit" value="保存" name="sbmt" class="btnGreen left"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            
+          </div>
+          </form>
+          
+        </div>     
+ 
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

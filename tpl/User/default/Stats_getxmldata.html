@@ -1,0 +1,58 @@
+<chart caption='{iMicms:$year}年{iMicms:$month}月统计分析' xAxisName='日期' yAxisName='数量' showValues='0' numberPrefix=''>
+	<categories>
+		<volist id="list" name="list">
+		<category label='{iMicms:$list.time|date='d',###}' />
+		</volist>
+	</categories>
+    <dataset seriesName='3G网站浏览量'>
+		<volist id="list3g" name="list3g">
+		<set value='{iMicms:$list3g.3g}' />
+		</volist>
+    </dataset>
+    <dataset seriesName='文本请求数'>
+		<volist id="listtext" name="listtext">
+		<set value='{iMicms:$listtext.textnum}' />
+		</volist>
+    </dataset>
+    <dataset seriesName='图文请求数'>
+		<volist id="listimg" name="listimg">
+		<set value='{iMicms:$listimg.imgnum}' />
+		</volist>
+    </dataset>
+	<dataset seriesName='语音请求数'>
+		<volist id="listvideo" name="listvideo">
+		<set value='{iMicms:$listvideo.videonum}' />
+		</volist>
+    </dataset>
+	<dataset seriesName='营销/电商请求'>
+		<volist id="listother" name="listother">
+		<set value='{iMicms:$listother.other}' />
+		</volist>
+    </dataset>
+	<dataset seriesName='关注人数'>
+		<volist id="listfollow" name="listfollow">
+		<set value='{iMicms:$listfollow.follownum}' />
+		</volist>
+    </dataset>
+	<dataset seriesName='取消关注人数'>
+		<volist id="listunfollow" name="listunfollow">
+		<set value='{iMicms:$listunfollow.unfollownum}' />
+		</volist>
+    </dataset>
+	<dataset seriesName='总请求数/日'>
+		<volist id="listall" name="listall">
+		<set value='<?php echo $listall['3g']+$listall['textnum']+$listall['imgnum']+$listall['videonum']+$listall['other']?>' />
+		</volist>
+    </dataset>
+    <styles>
+		<definition>
+			<style name='CanvasAnim' type='animation' param='_xScale' start='0' duration='1' />
+			<style name='iFont' type='font' bold='1' size='12' />
+		</definition>
+		<application>
+			<apply toObject='Canvas' styles='CanvasAnim' />
+			<apply toObject='xAxisName' styles='iFont' />
+			<apply toObject='yAxisName' styles='iFont' />
+		</application>
+    </styles>
+</chart>

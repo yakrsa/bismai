@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>站点配置</title>
+<link href="{iMicms::RES}/images/main.css" type="text/css" rel="stylesheet">
+<link href="{iMicms::RES}/images/jquery-1.7.2.min.js" type="text/css" rel="stylesheet">
+<link href="{iMicms::RES}/images/jquery.form.js" type="text/css" rel="stylesheet">
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+</head>
+<body class="warp">
+<style>
+.set_top{background:url('{iMicms::RES}/images/set_top.png');height:60px;}
+.set_top li{font-weight: bold;float:left;width:98px;line-height:60px;text-align: center;background:url('{iMicms::RES}/images/set_top_li.png');}
+#set_top_li_bg{background:url('{iMicms::RES}/images/set_top_li_hover.png');}
+</style>
+<include file="Site:public" />
+<div id="artlist">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+ <form id="myform" action="{iMicms::U('Site/insert')}" method="post">
+
+    <tr> 
+      <td  height="48" align="right"><strong>支付宝账户：</strong></td>
+      <td><input type="text" name="alipay_name" value="{iMicms::C('alipay_name')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+	  </td>
+    </tr>
+	 <tr> 
+      <td  height="48" align="right"><strong>合作者身份ID：</strong></td>
+      <td><input type="text" name="alipay_pid" value="{iMicms::C('alipay_pid')}" class="ipt" size="45" /><span>&nbsp;&nbsp;请登陆支付宝商家服务中去查看</span>
+    </tr>
+	<tr> 
+		<td  height="48" align="right"><strong>交易安全校验码：</strong></td>
+		<td><input type="text" name="alipay_key" value="{iMicms::C('alipay_key')}" class="ipt" size="45" /><span>&nbsp;&nbsp;请登陆支付宝商家服务中去查看</span>
+    </tr>
+	<tr> 
+		<td  height="48" align="right"><strong>选择接口类型：</strong></td>
+		<td>
+			<select name="alipay_pay_method">
+				<volist name="alipay" id="vo">
+				<option value="{iMicms:$vo.id}" <if condition="$vo.id eq $alipay_pay_method">selected="selected"</if> >{iMicms:$vo.method}</option>
+				</volist>
+			</select><span>&nbsp;&nbsp;默认为即时到帐
+		</td>
+    </tr>
+
+   <input type="hidden" name="files" value="alipay.php" />
+    <tr> 
+      <td height="48" colspan="2">
+		  <div id="addkey"></div>
+		  <div style="padding-left:100px;">
+			<input type="submit" value="保存设置" />
+		  </div>
+	  </td>
+    </tr>
+	</form>
+</table><br />
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+ <form id="myform1" action="{imicms::U('Site/tenpay')}" method="post">
+    <tr> 
+      <td  height="48" align="right"></td>
+      <td><strong>财付通接口</strong>
+	  </td>
+    </tr>
+    <tr> 
+      <td  height="48" align="right"><strong>财付通商户号</strong></td>
+      <td><input type="text" name="partner" value="{imicms::C('partner')}" class="ipt" size="45" /><span>&nbsp;&nbsp;例：1900000113</span>
+	  </td>
+    </tr>
+	 <tr> 
+      <td  height="48" align="right"><strong>财付通商户名称：</strong></td>
+      <td><input type="text" name="tenpay_name" value="{imicms::C('tenpay_name')}" class="ipt" size="45" /><span>&nbsp;&nbsp;请登陆财付通帐户查看</span>
+	  
+    </tr>
+	 <tr> 
+      <td  height="48" align="right"><strong>财付通密钥：</strong></td>
+      <td><input type="text" name="key" value="{imicms::C('key')}" class="ipt" size="45" /><span>&nbsp;&nbsp;请登陆财付通帐户查看</span>
+    </tr> 
+
+   <input type="hidden" name="tfiles" value="tenpay.php" />
+    <tr> 
+      <td height="48" colspan="2">
+		  <div id="addkey"></div>
+		  <div style="padding-left:100px;">
+			<input type="submit" value="保存设置" />
+		  </div>
+	  </td>
+    </tr>
+	</form>
+</table><br />
+<br />
+<br />
+
+</div>
+</body>
+</html>

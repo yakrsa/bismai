@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <link rel="stylesheet" type="text/css" href="{imicms::RES}/css/liuyan/message.css" media="all">
+
+<script type="text/javascript" src="{imicms::RES}/js/liuyan/jquery_min.js"></script>
+
+<title>请在此留言</title>
+
+
+</head>
+
+<body id="message" onselectstart="return true;" ondragstart="return false;">
+
+	
+
+
+
+
+
+	<title></title>
+
+	<meta charset="utf-8">
+
+	<meta content="" name="description">
+
+	<meta content="" name="keywords">
+
+	<meta content="eric.wu" name="author">
+
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+	<meta content="no-cache" http-equiv="pragma">
+
+	<meta content="0" http-equiv="expires">
+
+	<meta content="telephone=no, address=no" name="format-detection">
+
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+ 
+
+	<script type="text/javascript"> 
+
+		$(document).ready(function () { 
+
+			$("#showcard1").click(function () { 
+
+				var btn = $(this);
+
+				var wxname = $("#wxname1").val();
+
+				if (wxname  == '') {
+
+					alert("请输入昵称");
+
+					return;
+
+				}
+
+				var info = $("#info1").val();
+
+					if (info == '') {
+
+					alert("请输入内容");
+
+					return;
+
+				}
+
+				var submitData = {
+
+					uid:'{imicms:$uid}',
+
+					title:wxname,
+
+					text: info,
+
+					createtime:'{imicms:$createtime}',
+
+					token:'{imicms:$token}',
+
+					wecha_id:'{imicms:$wecha_id}',
+
+					action: "liuyan"
+
+				};
+
+				$.post('index.php?g=wap&m=Liuyan&a=add', submitData,
+
+					function(data) {
+
+					if (data == '留言成功') {
+
+						alert('留言成功');
+
+						setTimeout('window.location.href=location.href',1000);
+
+					return;
+
+					}else {}
+
+				})
+
+			}); 
+
+			//
+
+			$("#showcard2").click(function () { 
+
+				var btn = $(this);
+
+				var wxname = $("#wxname2").val();
+
+					if (wxname  == '') {
+
+					alert("请输入昵称");
+
+					return;
+
+				}
+
+				var info = $("#info2").val();
+
+					if (info == '') {
+
+					alert("请输入内容");
+
+					return;
+
+				}
+
+				var submitData = {
+
+					uid:'{imicms:$uid}',
+
+					title:wxname,
+
+					text: info,
+
+					createtime:'{imicms:$createtime}',
+
+					token:'{imicms:$token}',
+
+					wecha_id:'{imicms:$wecha_id}',
+
+					action: "liuyan"
+
+				};
+
+				$.post('index.php?g=wap&m=Liuyan&a=add', submitData,
+
+					function(data) {
+
+					if (data == '留言成功') {
+
+						alert('留言成功');
+
+						setTimeout('window.location.href=location.href',1000);
+
+					return;
+
+					}else {}
+
+				})
+
+			});  
+
+			//
+
+			$(".hhsubmit").click(function () { 
+
+				var objid = $(this).attr("date");
+
+				var info = $(".hly"+objid).val();
+
+					if (info == '') {
+
+					alert("请输入内容");
+
+					return;
+
+				}
+
+				var submitData = {
+
+					uid:'{imicms:$uid}',
+
+					title:wxname,
+
+					text: info,
+
+					createtime:'{imicms:$createtime}',
+
+					token:'{imicms:$token}',
+
+					wecha_id:'{imicms:$wecha_id}',
+
+					action: "liuyan"
+
+				};
+
+				$.post('index.php?g=wap&m=Liuyan&a=add', submitData,
+
+					function(data) {
+
+					if (data == '留言成功') {
+
+						alert('留言成功');
+
+						setTimeout('window.location.href=location.href',1000);
+
+					return;
+
+					}else {}
+
+				})
+
+			});  
+
+			//
+
+			$(".hfinfo").click(function () { 
+
+				var objid = $(this).attr("date");
+
+				$(".hhly"+objid).slideToggle();
+
+			}); 
+
+			//
+
+			$(".hhbt").click(function () { 
+
+				var objid = $(this).attr("date");
+
+				$(".hhly"+objid).slideToggle();
+
+			});
+
+			//
+
+			$("#windowclosebutton").click(function () { 
+
+				$("#windowcenter").slideUp(500);
+
+			});
+
+			//
+
+			$("#alertclose").click(function () { 
+
+				$("#windowcenter").slideUp(500);
+
+			});
+
+		}); 
+
+		//
+
+		function alert(title){ 
+
+			window.scrollTo(0, -1);
+
+			$("#windowcenter").slideToggle("slow"); 
+
+			$("#txt").html(title);
+
+			setTimeout(function(){$("#windowcenter").slideUp(500);},4000);
+
+		}
+
+		//
+
+		$(document).ready(function(){
+
+			$(".first1").click(function(){
+
+				$(".ly1").slideToggle();
+
+			});
+
+			$(".first2").click(function(){
+
+				$(".ly2").slideToggle();
+
+			});
+
+		});
+
+	</script> 
+
+
+
+ 
+
+
+
+	<div class="container">
+
+	  	<div class="qiandaobanner">
+
+		  	<a href="javascript:history.go(-1);">
+
+				<php>
+
+					if($repic['picurl']){
+
+				</php>
+
+					<img src="{imicms:$repic.picurl}" style="width:100%;">
+
+				<php>
+
+					}else{
+
+				</php>
+
+					<img src="{imicms::RES}/images/liuyan/mpic.jpg" style="width:100%;">
+
+				<php>
+
+					}
+
+				</php>
+
+			</a>
+
+	  	</div>
+
+
+
+		<div class="cardexplain">
+
+			<div class="window" id="windowcenter">
+
+				<div id="title" class="wtitle">操作提示<span class="close" id="alertclose"></span></div>
+
+				<div class="content">
+
+					<div id="txt"></div>
+
+				</div>
+
+			</div>
+
+ 
+
+			<div class="history">
+
+				<div class="history-date">
+
+					<ul>
+
+						<a><h2 class="first first1" style="position: relative;">请点击留言</h2></a>
+
+						<!--<li class="nob  mb"><div class="beizhu">留言审核通过后才会显示在留言墙上！</div></li>-->
+
+						<li class="green bounceInDown nob ly1" style="display:none">
+
+							<dl>
+
+								<dt>
+
+									<input name="wxname" class="px" id="wxname1" placeholder="请输入您的昵称" type="text">
+
+								</dt>
+
+								<dt>
+
+									<textarea name="info" class="pxtextarea" style=" height:60px;" id="info1" placeholder="请输入留言"></textarea>
+
+								</dt>
+
+								<dt><a id="showcard1" class="submit" href="javascript:void(0)">提交留言</a></dt>
+
+							</dl>
+
+						</li>
+
+					<volist name="info" id="vo">
+
+						<li class="green bounceInDown">
+
+							<h3>
+
+								<!--<img src="http://www.apiwx.com/index/images/logo100x100.jpg">-->
+
+								{imicms:$vo.title}
+
+								<div class="clr"></div>
+
+							</h3>
+
+							<dl>
+
+								<dt class="hfinfo" date="9055" >{imicms:$vo.text} <b style="font-weight:100; font-size:10px; color:#1DB702; padding:0 0px 0 8px;"><php>echo date('Y-m-d H:i',$vo['createtime'])</php></b></dt>
+
+							</dl>
+
+							
+
+							<php>
+
+								if($vo['wecha_id'] == $wecha_id){
+
+							</php>
+
+					
+
+								<dl><a href="{imicms::U('Liuyan/del',array('id'=>$vo['id'],'token'=> $token, 'wecha_id'=> $wecha_id))}"class="del">删除</a></dl>
+
+							<php>
+
+									}
+
+							</php>
+
+							<php>if($vo['re']){</php>
+
+								<dl class="huifu" style="width:80%; float:right">
+
+										<dt>回复：{imicms:$vo.re}<b style="font-weight:100; font-size:10px; color:#1DB702; padding:0 0px 0 8px;"><php>if($vo['uptatetime'])echo date('Y-m-d H:i',$vo['uptatetime']);</php></b>
+
+										</dt>
+
+								</dl>
+
+							<php>}</php>
+
+						</li>
+
+					</volist>							
+
+												<li class="green bounceInDown nob ly2" style="display:none">
+
+							<dl>
+
+								<dt>
+
+									<input name="wxname" class="px" id="wxname2" placeholder="请输入您的昵称" type="text">
+
+								</dt>
+
+								<dt>
+
+									<textarea name="info" class="pxtextarea" style=" height:60px;" id="info2" placeholder="请输入留言"></textarea>
+
+								</dt>
+
+								<dt>
+
+									<a id="showcard2" class="submit" href="javascript:void(0)">提交留言</a>
+
+								</dt>
+
+							</dl>
+
+						</li>
+
+
+
+
+
+						<a><h2 class="first first2" style="position: relative;">请点击留言</h2></a>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	
+
+	
+
+
+
+<footer style="text-align:center; color:#ffd800;margin-right:20px"><a href="">©{imicms::C('copyright')}</a></footer>
+
+
+
+
+
+</body></html>

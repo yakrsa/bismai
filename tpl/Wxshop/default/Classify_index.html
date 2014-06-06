@@ -1,0 +1,100 @@
+<include file="Public:head"/>
+
+<div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3>
+                                    <i class="icon-table"></i>文章分类管理
+                                    <small>设置好分类，新建图文回复，编辑的时候就可以选择分类，系统会自动生成一个3G网站。</small>
+                                </h3>
+								
+                            </div>
+                        </div>
+<div class="content">
+  
+ </div>
+         <div class="cLineC" style="line-height: 32px;">
+ <a target="_self" href="{iMicms::U('Classify/add')}" class="btn" >添加文章分类</a>　 
+</div>
+ 
+ <div class="msgWrap form">
+
+<div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+                    <th style=" width:120px;">分类名称</th>
+                   <th style=" width:120px;">分类描述</th>
+<th style=" width:70px;">显示顺序</th>
+<th>分类图片外链地址(宽720高400) <a target="999" class="tooltips" ><img src="{iMicms::RES}/images/price_help.png" align="absmiddle" /><span>
+<p>分类图片最佳尺寸：宽720高400</p>
+<p>不支持上传图片，请把图片上传到腾讯微博，再这里填写图片的外链地址。</p>
+<p>如果不填写分类图片地址系统将随机分配默认图片。</p>
+</span></a></th>
+<th>URL或活动外链代码 <span class="tooltips" ><img src="{iMicms::RES}/images/price_help.png" align="absmiddle" /><span>
+<p>比如你想跳转到百度</p>
+<p>就填写<a class="red">http://www.baidu.com</a></p>
+<p>不需要跳转就不用填写，还可以外链活动，</p>
+<p><a class="red">直接选择活动外链地址</a></p>
+</span></span></th>
+<th style=" width:80px;"  >首页显示</th>
+                        <th style=" width:100px;" class="norightborder">操作</th>
+</tr>
+</thead>
+<volist name="info" id="vo">
+<tr>
+<td>{iMicms:$vo.name}</td>
+<td>{iMicms:$vo.info}</td>
+<td>{iMicms:$vo.sorts}</td>
+<td><div class="cateimg"><img src="{iMicms:$vo.img}" class="cateimg_small"  /><img src="{iMicms:$vo.img}" class="cateimg_big"  /></div></td>
+<td>{iMicms:$vo.n_ltype}</td>
+<td><eq name="vo.status" value="1">显示<else/>不显示</eq></td>
+<td class="norightborder">
+	<a href="{iMicms::U('Wap/Index/classify',array('token'=>$_SESSION['token']))}">查看</a>
+	<a href="{iMicms::U('Classify/edit',array('id'=>$vo['id']))}">编辑</a>
+	<a href="{iMicms::U('Classify/del',array('id'=>$vo['id']))}">删除</a>
+</td>
+</tr>
+<volist id="subCat" name="vo['class']">
+<tr>
+			<td colspan="1">
+			  <div class="board">
+				<span>{iMicms:$subCat.name}</span>
+			  </div>
+			</td>
+<td>{iMicms:$subCat.info}</td>
+<td>{iMicms:$subCat.sorts}</td>
+<td><div class="cateimg"><img src="{iMicms:$subCat.img}" class="cateimg_small" /><img src="{iMicms:$subCat.img}" class="cateimg_big" /></div></td>
+<td>{iMicms:$subCat.url}</td>
+<td><eq name="subCat.status" value="1">显示<else/>不显示</eq></td>
+<td class="norightborder">
+	<a href="{iMicms::U('Wap/Index/classify',array('token'=>$_SESSION['token']))}">查看</a>
+	<a href="{iMicms::U('Classify/edit',array('id'=>$subCat['id']))}">编辑</a>
+	<a href="{iMicms::U('Classify/del',array('id'=>$subCat['id']))}">删除</a>
+</td>
+</tr>
+</volist>
+</volist>    
+</table>
+</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+  <div class="pages1">{iMicms:$page}</div>
+</div>
+          </div>
+  
+        </div>
+   
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+  <!--底部-->
+  	</div>
+
+<include file="Public:footer"/>

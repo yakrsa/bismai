@@ -1,0 +1,377 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/cymain.css" />
+<script src="/tpl/Static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/Static/artDialog/plugins/iframeTools.js"></script>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/formCheck/formcheck.js"> </script>
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+
+<style type="text/css">
+
+ .over_flort {
+	clear: both;
+}
+
+.warpper {
+	background-color:#FFFFFF;
+	padding:0 10px;
+}
+
+.warpper p{
+	font-family: "微软雅黑";
+	margin:0;
+}
+
+.warpper .war_top {
+	background-color: #0e57aa;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #104082;
+	width: 99.6%;
+	height: 46px;
+}
+
+.warpper .war_top ul{
+	margin:0;
+}
+
+.warpper .war_top li {
+	font-size: 18px;
+	line-height: 46px;
+	color: #FFFFFF;
+	text-align: center;
+	float: left;
+	height: 46px;
+	width: 25%;
+}
+
+.support {
+    background-image: url("{iMicms::C('site_url')}/tpl/Home/weixin/common/weixin/result_ok.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.nosuport {
+    background-image: url("{iMicms::C('site_url')}/tpl/Home/weixin/common/weixin/result_error.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.warpper .button_button{
+    float:left;
+    width:24.770%;
+	background:#FFFFFF;
+	height:101px;
+	border:1px solid #f3f3f3;
+	border-top-color:#FFFFFF;
+}
+
+.warpper #left_green{
+    float:left;
+    height:65px;
+	background-color:#FFFFFF;
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	width:24.60%;
+}
+
+.warpper #left_green_01{
+    float:left;
+    height:65px;
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	width:24.60%;
+	background-color:#ffffff;
+}
+
+.warpper #left_green_02{
+    float:left;
+    height:65px;
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	width:24.60%;
+}
+.warpper .contetn_lb{
+    float:left;
+    width:24.77%;
+	height:65px;
+}
+
+.lb_color1{
+	background-color: #eff5fd;
+}
+
+.lb_color2{
+	background-color: #faf3e3;
+}
+
+.lb_color3{
+	background-color: #feeee6;
+	border-right-width: 1px; 
+	border-right-color: #feeee6;
+}
+
+.warpper .content_lb_nr {
+	text-align: center;
+	line-height: 65px;
+	color: #000000;
+}
+.warpper .content_lb_zynr {
+	line-height: 75px;
+	text-align: center;
+	float: left;
+	height: 65px;
+	width: 24.77%;
+	color:#5BB75B;
+	font-weight:bold;
+	
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+	border-left-color:#ffffff;
+}
+.warpper .content_lb_zynr img {
+	padding-top: 27px;
+}
+
+.warpper .content_lb_zynr_02 img {
+	padding-top: 27px;
+}
+.warpper .content_lb_zynr_02 {
+	line-height: 65px;
+	text-align: center;
+	float: left;
+	height: 65px;
+	width: 24.77%;
+	
+	border:1px solid #f3f3f3;
+	border-top-color:#ffffff;
+}
+
+.warpper .bt {
+	font-size: 18px;
+	line-height: 46px;
+	color: #000000;
+	text-align: center;
+	width: 99.7%;
+	border:1px solid #f3f3f3;
+}
+
+ 
+.fix-buy{
+	position: fixed;
+    z-index: 999;
+	top:0;
+	margin:0 auto;
+}
+
+.fix-top-buy{
+	position: fixed;
+    z-index: 888;
+	top:46px;
+	margin:0 auto;
+}
+
+</style>
+
+
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		
+		
+});
+</script>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>预约系统设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+
+
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#info', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+
+function setlatlng(longitude,lat){
+  art.dialog.data('longitude', longitude);
+  art.dialog.data('latitude', latitude);
+  // 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+  // document.getElementById('aInput').value = art.dialog.data('test');
+  art.dialog.open("{imicms::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}",{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+}
+
+</script>
+<div class="content">
+<div class="cLineB">
+  <h4>预约系统设置  ---- <if condition="$addtype eq 'drive'">预约试驾<else/>预约保养</if> </h4><!--a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a-->
+ </div>
+  <div class="msgWrap bgfc">
+  <form action="" method="post" class="form-horizontal form-validate" novalidate="novalidate">
+ <input type="hidden" name="rid" id="rid" value="123"/>
+ <input type="hidden" name="addtype" value="{imicms:$addtype}"/> 
+<if condition="$reslist['id'] neq ''">
+  <input type="hidden" name="id" id="id" value="{imicms:$reslist['id']}"/>
+</if>
+    <div class="control-group">
+        <label for="title" class="control-label">图文消息标题：</label>
+        <div class="controls">
+           <input type="text" placeholder="请输入图文消息标题" name="title" id="title" class="span4"  value="{imicms:$reslist['title']}" data-rule-required="true" /><span class="maroon">*</span><span class="help-inline">尽量简单，不要超过20字</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="keyword" class="control-label">触发关键词：</label>
+        <div class="controls">
+            <input type="text" name="keyword" id="keyword" class="span4" data-rule-required="true" value="{imicms:$reslist['keyword']}"><span class="maroon">*</span><span class="help-inline">只能设置一个关键字</span>
+        </div>
+    </div>
+  
+    <div class="control-group">
+        <label for="coverurl" class="control-label">图文封面：</label>
+<!--试驾预约-->
+
+    <if condition="$addtype eq 'drive'">
+        <div class="controls">
+      <img class="thumb_img" id="picurl_src" src="<?php if($reslist[picurl]){echo $reslist['picurl'];} else{echo C('site_url').'/tpl/User/default/common/car/yuyue.jpg';}?>"  style="height:100px; width:160px;">
+		        <input type="text" name="picurl" value="<?php if($reslist[picurl]){echo $reslist['picurl'];} else{echo C('site_url').'/tpl/User/default/common/car/yuyue.jpg';}?>" class="px" style="width:200px;" id="pic1" readonly="readonly" />
+		        <span class="help-inline">
+		        <span class="ke-button-common" id="upload1" style="margin-top: -5px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+              <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+          </span>
+       </div>
+
+
+
+
+<else/>
+ <div class="controls">
+      <img class="thumb_img" id="picurl_src" src="<?php if($condition=='$reslist[picurl]'){echo $reslist['picurl'];} else{echo C('site_url').'/tpl/User/default/common/car/baoyang.jpg';}?>"  style="height:100px; width:160px;">
+		        <input type="text" name="picurl" value="<?php if($condition=='$reslist[picurl]'){echo $reslist['picurl'];} else{echo C('site_url').'/tpl/User/default/common/car/baoyang.jpg';}?>" class="px" style="width:200px;" id="pic1" readonly="readonly" />
+		        <span class="help-inline">
+		        <span class="ke-button-common" id="upload1" style="margin-top: -5px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+              <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+          </span>
+       </div>
+</if>
+    
+    </div>
+     <div class="control-group">
+    <label for="address" class="control-label">预约地址：</label>
+     <div class="controls">
+        <input type="text" name="address" id="address" class="span4"  value="{imicms:$reslist['address']}" data-rule-required="true"  placeholder="请输入接待预约用户的地址"/><span class="maroon">*</span><span class="help-inline">如北京市海淀区中关村科技大厦</span>
+    </div>
+ </div>
+    <div class="control-group">
+    <label for="suggestId" class="control-label">地图标识：</label>
+         <div class="controls">
+
+          经度 <input type="text" id="longitude"  name="lng" size="14" class="px" value="{imicms:$reslist['lng']}" /> 
+          纬度 <input type="text" id="latitude" name="lat" size="14"  class="px" value="{imicms:$reslist['lat']}" /> 
+          <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+         </div>
+    </div>
+
+<div class="control-group">
+         <label for="estate_desc" class="control-label">预约电话：</label>
+         <div class="controls">
+             <input type="text" name="tel" id="tel" class="span4" value="{imicms:$reslist['tel']}"  data-rule-required="true"  placeholder="请输入接收预约的电话号码"/><span class="maroon">*</span><span class="help-inline">如010-12345678</span>
+         </div>
+     </div>
+     <div class="control-group">
+         <label for="project_brief" class="control-label">订单页头部图片：</label>
+<!--试驾预约-->
+    <if condition="$addtype eq 'drive'">
+
+		 <div class="controls">
+      <img class="thumb_img" id="headpic_src" src="<?php if($reslist[headpic]){echo $reslist['headpic'];} else{echo C('site_url').'/tpl/User/default/common/car/yuyue.jpg';}?>"  style="height:100px; width:160px;">
+		        <input type="text" name="headpic" value="<?php if($reslist[headpic]){echo $reslist['headpic'];} else{echo C('site_url').'/tpl/User/default/common/car/yuyue.jpg';}?>" class="px" style="width:200px;" id="pic" readonly="readonly" />
+		        <span class="help-inline">
+		        <span class="ke-button-common" id="upload" style="margin-top: -5px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+              
+          </span>
+       </div>
+
+
+<else/>
+ <div class="controls">
+            <img class="thumb_img" id="headpic_src" src="<?php if($reslist[headpic]){echo $reslist['headpic'];} else{echo C('site_url').'/tpl/User/default/common/car/baoyang.jpg';}?>"  style="height:100px; width:160px;">
+		        <input type="text" name="headpic" value="<?php if($reslist[headpic]){echo $reslist['headpic'];} else{echo C('site_url').'/tpl/User/default/common/car/baoyang.jpg';}?>" class="px" style="width:200px;" id="pic" readonly="readonly" />
+		        <span class="help-inline">
+		        <span class="ke-button-common" id="upload" style="margin-top: -5px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+              
+          </span>
+         </div>
+</if>
+
+     </div>
+     <div class="control-group">
+        <label for="traffic_desc" class="control-label">订单详情：</label>
+        <div class="controls">
+          <textarea class="input-xlarge" id="info" name="info" style="width:560px;height:75px;border:1px #000 solid"  placeholder="显示在图文封面下方，文字请尽量的简洁">{imicms:$reslist['info']}</textarea>
+        </div>
+    </div>
+
+                                <div class="form-actions">
+            <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>　<button type="button" class="btn">取消</button>
+        </div>
+                        </div>
+ 
+</form>
+  </div> 
+ 
+  
+        </div>
+        
+<include file="Public:footer"/>

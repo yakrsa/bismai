@@ -1,0 +1,58 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>留言管理</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+
+          </div>
+         
+          <form method="post"   action="{imicms::U('Liuyan/runAdd')}" >
+          <div class="msgWrap form">
+            <TABLE class="userinfoArea" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              
+              <TBODY>
+			  <input type="hidden" name="uid" value="{imicms:$uid}" />
+			  <input type="hidden" name="createtime" value="{imicms:$createtime}" />
+			  <input type="hidden" name="uptatetime" value="{imicms:$uptatetime}" />
+			  <input type="hidden" name="token" value="{imicms:$token}" />
+               <TR>
+                  <TH><span class="red">*</span>
+                    <label for="title">用户名：</label></TH>
+                  <TD><input type="input" class="px" id="title" value=""    name="title" style="width:580px;"> </TD>
+                </TR>
+                <TR>
+                  <TH valign="top"><label for="text">留言内容：</label></TH>
+                  <TD><textarea  class="px" id="Hfcontent" name="text" style="width:580px;  height:100px"></textarea><br /></TD>
+                </TR>
+                <TR>
+                  <TH valign="top"><label for="info">回复内容：</label></TH>
+                  <TD><textarea name="re" id="re"  rows="5" style="width:590px;height:360px" class="px" ></textarea></TD>
+                </TR>
+                <TR>
+                  <TH></TH>
+                  <TD><input type="submit" value="保存" class="btn btn-success left">　<a href="{imicms::U('Liuyan/index')}"  class="btn btn-info">返回</a></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            
+          </div>
+          </form>
+          
+        </div>     
+ 
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

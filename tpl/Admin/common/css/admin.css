@@ -1,0 +1,12 @@
+
+* { margin:0 auto; padding:0; color:#666666; font-size:12px; text-decoration:none; list-style:none; }
+img { border:0px; }
+
+input[type="checkbox"] { vertical-align:text-top; margin-right:3px; }
+
+.adminsubmit, .adminsubmits { padding:6px 12px; background:#EFEFEF; color:#555; font-weight:700; font-size:14px; border:1px solid #C5C7CB; box-shadow:0px 1px 6px 1px #CCC; border-radius:5px; cursor:pointer; margin-top:10px; }
+.adminsubpd { padding:7px 12px; }
+.adminsubmit:hover { background:#E6F7FE; color:#1AA3D1; border:1px solid #4ABBE0; box-shadow:0px 1px 6px 1px #BEE7F7; }
+.adminsubmits:hover { background:#F7EDDF; color:#DD5718; border:1px solid #F1B97C; box-shadow:0px 1px 6px 1px #F7B488; }
+
+

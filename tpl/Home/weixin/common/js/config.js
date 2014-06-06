@@ -1,0 +1,1 @@
+var DTPath = "http://www.imicms.com/";var SKPath = "http://www.imicms.com/skin/weixin/";var MEPath = "http://www.imicms.com/member/";var EXPath = "http://www.imicms.com/extend/";var CKDomain = "";var CKPath = "/";var CKPrex = "czx_";

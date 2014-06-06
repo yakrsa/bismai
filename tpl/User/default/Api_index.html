@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" 
+media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/style_2_common.css" />
+<link href="{iMicms::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+</head>
+<div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3>
+                                    <i class="icon-table"></i>整合第三方接口 <small>不懂技术的,请先观看教程,请勿乱操作</small>
+                                </h3>
+								
+                            </div>
+                        </div>
+<div class="content">
+         
+          <div class="cLineB">
+              <h4 class="left">已融合接口数量(0) 条</h4>
+                  <div class="searchbar right">  <form method="get" action="index.php">
+                  
+                  
+                  <input type="hidden" name="ac" value="mp3list">
+                  <input type="hidden" name="id" value="9878">
+                  <input type="hidden" name="wxid" value="gh_423dwjkewad">
+                 
+                  
+                  </form>
+                  </div>
+              <div class="clr"></div>
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator left">
+				<a href="{imicms::U('Api/add')}" title="新增接口" class="btn">新增接口</a>　
+
+              
+            </div>
+          
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="index.php?ac=apilist&amp;id=9878&amp;wxid=gh_423dwjkewad" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                <tr>
+					<th class="select">选择</th>
+					<th class="keywords">关键词</th>
+					<th class="keywords">接口地址</th>
+					<th class="time">接口类型</th>
+					<th class="time">状态</th>
+
+					<th class="time">时间</th>
+					<th class="edit norightborder">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+			  <script>
+				function delete_confirm(e) 
+					{
+						if (event.srcElement.outerText == "删除") 
+						{
+							event.returnValue = confirm("删除是不可恢复的，你确认要删除吗？");
+						}
+					}
+			  </script>
+			  <volist name="api" id="api">
+                <tr>
+                  <td>  <input type="checkbox" name="del_id[]" value="3266" class="checkitem"></td>
+                  <td>{imicms:$api.keyword}</td>
+                  <td>{imicms:$api.url}</td>
+                  <td><if condition="$api['type'] eq 1">标准xml<else/>文本格式</if></td>
+					<td><if condition="$api['status'] eq 1">启用<else/>关闭</if></td>
+                    <td>{imicms:$api.time|date='Y-m-d',###}</td>
+                   <td class="norightborder"> 
+					<if condition="$api['status'] eq 1">
+						<a href="{imicms::U('Api/setInc',array('id'=>$api['id'],'type'=>2))}" title="">关闭</a>
+					<else/>
+						
+						<a href="{imicms::U('Api/setInc',array('id'=>$api['id'],'type'=>1))}" title="">启用</a> 
+					</if>
+					<a href="{imicms::U('Api/edit',array('id'=>$api['id']))}" title="">编辑</a> 
+					<a href="{imicms::U('Api/del',array('id'=>$api['id']))}">删除</a></td>
+				</tr>
+				</volist>
+                <tr>
+					<td colspan="7" class="edit norightborder"> 
+						<input type="checkbox" id="chkall" name="chkall" onclick="checkAll(this.form, 'del_id')">
+						<label for="checkallBottom">全选</label>
+						<input type="radio" name="optype" checked="checked" value="1">删除
+						<a  class="btn" ><span>确定</span></a>
+					</td>
+                </tr>
+              </tbody>
+            </table>
+           </form> 
+           <script>
+   function checkvotethis() {
+var aa=document.getElementsByName('del_id[]');
+var mnum = aa.length;
+j=0;
+for(i=0;i<mnum;i++){
+if(aa[i].checked){
+j++;
+}
+}
+if(j>0) {
+document.getElementById('info').submit();
+} else {
+alert('未选中任何文章或回复！')
+}
+}
+
+   </script>
+          </div>
+            
+
+
+ 
+ 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages"></div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>  <!--底部-->
+  	</div>
+<include file="Public:footer"/>  
+ 

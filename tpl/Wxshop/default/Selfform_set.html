@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" 
+media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/style_2_common.css" />
+<link href="{iMicms::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+</head>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#content', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : false,
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+});
+</script>
+
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>自定义表单设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="{iMicms::U('Selfform/index',array('token'=>$token))}">返回</a></div>
+                        </div>
+				<div class="content"> 
+					
+					<div class="msgWrap bgfc">
+						<form class="form" method="post" id="form" action=""> 
+							<if condition="$isUpdate eq 1">
+							<input type="hidden" name="id" value="{iMicms:$set.id}" />
+							</if>
+							<input type="hidden" name="discount" id="discount" value="{iMicms:$set.discount}" />
+							<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+								<tbody> 
+									<tr> 
+										<th><span class="red">*</span>名称：</th> 
+										<td><input type="text" id="name" name="name" value="{iMicms:$set.name}" class="px require" style="width:400px;" /></td> 
+									</tr> 
+									<tr> 
+										<th><span class="red">*</span>关键词：</th>
+										<td><input type="text" name="keyword" id="keyword" value="{iMicms:$set.keyword}" class="px" style="width:400px;" /></td> 
+									</tr>
+									<tr> 
+										<th><span class="red"></span>简介：</th> 
+										<td><textarea name="intro" class="px" style="width:400px;height:80px;">{iMicms:$set.intro}</textarea></td> 
+									</tr>
+									<tr> 
+										<th><span class="red">*</span>截止日期：</th> 
+										<td><input type="input" class="px" id="enddate" value="{iMicms:$set.endtime|date="Y-m-d",###}" onClick="WdatePicker()" name="enddate" /></td> 
+									</tr>
+									<tr> 
+										<th><span class="red">*</span>Logo地址：</th>
+										<td>
+										<div class="control-group">
+						                <div class="controls">
+						                <img id="thumb_img" src="{iMicms:$set.logourl}" style="max-height:100px;" />
+						                </div>
+						                <input type="hidden" id="thumb"  name="logourl" value="{iMicms:$set.logourl}" class="input-xlarge"  data-rule-required="true" data-rule-url="true" />
+                                        <span class="help-inline"><a class="btn" id="insertimage">选择封面</a></span>
+						            </div>
+									</td> 
+									</tr>
+									<tr> 
+										<th><span class="red"></span>提交成功提示：</th>
+										<td><input type="text" id="successtip" name="successtip" value="{iMicms:$set.successtip}" class="px" style="width:400px;" /> 默认：提交成功</td> 
+									</tr>
+									<tr> 
+										<th><span class="red"></span>提交失败提示：</th>
+										<td><input type="text" id="failtip" name="failtip" value="{iMicms:$set.failtip}" class="px" style="width:400px;" /> 默认：提交失败</td> 
+									</tr>
+									<tr>
+										<th valign="top"><span class="red"></span>图文详细页内容：</th>
+										<td><textarea name="content" id="content"  rows="5" style="width:590px;height:150px">{iMicms:$set.content}</textarea></td>
+									</tr>  
+									<tr>       
+										<th>&nbsp;</th>
+										<td>
+											<input type="hidden" name="groupon" value="1" />
+											<button type="submit" name="button" class="btn btn-primary">保存</button>
+										</td> 
+									</tr> 
+								</tbody> 
+							</table>
+						</form>							
+					</div>
+					<script language="javascript">
+					$(function(){
+
+						$("#form").valid([
+						{ name:"name",simple:"名称",require:true},
+						{ name:"keyword",simple:"关键词",require:true}
+							
+						],true,true);
+
+					})
+					</script>
+					<div class="cLine">
+						<div class="clr"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer"/>

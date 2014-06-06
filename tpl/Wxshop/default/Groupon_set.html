@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" 
+media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/style_2_common.css" />
+<link href="{iMicms::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+</head>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#intro', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : false,
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+});
+</script>
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload2').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic2').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic2').val(url);
+						}else{
+							K('#pic2').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload3').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic3').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic3').val(url);
+						}else{
+							K('#pic3').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+});
+</script>
+
+<script>
+ 
+function showChildCats(value){
+	$("#catid").html('<option value="0">请选择...</option>');
+	if(value==0){
+		document.getElementById('catid').disabled=true;
+	}else{
+		$.ajax({
+			url: $('#catUrl').attr("value")+'&parentid='+value,
+			success: function( data ) {
+				document.getElementById('catid').disabled=false;
+				$("#catid").html($("#catid").html()+data);
+			}
+		});
+	}
+}
+function toDecimal(x) {  
+            var f = parseFloat(x);  
+            if (isNaN(f)) {  
+                return;  
+            }  
+            f = Math.round(x*10)/10;  
+            return f;  
+        }  
+function calDiscount(){
+	var price=$('#price').attr('value');
+	var oprice=$('#oprice').attr('value');
+	if(oprice!=0&&oprice!=''){
+		var dis=oprice-price;
+		var discount=10-toDecimal((dis/oprice)*10);
+	}else{
+		discount=10;
+	}
+	$('#discount').attr('value',discount);
+}
+</script>
+<input type="hidden" id="catUrl" value="{iMicms::U('Product/ajaxCatOptions',array('token'=>$token))}" />
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>团购设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="{iMicms::U('Groupon/products',array('token'=>$token))}">返回</a></div>
+                        </div>
+  <div class="content"> 
+ 
+   
+
+   <form class="form" method="post" id="form" action=""> 
+<if condition="$isUpdate eq 1">
+<input type="hidden" name="id" value="{iMicms:$set.id}" />
+</if>
+<input type="hidden" name="discount" id="discount" value="{iMicms:$set.discount}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <th><span class="red">*</span>名称：</th> 
+        <td><input type="text" id="name" name="name" value="{iMicms:$set.name}" class="px require" style="width:400px;" /></td> 
+       </tr> 
+       <tr style="display:none"> 
+        <th><span class="red">*</span>类别：</th> 
+        <td><select id="catid" name="catid"><option value="1000000000">请选择分类...</option>{iMicms:$catsOptions}</select></td> 
+       </tr>
+        <tr style="display:none"> 
+        <th><span class="red">*</span>店铺：</th> 
+        <td><input type="text" name="storeid" value="1" class="px" style="width:400px;" /></td> 
+       </tr>
+        <tr> 
+        <th><span class="red">*</span>价格：</th>
+        <td><input type="text" id="price" onchange="calDiscount();" name="price" value="{iMicms:$set.price}" class="px" style="width:100px;" /> 元</td> 
+       </tr>
+       <tr> 
+        <th><span class="red">*</span>原价：</th> 
+        <td><input type="text" id="oprice" onchange="calDiscount();" name="oprice" value="{iMicms:$set.oprice}" class="px" style="width:100px;" /> 元</td> 
+       </tr>
+       <tr> 
+        <th><span class="red">*</span>截止日期：</th> 
+        <td><input type="input" class="px" id="enddate" value="{iMicms:$set.endtime|date="Y-m-d",###}" onClick="WdatePicker()" name="enddate" /></td> 
+       </tr>
+       <tr> 
+        <th><span class="red">*</span>报名基数：</th> 
+        <td><input type="text" id="fakemembercount" name="fakemembercount" value="{iMicms:$set.fakemembercount}" class="px" style="width:80px;" /> 人 （前台显示的报名人数会加上这个数字）</td> 
+       </tr>
+        <tr> 
+        <th><span class="red">*</span>关键词：</th>
+        <td><input type="text" name="keyword" id="keyword" value="{iMicms:$set.keyword}" class="px" style="width:400px;" /></td> 
+       </tr>
+        <tr> 
+        <th><span class="red">*</span>Logo地址：</th>
+        <td>
+		<input type="text" name="logourl" value="{iMicms:$set.logourl}" class="px" style="width:400px;" id="pic" readonly="readonly" /><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+		</td> 
+       </tr>
+        <TR>
+                  <TH valign="top"><label for="info">图文详细页内容：</label></TH>
+                  <TD><textarea name="intro" id="intro"  rows="5" style="width:590px;height:300px">{iMicms:$set.intro}</textarea></TD>
+                </TR>  
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+      <input type="hidden" name="groupon" value="1" />
+       <button type="submit" name="button" class="btn btn-primary">保存</button> &nbsp; <a href="{iMicms::U('Groupon/products',array('token'=>$token))}" class="btn">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+<script language="javascript">
+$(function(){
+
+	$("#form").valid([
+	{ name:"name",simple:"名称",require:true},
+	{ name:"keyword",simple:"关键词",require:true},
+	//{ name:"catid",message:"请选择类别",require:true},
+	{ name:"price",type:"currency",message:"价格输入不正确"},
+	{ name:"oprice",type:"currency",message:"原价输入不正确"},
+	{ name:"fakemembercount",type:"int",message:"报名基数只能填写整数或0"}
+		
+	],true,true);
+
+})
+</script>
+  <include file="Public:footer" />

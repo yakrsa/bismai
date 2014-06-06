@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />	
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/resource.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/map.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_ui_custom.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+	<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	
+
+
+
+    <div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span10">
+                                <h3><i class="icon-edit"></i>编辑商铺位置</h3>
+                            </div>
+                            <div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+
+                        <div class="box-content">
+
+                            <div class="alert" style="display: none">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                自动回复内容不能为空!
+                            </div>
+			    <form action="{iMicms::U('Lbs/upsave')}" method="post" class="form-horizontal form-validate">
+				 <input type="hidden" name="farword" value="{iMicms::U('Lbs/index',array('token'=>session('token')))}" />
+			   
+                                <div class="control-group">
+                                    <label for="title" class="control-label">标题：</label>
+                                    <div class="controls">
+                                        <input type="text" name="title" value="{iMicms:$info.title}" id="title" class="input-large" data-rule-required="true" title="请填写标题!" />
+                                        <span class="maroon">*</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="keyword" class="control-label">标签：</label>
+                                    <div class="controls">
+                                        <input type="text" name="keyword" id="keyword" value="{iMicms:$info.keyword}" data-rule-required="true" data-rule-maxlength="30" class="input-xlarge" title="多个标签请用空格格开：例如: 美丽 漂亮 好看"> <span class="maroon">*</span><br>多个关键词请用空格格开：例如: 美丽 漂亮 好看
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="picurl" class="control-label">图文封面：</label>
+                                    <div class="controls">
+											                                            <img id="thumb_img" src="{iMicms:$info.pic}" style="max-height:100px; display:;" />
+                                            <input id="thumb" type="text" name="pic" value="" class="input-xlarge" readonly="readonly" data-rule-required="true" data-rule-url="true" title="请上传图文封面!" style="display:none;"  />
+                                                                                <span class="help-inline"><a class="btn" id="insertimage">选择图文封面</a></span>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">建议大小(宽720高400)</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group">
+                                    <label for="tel" class="control-label">电话：</label>
+                                    <div class="controls">
+                                        <input type="text" name="tel" id="tel" value="{iMicms:$info.tel}" class="input-medium" data-rule-required="true" data-rule-maxlength="20" title="电话不能为空!"/>
+                                        <span class="maroon">*</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="description" class="control-label">简介：</label>
+                                    <div class="controls">
+                                        <textarea type="text" name="text" id="description" class="input-xlarge" rows="3" data-rule-required="true" data-rule-maxlength="200">{iMicms:$info.text}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">限制200字内!</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="suggestId">经纬度</label>
+                                    <div class="controls">
+                                        <div class="input-append">
+                                            <input type="text" id="suggestId" value="{iMicms:$info.place}" class="input-xlarge" name="place" data-rule-required="true" />
+                                            <button class="btn" type="button" id="positioning">搜索</button>
+                                        </div>
+                                        <script src="http://api.map.baidu.com/api?key=a258befb5804cb80bed5338c74dd1fd1&v=1.1&services=true" type="text/javascript" type="text/javascript" ></script>
+                                        <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                        <div id="l-map">
+                                            <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                        </div>
+                                        <div id="r-result">  <input type="text" id="lng" name="lng" value="{iMicms:$info.lng}" readonly /><input type="text" id="lat" name="lat" value="{iMicms:$info.lat}" readonly />
+					</div>
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="showpic" class="control-label">详细页显示图文封面：</label>
+                                    <div class="controls">
+                                          <label class="radio inline">
+                                            <input type="radio" name="showpic"  value="1"  <eq name="info.showpic" value="1"> checked="checked"</eq>  >
+                                            是
+                                        </label>
+                                        <label class="radio inline">
+                                            <input type="radio" name="showpic" value="0"  <eq name="info.showpic" value="0"> checked="checked"</eq> >
+                                            否
+                                        </label>
+
+                                    </div>
+                                </div>
+
+                                     <div class="control-group">
+                                     <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+                                    <script src="{iMicms::STATICS}/kindeditors/kindeditor.config.js"></script>
+                                    <script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+                                    <label for="showpic" class="control-label">详细页内容：</label>
+                                    <div class="controls">
+                                        <textarea id="info" name="info" rows="8">{iMicms:$info.info}</textarea>
+                                    </div>
+                                </div>
+                                   <div class="control-group">
+                                    <label for="url" class="control-label">外链网址：</label>
+                                    <div class="controls">
+                                        <input type="text" name="url" id="url" value="{iMicms:$info.url}" class="input-xlarge"  />
+                                        <span class="maroon">如需跳转到其他网址，请在这里填写网址(例如：http://baidu.com，记住必须有http://)</span>
+                                        <span class="help-inline">如果填写了图文详细内容，这里请留空，不要设置！ </span>
+                                    </div>
+                                </div>
+                        
+
+                                <div class="control-group"   style="display:none;">
+                                    <label class="control-label">活动融合：</label>
+                                    <div class="controls">
+                                        <table class="dataTable-mini draggable" id="more_graphics_table">
+					<tbody>
+                                    </tbody>
+
+                                        </table>
+                                        <button type="button" rel="more_graphics_table" class="btn add-on">添加</button><span class="help-inline">这里添加您的活动将显示在Lbs详细页面(<span class="red">可拖拽排序</span>)</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                   <input type="hidden" name="id" value="{iMicms:$info.id}" />
+                                    <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                                    <button type="button" class="btn" onclick="Javascript:window.history.go(-1);">取消</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="add_code" action="" method="post" class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><i class="icon-table"></i>选择活动</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row-fluid">
+                            活动类型:
+                            <select name="classid" id="classid" class="input-medium">
+                                <option value="11" selected="selected">刮刮卡</option>
+                                <option value="12" selected="selected">优惠券</option>
+                                <option value="13" selected="selected">大转盘</option>
+                                <option value="15" selected="selected">微投票</option>
+                            </select>
+
+                        </div>
+                        <p></p>
+
+                        <div class="row-fluid">
+                            <input type="checkbox" id="chkall" name="chkall" />
+                            全选　共有 <span class="red" id="count_num">0</span> 条符合条件
+                            <button type="button" class="btn btn-mini" id="p_page"><strong>上一页</strong></button>
+                            <span id="p_page_str">第1页/共1页</span>
+                            <button type="button" class="btn btn-mini" id="n_page"><strong>下一页</strong></button>
+                            <ul class="unstyled list-li-border" id="data-list"></ul>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var _pdata_table_id;
+                        var _isoso = false;
+                        $("#chkall").click(function () {
+                            var $idsCheck = $("#data-list input[name='check']")
+                            var $this = $(this);
+                            if ($this.attr("checked")) {
+                                $idsCheck.attr("checked", true);
+                            } else {
+                                $idsCheck.attr("checked", false);
+                            }
+                            $idsCheck.each(function () {
+                                _tr($(this));
+                            });
+
+                        });
+                        $("#_soso").click(function () { _isoso = true; $("#_soso").attr("disabled", ""); _page(1) });
+                        $("#classid").change(function () {
+                            $("#chkall").attr("checked", false);
+                            _this_page = 1; _page(1) });
+                        $("#data-list input[name='check']").live("click", function () { _tr($(this)); });
+                        var _tr = function (_t) {
+                            var $this = _t;
+                            var $title = $this.attr("t");
+                            var $id = $this.val();
+                            var $selecttr = $("#" + _pdata_table_id + "tr" + $id +'_'+classid+ "");
+                            var classid = $("#classid").val();
+                            if ($this.attr("checked")) {
+                                if ($selecttr.length == 0 && $("#" + _pdata_table_id + " tr").length < 9) {
+                                    var t = (_pdata_table_id == "more_graphics_table") ? "activity[]" : "";
+                                    var _trtmp = "<tr id='" + _pdata_table_id + "tr" + $id +'_'+classid+ "' draggable='true'><td><input type='hidden' name='" + t + "'  value='" + $id +'_'+classid+ "' />" + $title + "</td><td><a href='javascript:void(0)' class='btn btn-mini del'><i class='icon-remove'></i></a></td></tr>";
+                                    $("#" + _pdata_table_id + "").append(_trtmp);
+
+                                }
+
+                            } else {
+                                $selecttr.remove();
+                            }
+                        }
+                        //删除
+                        $("table.dataTable-mini .del").live("click", function () {
+                            $(this).parent().parent().remove();
+                        });
+                        $("button.add-on").click(function (e) {
+                            e.preventDefault();
+                            _pdata_table_id = $(this).attr("rel");
+                            $('#myModal').modal('show');
+                            $("#chkall").attr("checked", false);
+                            _page(1);
+                        });
+                        $("#p_page").click(function () {
+                            if (_this_page - 1 > 0) {
+                                _this_page--;
+                                _page(_this_page);
+                            }
+                        });
+                        $("#n_page").click(function () {
+                            if (_this_page + 1 <= _this_page_count) {
+                                _this_page++;
+                                _page(_this_page);
+                            }
+                        });
+                        var _this_page = 1;//当前页
+                        var _this_page_count = 0;//总页数
+                        var _page = function (_index) {
+                            var key;
+                            if (_isoso) {
+                                key = $("#key").val();
+                            }
+                            var classid = $("#classid").val();
+                            $.post("/wechat/lbsactivity", { "aid":$('#aid').val(), "type": classid, "page": _index }, function (data, textStatus) {
+                                $("#data-list").html("");
+                                //console.log(data.list);
+                                $.each(data.list, function (index, item) {
+                                    //console.log(index);
+                                    var _li_tmp = '<li> <label> <input type="checkbox" name="check" t="' + item.title + '" value="' + item.id + '" />  ' + item.title + '</label></li>';
+                                    $("#data-list").append(_li_tmp);
+
+                                });
+                                _this_page_count = data.count;
+                                $("#count_num").text(_this_page_count * 9);
+                                $("#p_page_str").text("第" + _this_page + "页/共" + _this_page_count + "页");
+                                $("#_soso").removeAttr("disabled")
+                            }, "json");
+                        }
+
+                    })
+
+                </script>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+<script type="text/javascript">
+         var lat = {iMicms:$info.lat};
+	 var lng = {iMicms:$info.lng};
+	 var adr = "{iMicms:$info.place}";
+        $(function () {
+            var op = {
+                lat: lat,
+                lng: lng,
+                adr: adr
+            }
+            baidu_map(op);
+        });
+    </script></body>
+</html>

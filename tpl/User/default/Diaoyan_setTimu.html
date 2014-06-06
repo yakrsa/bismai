@@ -1,0 +1,91 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>题目设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+   </div> 
+
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+<!-- <if condition="$isUpdate eq 1">
+<input type="hidden" name="tid" value="{imicms:$set.id}" />
+</if> -->
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <input type="hidden" name="pid" value="{imicms:$pid}" />
+	   <tr> 
+        <th><span class="red"></span>题目名称：</th>
+        <td><input type="text" name="title" id="keyword" value="{imicms:$set.title}" class="px" style="width:400px;" /></td> 
+       </tr>
+	   
+	   <tr> 
+        <th ><span class="red"></span>选项A：</th> 
+        <td><input  type="text"  name="optia" value="{imicms:$set.optia}" class="px require" style="width:400px;" /></td> 
+       </tr> 
+	   
+	   <tr> 
+        <th ><span class="red"></span>选项B：</th> 
+        <td><input  type="text" name="optib" value="{imicms:$set.optib}" class="px require" style="width:400px;" /></td> 
+       </tr> 
+	   
+	   <tr> 
+        <th ><span class="red"></span>选项C：</th> 
+        <td><input  type="text" name="optic" value="{imicms:$set.optic}" class="px require" style="width:400px;" /></td> 
+       </tr> 
+	   
+	   <tr> 
+        <th ><span class="red"></span>选项D：</th> 
+        <td><input  type="text"name="optid" value="{imicms:$set.optid}" class="px require" style="width:400px;" /></td> 
+       </tr> 
+  
+	   <tr> 
+        <th ><span class="red"></span>选项E：</th> 
+        <td><input  type="text" name="optie" value="{imicms:$set.optie}" class="px require" style="width:400px;" /></td> 
+       </tr> 
+		
+	   <tr> 
+        <th ><span class="red"></span>题目答案最多数目：</th> 
+        <td>
+			<select name="max" style="width:80px;" >
+				<option value="1" selected="selected" >1</option>
+				<option value="2" >2</option>
+				<option value="3" >3</option>
+				<option value="4" >4</option>
+				<option value="5" >5</option>
+			</select>（请重新选择）
+		</td> 
+       </tr> 
+		
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+		<!--input type="hidden" name="time" value="{imicms:$set.time}" /-->
+       <button type="submit" class="btn btn-primary">保存</button> &nbsp; <a href="{imicms::U('Diaoyan/addTimu',array('token'=>$token))}" class="btn">取消</a></td> 
+       </tr> 
+	   
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+<script language="javascript">
+$(function(){
+	$("#form").valid([
+	{ name:"name",simple:"名称",require:true},
+	{ name:"keyword",simple:"关键词",require:true}
+		
+	],true,true);
+
+})
+</script>
+  <include file="Public:footer" />

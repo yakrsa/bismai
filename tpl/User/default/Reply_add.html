@@ -1,0 +1,74 @@
+ <include file="Public:head" /> 
+ <link rel="stylesheet" type="text/css" href="{imicms::RES}/css/cymain.css" />
+ <link rel="stylesheet" href="{imicms::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{imicms::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{imicms::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{imicms::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{imicms::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script src="{imicms::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{imicms::RES}/js/formCheck/formcheck.js"> </script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#content', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : false,
+items : [
+'source','undo','clearhtml','hr',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+
+});
+</script>
+
+<div class="content" style="width:95%; background:none; margin-left:25px; border:none; margin-bottom:30px; margin-top:30px;" >
+  <div class="cLineB">
+    <div  class="quick-actions_homepage">
+    <ul class="quick-actions">
+      <li class="bg_lb"> <a href="{imicms::U('Taobao/index',array('token'=>$token))}"> <i class="icon-bullhorn"></i> 淘宝天猫 </a> </li>
+      <li class="bg_dy"> <a href="{imicms::U('Api/index',array('token'=>$token))}"> <i class="icon-resize-full"></i> 第三方</a> </li>
+      <li class="bg_lg"> <a href="{imicms::U('Reply/index',array('token'=>$token))}"> <i class="icon-book"></i> 留言板</a> </li>
+      <li class="bg_ly"> <a href="{imicms::U('Heka/index',array('token'=>$token))}"> <i class="icon-envelope"></i> 微贺卡 </a> </li>
+      <li class="bg_lo"> <a href="{imicms::U('Shake/index',array('token'=>$token))}"> <i class="icon-bolt"></i> 摇一摇 </a> </li>
+      <li class="bg_ls"> <a href="{imicms::U('Wewall/index',array('token'=>$token))}"> <i class="icon-reorder"></i> 微信墙</a> </li>
+      <li class="bg_db"> <a href="javascript:history.go(-1);"> <i class="icon-share-alt"></i> 返回</a> </li>
+    </ul>
+  </div>
+    <h4>添加回复</h4> 
+    <a href="{imicms::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+   </div> 
+   
+
+   <form class="form" method="post" id="form" action="{imicms::U('User/Reply/insert',array('token'=>$token,'wecha_id'=>$wecha_id))}"> 
+<!--<if condition="$isUpdate eq 1">
+<input type="hidden" name="id" value="{imicms:$set.id}" />
+</if>-->
+<!--<input type="hidden" name="discount" id="discount" value="{imicms:$set.discount}" />-->
+<input type="hidden" name="wecha_id"  value="{imicms:$wecha_id}" />
+<input type="hidden" name="checked"  value="{imicms:$checked}" />
+<input type="hidden" name="chk"  value="{imicms:$chk_value}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+      
+        <TR>
+                  <TH valign="top"><label for="info">图文详细页内容：</label></TH>
+                  <TD><textarea name="content" id="content"  rows="5" style="width:590px;height:360px"></textarea></TD>
+                </TR>  
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+      <input type="hidden" name="groupon" value="1" />
+       <button type="submit" name="button" class="btnGreen">保存</button> &nbsp; <a href="{imicms::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}" class="btnGray vm">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+
+  <include file="Public:footer" />

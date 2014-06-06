@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" /> 
+<!-- Mobile Devices Support @begin -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+   
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/resource.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/resource.js"></script>
+<script type="text/javascript"  src="/tpl/static/upyun.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <!--[if IE 7]>
+            <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="{iMicms::RES}/js/excanvas_min.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+            <script src="{iMicms::RES}/js/watermark.js"></script>
+        <![endif]-->
+    </head>
+    <script src="http://api.map.baidu.com/api?key=24ffad3855e675265336a4cfb46d32b4&v=1.1&services=true" type="text/javascript"></script>
+ 
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/cn.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/indeditor.config-upfile.js"></script>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<body>
+    <div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3><i class="icon-cog"></i>修改分类</h3>
+                            </div>
+                        </div>
+                      <form action="{iMicms::U('Classify/upsave')}" method="post" class="form-horizontal form-validate">
+			<input type="hidden" name="farword" value="{iMicms::U('Classify/index',array('token'=>session('token')))}" />
+			 <input type="hidden" name="id" value="{iMicms:$info.id}" />       
+			 <div class="box-content">
+                                <div class="control-group">
+                                    <label for="classname" class="control-label">分类名称：</label>
+                                    <div class="controls">
+                                        <input type="text" id="classname" name="name" value="{iMicms:$info.name}" class="input-medium" data-rule-required="true" />
+                                        <span class="maroon">*</span><span class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="description" class="control-label">分类描述：</label>
+                                    <div class="controls">
+                                        <input type="text" id="description" name="info" value="{iMicms:$info.info}" class="input-medium" data-rule-required="true" />
+                                        <span class="maroon">*</span><span class="help-inline"></span>
+                                    </div>
+                                </div>
+								
+                                <div class="control-group">
+                                    <label for="sort" class="control-label">显示顺序：</label>
+                                    <div class="controls">
+                                        <input type="text" id="sort" name="sorts" value="{iMicms:$info.sorts}" class="input-mini" data-rule-required="true" data-rule-number="true" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="insertimage" class="control-label">分类封面:</label>
+                                    <div class="controls">
+                                                                                <img type="img" src="{iMicms:$info.img}" style="max-height:50px;" />
+                                        <input type="hidden" name="img" value="{iMicms:$info.img}" class="input-medium" />
+                                        <a class="btn insertimage">选择封面</a>
+                                                                                    <span class="help-inline">建议尺寸：宽300像素，高300像素</span>
+                                                                            </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">是否官网显示：</label>
+                                    <div class="controls">
+                                                                                    <label class="radio inline"><input type="radio" value="1" name="status"  <eq name="info.status" value="1"> checked="checked"</eq> />显示</label>
+                                            <label class="radio inline"><input type="radio" value="0" name="status" <eq name="info.status" value="0"> checked="checked"</eq> />隐藏</label>
+                                                                            </div>
+                                </div>
+                                  <div class="control-group">
+                                    <label for="weixin" class="control-label">图标：</label>
+                                    <div class="controls">
+                                        <div class="i-cont tile-themed">
+                                        	                                            <i class="{iMicms:$info.icon}" id="icon_i"></i>
+                                            <input type="hidden" id="icon" name="icon" value="{iMicms:$info.icon}" />
+                                            <a class="sel-icon" href="javascript:;">换一个</a>
+											<div class="icons-cont">
+												<div class="tab-content">
+													<ul class="nav nav-tabs">
+														<li class="active"><a href="#ico_hot" data-toggle="tab">热门</a></li>
+														<li class=""><a href="#ico_all" data-toggle="tab">全部</a></li>
+													</ul>
+													<div class="tab-pane fade active in" id="ico_hot">
+													</div>
+													<div class="tab-pane fade" id="ico_all">
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <span class="help-inline">该图标用于二级页面右上角的缩略菜单和部分模板的首页主菜单
+                                        </span>
+
+                                    </div>
+                               
+                                </div>
+                                <div id="res_block">
+                                    <div class="control-group">
+                                        <label for="type" class="control-label">回复类型：</label>
+                                        <div class="controls">
+                                            <select id="ltype" name="ltype" class="input-medium">
+                                                <option value="img"  <eq name="info.ltype" value="img"> selected="selected"</eq>>图文</option>
+                                                <option value="url"  <eq name="info.ltype" value="url"> selected="selected"</eq> >链接</option>
+                                                <option value="tel"  <eq name="info.ltype" value="tel"> selected="selected"</eq>>电话</option>
+                                                <option value="map"  <eq name="info.ltype" value="map"> selected="selected"</eq>>导航</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="r_img" class="control-group r-module hide">
+                                        <div class="control-group">
+                                            <label class="control-label"></label>
+                                            <div class="controls">
+                                                <span class="maroon">分类添加成功后 请添加图文选择此分类 将会列表显示</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="r_url" class="control-group r-module <if condition="$info['ltype'] neq 'url'">hide</if>">
+                                        <div class="control-group">
+                                            <label class="control-label" for="link">外链地址</label>
+                                            <div class="controls">
+                                                <input type="url" id="link" name="url" value="{iMicms:$info.url}" class="input-xlarge" data-rule-required="true"   />
+												<a href="#" onclick="addLink('link',0)" class="btn btn-primary">从功能库添加</a><br /><span class="red">如需跳转到其他网址，请在这里填写网址(例如：http://baidu.com，记住必须有http://)</span>如果填写了图文详细内容，这里请留空，不要设置！
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="r_tel" class="control-group r-module <if condition="$info['ltype'] neq 'tel'">hide</if>">
+                                        <div class="control-group">
+                                            <label class="control-label" for="tel">电话号码</label>
+                                            <div class="controls">
+                                                <input type="text" id="tel" name="tel" value="{iMicms:$info.tel}" class="input-large" data-rule-required="true" data-rule-phone="true" />
+                                                <span class="maroon">*</span><span class="help-inline">(必填，必须是正确的号码)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                               
+                                <div id="r_map" class="control-group r-module <if condition="$info['ltype'] neq 'map'">hide</if>">
+                                    <div class="control-group">
+                                        <label class="control-label" for="suggestId">经纬度</label>
+                                        <div class="controls">
+                                            <div class="input-append">
+                                                <input type="text" id="suggestId" name="place" class="input-xlarge" data-rule-required="true" />
+                                                <button class="btn" type="button" id="positioning">搜索</button>
+                                            </div>
+                                            <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                            <div id="l-map">
+                                                <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                            </div>
+                                            <div id="r-result">
+                                                <input type="text" id="lng" name="lng" />
+                                                <input type="text" id="lat" name="lat" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">保存</button>
+                                    <button type="button" class="btn" onclick="window.history.go(-1);">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+ 
+ <if condition="$info['ltype'] neq 'map'">
+    <script type="text/javascript">
+
+        $(function () {
+            var resource = Resource.create();
+            var ins = Resource.instance['res_block'];
+            ins.result = ins.result || {};
+            ins.result.wuid = $('#token').val();
+
+                        window.ICON(); 
+        
+        });  
+    </script>
+    </if> 
+  <if condition="$info['ltype'] eq 'map'">
+    <script type="text/javascript">
+
+        $(function () {
+	    var lat = {iMicms:$info.lat};
+	    var lng = {iMicms:$info.lng};
+	    var adr = "{iMicms:$info.place}";
+            var resource = Resource.create();
+            var ins = Resource.instance['res_block'];
+            ins.result = ins.result || {};
+            ins.result.wuid = $('#token').val();
+
+                        ins.map = {
+            	lat: lat,
+                lng: lng,
+		adr: adr
+            }
+            ins._loadBaidu_map();
+                        window.ICON(); 
+        
+        });  
+    </script>
+</if> 
+    
+ <script type="text/javascript">
+
+    KindEditor.ready(function(K){
+        var editor = K.editor({
+            themeType: 'simple',
+            allowFileManager: true
+        });
+        $('a.insertimage').live('click', function(e){
+            editor.loadPlugin('smimage', function(){
+                editor.plugin.imageDialog({
+                    imageUrl: $(e.target).prev().val(),
+                    clickFn: function(url, title, width, height, border, align){
+                        $(e.target).prev().val(url);
+                        if ('img' == $(e.target).prev().prev().attr('type')) {
+                            $(e.target).prev().hide();
+                            $(e.target).prev().prev().attr('src', url);
+                            $(e.target).prev().prev().show();
+                        }
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+    });
+</script></html>

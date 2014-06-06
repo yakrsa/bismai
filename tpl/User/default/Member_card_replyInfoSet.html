@@ -1,0 +1,171 @@
+<include file="Public:head"/>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#picl').val(url);
+						}else{
+							K('#picl').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		
+		
+});
+</script>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>{iMicms:$infoType.name}回复配置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+
+
+      
+
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+
+	  <form class="form" method="post" action=""  enctype="multipart/form-data">	 
+
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+			<tbody>
+
+				<tr>
+
+				  <th valign="top"><span class="red">*</span>关键词：</th>
+
+				  <td>
+
+					<span class="red">会员卡 —— 当用户输入该关键词时，将会触发此回复。</span></td>
+
+				</tr>
+
+				<tr>
+
+					<th width="120"><span class="red">*</span>会员回复标题：</th>
+
+					<td><input type="text" name="title" value="{imicms:$set.title}" class="px" style="width:550px;"><br>会员回复会员卡的时候出现的图文标题</td>
+
+				</tr>
+
+				<tr>
+
+					<th width="120"><span class="red">*</span>非会员回复标题：</th>
+
+					<td><input type="text" name="title1" value="{imicms:$set2.title}" class="px" style="width:550px;"><br>非会员回复会员卡的时候出现的图文标题</td>
+
+				</tr>
+
+				<tr>
+
+					<th width="120">会员内容介绍：</th>
+
+					<td><textarea style="width:560px;height:75px" name="info" id="info" class="px">{imicms:$set.info}</textarea><br/>最多填写120个字<br>会员回复会员卡的时候出现的图文回复介绍</td>
+
+				</tr>
+
+				<tr>
+
+					<th width="120">非会员内容介绍：</th>
+
+					<td><textarea style="width:560px;height:75px" name="info1" id="info" class="px">{imicms:$set2.info}</textarea><br/>最多填写120个字<br>非会员回复会员卡的时候出现的图文回复介绍</td>
+
+				</tr>
+
+				<tr>
+
+					<th>会员回复图片：</th>
+
+					<td><input type="text" name="picurl" value="{iMicms:$set.picurl}" class="px" style="width:550px;" id="pic" readonly="readonly"><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>   &nbsp; 大小为720x400<br>会员回复会员卡的时候出现的图文图片地址</td>
+
+				</tr>
+
+				<tr>
+
+					<th>非会员回复图片：</th>
+
+					<td><input type="text" name="picurl1" value="{iMicms:$set2.picurl}" class="px" style="width:550px;" id="picl" readonly="readonly"><span class="ke-button-common" id="upload1" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>   &nbsp; 大小为720x400<br>非会员回复会员卡的时候出现的图文图片地址</td>
+					
+
+				</tr>
+
+				<tr>
+
+					<th>第三方接口：</th>
+
+					<td><input name="apiurl" value="{imicms:$set.apiurl}" class="px" style="width:550px;" type="text">   &nbsp; {wechat_id}表示用户参数</td>
+
+				</tr>
+
+				
+
+				<th>&nbsp;</th>
+
+					<td>
+
+					<input type="hidden" name="keyword" value="{imicms:$infoType.keyword}" />
+
+					<input type="hidden" name="infotype" value="{imicms:$infoType.type}" />
+
+					<input type="hidden" name="token" value="{imicms:$token}" />
+
+						<button type="submit" name="button" class="btn btn-primary">保存</button>
+
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+
+					</td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</form>
+
+  </div> 
+
+ 
+
+  
+
+        </div>
+
+<include file="Public:footer"/>

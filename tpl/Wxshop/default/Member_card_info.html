@@ -1,0 +1,178 @@
+<include file="Public:head"/>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
+
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		
+		
+});
+</script>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>商家设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+	<div class="msgWrap bgfc">	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<form action="" method="post">
+			<tbody>
+				<tr>
+					<td width="500px" rowspan="4" valign="top">商家简介：<br>
+						<textarea class="px" id="info" name="info" style="width: 450px; height: 230px; ">{imicms:$info.info}</textarea>
+					</td>
+					<td valign="top">商家logo外链地址(图片尺寸100x100)<br>
+						<input type="text" name="clogo" value="{iMicms:$info.clogo}" class="px" style="width:250px;" id="pic" readonly="readonly"><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+					</td>
+					<td rowspan="4" valign="top">&nbsp;</td>
+					<td rowspan="4" valign="top"><img id="logo_src" class="logo" src="{imicms:$info.clogo}" width="100px" height="100px"></td>
+				</tr>
+				<!--<tr>
+					<th>回复图片：</th>
+					<td><input type="text" name="clogo" value="{iMicms:$info.clogo}" class="px" style="width:550px;" id="pic" readonly="readonly"><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span><br/> 填写图片外链地址，大小为720x400</td>
+				</tr>-->
+				<tr>
+				<td valign="top">选择分类：<br>
+					<label for="select"></label>
+					<select name="class" id="select">
+					<option value="1">美食餐饮</option>
+					<option value="2">休闲娱乐</option>
+					<option value="3">生活服务</option>
+					<option value="4">其他</option>
+					</select>
+				</td>
+				</tr>
+				<tr>
+					<td valign="top">会员卡优惠简短描述：（12个字以内）<br>
+					<input name="description" type="input"  class="px" id="logo2" style="width:250px;" onblur="document.getElementById('cardlogo').src=document.getElementById('logo').value;" value="{imicms:$info.description}"></td>
+				</tr>
+				<tr>
+					<td valign="top">消费确认密码：<br>
+					<input type="input" class="px" id="title" value="{imicms:$info.password}" name="password" style="width:150px;">
+					<br>
+					商家用来确认用户代金券，优惠券和礼品券使用的密码</td>
+				</tr>
+					 <tbody>
+			 <tr>
+				<td colspan="5" class="norightborder">
+					<button type="submit" name="batchsubmit" value="true" class="btn btn-primary"><strong>保存</strong></button>
+				</td>
+			 </tr>
+		</tbody>
+			</tbody>
+			</form>
+		</table>
+	</div> 
+	<div class="cLineB" style="display:none">
+		<h4>添加联系方式 <span class="FAQ">设置商家地址及联系电话。<a name="linkinfo"></a></span></h4>
+	</div>
+ <div class="msgWrap form" >
+<div class="bdrcontent">
+	<div id="div_ptype">
+	<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+	 <form action="{imicms::U('Member_card/Contact')}" method="post">  
+		<thead>
+			<tr>
+				<th>区域名称</th>
+				<th>详细地址</th>
+				<th>联系电话</th>
+				<th style=" width:70px;">显示顺序</th>
+				<th style=" width:100px;" class="norightborder">操作</th>
+			</tr>
+		</thead>			
+		<tbody>
+			<tr>
+				<td><input type="text" name="cname" value="" class="px" style="width:100px;"></td>
+				<td><input type="text" name="info" value="" class="px" style="width:350px;"></td>
+				<td><input type="text" name="tel" value="" class="px" style="width:150px;"></td>
+				<td><input type="text" name="sort" value="" class="px" style="width:50px;"></td>
+				<td class="norightborder"><button type="submit" class="btn btn-primary"><strong>添加</strong></button></td>
+			</tr>
+		 </tbody>
+		 	<tbody>
+			<tr>
+				<td rowssapn="5">
+					<div class="cLineB">
+						<h4>联系方式管理 <span class="FAQ">可编辑设置商家地址及联系电话。</span></h4>
+					</div>				
+				</td>
+			</tr>
+		 </tbody>
+		<thead>
+			<tr>
+				<th>区域名称</th>
+				<th>详细地址</th>
+				<th>联系电话</th>
+				<th style=" width:70px;">显示顺序</th>
+				<th style=" width:100px;" class="norightborder">操作</th>
+			</tr>
+		</thead>		
+		 </form>
+		<volist id="contact" name="contact">
+			<tbody>
+				 <form action="{imicms::U('Member_card/contact_edit')}" method="post">  
+				<tr>
+					<td><input type="text" name="cname" value="{imicms:$contact.cname}" class="px" style="width:100px;"></td>
+					<td><input type="text" name="info" value="{imicms:$contact.info}" class="px" style="width:350px;"></td>
+					<td><input type="text" name="tel" value="{imicms:$contact.tel}" class="px" style="width:150px;"></td>
+					<td>
+						<input type="text" name="sort" value="{imicms:$contact.sort}" class="px" style="width:50px;">
+						<input type="hidden" name="id" value="{imicms:$contact.id}" class="px" style="width:50px;">
+					</td>					
+					<td class="norightborder"><button type="submit" class="btn btn-primary"><strong>修改</strong></button></td>
+				</tr>
+				</form>
+			</tbody>
+		</volist>
+	</table>
+	</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+  <div class="pages"></div>
+</div>
+        </div>
+        </div>
+		<include file="Public:footer"/>

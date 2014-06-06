@@ -1,0 +1,52 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>桌台设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="{iMicms::U('Product/tables',array('token'=>$token,'dining'=>$isDining))}">返回</a></div>
+                        </div>
+<input type="hidden" id="catUrl" value="{iMicms::U('Product/ajaxCatOptions',array('token'=>$token))}" />
+  <div class="content"> 
+   
+   <form class="form" method="post" action="" enctype="multipart/form-data"> 
+<if condition="$isUpdate eq 1">
+<input type="hidden" name="id" value="{iMicms:$set.id}" />
+</if>
+<input type="hidden" name="discount" id="discount" value="{iMicms:$set.id}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <th><span class="red">*</span>名称：</th> 
+        <td><input type="text" name="name" value="{iMicms:$set.name}" class="px" style="width:400px;" /></td> 
+       </tr> 
+      <tr> 
+        <th><span class="red">*</span>介绍：</th>
+        <td><input type="text" name="intro" value="{iMicms:$set.intro}" class="px" style="width:400px;" /></td> 
+       </tr>
+        <tr> 
+        <th><span class="red">*</span>顺序：</th> 
+        <td><input type="text" name="taxis" value="{iMicms:$set.taxis}" class="px" style="width:400px;" /></td> 
+       </tr>
+        <tr> 
+       
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+       <input type="hidden" name="id" value="{iMicms:$set.id}" />
+       <button type="submit" name="button" class="btn btn-primary">保存</button> &nbsp; <a href="Javascript:window.history.go(-1)" class="btn">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+  <include file="Public:footer" />

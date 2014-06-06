@@ -1,0 +1,152 @@
+<link href="{iMicms::RES}/css/admin/bootstrap_min.css" rel="stylesheet"/>
+<link href="{iMicms::RES}/css/admin/style.css" rel="stylesheet"/>
+<div class="pad_lr_10 main" >
+    <form name="searchform" method="get" >
+    <table width="100%" cellspacing="0" class="search_form">
+        <tbody>
+            <tr>
+                <td>
+                <div class="explain_col">
+                    <input type="hidden" name="g" value="admin" />
+                    <input type="hidden" name="m" value="item" />
+                    <input type="hidden" name="a" value="index" />
+                    <input type="hidden" name="menuid" value="{iMicms:$menuid}" />
+					<if condition="$sm neq ''"><input type="hidden" name="sm" value="{iMicms:$sm}" /></if>
+                    发布时间 :
+                    <input type="text" name="time_start" id="J_time_start" class="date" size="12" value="{iMicms:$search.time_start}">
+                    -
+                    <input type="text" name="time_end" id="J_time_end" class="date" size="12" value="{iMicms:$search.time_end}">
+
+					&nbsp;&nbsp;分类 :
+                    <select class="J_cate_select mr10" data-pid="0" data-uri="{iMicms::U('item_cate/ajax_getchilds', array('type'=>0))}" data-selected="{iMicms:$search.selected_ids}"></select>
+                    <input type="hidden" name="cate_id" id="J_cate_id" value="{iMicms:$search.cate_id}" />
+          	&nbsp;&nbsp;是否上架 :  
+          	<select name="status" >
+          	<option value="">--所有--</option>
+          	<option <if condition='$search.status eq 1'>selected=''</if> value="1">上架</option>
+          	<option <if condition='$search.status eq 0'>selected=''</if> value="0">下架</option>
+          	</select>
+			&nbsp;&nbsp;是否新品 :
+			<select name="news" >
+          	<option value="">--所有--</option>
+          	<option <if condition='$search.status eq 1'>selected=''</if> value="1">是</option>
+          	<option <if condition='$search.status eq 0'>selected=''</if> value="0">否</option>
+          	</select>
+			&nbsp;&nbsp;是否推荐 :
+			<select name="tuijian" >
+          	<option value="">--所有--</option>
+          	<option <if condition='$search.status eq 1'>selected=''</if> value="1">是</option>
+          	<option <if condition='$search.status eq 0'>selected=''</if> value="0">否</option>
+          	</select>
+                    <div class="bk8"></div>
+
+                    价格区间 :
+                    <input type="text" name="price_min" class="input-text" size="5" value="{iMicms:$search.price_min}" />
+                    -
+                    <input type="text" name="price_max" class="input-text" size="5" value="{iMicms:$search.price_max}" />
+					
+					
+
+                    &nbsp;&nbsp;关键字 :
+                    <input name="keyword" type="text" class="input-text" size="25" value="{iMicms:$search.keyword}" />
+                    <input type="submit" name="search" class="btn" value="搜索" />
+					
+                </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <if condition="$sm eq 'image'">
+    <div class="J_tablelist item_imglist clearfix">
+        <volist name="list" id="val">
+        <div class="item fl">
+            <label>
+            <input type="checkbox" class="J_checkitem check" value="{iMicms:$val.id}" />
+            <div class="img clearfix"><img src="{iMicms::attach(get_thumb($val['img'], '_m'), 'item')}"></div>
+            </label>
+            <span class="line_x">{iMicms:$val.title}</span>
+            <ul>
+                <li><a class="J_tooltip btn_blue" title="{iMicms:$cate_list[$val['cate_id']]}">{iMicms::L('cate')}</a></li>
+                <li><a class="J_tooltip btn_blue" title="{iMicms:$val.uname|default=L('item_no_author')}">{iMicms::L('author')}</a></li>
+            </ul>
+        </div>
+        </volist>
+    </div>
+    <else/>
+    <div class="J_tablelist table_list" data-acturi="{iMicms::U('item/ajax_edit')}">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=25><input type="checkbox" id="checkall_t" class="J_checkall"></th>
+                <th><span data-tdtype="order_by" data-field="id">ID</span></th>
+                <th width="40">&nbsp;</th>
+                <th align="left"><span data-tdtype="order_by" data-field="title">商品名称</span></th>
+                <th width="70"><span data-tdtype="order_by" data-field="buy_num">卖出数量</span></th>
+				<th width="70"><span data-tdtype="order_by" data-field="goods_stock">库存</span></th>
+                <th width="60"><span data-tdtype="order_by" data-field="cate_id">分类</span></th>
+               
+                <th width="70"><span data-tdtype="order_by" data-field="price">价格(元)</span></th>
+				
+                <th width="40"><span data-tdtype="order_by" data-field="ordid">{iMicms::L('sort_order')}</span></th>
+                <th width="70"><span data-tdtype="order_by" data-field="status">是否上架</span></th>
+				<th width="70"><span data-tdtype="order_by" data-field="news">是否新品</span></th>
+				<th width="70"><span data-tdtype="order_by" data-field="tuijian">是否推荐</span></th>
+                <th width="120"><span data-tdtype="order_by" data-field="add_time">发布时间</span></th>
+                <th width="80">{iMicms::L('operations_manage')}</th>
+            </tr>
+        </thead>
+    	<tbody>
+            <volist name="list" id="val" >
+            <tr>
+                <td align="center"><input type="checkbox" class="J_checkitem" value="{iMicms:$val.id}"></td>
+                <td align="center">{iMicms:$val.id}</td>
+                <td align="right">
+                    <notempty name="val['img']"><div class="img_border"><img src="{iMicms::attach(get_thumb($val['img'], '_s'), 'item')}" width="32" width="32" class="J_preview" data-bimg="{iMicms::attach($val['img'], 'item')}"></div></notempty>
+                </td>
+                <td align="left"><span data-tdtype="edit" data-field="title" data-id="{iMicms:$val.id}" class="tdedit" style="color:{iMicms:$val.colors};">{iMicms:$val.title}</span></td>
+             <td align="center"><b>{iMicms:$val.buy_num}</b></td>
+			 <td align="center"><b>{iMicms:$val.goods_stock}</b></td>
+                <td align="center"><b>{iMicms:$cate_list[$val['cate_id']]}</b></td>
+               
+                
+                <td align="center" class="red">{iMicms:$val.price}</td> 
+				
+                <td align="center"><span data-tdtype="edit" data-field="ordid" data-id="{iMicms:$val.id}" class="tdedit">{iMicms:$val.ordid}</span></td>
+                <td align="center"><img data-tdtype="toggle" data-id="{iMicms:$val.id}" data-field="status" data-value="{iMicms:$val.status}" src="__STATIC__/images/admin/toggle_<if condition="$val.status eq 0">disabled<else/>enabled</if>.gif" /></td>
+				<td align="center"><img data-tdtype="toggle" data-id="{iMicms:$val.id}" data-field="news" data-value="{iMicms:$val.news}" src="__STATIC__/images/admin/toggle_<if condition="$val.news eq 0">disabled<else/>enabled</if>.gif" /></td>
+				<td align="center"><img data-tdtype="toggle" data-id="{iMicms:$val.id}" data-field="tuijian" data-value="{iMicms:$val.tuijian}" src="__STATIC__/images/admin/toggle_<if condition="$val.tuijian eq 0">disabled<else/>enabled</if>.gif" /></td>
+                <td align="center">{iMicms:$val.add_time|date='Y-m-d H:i:s',###}</td>
+                <td align="center"><a href="{iMicms::u('item/edit', array('id'=>$val['id'], 'menuid'=>$menuid))}">{iMicms::L('edit')}</a> | <a href="javascript:void(0);" class="J_confirmurl" data-uri="{iMicms::u('item/delete', array('id'=>$val['id']))}" data-acttype="ajax" data-msg="{iMicms::sprintf(L('confirm_delete_one'),$val['title'])}">{iMicms::L('delete')}</a></td>
+            </tr>
+            </volist>
+    	</tbody>
+    </table>
+    </div>
+    </if>
+    <div class="btn_wrap_fixed">
+        <label class="select_all mr10"><input type="checkbox" name="checkall" class="J_checkall">{iMicms::L('select_all')}/{iMicms::L('cancel')}</label>
+        <input type="button" class="btn" data-tdtype="batch_action" data-acttype="ajax" data-uri="{iMicms::U('item/delete')}" data-name="id" data-msg="{iMicms::L('confirm_delete')}" value="{iMicms::L('delete')}" />
+        <div id="pages">{iMicms:$page}</div>
+    </div>
+</div>
+<include file="Public:footer"/>
+<link rel="stylesheet" href="{iMicms::RES}/js/calendar/calendar-blue.css"/>
+<script src="{iMicms::RES}/js/calendar/calendar.js"></script>
+<script>
+Calendar.setup({
+	inputField : "J_time_start",
+	ifFormat   : "%Y-%m-%d",
+	showsTime  : false,
+	timeFormat : "24"
+});
+Calendar.setup({
+	inputField : "J_time_end",
+	ifFormat   : "%Y-%m-%d",
+	showsTime  : false,
+	timeFormat : "24"
+});
+$('.J_preview').preview(); //查看大图
+$('.J_cate_select').cate_select({top_option:lang.all}); //分类联动
+$('.J_tooltip[title]').tooltip({offset:[10, 2], effect:'slide'}).dynamic({bottom:{direction:'down', bounce:true}});
+</script>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" /> 	
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	
+    <div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>LBS数据管理</h3>
+                            </div>
+                            <div class="span4">
+                                <div class="form-horizontal">
+                                    <input type="text" id="keyword-input" class="input-small-z" placeholder="请输入关键词" />
+                                    <select name="type" class="input-small" id="select_type">
+                                        <option selected="selected" value="0">选择</option>
+                                        <option value="1">名称</option>
+                                        <option value="2">地点</option>
+                                    </select>
+                                    <button class="btn" id="btn_search">查询</button>
+				    <input type="hidden" name="aid" id ="aid" value="{iMicms:$uid}">
+				 
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-content nozypadding">
+
+                        <div class="row-fluid">
+                            <div class="span12 control-group">
+
+                                <a class="btn" href="{iMicms::U("Lbs/add")}"><i class="icon-plus"></i>新增地理位置数据</a>
+                                <a class="btn" title="批量导入文本" style="display:none;"><i class="icon-upload-alt"></i></a>
+                                <a class="btn" title="批量导出本页文本结果" style="display:none;"><i class="icon-download-alt"></i></a>
+
+                                <div class="btn-group datatabletool">
+
+                                    <a class="btn" title="删除" attr="BatchDel"><i class="icon-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid dataTables_wrapper">
+                            <form method="post" action="" id="listForm">
+                                <table id="listTable" class="table table-hover table-nomargin table-bordered usertable dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th class='with-checkbox'>
+                                                <input type="checkbox" class="check_all"></th>
+                                            <th>名称</th>
+                                            <th>电话</th>
+                                            <th>经度</th>
+                                            <th>纬度</th>
+                                            <th>地点</th>
+                                            <th>时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                     </thead>
+                                     <tbody>
+				     
+				     <volist name="info" id="vo">  
+				     <tr>
+                                            <td class="with-checkbox">
+                                                <input type="checkbox" name="check" value="{iMicms:$vo.id}">
+                                            <td>{iMicms:$vo.title}</td>
+                                            <td>{iMicms:$vo.tel}</td>
+                                            <td>{iMicms:$vo.lng}</td>
+                                            <td>{iMicms:$vo.lat}</td>
+                                            <td>{iMicms:$vo.place}</td>
+                                            <td><php>echo date('Y-m-d',$vo['uptatetime']);</php></td>
+                                            <td>
+                                                <a href="{iMicms::U('Lbs/edit',array('id'=>$vo['id']))}" class="btn" rel="tooltip" title="编辑"><i class="icon-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn" rel="tooltip" title="删除" attr="dellbs_{iMicms:$uid}_{iMicms:$vo.id}"><i class="icon-remove"></i></a>
+                                            </td>
+
+
+                                        </tr>
+					</volist>
+                                           
+                                    
+                                    </tbody>
+
+                                </table>
+                            </form>
+                      		<div class="dataTables_paginate paging_full_numbers"><span>       </span></div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    
+    <script>
+	$(function(){
+		var delLbs = function(event){
+			if(confirm("您确定要删除吗?")) {
+				$.post('index.php?g=User&m=Lbs&a=del', {aid:event.data.aid, tid:event.data.tid},function(data){
+				 
+					if (data == 0)
+					{
+						location.reload();
+					} else {
+						alert(data.error);
+					}
+
+
+				},'json');
+
+			}
+		};
+
+		$("a[attr^='dellbs_']").each(function(){
+			var tmp = $(this).attr('attr').split('_');
+			$(this).bind("click", {aid:tmp[1], tid:tmp[2]}, delLbs);
+		});
+
+
+		$("[attr='BatchDel']").click(function(){
+			var check = $("input:checked");
+			if(check.length<1){
+				alert('请选择删除项');
+				return false;
+			}
+			var id = new Array();
+			check.each(function(i){
+
+				id  += $(this).val()+',';
+			});
+                        
+			$.post('index.php?g=User&m=Lbs&a=delbatch', {ids:id, aid:$('#aid').val()},function(data){
+			
+				if (data ==0)
+				{
+					location.reload();
+				} else {
+					alert(data);
+				}
+
+
+			},'json');
+
+		});
+
+		$("#btn_search").click(function(){
+			var keywords = $.trim($('#keyword-input').val());
+			if (keywords.length <= 0) {
+				alert('请输入搜索关键字.');
+				$('#keyword-input').focus();
+				return false;
+			}
+			window.location.href = 'index.php?g=User&m=Lbs&a=search&type='+$('#select_type').val()+'&keywords=' + keywords;
+
+		});
+
+		$("#keyword-input").keyup(function(e) {
+			if (e.keyCode == 13) {
+				$("#btn_search").click();
+				return false;
+			}
+		});
+
+
+
+	});
+	</script>
+    
+	</body>
+</html>

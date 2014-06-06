@@ -1,0 +1,31 @@
+<style>
+.action {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 1px 1px 3px #666666;
+    width: 359px;
+}
+td{text-align: -webkit-left;}
+</style>
+ 
+	<form action="{iMicms::U('Voiceresponse/upload')}" method="post" enctype="multipart/form-data">  
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+		<tbody>
+		 
+		 			
+		<tr >
+			<td align="right" height="42" width="">导入文件</td>
+			<td>
+				   <input type="file" name="file[]" /> 
+			</td>
+		</tr>
+		 
+		 
+		<tr>
+			<td height="42">&nbsp;</td>
+			<td>
+				<input class="btn" type="submit" name="submit" value="提交">
+			</td>
+		</tr>
+			
+	</tbody></table>
+</form>

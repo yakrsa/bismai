@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+ 
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" /> 
+<!-- Mobile Devices Support @begin -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <!-- Mobile Devices Support @end -->
+ 
+   <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/datepicker.css" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/daterangepicker.css" media="all">
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_jplayer_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_mb_miniPlayer.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/iinside.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_switch.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/zeroclipboard_min1.js?2013-10-21-2"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <!--[if IE 7]>
+            <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="{iMicms::RES}/js/excanvas_min.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+            <script src="{iMicms::RES}/js/watermark.js"></script>
+        <![endif]-->
+    <link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet">
+    <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+   
+    <script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script type="text/javascript" src="{iMicms::STATICS}/kindeditors/config.mp3.js"></script>
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/miniplayer.css" media="all">
+    </head>
+    
+
+
+
+<body>
+    <div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3><i class="icon-cog"></i>微官网设置</h3>
+                           <a class="btn preview pull-right btn-success" href="javascript:;">微官网预览</a>
+								<script type="text/javascript">
+									$("a.preview").click(function () {
+										if ($.browser.msie) {
+											alert("不支持在IE浏览器下预览，建议使用谷歌浏览器或者360极速浏览器或者直接在微信上预览。");
+											return;
+										}
+										var left = ($(window.parent.parent).width() - 450) / 2;
+																				 window.open("{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$home['token']}", "我的微官网", "height=650,width=450,top=0,left=" + left + ",toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
+									});
+								</script>
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <form action="" method="post" class="form-horizontal form-validate" novalidate="novalidate">
+			      <input type="hidden" name="farword" value="{iMicms::U('Home/set',array('token'=>session('token')))}" />
+                                <div class="control-group">
+                                    <label class="control-label" for="webname">官网标题：</label>
+                                    <div class="controls">
+                                        <input type="text" name="webname" id="webname" value="{iMicms:$home.webname}" class="input-xlarge" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="title">触发官网关键词:</label>
+                                    <div class="controls">
+                                        <input type="text" name="title" id="title" value="{iMicms:$home.title}" class="input-xlarge" data-rule-required="true" data-rule-maxlength="60">
+					<span class="help-inline">首页 或者 home —— 当用户输入该关键词时，将会触发此回复。</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">匹配模式：</label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" name="matchtype" value="1" <eq name="info.status" value="1"> checked="checked"</eq> <eq name="info.status" value=""> checked="checked"</eq> >完全匹配（用户输入的和此关键词一样才会触发!）
+                                        </label>
+                                        <label class="radio ">
+                                            <input type="radio" name="matchtype" value="0" <eq name="info.status" value="0"> checked="checked"</eq> >包含匹配 (只要用户输入的文字包含本关键词就触发！)
+                                        </label>
+                                    </div>
+                                </div>
+                               
+				 <div class="control-group">
+									<label class="control-label" for="cover">图文消息封面</label>
+									<div class="controls">
+										 <img class="thumb_img" src="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/static/images/home-300300.jpg</if>" style="max-height:100px;">
+										<input id="thumb" type="text" name="picurl" class="hide" value="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/static/images/home-300300.jpg</if>">
+										<span class="help-inline">
+                                            <button class="btn select_img" type="button">选择封面</button>
+                                        </span>
+									</div>
+								</div>
+                                <div class="control-group">
+                                    <label class="control-label" for="info">图文消息简介</label>
+                                    <div class="controls">
+                                       <textarea id="info" name="info" class="input-xlarge ui-wizard-content ui-helper-reset ui-state-default" style="resize:none; width:274px; height:120px;" data-rule-required="true">{iMicms:$home.info}</textarea>
+                                    </div>
+                                </div>
+								<div class="control-group">
+									<label class="control-label" for="bg_img">官网背景</label>
+									<div class="controls">
+										 <img class="gwbg thumb_img" src="<if condition="$home['show_bg_img'] neq ''">{iMicms:$home.show_bg_img}<else/>/tpl/static/images/default.jpg</if>" style="max-height: 100px;">
+										<input class="input-xlarge" type="text" name="show_bg_img" id="bg_img" value="<if condition="$home['show_bg_img'] neq ''">{iMicms:$home.show_bg_img}<else/>/tpl/static/images/default.jpg</if>" style="display: none;">
+                                        <span class="help-inline">
+                                            <button class="btn select_img" type="button">自定义</button>
+                                            建议大小(宽640高1200)
+                                        </span>
+
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="select_bg">选择已有的官网背景</label>
+									<div class="controls">
+										<select name="bg_img" id="select_bg" class="input-medium">
+											<option value="">选择官网背景图片</option>
+											<option value="/tpl/static/images/home-default1.jpg" >01</option>
+											<option value="/tpl/static/images/home-default2.jpg" >02</option>
+											<option value="/tpl/static/images/home-default3.jpg" >03</option>
+											<option value="/tpl/static/images/home-default4.jpg" >04</option>
+											<option value="/tpl/static/images/home-default5.jpg" >05</option>
+											<option value="/tpl/static/images/home-default6.jpg" >06</option>
+											<option value="/tpl/static/images/home-default7.jpg" >07</option>
+											<option value="/tpl/static/images/home-default8.jpg" >08</option>
+										</select>
+										<span class="help-inline">以预览背景图为标准</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="mp3url">背景音乐</label>
+									<div class="controls">
+										<div class="inline mp3">
+								  <a id="m1" class="audio {skin:'blue'}" href="<if condition="$home['bg_audio'] neq ''">{iMicms:$home.bg_audio}<else/>/tpl/static/images/default.mp3</if>" style="display: none;">mp3背景音乐</a>
+										</div>
+										<input type="hidden" name="bg_audio" id="mp3url" value="{iMicms:$home.bg_audio}"/>
+                                        <span class="help-inline">
+											<button class="btn addmp3" type="button">选择音乐</button>
+                                        </span>
+										<span class="help-inline">(保证浏览网页的加载速度,上传音乐最大为<span class="red">3MB</span>)</span>
+									</div>
+									
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="select_animation">功能选择</label>
+									<div class="controls ">
+										<label class="checkbox inline">
+											<input type="checkbox" name="play_img" value="1" <eq name="home.play_img" value="on"> checked="checked"</eq>>
+											开启背景图片
+										</label>
+										<label class="checkbox inline">
+											<input type="checkbox" name="play_audio" value="1"  <eq name="home.play_audio" value="on"> checked="checked"</eq>>
+											开启背景音乐
+										</label>
+										<span class="help-inline">(只有开启背景音乐或图片,前台页面才会显示或播放)</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="select_animation">开场动画</label>
+									<div class="controls">
+										<select name="animation" id="select_animation" class="input-medium">
+											<option value="0"  <eq name="home.animation" value="0"> selected="selected"</eq> >关闭开场动画</option>
+											<option value="6"  <eq name="home.animation" value="6"> selected="selected"</eq>>宝马动画</option>
+											<option value="4"  <eq name="home.animation" value="4"> selected="selected"</eq>>左右展开</option>
+											<option value="5"  <eq name="home.animation" value="5"> selected="selected"</eq>>上下展开</option>
+ 											<option value="1"   <eq name="home.animation" value="1"> selected="selected"</eq>>倒计时</option>
+ 											<option value="2"    <eq name="home.animation" value="2"> selected="selected"</eq>>倒计时-左右展开</option>
+ 											<option value="3"    <eq name="home.animation" value="3"> selected="selected"</eq>>倒计时-上下展开</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="tj_code">统计代码 </label>
+									<div class="controls">
+										<textarea id="tj_code" name="stat_code" class="input-xxlarge" rows="4">{iMicms:$home.stat_code}</textarea>
+									</div>
+								</div>
+                                 <div class="control-group">
+                                    <label class="control-label" for="sites">微官网地址：</label>
+                                    <div class="controls" style="padding-top:4px;">
+                                        <span class="copy_text">{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$TOKEN}</span>
+                                        
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="id" value="{iMicms:$home.id}">
+                                <div class="form-actions">
+                                    <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</body></html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 在线订餐 </title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="/assets/icons.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/assets/af.ui.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="/assets/appframework.min.js" type="text/javascript"></script>
+    <script src="/assets/appframework.ui.min.js" type="text/javascript"></script>    
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="bIDL6FlyAtA+fLrBVtLdVBo4uvJ6q4tXPxhAJc5edP8=" name="csrf-token" />
+    <!-- uncomment for apps
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
+    -->
+    <!-- include touch on desktop browsers only -->
+    <script> $.ui.showBackbutton=false </script>
+    <script>
+      if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+      var script = document.createElement("script");
+      //script.src = "plugins/af.desktopBrowsers.js";
+      script.src = "/assets/af.desktopBrowsers.js";
+      var tag = $("head").append(script);
+      $.os.android = true; //let's make it run like an android device
+      $.os.desktop = true;
+      }
+    </script>
+    <script type="text/javascript">
+      var webRoot = "./";
+      $.ui.autoLaunch = false; //By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
+      /* This function runs when the body is loaded.*/
+      var init = function () {
+      $.ui.backButtonText = "Back";// We override the back button text to always say "Back"
+      window.setTimeout(function () {
+      $.ui.launch();
+      }, 1500);//We wait 1.5 seconds to call $.ui.launch after DOMContentLoaded fires
+      };
+      document.addEventListener("DOMContentLoaded", init, false);
+      $.ui.useOSThemes=false;
+      $.ui.ready(function () {
+      //This function will get executed when $.ui.launch has completed
+      });
+      /* This code is used for native apps */
+      var onDeviceReady = function () {
+      AppMobi.device.setRotateOrientation("portrait");
+      AppMobi.device.setAutoRotate(false);
+      webRoot = AppMobi.webRoot + "/";
+      //hide splash screen
+      AppMobi.device.hideSplashScreen();
+      };
+      document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+    </script>
+  </head>
+  <body>
+    <div id="afui"> <!-- this is main container div.  This way, you can have only part of your app use UI -->
+      <div id='splashscreen' class='ui-loader'>
+        <img alt="%e8%89%be%e7%b1%b3%e5%be%ae%e7%ae%a1%e5%ae%b6" src="/system/instances/banners/000/000/005/medium/%E5%8D%8A%E5%B0%8F%E6%97%B6%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B321.jpg?1377743761" />
+        <!-- img scr="/images/static/ad/obama.jpg" -->
+        <span class='ui-icon ui-icon-loading spin'></span><h1>用心服务美好生活</h1>
+      </div>
+      <div id='header'>
+<a class='menuButton' id='menubadge' onclick='af.ui.toggleSideMenu()' style='float: left;'></a>
+</div>
+<div id='content'>
+<div class='panel' data-load='loadWestore' id='westore_panel' selected='false' title='商品列表'>
+<ul class='list' id='witem_list'>
+<li>
+<div>
+<div class='ui-icon ui-icon-loading spin' style='float: left; width: 60px; height: 60px;'></div>
+<span>用心服务美好生活，数据载入中</span>
+</div>
+</li>
+<li>
+<a id='using_desktop_view' onclick='usingWebView();'>点击这里使用标准网页版</a>
+</li>
+</ul>
+</div>
+<div class='panel' data-load='loadCheckout' id='checkout_panel' selected='false' title='提交订单'>
+<div>
+<h4>&nbsp;</h4>
+<span id='checkout_worder_list'></span>
+</div>
+<div class='input-group' id='checkout_desk'>
+<form id='checkout_form'>
+<label for='contact'>联系姓名</label>
+<input id='worder_contact' name='contact' placeholder='联系姓名' type='text' value=''>
+<label>联系电话</label>
+<input id='worder_phone' name='phone' placeholder='联系电话' type='text' value=''>
+<label>配送地址</label>
+<input id='worder_address' name='address' placeholder='配送地址' type='text' value=''>
+<label>订单备注</label>
+<textarea id='worder_comment' name='comment' placeholder='订单备注' rows='2' type='text' value=''></textarea>
+<label></label>
+<input id='anzi_pay' type='checkbox'>
+<label>积分支付</label>
+<input id='credit_pay' type='checkbox'>
+<label>微信支付</label>
+<input id='wechat_pay' type='checkbox'>
+</form>
+</div>
+<span id='send_worders_submit'></span>
+</div>
+<div class='panel' data-load='loadCart' id='cart_panel' selected='false' title='当前订单'>
+<div id='cart_worders'>
+<ul class='list'>
+<li>
+<div>
+<div class='ui-icon ui-icon-loading spin' style='float: left; width: 60px; height: 60px;'></div>
+<span>用心服务美好生活，数据载入中</span>
+</div>
+</li>
+<li>
+<a id='using_desktop_view' onclick='usingWebView();'>点击这里使用标准网页版</a>
+</li>
+</ul>
+</div>
+<div id='nd5_worders_div'></div>
+</div>
+<div class='panel' data-load='loadD20Worders' id='worders_panel' selected='false' title='历史订单'>
+<ul class='list'>
+<div id='d20_worders_div'></div>
+<li>
+<a id='using_desktop_view' onclick='usingWebView();'>点击这里使用标准网页版</a>
+</li>
+</ul>
+</div>
+<div class='panel' id='terms' selected='false' title='会员章程'>
+<div class='input-group'>
+<img alt="%e4%bc%9a%e5%91%98%e5%8d%a13" src="/system/instances/wcards/000/000/005/medium/%E4%BC%9A%E5%91%98%E5%8D%A13.png?1379087104" />
+</div>
+<div class='input-group'>
+会员权利及积分使用介绍
+</div>
+<div class='input-group'>
+一、消费积分
+消费积分是小店根据您的每次实际消费结算金额为您进行积分的奖励制度。
+积分的获得按照结帐后的实际消费金额计算，每一元人民币兑换100个单位积分
+在本店，可按如下条件使用积分：
+※ 详细内容请参照特权会员条款。
+二、电子消费券
+电子消费券是小店不定期回馈给会员朋友的一次性使用的消费优惠额。
+每张电子消费券的使用规则由每张券的使用规则所定义。
+三、奖励积分
+奖励积分是小店回馈您的奖励性积分，其获得规则根据不同的有效活动而设定，
+例如推荐朋友、建议采纳等。除特别说明外，其使用方法同消费积分。
+</div>
+</div>
+<div class='panel' id='wonus_histroy' selected='false' title='积分历史'>
+<ul class='list inset'>
+</ul>
+</div>
+<div class='panel' id='worder_contacts' selected='false' title='常用名址'>
+<h4>常用地址</h4>
+<ul class='list inset'>
+</ul>
+<h4>常联系人</h4>
+<ul class='list inset'>
+</ul>
+</div>
+<div class='panel' id='wessage_panel' selected='false' title='客户服务'>
+<ul class='list'>
+<li>
+<a class='icon mail big' href='#terms' id='wessages'>
+最新消息
+<span class='af-badge' id='wonus'>1</span>
+</a>
+</li>
+<li>
+<a class='icon phone big' href='tel:13728705701' id='instance_phone'>
+客服电话
+</a>
+</li>
+<li>
+<a class='icon chat big' href='#wessage_panel' id='instance_chat'>
+在线客服
+</a>
+</li>
+</ul>
+</div>
+<div class='panel' id='wember_registration' selected='false' title='登记会员安享积分'>
+<div id='request_form'>
+<br>
+<form>
+<input id='phone' name='phone' placeholder='11位手机号码' type='text' value=''>
+<a class='button block' id='verify_phone' onclick='verifyPhone(71772)'>获取验证码</a>
+<div id='sms_input'>
+<input id='code' name='code' placeholder='手机验证码' type='text'>
+</div>
+<a class='button block' id='sign_up' onclick='signUp(71772)'>完成会员登记</a>
+</form>
+<div id='disclaimer'>我们和您一样希望能远离垃圾信息，所以我们仅在您的许可及法律要求范围内使用您提供的信息。</div>
+</div>
+<div id='helpdesk' style='display:none;'>若需帮助请致电客服13728705701，我们将竭诚为您服务</div>
+<div id='debug' style='display:none;'>调试信息：</div>
+</div>
+<div class='panel' id='wember_requested' selected='false' title='会员申请状态'>
+<a class='button block' id='take_easy' onclick='takeEasy(71772)'>查询审核进度</a>
+<ul class='list'>
+<div id='wember_logs'>
+</div>
+<li>
+<a id='using_desktop_view' onclick='usingWebView();'>点击这里使用标准网页版(没有会员积分）</a>
+</li>
+</ul>
+</div>
+<div class='panel' id='wember_panel' selected='false' title='会员设置'>
+<ul class='list' id='wember_status_approved'>
+<li>
+<a class='icon star big' href='#wonus_history' id='wonus'>
+我的积分
+<span class='af-badge' id='wonus_badge' style='background-color: blue'>0</span>
+</a>
+</li>
+<li>
+<span class='icon heart big'>优惠代码</span>
+</li>
+<li>
+<a class='icon pencil big' href='#worder_contacts'>常用地址</a>
+</li>
+<li>
+<a class='icon paper big' href='#worders_panel' id='wonus'>
+历史订单
+</a>
+</li>
+</ul>
+</div>
+<div class='panel' data-load='loadInstance' data-uri='/wembers/instances/5' id='instance_panel' selected='true' title='快乐生活，移动新体验'>
+<ul class='list' id='westores_list'>
+<li id='westore_220_bar'>
+<a href='#westore_panel/220'>
+<div style='hegith: 60px;'>
+<span id='westore_220_pic' style='float: left;'><img src='/system/westores/pics/000/000/220/small/%E5%9B%BE%E5%BD%A21.png?1372649342' style='width: 60px; height: auto;'></img></span>
+<span>
+<strong id='westore_220_nick' style='font-size: 16px'>【自助外卖订餐】</strong>
+<span id='westore_220_away' style='color: gray; font-size: 12px'>100.0千米</span>
+<br>
+<span id='westore_220_slogan' style='color: grey; font-size: 12px'>用心服务美好生活</span>
+<br>
+<span id='westore_220_intro' style='color: gray; font-size: 12px'></span>
+</span>
+</div>
+</a>
+</li>
+<li id='westore_567_bar'>
+<a href='#westore_panel/567'>
+<div style='hegith: 60px;'>
+<span id='westore_567_pic' style='float: left;'><img src='/system/westores/pics/000/000/567/small/dingwei.jpg?1375949294' style='width: 60px; height: auto;'></img></span>
+<span>
+<strong id='westore_567_nick' style='font-size: 16px'>【餐厅订位】</strong>
+<span id='westore_567_away' style='color: gray; font-size: 12px'>100.0千米</span>
+<br>
+<span id='westore_567_slogan' style='color: grey; font-size: 12px'>用心服务美好生活</span>
+<br>
+<span id='westore_567_intro' style='color: gray; font-size: 12px'></span>
+</span>
+</div>
+</a>
+</li>
+<li id='westore_314_bar'>
+<a href='#westore_panel/314'>
+<div style='hegith: 60px;'>
+<span id='westore_314_pic' style='float: left;'><img src='/system/westores/pics/000/000/314/small/%E5%9B%BE%E5%BD%A22.png?1372649419' style='width: 60px; height: auto;'></img></span>
+<span>
+<strong id='westore_314_nick' style='font-size: 16px'>【店内自助点餐】</strong>
+<span id='westore_314_away' style='color: gray; font-size: 12px'>100.0千米</span>
+<br>
+<span id='westore_314_slogan' style='color: grey; font-size: 12px'>用心服务美好生活</span>
+<br>
+<span id='westore_314_intro' style='color: gray; font-size: 12px'></span>
+</span>
+</div>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id='navbar'>
+<div class='horzRule'></div>
+<a class='icon basket big pressed' href='#instance_panel' id='westore_main'>
+导购
+</a>
+<a class='icon paper big' href='#cart_panel' id='cart_main'>
+订单
+</a>
+<a class='icon user big' id='wember_main' onclick='loadWember()'>
+我的
+</a>
+<a class='icon chat big' href='#wessage_panel' id='service_main'>
+客服
+<span class='af-badge' id='wember_badge'>1</span>
+</a>
+</div>
+<nav id='side_menu'>
+<div id='instance_side_menu'>
+<ul class='list'>
+<li class='divider'></li>
+<li>商店分类</li>
+<li><a href="#instance_panel">所有商店</a></li>
+<li><a href="#instance_panel">附近商店</a></li>
+</ul>
+</div>
+</nav>
+<nav_westore id='wetore_side_menu'>
+<span id='westore_side_menu'>
+<ul class='list'>
+<li class='divider'></li>
+<li><a href="#instance_panel">切换商店</a></li>
+<li class='divider'></li>
+<li>商品分类</li>
+<li><a href="#witems">所有目录</a></li>
+<li><a href="#witems">本店特色</a></li>
+<li><a href="#witems">最受欢迎</a></li>
+<li><a href="#witems">限量促销</a></li>
+</ul>
+</span>
+</nav_westore>
+<script id='sys_mtag' type='text/json'>￥</script>
+<script id='sys_wember_id' type='text/json'>71772</script>
+<script id='sys_wechat_openid' type='text/json'>o0fh6jptM9d5-ytrUQtvhK8ihoas</script>
+<script id='sys_wember_status' type='text/json'>none</script>
+<script>
+  var mtag = $('#sys_mtag').html();
+  var wember_id = $('#sys_wember_id').html();
+  var wember_status = $('#sys_wember_status').html();
+  var wechat_openid = $('#sys_wechat_openid').html();
+  var restored_panel = "#cart_panel";
+  var cart_worders;
+  var nd5_worders;
+  var d20_worders;
+  var my_cart;
+  $('#worder_info').click(function(){
+    $.ui.loadContent("#worder",false,false,'flip');
+  });
+  String.prototype.trunc = String.prototype.trunc ||
+    function(n){
+        return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
+    };
+  function loadCart(){
+    loadNewWorders();
+    loadCurrentWorders();
+  }
+  
+  function loadCurrentWorders(){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=get_worders&scope=not_delivered_5'
+    $.getJSON(uri,function(rets) {
+      if ( rets.error_no != 0 ) { afAlert ('error_no: ' + rets.error_no + ' ' + rets.message); return null; }
+      nd5_worders = rets.worders
+      $('#nd5_worders_div').empty();
+      var worders_html = '<h4>&nbsp;</h4><ul class="list">'
+      var nwl = nd5_worders.length
+      for(i=0;i<nwl;i++){ worders_html += nd5_worders[i].to_html; }
+      worders_html += '</ul>'
+      $('#nd5_worders_div').html(worders_html);
+    },'JSON');
+  }
+  
+  function loadD20Worders(){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=get_worders&scope=delivered_20'
+    $.getJSON(uri,function(rets) {
+      if ( rets.error_no != 0 ) { afAlert ('error_no: ' + rets.error_no + ' ' + rets.message); return null; }
+      d20_worders = rets.worders
+      $('#d20_worders_div').empty();
+      var worders_html = '<h4>&nbsp;</h4><ul class="list">'
+      var nwl = d20_worders.length
+      for(i=0;i<nwl;i++){ worders_html += d20_worders[i].to_html; }
+      worders_html += '</ul>'
+      $('#d20_worders_div').html(worders_html);
+    },'JSON');
+  }
+  
+  function loadWember(){
+    if ( wember_status == 'none' ) {
+      $.ui.loadContent('#wember_registration',false,false,'flip');
+      return true
+    }
+    if ( wember_status == 'approved' ) {
+      $.ui.loadContent('#wember_panel',false,false,'flip');
+      return true
+    }
+    $.ui.loadContent('#wember_requested',false,false,'flip');
+    return true
+  }
+  
+  function setMyCart(){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=get_cart'
+    $.getJSON(uri,function(rets) {
+      if ( rets.error_no != 0 ) { afAlert ('error_no: ' + rets.error_no + ' ' + rets.message); return false; }
+      my_cart = rets;
+      cart_worders = my_cart.worders;
+    },'JSON');
+  }
+  
+  function loadNewWorders(){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=get_cart'
+    $.getJSON(uri,function(rets) {
+      if ( rets.error_no != 0 ) { afAlert ('error_no: ' + rets.error_no + ' ' + rets.message); return null; }
+      cart_worders = rets.worders
+      showCartHTML(rets);
+    },'JSON');
+  }
+  function showCartHTML(cart){
+    if ( cart.worders.length > 0 ) { cart_html =  genCartHTML(cart); } else { cart_html =  nullCartHTML(); }
+    $('#cart_worders').html(cart_html);
+  }
+  function nullCartHTML(){
+    var info = '<h4>&nbsp;</h4>'
+    info += '<ul class="list">'
+    info += '  <li><h4>没有未完成的订单</h4></li>'
+    info += '  <li><a href="#instance_panel">开始订购</a></li>'
+    info += '  <li><a href="#worders_panel">历史订单</a></li>'
+    info += '</ul>'
+    return info
+  }
+  function genWordersHTML(worders){
+    var info = '<h3>&nbsp;</h3>'
+    for(i=0;i<worders.length;i++) {
+      worder = worders[i]
+      info += worder.to_html;
+    }
+    info += '<h3>&nbsp;</h3>'
+    return info
+  }
+  function genCartHTML(cart){
+    var info = '<h3>&nbsp;</h3>'
+    cart_worders = cart.worders
+    for(i=0;i<cart_worders.length;i++) {
+      worder = cart_worders[i]
+      info += worder.to_html;
+    }
+    info += '<h3>&nbsp;</h3>'
+    info += '<a href="#checkout_panel/' + 'all' + '" class="button block">全部提交</a>'
+    return info
+  }
+  function loadWestore(div) {
+    var url=document.location.hash;
+    var params=url.split("/");
+    var westore_id = params[1];
+    var westore_url = '/wembers/westores/' + westore_id;
+    getWestoreData(westore_url);
+  } 
+  function loadInstance(div){
+    getLocation();
+    uri = $('#instance_panel').data('uri');
+    getInstanceData(uri);
+  };
+  function getInstanceData(url){
+    $('#side_menu').html(instanceSideMenu());
+  }
+  function instanceSideMenu(){
+    return "<div id='instance_side_menu'> <ul class='list'> <li class='divider'></li> <li>商店分类</li> <li><a href='#instance_panel' class=''>所有商店</a></li> </ul> </div>"
+  }
+  function westoreSideMenu( watalogs ){
+    info =  "<span id='westore_side_menu'> <ul class='list'> <li class='divider'></li> <li><a href='#instance_panel' class=''>切换商店</a></li> <li class='divider'></li> <li>商品分类</li> <li><a href='#witems'>所有目录</a></li> <li><a href='#witems'>本店特色</a></li> <li><a href='#witems'>最受欢迎</a></li> <li><a href='#witems'>限量促销</a></li> "
+    for (i=0; i<watalogs.length; i++) {
+      info += "<li><a href='#witems'>" + watalogs[i].name + "</a></li>"
+    }
+    info += "</ul> </span>";
+    return info;
+  }
+  function reloadWestore(wid){
+    url = '/wembers/westores/' + wid
+    getWestoreData(url);
+    $.ui.loadContent('#westore_panel/'+wid,false,false,'flip');
+  }
+  function getWestoreData(url){
+    $.getJSON(url,function(rets) {
+      //rets = $.parseJSON(re);
+      $('#witem_list').empty();
+      witems = rets.witems;
+      $('#witem_list').empty();
+      var sflag = '<span style="color: #fff; background: #e4393c; font-size: 10px;">荐</span>'
+      var cflag = '<span style="color: #fff; background: #005580; font-size: 10px;">选</span>'
+      var qflag_a = '<span style="color: #fff; background: gray; font-size: 10px;">仅余'
+      for ( var i=0; i < witems.length; i++ ) {
+        var witem = witems[i]
+        item_info  = '  <div>'
+        item_info += '    <strong id="witem_' + witem.id + '_name">' + witem.name + '</strong>'
+        if (witem.in_sales == true) item_info += sflag
+        if (witem.quantity < 20 ) { 
+          item_info += qflag_a;
+          item_info += witem.quantity;
+          item_info += '份</span>';
+        }
+        item_info += '    <strong style="float: right;">'+mtag + witem.price + '</strong>'
+        item_info += '  </div>'
+        item_info += '<li>'
+        item_info += '  <div id="witem_' + witem.id + '_info" style="height: 60px;">'
+        item_info += '    <span id="witem_' + witem.id + '_pic" style="float: left;">';
+        item_info += '      <img src="' + witem.pic_small + '" style="width: 60px; height: auto;"></img>';
+        item_info += '    </span>'
+        item_info += '    <span id="witem_' + witem.id + '_buttons" class="button-grouped" style="float: right; font-size:12px;">'
+        if ( witem.count > 0 ) {
+          item_info += '      <a onclick="delWitem(' + witem.id + ')" class="button">减少</a>'
+          item_info += '      <a id="witem_' + witem.id + '_count" class="button">' + witem.count + '</a>'
+          item_info += '      <a onclick="addWitem(' +witem.id+ ')" class="button">添加</a>'
+        }else{
+          item_info += '      <a onclick="addWitem(' +witem.id+ ')" class="button">添加</a>'
+        }
+        item_info += '    </span>'
+        item_info += '    <span  id="witem_' + witem.id + '_details" style="color: gray; font-size: 12px;">'
+        if (witem.options.length > 0 ) {
+          for(j=0;j<witem.options.length;j++){
+            item_info += '&nbsp;'
+            item_info += witem.options[j].name
+          }
+          item_info +=      '<br>'
+        }
+        item_info +=         witem.slogan
+        item_info += '       <br>'
+        item_info +=        witem.intro
+        item_info += '    </span>'
+        item_info += '  </div>'
+        item_info += '</li>'
+        $('#witem_list').append(item_info);
+        div_name = '#witem_' + witem.id + '_bar'
+        if ( witem.count > 0 ) {
+          $.ui.updateBadge(div_name, witem.count, 'tr');
+        } else {
+          $.ui.removeBadge(div_name)
+        }
+      }
+      watalogs = rets.watalogs;
+      $('#side_menu').html(westoreSideMenu(watalogs));
+    },'JSON');
+  }
+  function getWemberId(){
+    return $('#wember_id').text()
+  }
+  function changeWoitemQty(woitem_id, qty){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=change_woitem&qty='+qty+'&woitem='+woitem_id
+    $.getJSON(uri,function(rets) {
+      if ( rets.error_no != 0 ) { afAlert ('error_no: ' + rets.error_no + ' ' + rets.message); return null; }
+      my_cart = rets.cart
+      cart_worders = rets.worders
+      qty = rets.woitem_qty
+      total = rets.woitem_total
+      if(qty<=0){
+        $('#wsoi_'+woitem_id+'_bar').remove();
+      }else{
+        $('#wsoi_'+woitem_id+'_total').html(mtag+total);
+        $('#wsoi_'+woitem_id+'_qty').html(qty);
+      }
+      if ( rets.worder.total < 0.01 ) {
+        $('#worder_'+rets.worder.id+'_in_cart').remove();
+      }else{
+        $('#worder_'+rets.worder.id+'_total').html("合计："+mtag+rets.worder.total);
+      }
+      updateCartTotalBadge(my_cart);
+      updateWestoreTotalBadge(my_cart);
+    },'JSON');
+  }
+  
+  function hurryWorder(worder_id){
+    uri = '/wembers/worders/' + worder_id + '/op?cmd=hurry_up'
+    $.getJSON(uri,function(rets) {
+      afAlert( rets.message + '(' + rets.error_no + ')' );
+      if ( rets.error_no == 0 ) { $('#hurry_worder_'+worder_id+'_btn').remove(); }
+    }, 'JSON');
+  }
+  function cancelWorder(worder_id){
+    afAlert( '目前自动值班模式。无法取消订单，若有特别需求请致电客服' );
+  }
+  function receivedWorder(worder_id){
+    uri = '/wembers/worders/' + worder_id + '/op?cmd=received'
+    $.getJSON(uri,function(rets) {
+      afAlert( rets.message + '(' + rets.error_no + ')' );
+      if ( rets.error_no == 0 ) { $('#worder_'+worder_id+'_in_cart').remove(); }
+    }, 'JSON');
+  }
+  function delWorder(worder_id){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=del_worder&worder='+worder_id
+    $.getJSON(uri,function(rets) {
+      if ( rets.error_no != 0 ) { afAlert ('error_no: ' + rets.error_no + ' ' + rets.message); return null; }
+      cart = rets.cart
+      cart_worders = rets.worders
+      $('#worder_'+rets.worder.id+'_in_cart').hide();
+      updateCartTotalBadge(cart);
+      updateWestoreTotalBadge(cart);
+    },'JSON');
+  }
+  function addWitem(witem_id){
+    orderWitem(witem_id,1)
+  }
+  function delWitem(witem_id){
+    orderWitem(witem_id,-1)
+  }
+  function orderWitem(witem_id,qty){
+    uri = '/wembers/wembers/' + wember_id + '/op?cmd=order_witem&witem='+witem_id+'&qty='+qty
+    $.getJSON(uri,function(rets) {
+      //rets = $.parseJSON(re);
+      if ( rets.error_no != 0 ) { afAlert('error_no: ' + rets.error_no + ' message: ' + rets.message); return false; }
+      my_cart = rets.cart;
+      witem = rets.witem;
+      if ( witem.count <= 1 ) {
+        updateWitemOrderButtons(witem_id, witem.count);
+      } else {
+        updateWitemCount(witem.id,witem.count);
+      }
+      updateCartTotalBadge(my_cart);
+      updateWestoreTotalBadge(my_cart);
+    },'JSON');
+  }
+  function updateWitemOrderButtons(witem_id,witem_count){
+      div_name = '#witem_' + witem_id + '_buttons'
+      btn_html  = '      <a onclick="delWitem(' + witem_id + ')" class="button">减少</a>'
+      btn_html += '      <a id="witem_' + witem_id + '_count" class="button">' + witem_count + '</a>'
+      btn_html += '      <a onclick="addWitem(' +witem_id+ ')" class="button">添加</a>'
+      if ( witem_count == 0 ) btn_html = '<a onclick="addWitem(' +witem_id+ ')" class="button">添加</a>'
+      $(div_name).html(btn_html)
+  }
+  function updateWitemCount(witem_id, count){
+      div_name = '#witem_' + witem.id + '_count'
+      $(div_name).html(count)
+  }
+  function updateCartTotalBadge(cart){
+      $.ui.removeBadge('#cart_total_badge') //clear default any way
+      if (cart.empty==true){
+        $.ui.removeBadge('#cart_main');
+      }else{
+        $.ui.updateBadge('#cart_main', ''+mtag+cart.total, 'tr');
+      }
+  }
+  function updateWestoreTotalBadge(cart){
+      for(i=0;i<cart.westores.length;i++){
+        $.ui.removeBadge('#westore_' + cart.westores[i].id + '_total_badge') //clear default any way
+        div_name = '#westore_' + cart.westores[i].id + '_bar';
+        $.ui.removeBadge(div_name)
+      }
+      if (cart.empty) return;
+      for(i=0;i<cart.worders.length;i++){
+        div_name = '#westore_' + cart.worders[i].westore_id + '_bar'
+        $.ui.updateBadge(div_name, mtag + cart.worders[i].total, 'tr');
+      }
+  }
+  var clat = 0.0
+  var clon = 0.0
+  function getLocation(){
+    if ( clat != 0 ) return false
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  }
+  function showPosition(position){
+    clat = position.coords.latitude
+    clon = position.coords.longitude
+  }
+  function distance(lat1, lon1, lat2, lon2, unit) {
+      var radlat1 = Math.PI * lat1/180
+      var radlat2 = Math.PI * lat2/180
+      var radlon1 = Math.PI * lon1/180
+      var radlon2 = Math.PI * lon2/180
+      var theta = lon1-lon2
+      var radtheta = Math.PI * theta/180
+      var dist = Math.sin(radlat1) * Math.sin(radlat2) 
+      dist += Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      dist = Math.acos(dist)
+      dist = dist * 180/Math.PI
+      dist = dist * 60 * 1.1515
+      if (unit=="K") { dist = dist * 1.609344 }
+      if (unit=="N") { dist = dist * 0.8684 }
+      return dist
+  }
+  
+  function sendWorder(worder_id){
+    if ( wember_status != 'approved' ) {
+      $.ui.loadContent("#wember_registration",false,false,'flip');
+      return false;
+    }
+    var contact = $('#worder_contact').val();
+    var address = $('#worder_address').val();
+    var phone = $('#worder_phone').val();
+    var comment = $('#worder_comment').val();
+    var phone_regex = /^0?1[358]\d{9}$/;
+    $('#worder_phone').css('color','black');
+    $('#worder_contact').css('color','black');
+    $('#worder_address').css('color','black');
+    if ( contact.length < 2 || address.length < 5 || phone_regex.test(phone) == false ) {
+      if ( phone_regex.test(phone) == false ) { $('#worder_phone').css('color','red'); };
+      if ( contact.length < 2 ) { $('#worder_contact').css('color','red'); };
+      if ( address.length < 5 ) { $('#worder_address').css('color','red'); };
+      return
+    }
+    var uri = '/wembers/wembers/' + wember_id + '/op?cmd=send_worder&worder=' + worder_id + '&phone=' + phone + '&contact=' + contact + '&address=' + address + '&comment=' + comment
+    $.getJSON(uri,function(rets) {
+      //rets = $.parseJSON(re);
+      for(i=0;i<rets.worders.length;i++){ 
+        afAlert(rets.worders[i].westore_name + ':' + rets.worders[i].message + ' (订单号:' + rets.worders[i].code + ')' );
+      }
+      current_cart = rets.cart
+      cart_worders = current_cart.worders
+      updateCartTotalBadge(rets.cart);
+      updateWestoreTotalBadge(rets.cart);
+      if (rets.error_no==0){
+        window.location.href='#instance_panel'
+      }else{
+        window.location.href='#cart_panel'
+      }
+    });
+  }
+  
+  function loadCheckout(div){
+    var url=document.location.hash
+    var params=url.split("/");
+    var worder_id = params[1];
+    var summary_html = ''
+    var worder_list = ''
+    prepareCheckoutWorderList();
+    if ( worder_id == 'all' ) {
+      for (i=0;i<cart_worders.length;i++){ $('#checkout_worder_'+cart_worders[i].id+'_info').show(); }
+      submit_htm = "<div class=\"button block\" onclick=\"sendWorder('all');\">全部下单</div>"
+    }else{
+      $('#checkout_worder_'+worder_id+'_info').show();
+      submit_htm = "<div class=\"button block\" onclick=\"sendWorder('" + worder_id + "');\">立即下单</div>"
+    }
+    $('#send_worders_submit').html(submit_htm);
+  }
+  
+  function prepareCheckoutWorderList() {
+    $('#checkout_worder_list').empty();
+    var worders_html = '<ul class="list">'
+    for(i=0;i<cart_worders.length;i++){
+      var worder = cart_worders[i]
+      worders_html += '<li id="checkout_worder_' + worder.id + '_info">'
+      worders_html += '<a href="#cart_panel">' + worder.html + '</a>'
+      worders_html += '</li>'
+    }
+    worders_html += '</ul>'
+    $('#checkout_worder_list').html(worders_html);
+    for(i=0;i<cart_worders.length;i++){ $('#checkout_worder_'+cart_worders[i].id+'_info').hide() };
+  }
+  
+  function usingWebView() {
+    window.location.href = "/stores?wechat_user_openid="+wechat_openid
+  }
+  $('#using_desktop_view').click(function(){
+    window.location.href = "/stores?wechat_user_openid="+wechat_openid
+  });
+  
+  function verifyPhone(wember_id) {
+    var phone = $('#phone').val();	
+    var sms_code_url = "/wembers/wembers/" + wember_id + "/sms_code?phone=" + phone
+    var phone_number_regex = /^0?1[358]\d{9}$/;
+    if (phone_number_regex.test(phone)) {
+      $.get(sms_code_url,function(re) {
+        rets = $.parseJSON(re)
+        $("#sms_input").html('<input id="code" name="code" type="text" placeholder="'+rets.message+'">');
+        if (rets.error_no >= 0 ) {
+          received_code = rets.verify_code
+          $("#helpdesk").hide();
+          $("#disclaimer").show();
+          $("#debug").append(typeof(rets.error_no))
+          //$("#debug").show()
+        }else{
+          $("#helpdesk").show();
+          $("#disclaimer").hide();
+          $("#debug").append(typeof(rets.error_no))
+          //$("#debug").show()
+        }
+      },'JSON');
+    }else{
+      $("#sms_input").html('<input id="code" name="code" type="text" placeholder="请用11位有效号码">');
+      $("#helpdesk").show();
+      $("#disclaimer").hide();
+    }
+  }
+  
+  function takeEasy(wember_id){
+    var wember_status_url = "/wembers/wembers/71772/wember_status"
+    $.get(wember_status_url,function(re) {
+      rets = $.parseJSON(re)
+      if(rets.status == 'approved' ){
+        wember_status = 'approved';
+        $("#wember_logs").empty();
+        for ( var i=0; i < rets.logs.length; i++ ) {
+          $("#wember_logs").append('<li>'+rets.logs[i]+'</li>');
+        }
+        afAlert("您的会员登记已经完成，感谢您的信任和支持！");
+        var wember_url = "/wembers/wembers/71772"
+        $.ui.loadContent(restored_panel,false,false,'flip');
+      }else{
+        stats = rets.stats
+        $("#wember_logs").empty();
+        for ( var i=0; i < rets.logs.length; i++ ) {
+          $("#wember_logs").append('<li>'+rets.logs[i]+'</li>');
+        }
+        info = '最新状态：'+stats + "\n我们最迟在一个工作日内完成资料录入及核对。若需帮助请联系客服，我们必竭诚为您服务。";
+        afAlert(info)
+        return false;
+      }
+    },'JSON');
+  }
+  
+  function signUp(wember_id) {
+    var code = $('#code').val()
+    if ( received_code == '' ) {
+      $("#sms_input").html('<input id="code" name="code" type="text" placeholder="请先获取验证码">');
+      $("#disclaimer").hide();
+      $("#helpdesk").show();
+      return;
+    }
+    if ( code == received_code ) {
+      var phone = $('#phone').val();	
+      var sign_up_url = "/wembers/wembers/" + wember_id + "/sign_up?phone=" + phone
+      $.get(sign_up_url,function(re) {
+        rets = $.parseJSON(re)
+        if(rets.error_no < 0 ){
+          $("#sms_input").html('<input id="code" name="code" type="text" placeholder="'+rets.message+'">');
+          $("#helpdesk").show();
+          $("#disclaimer").hide();
+          return false;
+        }else{
+          //sign_up is good
+          $("#request_form").hide();
+          $("#sms_input").hide();
+          $("#disclaimer").hide();
+          $("#wember_logs").empty();
+          for ( var i=0; i < rets.logs.length; i++ ) {
+            $("#wember_logs").append('<li>'+rets.logs[i]+'</li>');
+          }
+          $("#wember_logs").append('<li>'+rets.footer+'</li>');
+          $.ui.loadContent('#wember_requested',false,false,'flip')
+          $('#take_easy').hide();
+          if ( rets.wember_status == 'approved' ) {
+            wember_status = 'approved'
+            afAlert("您的会员登记已经完成，感谢您的信任和支持！");
+            $.ui.loadContent(restored_panel,false,false,'flip');
+          }else{
+            $('#take_easy').show();
+          }
+        }
+      },'JSON');
+    } else {
+      $("#disclaimer").hide();
+      $("#sms_input").html('<input id="code" name="code" type="text" placeholder="验证码有误">');
+      $("#helpdesk").show();
+    }
+  }
+  
+  function reviewWorder(worder_id) {
+    afAlert('感谢您的评价，您的支持和期待是我们不懈努力的动力！（还在内测，即将开放）')
+  }
+  
+  function afAlert(info) {
+    $.ui.popup({title:'温馨提示', message: info, cancelText: '知道了', cancelOnly: true})
+  }
+</script>
+
+    </div>
+  </body>
+</html>

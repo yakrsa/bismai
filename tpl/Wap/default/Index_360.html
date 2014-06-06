@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/css/view.css?2013-10-21-2" media="all" />
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/css/back.css?2013-10-21-2" media="all" />
+<script type="text/javascript" src="/tpl/Wap/default/common/js/share.js?2013-10-21-2"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/common.js?2013-10-21-2"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/3dfull.js?2013-10-21-2"></script>
+<title>楼盘全景图</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        <meta name="Keywords" content="微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+        <meta name="Description" content="国内最大的微信公众智能服务平台，八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+         <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+		<script src="/test/o8ViLjqXXdEbCHRGmquQb7L19-T0"></script>
+		 <script src="/test/sharedata.js"></script>
+    </head>
+     <body onselectstart="return true;" ondragstart="return false;">
+        <style type="text/css">
+	.view_list{ overflow-y:scroll;bottom:72px;overflow:scroll;-webkit-overflow-scrolling: touch; }
+	::-webkit-scrollbar {display:none;}
+	.view_list,.view_change,.view_house{z-index:301;}
+	.view_select,.view_house{opacity:0;}
+	.view_full{overflow:hidden;}
+	#popFail{z-index:25;}
+	.pop_mask{z-index:24;}
+</style>
+
+<div class="view_full" id="full3dDiv" style="width: 1242px; height: 565px;">
+	<img src="/test/bg_3.jpg" width="1242" height="2086" style="margin: -761px 0px;">
+</div>
+<div class="view_select" style="min-height: 150px; overflow-y: scroll; max-height: 472px; margin-bottom: 20px; margin-top: 0px; padding-top: 99px; height: 351px; opacity: 1.02;">
+	<div class="view_list" id="placeLink" style="opacity: 1.02;">  
+	<h3>室内<em></em></h3>  <ul style="margin-left: 54px;">               
+	<li><a href="javascript:void(0);" onclick="FULL3D.go3D(&#39;/pfid/22&#39;);return false;">室内</a></li>            
+	</ul>  
+	<h3>花园<em></em></h3>  <ul style="margin-left: 54px;">                
+	<li><a href="javascript:void(0);" onclick="FULL3D.go3D(&#39;/pfid/21&#39;);return false;">花园</a></li>            
+	</ul>  <h3>外景<em></em></h3>  <ul style="margin-left: 54px;">                
+	<li><a href="javascript:void(0);" onclick="FULL3D.go3D(&#39;/pfid/20&#39;);return false;">外景</a></li>            
+	</ul>  </div>
+</div>
+<div class="view_house" style="opacity: 1.02;">
+<a id="currPlace" href="javascript:void(0);">石梅湾九里一期-A1半山观海独栋</a>
+</div>
+<a href="javascript:void(0);" id="closeBtn" class="btn_show_close"><span>关闭</span></a>
+<div id="popFail" style="display: none;" jqmoldstyle="block">
+	<div class="bk"></div>
+	<div class="cont">
+		<img src="./tpl/Wap/default/common/images/load.gif" alt="loading...">
+		<span id="percentNum">正在加载...</span>
+	</div>
+</div>
+<div class="pop_tips" id="popTips" style="display:none;">
+	<div class="oval"></div>
+	<div class="pop_show">
+		<h4 id="tipsTitle">温馨提示</h4>
+		<div class="pop_info" id="tipsMsg">
+			<p></p>
+		</div>
+		<div class="pop_btns">
+			<a href="javascript:void(0);" id="tipsOK">确定</a>
+			<a href="javascript:void(0);" style="display:none;" id="tipsCancel">取消</a>
+		</div>
+	</div>
+</div>
+<div class="pop_mask" id="popMask" style="display: none;"></div>
+<script type="text/template" id="template">
+	<%
+	for(var i=0,il=data.length;i<il;i++){
+    var list = data[i].list;
+    if(list.length<1){ continue; }
+    if(il>1){ %><h3><%=data[i].name%><em></em></h3><%}%>
+	<ul><%
+		for(var j=0,jl=list.length;j<jl;j++)
+        {
+			var name = data[i].name + '-' + list[j].name,
+                url = list[j].url.replace(/[\'\"\\]+/gi,'');
+        %>
+      <% if(f3d){ %>
+        <li><a href="javascript:void(0);" onclick="FULL3D.go3D('<%=url%>');return false;"><%=list[j].name%></a></li>
+      <% }else{ %>
+			<li><a href="javascript:void(0);" onclick="FULL3D.showNotSupport();return false;"><%=list[j].name%></a></li>
+		<% } %>
+		<%} %>
+	</ul>
+	<% } /*end of data.length */%></script>
+
+<script>
+	var PID = 2356;
+	var WECHATID = 'o8ViLjqXXdEbCHRGmquQb7L19-T0';
+</script>
+
+<a href="javascript:history.go(-1);" class="back360" style="">&nbsp;</a>        		
+<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	
+</body></html>

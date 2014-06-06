@@ -1,0 +1,102 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>{iMicms:$tpl.wxname}</title>
+        <base href="." />
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+		<link href="{iMicms::RES}/css/134/iscroll.css" rel="stylesheet" type="text/css" />
+        <link href="{iMicms::RES}/css/134/cate34_0.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="{iMicms::RES}/css/flash/css/plugmenu.css">
+		<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/reset.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css" media="all" />
+		<style>
+#cate14 .mainmenu li:last-of-type {
+margin-bottom: 0;
+}
+#cate14 .mainmenu {
+margin: 50px auto;/*可修改菜单距离顶部的高度*/
+bottom: auto;
+top:0;
+} 
+
+
+</style>
+<script src="{iMicms::RES}/css/134/iscroll.js" type="text/javascript"></script>
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+myScroll = new iScroll('wrapper', {
+snap: true,
+momentum: false,
+hScrollbar: false,
+onScrollEnd: function () {
+document.querySelector('#indicator > li.active').className = '';
+document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+}
+ });
+ 
+ 
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+    </head>
+<style>
+.btn_music {
+display: inline-block;
+width: 35px;
+height: 35px;
+background: url('{iMicms::RES}/images/play.png') no-repeat center center;
+background-size: 100% auto;
+position: fixed;
+z-index: 100;
+left: 15px;
+top: 20px;
+}
+.btn_music.on {
+    background-image: url("{iMicms::RES}/images/stop.png");
+}
+</style>
+<script src="{iMicms::RES}/js/audio.js" type="text/javascript"></script>
+ 
+ <if condition="$home['play_audio'] eq 'on'">
+		<if condition="$home['bg_audio'] neq ''">
+		 <script>
+			window.addEventListener("DOMContentLoaded", function(){
+				playbox.init("playbox");
+			}, false);
+		</script>
+		<span id="playbox" class="btn_music" onclick="playbox.init(this).play();"><audio src="{iMicms:$home.bg_audio}" loop id="audio"></audio></span>
+</if></if>
+<script>
+playbox.init(document.getElementById('playbox')).play();
+</script>
+    <body id="cate14">
+	  <div class="mainbg">
+       <style type="text/css">
+		body {
+                background: url({iMicms:$home[show_bg_img]}) no-repeat scroll 0 bottom;
+                background-size: 100% 100%;
+	            }
+        </style>
+        </div>
+
+<div class="mainmenu">
+<ul><div id="insert1" ></div>
+   
+
+ <volist name="info" id="vo">
+                    <li>
+                        <div class="menubtn"><include file="Public:Mainaction"/>{iMicms:$vo.name}</a>
+                        </div>
+
+                    </li>
+                </volist>
+        <div id="insert2" ></div>
+        
+        <div class="clr"></div>
+</ul>
+</div>
+<include file="Public:footer"/></body></html>

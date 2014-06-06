@@ -1,0 +1,69 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>{iMicms:$modulename}配置 <small>配置支付宝接口</small></h3>
+                            </div>
+
+                        </div>
+
+				<div id="{iMicms::MODULE_NAME}" class="content {iMicms::MODULE_NAME}">
+					
+					<div class="cLine hide">
+						<div class="pageNavigator left"></div>
+						<div class="clr"></div>
+					</div>
+					<div class="msgWrap bgfc">
+						<form class="form" method="post" action="" enctype="multipart/form-data">
+							<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tbody>
+									<tr>
+										<th>支付开关：</th>
+										<td><select name="open"><option value="0" <if condition="$config.open eq 0">selected</if>>关闭支付</option><option value="1" <if condition="$config.open eq 1"> selected</if>>开启支付</option></select> 开启支付后，商城等b2c功能将有支付功能</td>
+									</tr>
+									<tr>
+										<th>接口类型：</th>
+										<td><select name="type"><option value="0" <if condition="$config.type eq 0">selected="selected"</if>>快捷支付（无线）</option><option value="1" <if condition="$config.type eq 1">selected="selected"</if>>手机网站支付</option></select>&nbsp;&nbsp;<a href="https://b.alipay.com/order/productIndex.htm" target="_blank"><img src="{iMicms::RES}/images/help.png" class="vm helpimg" title="帮助"></a></td>
+									</tr>
+									<tr>
+										<th width="120">用户ID：</th>
+										<td><input type="text" name="name" value="{iMicms:$config.name}" class="px" style="width:550px;"></td>
+									</tr>
+									<tr>
+										<th width="120">ParentID：</th>
+										<td><input type="text" name="pid" value="{iMicms:$config.pid}" class="px" style="width:550px;"></td>
+									</tr>
+									<tr>
+										<th>私钥：</th>
+										<td><input type="text" name="key" value="{iMicms:$config.key}" class="px" style="width:550px;"></td>
+									</tr>
+									<tr>
+										<th>&nbsp;</th>
+										<td>
+											<input type="hidden" name="token" value="{iMicms:$token}" />
+											<button type="submit" name="button" class="btn btn-primary">保存</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+					<div class="cLine hide">
+						<div class="pageNavigator right">
+							<div class="pages"></div>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer"/>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" 
+media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/style_2_common.css" />
+<link href="{iMicms::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+</head>
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>邮件平台配置 <small> 用作用户下单后商家接收订单信息</small></h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+				<div id="{iMicms::MODULE_NAME}" class="content {iMicms::MODULE_NAME}">
+					<div class="cLine hide">
+						<div class="pageNavigator left"></div>
+						<div class="clr"></div>
+					</div>
+					<div class="msgWrap">
+					<form action="{iMicms::U('User/Index/smtp_plat')}" method="post" class="form-horizontal form-validate" enctype="multipart/form-data">
+						
+							<table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tbody>
+									<tr>
+										<th><span class="red">*</span>邮件提醒：</th>
+										<td><select name="smtp_plat_status" tabindex="1"><option value="1" <if condition="$info.smtp_plat_status eq 1">selected</if>>开启</option><option value="0" <if condition="$info.smtp_plat_status eq 0"> selected</if>>关闭</option></select>&nbsp;&nbsp;开启后，将收到订单提醒</td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>邮件服务器地址:</th>
+										<td><input type="text" required="" class="px" name="smtp_plat_host" value="{iMicms:$info.smtp_plat_host}" tabindex="2" size="25">&nbsp;&nbsp;邮件服务器主机地址例：<span class="red">smtp.iMicms.com</span></td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>邮件服务器端口:</th>
+										<td><input type="text" required="" class="px" name="smtp_plat_port" value="{iMicms:$info.smtp_plat_port}" tabindex="3" size="25">&nbsp;&nbsp;邮件服务器端口，一般都是<span class="red">25</span></td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>邮件发送帐号：</th>
+										<td><input type="text" required="" class="px" name="smtp_plat_send" value="{iMicms:$info.smtp_plat_send}" tabindex="4" size="25">&nbsp;&nbsp;发送邮件所需的认证帐号</td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>邮件发送密码：</th>
+										<td><input type="password" required="" class="px" name="smtp_plat_pass" value="{iMicms:$info.smtp_plat_pass}" tabindex="4" size="25">&nbsp;&nbsp;发送邮件所需的认证帐号</td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>邮件回复地址：</th>
+										<td><input type="text" required="" class="px" name="smtp_plat_reply" value="{iMicms:$info.smtp_plat_reply}" tabindex="5" size="25">&nbsp;&nbsp;商家用于接收邮件的邮箱地址</td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>是否加密连接(SSL)：</th>
+										<td><input type="radio" value="0" <if condition="$info.smtp_plat_ssl eq 0">checked="checked"</if> name="smtp_plat_ssl"/>&nbsp;关闭&nbsp;<input type="radio" value="1" <if condition="$info.smtp_plat_ssl eq 1">checked="checked"</if> name="smtp_plat_ssl"/>&nbsp;开启<span class="red">&nbsp;&nbsp;此功能要求您的php必须支持OpenSSL模块, 如果您要使用此功能，请联系您的空间商确认支持此模块。</span></td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>下单提醒：</th>
+										<td><input type="radio" value="0" <if condition="$info.smtp_plat_order_feed eq 0">checked="checked"</if> name="smtp_plat_order_feed"/>&nbsp;关闭&nbsp;<input type="radio" value="1" <if condition="$info.smtp_plat_order_feed eq 1">checked="checked"</if> name="smtp_plat_order_feed"/>&nbsp;开启<span class="red">&nbsp;&nbsp;开启后，下单后将收到订单提醒，邮件提醒开启的情况下有效。</span></td>
+									</tr>
+									<tr>
+										<th><span class="red">*</span>付款提醒：</th>
+										<td><input type="radio" value="0" <if condition="$info.smtp_plat_pay_feed eq 0">checked="checked"</if> name="smtp_plat_pay_feed"/>&nbsp;关闭&nbsp;<input type="radio" value="1" <if condition="$info.smtp_plat_pay_feed eq 1">checked="checked"</if> name="smtp_plat_pay_feed"/>&nbsp;开启<span class="red">&nbsp;&nbsp;开启后，付款后将收到订单提醒，短信提醒开启的情况下有效。</span></td>
+									</tr>
+									<tr>
+										<td><button type="submit" class="btn btn-primary" id="saveSetting" tabindex="9">保存</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<input type="hidden" required="" name="wxname" value="{iMicms:$info.wxname}" tabindex="1" size="25">
+							<input type="hidden" required="" name="wxid" value="{iMicms:$info.wxid}" size="25">
+							<input type="hidden" required="" name="weixin" value="{iMicms:$info.weixin}" size="25">
+							<input type="hidden" required="" name="headerpic" value="{iMicms:$info.headerpic}" size="60">
+							<input type="hidden" required="" name="province" value="{iMicms:$info.province}" size="20">
+							<input type="hidden" required="" name="city" value="{iMicms:$info.city}" class="px" size="20">
+							<input type="hidden" required="" name="qq" value="{iMicms:$info.qq}" size="25">
+							<input type="hidden" required="" name="wxfans" value="{iMicms:$info.wxfans}" size="25">
+							<input type="hidden" required="" name="type" value="{iMicms:$info.typeid}" size="25">
+						</form>
+					</div>
+					<div class="cLine hide">
+						<div class="pageNavigator right"></div>
+						<div class="clr"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer"/>	

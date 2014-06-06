@@ -1,0 +1,28 @@
+<volist name="plugmenu" id="uo">                            
+			    
+                               <if condition="$uo['ltype'] eq 'map'"> <li><a href="http://api.map.baidu.com/marker?location={iMicms:$uo.lat},{iMicms:$uo.lng}&title={iMicms:$tpl['wxname']}&name={iMicms:$tpl['wxname']}&content={iMicms:$uo.place}&output=html&src=weiba|weiweb"><span>{iMicms:$uo.keyword}</span></a></li></if>
+			       <if condition="$uo['ltype'] eq 'tel'"> <li><a href="tel:{iMicms:$uo.tel}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+                               <if condition="$uo['ltype'] eq 'link'"><li> <a href="<?php echo str_replace('{wechat_id}',$wecha_id,$uo[url]); ?>"><span>{iMicms:$uo.keyword}</span></a></li></if>
+                               <if condition="$uo['ltype'] eq  'business'"> 
+			        <if condition="$uo['business_type'] eq 'official'"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Index/index',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+			        <if condition="$uo['business_type'] eq 'vipcard'"><li><a href="{iMicms::C('site_url')}{iMicms::U('Userinfo/index',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+				<if condition="$uo['business_type'] eq 'photo'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Photo/index',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+				<if condition="$uo['business_type'] eq 'ding'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Product/dining',array('token'=>$gtoken,'dining'=>1,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+				<if condition="$uo['business_type'] eq 'shop'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Product/cats',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+				<if condition="$uo['business_type'] eq 'groupon'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Groupon/grouponIndex',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+				<if condition="$uo['business_type'] eq 'Selfform'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Selfform/index',array('token'=>$gtoken,'id'=>$vo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+	                        <if condition="$uo['business_type'] eq 'Hotel'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Host/index',array('token'=>$gtoken,'hid'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+	                        <if condition="$uo['business_type'] eq 'house'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Index/house',array('token'=>$gtoken,'hid'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+	                        <if condition="$uo['business_type'] eq 'Panoramic'"> <li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Panoramic/item',array('token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+	 
+				</if> 
+<if condition="$uo['ltype'] eq  'activity'"> 
+  <if condition="$uo['activity_type'] eq 1"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Lottery/index',array('type'=>$uo['activity_type'],'token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+  <if condition="$uo['activity_type'] eq 2"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Guajiang/index',array('type'=>$uo['activity_type'],'token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+  <if condition="$uo['activity_type'] eq 3"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Coupon/index',array('type'=>$uo['activity_type'],'token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+  <if condition="$uo['activity_type'] eq 4"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Vote/index',array('type'=>$uo['activity_type'],'token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+  <if condition="$uo['activity_type'] eq 5"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Wcard/index',array('type'=>$uo['activity_type'],'token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+  <if condition="$uo['activity_type'] eq 6"><li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Goldegg/index',array('type'=>$uo['activity_type'],'token'=>$gtoken,'id'=>$uo['activity_value'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"><span>{iMicms:$uo.keyword}</span></a></li></if>
+</if> 
+                           
+</volist> 

@@ -1,0 +1,218 @@
+<include file="Public:head"/> 
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>调研设置</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/formCheck/formcheck.js"> </script>
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#content1', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+});
+KindEditor.ready(function(K) {
+editor = K.create('#content2', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+});
+</script>
+<script>
+	KindEditor.ready(function(K){
+		var editor = K.editor({
+			allowFileManager:true
+		});
+		K('#upload').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic').val(url);
+						}else{
+							K('#pic').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#upload1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					fileUrl : K('#pic1').val(),
+					clickFn : function(url, title) {
+						if(url.indexOf("http") > -1){
+							K('#pic1').val(url);
+						}else{
+							K('#pic1').val("{iMicms::C('site_url')}"+url);
+						}
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+});
+</script>
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+
+<if condition="$isUpdate eq 1">
+
+<input type="hidden" name="id" value="{imicms:$set.id}" />
+
+</if>
+
+    <div class="msgWrap bgfc"> 
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+      <tbody> 
+
+       
+
+	   <tr> 
+
+        <th><span class="red">*</span>关键词：</th>
+
+        <td><input type="text" name="keyword" id="keyword" value="{imicms:$set.keyword}" class="px" style="width:400px;" /></td> 
+
+       </tr>
+
+	   <tr> 
+
+        <th ><span class="red">*</span>调研标题：</th> 
+
+        <td><input  type="text" id="name" name="title" value="{imicms:$set.title}" class="px require" style="width:400px;" /></td> 
+
+       </tr> 
+
+  
+
+
+
+		       <tr> 
+
+             <th><span class="red"></span>顶部图片：</th>
+
+        <td>
+		<span class="help-inline">
+               <input type="text" name="pic" value="{imicms:$set.pic}" class="input-xlarge"  id="pic" readonly="readonly" /><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+</td> 
+
+       </tr>
+
+		<TR>
+
+			<th><span class="red">*</span>调研时间：</th>
+
+			<td><input type="input" class="px" id="statdate" value="<if condition="$set['stime'] neq ''">{imicms:$set.stime}<else/><?php 
+
+			echo date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d"), date("Y")));?></if>" onClick="WdatePicker()" name="stime" />                
+
+			到
+
+			<input type="input" class="px" id="enddate" value="<if condition="$set['etime'] neq ''">{imicms:$set.etime}<else/><?php 
+
+			echo date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")+3, date("Y")));?></if>" name="etime" onClick="WdatePicker()"  /> 
+
+			</td>
+
+		</TR>
+
+	   
+
+        <TR>
+
+			<TH valign="top"><label for="info">开始说明：</label></TH>
+
+            <TD><textarea name="sinfo" id="content1"  rows="5" style="width:490px;height:360px">{imicms:$set.sinfo}</textarea></TD>
+
+        </TR> 
+
+		<TR>
+
+			<TH valign="top"><label for="info">结束说明：</label></TH>
+
+            <TD><textarea name="einfo" id="content2"  rows="5" style="width:490px;height:360px">{imicms:$set.einfo}</textarea></TD>
+
+        </TR>  
+
+		
+
+       <tr>         
+
+       <th>&nbsp;</th>
+
+       <td>
+
+		<!--input type="hidden" name="time" value="{imicms:$set.time}" /-->
+
+       <button type="submit" class="btn btn-primary">保存</button> &nbsp; <a href="{imicms::U('Diaoyan/add',array('token'=>$token))}" class="btn">取消</a></td> 
+
+       </tr> 
+
+	   
+
+      </tbody> 
+
+     </table> 
+
+     </div>
+
+    
+
+   </form> 
+
+  </div> 
+
+<script language="javascript">
+
+$(function(){
+
+	$("#form").valid([
+
+	{ name:"name",simple:"名称",require:true},
+
+	{ name:"keyword",simple:"关键词",require:true}
+
+		
+
+	],true,true);
+
+
+
+})
+
+</script>
+
+  <include file="Public:footer" />

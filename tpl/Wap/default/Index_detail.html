@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/weimob-ui-1-1.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/peak-1.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<title>{iMicms:$home['webname']}</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+       <meta name="keywords" content="{iMicms::C('keyword')}" />
+        <meta name="description" content="{iMicms::C('content')}" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <style>
+            img{width:100%!important;}
+        </style>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css?v=2013-08-17" media="all" />
+<div class="weimob-page" style="display:block;">
+			<div class="top_bar">
+			<nav>
+				<ul class="top_menu">
+					<li onclick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
+					 <li onclick='location.href="{iMicms::C('site_url')}{iMicms::U('Wap/Index/index',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"'><span class="icon-home"></span></li>
+	      <volist name="plugmenu" id="vo">
+	         <if condition="$vo['ltype'] eq 'tel'">
+		<li><a href="tel:{iMicms:$vo.tel}"><span class="icon-phone"></span></a></li></if>
+		</volist>
+		<li onclick="$('#menu_font').toggleClass('hidden');">
+                    <span class="icon-list-ul"></span>
+                    <ul id="menu_font" class="menu_font hidden" onclick="$('#menu_font').toggleClass('hidden');">
+                       <include file="Public:Topaction"/>
+		    </ul>
+                </li>
+            </ul>
+        </nav>
+		</div>
+	    <div class="weimob-content">
+        <h3>{iMicms:$res.title}</h3>
+        <div class="pub_time">{iMicms:$res.createtime|date="y-m-d",###}</div>
+                    <div><img src="{iMicms:$res.pic}" style="width:100%;"/></div>
+                <article><div class="para" style="margin-bottom:14px;text-indent:30px;font-family:arial, 宋体, sans-serif;font-size:14px;line-height:24px;white-space:normal;background-color:#FFFFFF;">
+{iMicms:$res.info|htmlspecialchars_decode}
+<br /></article>
+        <section>
+            <div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="display:none;">
+                <img src="{iMicms::RES}/img/guide.png?=2013-08-17">
+            </div>
+            <div class="text" id="content">
+                <div id="mess_share">
+                    <div id="share_1">
+                        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
+                            <img src="{iMicms::RES}/img/icon_msg.png?=2013-08-17">&nbsp;发送给朋友
+                        </button>
+                    </div>
+                    <div id="share_2">
+                        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
+                            <img src="{iMicms::RES}/img/icon_timeline.png?=2013-08-17">&nbsp;分享到朋友圈
+                        </button>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </section>
+            </div>
+</div>        			<footer>
+				<div class="weimob-copyright">
+					<a href="/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&wecha_id={iMicms:$wecha_id}&iMicms=mp.weixin.qq.com">{iMicms:$copyright}</a>
+				</div>
+									<span class="weimob-support" style="display:none;">{iMicms::C('site_name')} 技术支持QQ8441010</span>
+							</footer>
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">{iMicms:$home.stat_code|htmlspecialchars_decode}
+					</div>
+		    </body>
+</html>

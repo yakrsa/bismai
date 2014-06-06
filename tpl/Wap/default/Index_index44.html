@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/144/css/snower.css?2013-12-09-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/144/css/common.css?2013-12-09-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/144/css/reset.css?2013-12-09-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/144/css/font-awesome.css?2013-12-09-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/144/css/home-49.css?2013-12-09-1" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/css/144/js/maivl.js?2013-12-09-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/css/144/js/jQuery.js?2013-12-09-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/css/144/js/zepto.js?2013-12-09-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/css/144/js/swipe.js?2013-12-09-1"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/reset.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css" media="all" />
+<title>{iMicms:$tpl.wxname}</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+       
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <style type="text/css">
+.body{
+	max-width:640px;
+	margin:auto;
+	min-height:100%;
+	background-color:#f4f4f4;
+	position:relative;
+	background: url({iMicms:$home[show_bg_img]}) no-repeat scroll 0 bottom;
+    background-size: 100% 100%;
+}
+</style>
+<style>
+.btn_music {
+display: inline-block;
+width: 35px;
+height: 35px;
+background: url('{iMicms::RES}/images/play.png') no-repeat center center;
+background-size: 100% auto;
+position: fixed;
+z-index: 100;
+right: 15px;
+top: 20px;
+}
+.btn_music.on {
+    background-image: url("{iMicms::RES}/images/stop.png");
+}
+</style>
+<script src="{iMicms::RES}/js/audio.js" type="text/javascript"></script>
+ 
+ <if condition="$home['play_audio'] eq 'on'">
+		<if condition="$home['bg_audio'] neq ''">
+		 <script>
+			window.addEventListener("DOMContentLoaded", function(){
+				playbox.init("playbox");
+			}, false);
+		</script>
+		<span id="playbox" class="btn_music" onclick="playbox.init(this).play();"><audio src="{iMicms:$home.bg_audio}" loop id="audio"></audio></span>
+</if></if>
+<script>
+playbox.init(document.getElementById('playbox')).play();
+</script>
+<div class="body">
+	<section>
+    <header>
+        <div class="snower">
+            <script type="text/javascript"></script>
+            <script type="text/javascript" src="{iMicms::RES}/css/144/js/snower.js"></script>
+        </div>
+    </header>  
+		<div class="logo">
+			<img src="#" style="height:50px;" />
+		</div>
+		<ul class="list_font">
+		<volist name="info" id="vo">
+						<li>
+									<include file="Public:Mainaction"/>
+									<div><span class="icon-smile1"><img src="{iMicms:$vo.img}" style="height:100%;width:100%"></span></div>
+					<div>
+						<p>{iMicms:$vo.name}</p>
+					</div>
+				</a>
+			</li></volist>
+						
+					</ul>
+	</section>
+	
+</div>
+<!--
+导航菜单
+   后台设置的快捷菜单
+-->
+
+<!--
+分享前控制
+-->
+	<include file="Public:footer"/>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<include file="Public:head"/>
+
+<div class="content" style="width:98%; background:none; margin-left:25px; border:none; margin-bottom:30px; margin-top:30px;" >
+  <div class="cLineB">
+    <div  class="quick-actions_homepage">
+    <ul class="quick-actions">
+      <li class="bg_lb"> <a href="{imicms::U('Lottery/index',array('token'=>$token))}"> <i class="icon-gift"></i> 大转盘 </a> </li>
+      <li class="bg_dy"> <a href="{imicms::U('Coupon/index',array('token'=>$token))}"> <i class="icon-money"></i> 优惠券</a> </li>
+      <li class="bg_lg"> <a href="{imicms::U('Guajiang/index',array('token'=>$token))}"> <i class="icon-cogs"></i> 刮刮卡</a> </li>
+      <li class="bg_ly"> <a href="{imicms::U('Zadan/index',array('token'=>$token))}"> <i class="icon-trophy"></i> 砸金蛋 </a> </li>
+      <li class="bg_lo"> <a href="{imicms::U('Wcard/index',array('token'=>$token))}"> <i class="icon-heart"></i> 微喜帖 </a> </li>
+      <li class="bg_ls"> <a href="{imicms::U('Diaoyan/index',array('token'=>$token))}"> <i class="icon-bullhorn"></i> 微调研</a> </li>
+      <li class="bg_lr"> <a href="{imicms::U('Vote/index',array('token'=>$token))}"> <i class="icon-bar-chart"></i> 微投票</a> </li>
+      <li class="bg_db"> <a href="javascript:history.go(-1);"> <i class="icon-share-alt"></i> 返回</a> </li>
+    </ul>
+  </div>
+          <h4>编辑图文自定义内容</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div>
+         
+          <form method="post"   action="{imicms::U('Liuyan/runEdit')}"  enctype="multipart/form-data" >
+          <div class="msgWrap form">
+            <TABLE class="userinfoArea" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              
+              <TBODY>
+			  <input type="hidden" name="uid" value="{imicms:$uid}" />
+			  <input type="hidden" name="uptatetime" value="{imicms:$uptatetime}" />
+			  <input type="hidden" name="token" value="{imicms:$token}" />
+               <TR>
+                  <TH><span class="red">*</span>
+                  <label for="title">用户名：</label></TH>
+                  <TD class="px">{imicms:$info.title} </TD>
+                </TR>
+                <TR>
+                  <TH valign="top"><label for="text">留言内容：</label></TH>
+                  <TD><textarea  class="px" id="Hfcontent"     name="text" style="width:580px;  height:100px">{imicms:$info.text}</textarea><br /></TD>
+                </TR>
+				<input type="hidden" name="id" value="{imicms:$info.id}" />
+                <TR>
+                  <TH valign="top"><label for="info">回复内容：</label></TH>
+                  <TD><textarea name="re" id="re" class="px"  rows="5" style="width:590px;height:360px">{imicms:$info.re}</textarea></TD>
+                </TR>
+                <TR>
+                  <TH></TH>
+                  <TD><input type="submit" value="保存" name="sbmt" class="btnGreen left">　<a href="{imicms::U('liuyan/index')}"  class="btnGray vm">返回</a></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            
+          </div>
+          </form>
+          
+        </div>     
+ 
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

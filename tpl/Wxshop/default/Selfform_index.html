@@ -1,0 +1,78 @@
+<include file="Public:head"/>
+<div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3>
+                                    <i class="icon-table"></i>自定义表单配置 </h3>
+								
+                            </div>
+                        </div>
+				<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/cymain.css" />
+				<div class="content">
+					<div class="cLineB">
+						<h3 class="left">自定义表单 ({iMicms:$page}) </h3>
+						<div class="searchbar right">
+							<form method="post" action="">
+								<input type="text" id="msgSearchInput" class="txt left" placeholder="输入关键词搜索" name="searchkey" value="">
+								<input type="hidden" name="ac" value="hotels-list">
+								<input type="hidden" name="id" value="9878">
+								<input type="hidden" name="wxid" value="{iMicms:$token}">
+								<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btn" title="搜索">
+							</form>
+						</div>
+						<div class="clr"></div>
+					</div>
+					<div class="cLine">
+						<div class="pageNavigator left">
+							<a href="{iMicms::U('Selfform/add',array('token'=>$token))}" title="添加" class="btn"><i class="icon-plus"></i>添加</a>
+						</div>
+						<div class="clr"></div>
+					</div>
+					<div class="msgWrap">
+						<form method="post" action="" id="info">
+							<input name="delall" type="hidden" value="">
+							<input name="wxid" type="hidden" value="">
+							<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<thead>
+									<tr>
+										<th class="select">选择</th>
+										<th width="160">名称</th>
+										<th width="160">关键词</th>
+										<th width="130">创建时间</th>
+										<th width="130">外链代码</th>
+										<th width="200" class="norightborder">操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr></tr>
+									<volist name="list" id="item"> 
+									<tr>
+										<td><input type="checkbox" name="del_id[{iMicms:$i}]" value="285" class="checkitem"></td>
+										<td>{iMicms:$item.name}</td>
+										<td>{iMicms:$item.keyword}</td>
+										<td>{iMicms:$item.time|date="Y-m-d H:i:s",###}</td>
+										<td>{iMicms:$activityname} {iMicms:$item.id}</td>
+										<td class="norightborder"><a href="{iMicms::U('Selfform/infos',array('id'=>$item['id'],'token'=>$token))}">提交信息管理</a>&nbsp;&nbsp;<a href="{iMicms::U('User/Selfform/inputs',array('id'=>$item['id'],'token'=>$token))}">输入项管理</a>&nbsp;&nbsp;<a href="{iMicms::U('Selfform/set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{iMicms::U('Selfform/del',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+									</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+					</div>
+					<div class="cLine">
+						<div class="pageNavigator right">
+							<div class="pages">{iMicms:$page}</div>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="clr"></div>
+<include file="Public:footer"/>

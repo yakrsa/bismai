@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{iMicms::C('site_url')}/tpl/User/default/common/car/reset.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{iMicms::C('site_url')}/tpl/User/default/common/car/home-40.css" media="all" />
+
+<title>{iMicms:$car['title']}</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        <meta name="Keywords" content="微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销、艾米微管家" />
+        <meta name="Description" content="国内最大的微信公众智能服务平台，八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，艾米微管家-企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <style type="text/css">
+body{
+background:url({iMicms::C('site_url')}/tpl/User/default/common/car/v42_bg.jpg);
+}
+</style>
+<div class="body">
+<!--
+	幻灯片管理
+	-->
+	<!--<?php echo ($car['head_url']); ?>-->
+	<div style="-webkit-transform:translate3d(0,0,0);">
+		<div id="banner_box" class="box_swipe">
+		<ul>
+		<li>
+		<a onclick="return false;">
+		<img src="{iMicms:$car['head_url']}"  style="width:100%;" />
+		</a>
+		</li>
+		</ul>
+
+		</div>
+	</div>
+		<script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:3000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+		});
+	</script>
+<br/><section>
+<nav>
+
+<div>
+<ul class="ofh ul_list">
+<li><a href="{imicms::U('Car/brands',array('token'=>$token,'wecha_id'=>$wecha_id,'imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$car['head_url_1']});">
+<label>经销车型</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/salers',array('token'=>$token,'wecha_id'=>$wecha_id,'imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$car['head_url_2']});">
+<label>销售顾问</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/owner',array('token'=>$token,'wecha_id'=>$wecha_id,'imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$car['head_url_4']});">
+<label>车主关怀</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/showcar',array('token'=>$token,'wecha_id'=>$wecha_id,'imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$car['head_url_6']});">
+<label>车型欣赏</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/CarReserveBook',array('token'=>$token,'wecha_id'=>$wecha_id,'addtype'=>'drive','imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$res['headpic']});">
+<label>预约试驾</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/CarReserveBook',array('token'=>$token,'wecha_id'=>$wecha_id,'addtype'=>'maintain','imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$reser['headpic']});">
+<label>预约保养</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/aboutus',array('token'=>$token,'wecha_id'=>$wecha_id,'imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms::C('site_url')}/tpl/User/default/common/car/lanbo.jpg);">
+<label>关于我们</label>
+</a>
+</li>
+<li><a href="{imicms::U('Car/tool',array('token'=>$token,'wecha_id'=>$wecha_id,'imicms'=>'mp.weixin.qq.com'))}" 
+style="background-image:url({iMicms:$car['head_url_5']});">
+<label>实用工具</label>
+</a>
+</li>
+<ol style="background-image:url({iMicms:$car['logo']});"></ol>
+</ul>
+</div>
+</section>
+</div>
+<!--
+导航菜单
+   后台设置的快捷菜单
+-->
+
+<!--
+分享前控制
+-->
+
+<div class="weimob-copyright">
+					<p align="center">
+{iMicms::C('site_name')} 技术支持
+</p></div>
+</span>
+</html>
+

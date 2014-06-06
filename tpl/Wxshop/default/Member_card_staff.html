@@ -1,0 +1,59 @@
+<include file="Public:head"/>  
+<div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>职员管理</h3>
+                            </div>
+<div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+             
+          <div class="cLine">
+			<div class="pageNavigator left">
+			<a href="{imicms::U('Member_card/staffSet',array('token'=>$token,'id'=>$thisCard['id']))}" title="" class="btn"><i class="icon-plus"></i>添加</a>　
+			</div>
+			<div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="index.php?ac=importtxt&amp;id=9878&amp;wxid=gh_423dwjkewad" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                <tr>
+                <th width="200">所属店铺</th>
+					<th width="90">姓名</th>
+					<th width="100">电话</th>
+					<th width="130">添加时间</th>
+					<th class="edit norightborder">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="staffs" id="staff">           
+                <tr>
+					  <td>{imicms:$staff.companyName}</td>
+					 <td>{imicms:$staff.name}</td>
+					  <td>{imicms:$staff.tel}</td>
+					  <td>{imicms:$staff.time|date='Y-m-d',###}</td>
+					  <td class="norightborder">
+						<a href="{imicms::U('Member_card/staffSet',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">编辑</a> <a href="{imicms::U('Member_card/staffDelete',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">删除</a>
+					  </td>
+                </tr>
+				</volist>
+              </tbody>
+            </table>
+           </form> 
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages"></div>
+             </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+<include file="Public:footer"/>   

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/weimob-ui-1-1.css?2013-11-12-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/common.css?2013-11-12-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/car_reset.css?2013-11-12-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/list-8.css?2013-11-12-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/menu-2.css?2013-11-12-2" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-11-12-2"></script>
+<title>新闻动态</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />    
+<!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css?v=2013112013" media="all" />
+
+<div class="body">
+			<footer class="nav_footer">
+		<ul class="box">
+			<li><a href="javascript:history.go(-1);">返回</a></li>
+			<li><a href="javascript:history.go(1);">前进</a></li>
+			<li><a href="{iMicms::C('site_url')}{iMicms::U('Wap/Index/index',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}">首页</a></li>
+			<li><a href="javascript:location.reload();">刷新</a></li>
+		</ul>
+	</footer>
+
+<!--
+分享前控制
+-->
+	<script>
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			window.shareData = {
+				"imgUrl": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=content&id={iMicms:$res.id}&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"timeLineLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=content&id={iMicms:$res.id}&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"sendFriendLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=content&id={iMicms:$res.id}&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"weiboLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=content&id={iMicms:$res.id}&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"tTitle": "新闻动态",
+				"tContent": "新闻动态",
+				"fTitle": "新闻动态",
+				"fContent": "新闻动态",
+				"wContent": "新闻动态"
+			};
+
+			// 发送给好友
+			WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+				WeixinJSBridge.invoke('sendAppMessage', {
+					"img_url": window.shareData.imgUrl,
+					"img_width": "640",
+					"img_height": "640",
+					"link": window.shareData.sendFriendLink,
+					"desc": window.shareData.fContent,
+					"title": window.shareData.fTitle
+				}, function (res) {
+					_report('send_msg', res.err_msg);
+				})
+			});
+
+			// 分享到朋友圈
+			WeixinJSBridge.on('menu:share:timeline', function (argv) {
+				WeixinJSBridge.invoke('shareTimeline', {
+					"img_url": window.shareData.imgUrl,
+					"img_width": "640",
+					"img_height": "640",
+					"link": window.shareData.timeLineLink,
+					"desc": window.shareData.tContent,
+					"title": window.shareData.tTitle
+				}, function (res) {
+					_report('timeline', res.err_msg);
+				});
+			});
+
+			// 分享到微博
+			WeixinJSBridge.on('menu:share:weibo', function (argv) {
+				WeixinJSBridge.invoke('shareWeibo', {
+					"content": window.shareData.wContent,
+					"url": window.shareData.weiboLink,
+				}, function (res) {
+					_report('weibo', res.err_msg);
+				});
+			});
+		}, false)
+	</script>
+	 <volist name="res" id="so" key="b">  
+			 <if condition="$b eq 1">   
+		 <header>
+			    <div class="head_news">
+			     <if condition="$so['url']">
+          <a  href="{iMicms:$so.url}">
+              <else />
+           <a  href="{iMicms::U('Index/content',array('id'=>$so['id'],'token'=>$so['token'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}">
+        </if>
+				 	<ul>
+						<li><img src="{iMicms:$so.pic}" style="width:100%; max-height:400px;" /></li>
+					</ul>
+					<ol>{iMicms:$so.title}</ol>
+				</a>
+			</div>
+		</header>
+		</if>
+		</volist>
+			<section>
+		            <ul class="list_ul list_ul_news">
+			     <volist name="res" id="so" key="b">  
+			 <if condition="$b gt 1">     
+			      <li>
+	    <if condition="$so['url']">
+          <a class="tbox" href="{iMicms:$so.url}">
+              <else />
+           <a class="tbox" href="{iMicms::U('Index/content',array('id'=>$so['id'],'token'=>$so['token'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}">
+        </if>
+         <div>
+	 <img src="{iMicms:$so.pic}" style="width:60px!important; height:60px;"/>
+							</div>
+							<div>
+								<p>{iMicms:$so.title}</p>
+								<p>{iMicms:$so.createtime|date='Y-m-d',###}</p>
+							</div>
+						</a>
+	 </li>
+	 </if>
+                        
+	 </volist> 
+                            </ul>
+    				</section>
+</div>        		<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

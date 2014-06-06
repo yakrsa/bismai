@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />  
+<!-- Mobile Devices Support @begin -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+ 
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap_button.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/resource.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/resource.js"></script>
+<script src="http://api.map.baidu.com/api?key=24ffad3855e675265336a4cfb46d32b4&v=1.1&services=true" type="text/javascript" type="text/javascript"></script>
+
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <!--[if IE 7]>
+            <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="{iMicms::RES}/js/excanvas_min.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+            <script src="{iMicms::RES}/js/watermark.js"></script>
+        <![endif]-->
+    </head>
+ 
+<body>
+    <div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3><i class="icon-cog"></i>新增导航快捷菜单</h3>
+                            </div>
+                        </div>
+                        <form action="{iMicms::U('Plugmenu/insert')}" method="post" class="form-horizontal form-validate">
+			<input type="hidden" name="farword" value="{iMicms::U('Plugmenu/index',array('token'=>session('token')))}" />
+                        	<input type="hidden" name="token" id="token" value="{iMicms:$token}">
+                        	 
+                            <div class="box-content">
+
+                                <div class="control-group">
+                                    <label for="name" class="control-label">快捷名称：</label>
+                                    <div class="controls">
+                                        <input type="text" name="keyword" id="keyword" value="" class="input-medium" data-rule-required="true">
+                                    </div>
+                                </div> 
+                                <div class="control-group">
+                                    <label for="order" class="control-label">显示顺序：</label>
+                                    <div class="controls">
+                                        <input type="text" name="oid" class="input-mini" data-rule-required="true" value="0" data-rule-number="true">
+                                    </div>
+                                </div>
+                           
+                                <div class="control-group">
+                                    <label for="display" class="control-label">是否显示：</label>
+                                    <div class="controls">
+                                        <label class="radio inline">
+                                            <input type="radio" value="1" name="display" />是</label>
+					<label class="radio inline">
+					    <input type="radio" value="0" checked="checked" name="display" />否</label>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label for="weixin" class="control-label">图标：</label>
+                                    <div class="controls">
+                                        <div class="i-cont tile-themed">
+                                        	                                            <i class="icon-bullhorn" id="icon_i"></i>
+                                            <input type="hidden" id="icon" name="icon" value="icon-bullhorn" />
+                                            <a class="sel-icon" href="javascript:;">换一个</a>
+											<div class="icons-cont">
+												<div class="tab-content">
+													<ul class="nav nav-tabs">
+														<li class="active"><a href="#ico_hot" data-toggle="tab">热门</a></li>
+														<li class=""><a href="#ico_all" data-toggle="tab">全部</a></li>
+													</ul>
+													<div class="tab-pane fade active in" id="ico_hot">
+													</div>
+													<div class="tab-pane fade" id="ico_all">
+													</div>
+												</div>
+											</div>
+                                        </div>
+                                        <span class="help-inline">该图标用于二级页面右上角的缩略菜单和部分模板的首页主菜单
+                                        </span>
+
+                                    </div>
+                               
+                                </div>
+
+                                <div id="res_block">
+                                    <div class="control-group">
+                                        <label class="control-label">回复类型:：</label>
+                                        <div class="controls">
+                                            <select id="ltype" class="input-medium" name="ltype">
+                                                <option value="link" selected="selected">链接</option>
+                                                <option value="tel" >电话</option>
+                                                <option value="map" >导航</option>
+                                                <option value="activity" >活动</option>
+                                                <option value="business" >业务模块</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="r_link" class="control-group r-module ">
+                                        <div class="control-group">
+                                            <label class="control-label" for="source_url">页面URL</label>
+                                            <div class="controls">
+                                                <input type="text" id="source_url" value="" class="input-xlarge" name="url" data-rule-required="true" data-rule-url="true" />
+                                                <span class="maroon">*</span><span class="help-inline">(必填,必须是正确的URL格式)</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="r_tel" class="control-group r-module hide">
+                                        <div class="control-group">
+                                            <label class="control-label" for="tel">电话号码</label>
+                                            <div class="controls">
+                                                <input type="text" id="tel" class="input-large" name="tel" value="" data-rule-required="true" data-rule-phone="true" />
+                                                <span class="maroon">*</span><span class="help-inline">(必填,必须是正确的号码)</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="r_business" class="control-group r-module hide">
+										<label class="control-label">业务类型:</label>
+										<div class="controls">
+											<select id="business_func" name="business_type" class="input-medium">
+											<option value="0"  data-list="false" >选择</option>
+											<option value="official" data-list="false" >微官网</option>
+											<option value="vipcard" data-list="false" >会员卡</option>
+											<option value="house" data-list="ture" >微房产</option>
+											<option value="photo" data-list="false" >3G相册</option>
+											<option value="Panoramic" data-list="true" >360°全景</option>
+											<!--<option value="shop" data-list="false" >微商城</option>
+											<option value="Hotel" data-list="true" >微酒店</option>
+											<option value="ding" data-list="false" >微订餐</option>
+											<option value="groupon" data-list="false" >微团购</option>-->
+											<option value="Selfform" data-list="true" >微表单</option>
+											
+											
+												 
+											</select>
+										</div>
+										<div class="margin-top">
+											<label class="control-label">业务:</label>
+											<div class="controls">
+												<table class="table table-bordered">
+													<thead>
+													<tr>
+														<th></th>
+														<th>业务标题</th>
+														<th>触发关键词</th>
+													</tr>
+													</thead>
+												</table>
+												<div class="record hide"><a href="javascript:;" id="more_activity">加载更多业务...</a></div>
+												<div class="text-center no-record" style="display:none;">没有正在进行中的业务</div>
+											</div>
+										</div>
+                                    </div>
+                                    <div id="r_activity" class="control-group r-module hide"  >
+                                        <label class="control-label">活动类型:</label>
+                                        <div class="controls">
+                                            <select id="act" name="activity_type">
+					        <option value="0" >选择</option>
+                                                <option value="1"   selected="selected">大转盘</option>
+						<option value="2" >刮刮卡</option>
+                                                <option value="3">优惠券</option>
+                                                <option value="4">微投票</option>
+												<option value="5">微喜帖</option>
+												<option value="6">砸金蛋</option>
+                                                
+                                            </select>
+                                        </div>
+                                        <div  class="margin-top">
+                                            <label class="control-label">活动选择:</label>
+                                            <div class="controls">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>活动标题</th>
+                                                            <th>触发关键词</th>
+                                                            <th>活动时间</th>
+                                                        </tr>
+                                                    </thead>
+                                                                                                    </table>
+                                                <div class="text-center no-record" style="display:block">没有正在进行中的活动</div>
+                                                
+                                               <div class="record hide"><a href="javascript:;" id="more_activity">加载更多活动...</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="r_map" class="control-group r-module hide">
+                                    <div class="control-group">
+                                        <label class="control-label" for="suggestId">经纬度</label>
+                                        <div class="controls">
+                                            <div class="input-append">
+                                                <input type="text" id="suggestId" name="place" class="input-xlarge" data-rule-required="true" />
+                                                <button class="btn" type="button" id="positioning">搜索</button>
+                                            </div>
+                                            <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                            <div id="l-map">
+                                                <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                            </div>
+                                            <div id="r-result">
+                                                <input type="text" id="lng" name="lng" />
+                                                <input type="text" id="lat" name="lat" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <!-- <div id="r_map" class="control-group r-module hide">
+                                        <div class="control-group">
+                                            <label class="control-label" for="suggestId">经纬度</label>
+                                            <div class="controls">
+                                                <div class="input-append">
+                                                    <input type="text" id="suggestId" class="input-xlarge" name="place" data-rule-required="true" />
+                                                    <button class="btn" type="button" id="positioning">搜索</button>
+                                                </div>
+
+                                                <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                                <div id="l-map">
+                                                   <i class="icon-spinner icon-spin icon-large"></i> 地图加载中...
+                                                </div>
+                                                <div id="r-result">
+                                                    <input type="hidden" id="lng" name="lng" /><input type="hidden" id="lat" name="lat" /> 
+                                                </div>
+                                                 
+                                            </div>
+
+                                        </div>
+                                    </div> -->
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">保存</button>
+                                        <button type="button" class="btn" onclick="window.history.go(-1)">取消</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   
+    
+<script>
+   
+   
+</script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            var resource = Resource.create();
+            var ins = Resource.instance['res_block'];
+            ins.result = ins.result || {};
+            ins.result.wuid = $('#token').val();
+
+                        window.ICON(); 
+        
+        });  
+    </script>
+</body>
+
+
+
+
+</html>
+</html>

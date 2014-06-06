@@ -1,0 +1,94 @@
+/* CSS Document */
+
+@import url("reset.css");
+
+* { font-family:Tahoma, Microsoft YaHei; }
+
+dl,dd,dt { margin:0; }
+
+h1 { font-size:24px; font-weight:bold; color:#ec7400; }
+
+.w256 { width:256px; }
+
+.page { width:960px; margin:0 auto; }
+.fakebutton { background:url(../images/fakeButton.jpg) no-repeat center; display:block; width:137px; height:37px;}
+.intro_left { }
+.intro_left .page { padding-top:50px; background-repeat:no-repeat; background-position:right bottom; }
+.intro_left h1 { font-size:24px; font-weight:bold; color:#ec7400; width:550px; height:64px; }
+.intro_left p { padding:16px 0; width:500px; font-size:14px; line-height:32px; display:block; text-indent:2em; }
+.intro_right { background:#f3f3f3; }
+.intro_right .page { padding-top:50px; background-repeat:no-repeat; background-position:left bottom; }
+.intro_right h1 { width:550px; height:64px; margin-left:460px; }
+.intro_right p { padding:16px 0; width:500px; font-size:14px; line-height:32px; display:block; text-indent:2em; margin-left:460px; }
+.intro_right .fakebutton { margin-left:460px; }
+
+#header { height:122px; background:url(../images/bg_header.png) repeat-x bottom; position:fixed; width:100%; z-index:99999; _position:absolute; _top:expression(eval(document.body.scrollTop)); box-shadow:0 0 8px; #999; }
+#topbar { background:#333; border-bottom:solid 1px #333; box-shadow:0 0 8px; #999; color:#999; }
+#topbar .inner { border-bottom:solid 1px #666; height:24px; line-height:24px; }
+#topbar a { color:#999; }
+#topbar a:hover { color:#fff; }
+#logo { float:left; background:url(../images/logo.png) no-repeat; margin-top:28px; }
+#contact { margin-top:10px; line-height:20px; color:#999; padding-right:48px; float:right; }
+#contact em { font-style:normal; font-size:18px; font-weight:bold; color:#547907; }
+#contact span { margin-left:10px; }
+#contact span a { color:#999; }
+#navigator { height:24px; width:650px; line-height:24px; font-size:16px; padding-top:28px; float:right; }
+#navigator a { display:block; float:left; padding:0 20px; color:#333;  margin-left:4px; }
+#navigator a:hover { background:#393; border-radius:10px; color:#fff; }
+#navigator a.current { background:#393; border-radius:10px; color:#fff; }
+#slider { overflow:hidden; width:100%; height:557px; }
+#sliderButtons { height:12px; position:relative; z-index:9999; width:84px; margin:0 auto; margin-top:16px; }
+#sliderButtons a { background:url(../images/slide-bg.png) no-repeat center; display:block; width:12px; height:14px; line-height:0; overflow:hidden; text-indent:100px; float:left;  padding:2px;}
+#sliderButtons a:hover { background:url(../images/slide-bg-active.png) no-repeat center; }
+#sliderButtons a.current { background:url(../images/slide-bg-active.png) no-repeat center; }
+#sliderImages { width:100%; height:480px; overflow:hidden; }
+#sliderImages .sliderImage { width:100%; height:555px; background-color:#fff; background-repeat:no-repeat; background-position:top; position:absolute; top:122px; font-size:18px; color:#fff; text-shadow:1px 2px rgba(0, 0, 0, 0.5); }
+#sliderImages .sliderImage a { width:100%; height:555px; display:block;}
+#sliderImages .sliderImage .content1 { padding-top:192px; padding-left:476px; }
+#sliderImages .sliderImage p { margin-bottom:20px; line-height:32px; }
+#sliderImages .sliderImage p.small { font-size:14px; text-shadow:1px 1px rgba(0, 0, 0, 0.5); line-height:24px; }
+#sliderImages .sliderImage .content2 { padding-top:220px; padding-left:32px; width:440px; }
+#sliderImages .sliderImage .content3 { padding-top:266px; padding-left:556px; }
+
+#container { background:url(../images/bg_slider.gif) repeat-x; }
+
+#upArrow { background:rgba(0, 0, 0, 0.25); border-radius:24px; width:48px; height:48px; position:fixed; z-index:9999; bottom:-48px; right:24px; display:none; }
+#upArrow a { background:url(../images/up-arrow.png) no-repeat center; display:block; width:48px; height:48px; }
+
+#caseTab { padding-top:10px; }
+#caseTab ul { height:120px; }
+#caseTab ul li { height:120px; padding-right:10px; width:96px; float:left; }
+#caseTab ul li.ui-tabs-active { background:url(../images/bg_tabButton.gif) no-repeat center bottom; }
+#caseTab ul li a { display:block; width:96px; height:120px; color:#666;  }
+#caseTab ul li a span { width:80px; height:80px; background-image:url(../images/icon_case.png); background-repeat:no-repeat; display:block; margin:0 auto; }
+#caseTab ul li a p { width:96px; text-align:center; margin:0; }
+.tabPages { background:#dcdcdc; border:#ccc; border-radius:4px; box-shadow:inset 0 1px 0 #eee,0 1px 5px #a1a1a1; -moz-box-shadow:inset 0 1px 0 #eee,0 1px 5px #a1a1a1; -webkit-box-shadow:inset 0 1px 0 #eee,0 1px 5px #a1a1a1; padding:16px;}
+#caseTab ul li .caseIcon_0 { background-position:0 -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_0 { background-position:0 0; }
+#caseTab ul li .caseIcon_1 { background-position:-80px -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_1 { background-position:-80px 0px; }
+#caseTab ul li .caseIcon_2 { background-position:-160px -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_2 { background-position:-160px 0px; }
+#caseTab ul li .caseIcon_3 { background-position:-240px -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_3 { background-position:-240px 0px; }
+#caseTab ul li .caseIcon_4 { background-position:-320px -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_4 { background-position:-320px 0px; }
+#caseTab ul li .caseIcon_5 { background-position:-400px -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_5 { background-position:-400px 0px; }
+#caseTab ul li .caseIcon_6 { background-position:-480px -80px; }
+#caseTab ul li.ui-tabs-active .caseIcon_6 { background-position:-480px 0px; }
+
+#stickyNotes { border:#eee solid 0; border-top-width:1px; border-left-width:1px; height:512px; margin-top:20px; background:#f7f7f7; }
+#stickyNotes dl,#stickyNotes dt,#stickyNotes dd { display:block; }
+#stickyNotes dl { width:190px; height:127px; border:#eee solid 0; border-bottom-width:1px; border-right-width:1px; float:left; position:relative; }
+#stickyNotes dl dt { text-align:center; height:67px; font-size:16px; padding:30px 0; float:left; width:190px; }
+#stickyNotes dl dd { position:absolute; top:0px; background:#40922a; height:128px; width:160px; padding:16px; display:none; left:0; z-index:2; color:#fff; overflow:hidden; }
+#stickyNotes .last { width:190px; height:32px; float:left; position:relative; color:#ccc; font-weight:bold; font-size:24px; text-align:center; line-height:32px; padding-top:32px; }
+
+#footer { height:128px; color:#999; background:#eee; border-top:dashed 1px #000; margin-top:30px; text-align:center; line-height:20px; }
+#footer a { color:#333;  }
+#footer .links {  }
+#footer .links a { color:#666;  }
+#footer .links a:hover { color:#058; text-decoration:underline; }
+
+.tabPages .tabPage { height:482px; }

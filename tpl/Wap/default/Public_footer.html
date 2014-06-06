@@ -1,0 +1,267 @@
+<if condition="$copyid eq '0'">
+	<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-3.css" media="all" />
+				<div class="top_bar footer_bar">
+			
+		</div>
+	 </if>
+	<!--	<if condition="$copyid eq '0'">
+	<section>
+		<div id="plug-wrap" class="plug-wrap" style="display:none;"></div>
+		<div class="plug-div">
+			<div id="plug-phone" class="plug-phone">
+			 <input id="plug-btn" type="checkbox" name="" value="" class="plug-menu" style="background-color:{iMicms:$tpl.namecolor};"/>
+                           <include file="Public:Knavaction"/>
+			 </div>
+		</div>
+	</section>
+	<script>
+			window.addEventListener("DOMContentLoaded", function(){
+				btn = document.getElementById("plug-btn");
+				btn.onclick = function(){
+					var divs = document.getElementById("plug-phone").querySelectorAll("div");
+					var className = className=this.checked?"on":"";
+					for(i = 0;i<divs.length; i++){
+						divs[i].className = className;
+					}
+					document.getElementById("plug-wrap").style.display = "on" == className? "block":"none";
+				}
+			}, false);
+		</script>
+	</if>-->
+	<if condition="$copyid eq '2'">
+	<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-2.css" media="all" />
+	<div class="top_bar footer_bar" style="-webkit-transform:translate3d(0,0,0)">
+			<nav>
+				<ul class="top_menu">
+					<li onclick="location.reload();"><span></span></li>
+					
+									 <include file="Public:Knavaction2"/>
+									 <li onclick="$('#menu_list').toggleClass('hidden');">
+							<a onclick="return false;">
+								<span class="icon-list-ul"></span><label class="homemenu_text">更多</label>
+							</a>
+							<ul id="menu_list" class="menu_font hidden" onclick="$('#menu_list').toggleClass('hidden');">
+							 <include file="Public:Knavaction3"/>
+							 </ul>
+						</li>
+									</ul>
+			</nav>
+		</div>
+		</if>
+		<if condition="$copyid eq '1'">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-1.css" media="all" />
+			 <article id="shareCover" class="share" onclick="$('#shareCover').toggleClass('on')">
+			<table>
+				<tr>
+					<td colspan="2" style="text-align:right;">
+						<img src="{iMicms::RES}/img/share_1.png?v=2013-12-06-5" style="width:120px!important;" />
+						<img src="{iMicms::RES}/img/share_2.png?v=2013-12-06-5" style="width:30px!important;" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width:50%;">
+						<img src="{iMicms::RES}/img/share_4.png?v=2013-12-06-5" />
+						<div>发送给朋友</div>
+					</td>
+					<td>
+						<img src="{iMicms::RES}/img/share_3.png?v=2013-12-06-5" />
+						<div>分享到朋友圈</div>
+					</td>
+				</tr>
+			</table>
+		</article>
+
+		 
+		<section>
+			<div class="plug-div model1">
+				<div id="plug-phone" class="plug-phone">   
+				<include file="Public:Knavactions"/>
+				
+				
+				<div>
+				
+				<a href="javascript:$('#shareCover').toggleClass('on');" class="icon-share"><label>分享</label></a>
+					</div>
+				</div>
+		</section> 
+	
+                </if>
+		<if condition="$copyid eq '3'">
+	<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-3.css" media="all" />
+				<div class="top_bar footer_bar">
+			<section>
+					<div class="nav_7">
+						<ul class="box"> 
+						<include file="Public:Knavactiont3"/>
+							 
+													</ul>
+					</div>
+			</section>
+		</div>
+	 </if>
+	 
+	 <if condition="$copyid eq '4'">
+	<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-4.css" media="all" />
+	 
+	 			<script>
+		window.addEventListener("DOMContentLoaded", function(){
+			var nav = document.querySelectorAll(".nav_8")[0];
+			
+			var evts = {
+				handleEvent: function(evt){
+					if("A" == evt.target.nodeName){
+						evt.target.classList.toggle("active");
+					}
+				}
+			}
+			nav.addEventListener("mousedown", evts, false);
+			nav.addEventListener("mouseup", evts, false);
+			nav.addEventListener("touchstart", evts, false);
+			nav.addEventListener("touchend", evts, false);
+		});
+		</script>
+		<div class="top_bar footer_bar">
+			<section>
+					<div class="nav_8">
+						<ul class="box">
+							<include file="Public:Knavactiont4"/>
+						  </ul>
+					</div>
+			</section>
+		</div>
+
+    </if>
+     <if condition="$copyid eq '5'">
+	<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-5.css" media="all" />
+<script>
+		window.addEventListener("DOMContentLoaded", function(){
+			var nav = document.querySelectorAll(".nav_9")[0];
+			
+			var evts = {
+				handleEvent: function(evt){
+					if("A" == evt.target.nodeName){
+						evt.target.classList.toggle("active");
+					}
+				}
+			}
+			nav.addEventListener("mousedown", evts, false);
+			nav.addEventListener("mouseup", evts, false);
+			nav.addEventListener("touchstart", evts, false);
+			nav.addEventListener("touchend", evts, false);
+		});
+		</script>
+		<div class="top_bar footer_bar">
+			<section>
+					<div class="nav_9">
+						<ul class="box">
+							
+							<include file="Public:Knavaction2t"/>
+							
+							 
+							 <li>
+								<a href="{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com" class="home">
+								</a>
+							</li>
+							
+							<include file="Public:Knavaction3t"/>
+							
+							</ul>
+					</div>
+			</section>
+		</div>
+ </if>
+  <if condition="$copyid eq '6'">
+	<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/home-menu-6.css" media="all" />
+ <script>
+			window.addEventListener("DOMContentLoaded", function(){
+				var nav = document.querySelectorAll(".nav_10")[0];
+				
+				var evts = {
+					handleEvent: function(evt){
+						if("A" == evt.target.nodeName){
+							evt.target.classList.toggle("active");
+						}
+					}
+				}
+				nav.addEventListener("mousedown", evts, false);
+				nav.addEventListener("mouseup", evts, false);
+				nav.addEventListener("touchstart", evts, false);
+				nav.addEventListener("touchend", evts, false);
+			});
+		</script>
+		<div class="top_bar footer_bar">
+			<section>
+					<div class="nav_10">
+						<ul class="box">
+							<include file="Public:Knavactiont4"/>
+							</ul>
+					</div>
+			</section>
+		</div>
+	
+</if>
+ 
+<script>
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			window.shareData = {
+			        "imgUrl": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"timeLineLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"sendFriendLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+				"weiboLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&iMicms=mp.weixin.qq.com",
+			
+			 	"tTitle": "{iMicms:$home['webname']}",
+				"tContent": "{iMicms:$home['webname']}",
+				"fTitle": "{iMicms:$home['webname']}",
+				"fContent": "{iMicms:$home['webname']}",
+				"wContent": "{iMicms:$home['webname']}"
+			};
+
+			// 发送给好友
+			WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+				WeixinJSBridge.invoke('sendAppMessage', {
+					"img_url": window.shareData.imgUrl,
+					"img_width": "640",
+					"img_height": "640",
+					"link": window.shareData.sendFriendLink,
+					"desc": window.shareData.fContent,
+					"title": window.shareData.fTitle
+				}, function (res) {
+					_report('send_msg', res.err_msg);
+				})
+			});
+
+			// 分享到朋友圈
+			WeixinJSBridge.on('menu:share:timeline', function (argv) {
+				WeixinJSBridge.invoke('shareTimeline', {
+					"img_url": window.shareData.imgUrl,
+					"img_width": "640",
+					"img_height": "640",
+					"link": window.shareData.timeLineLink,
+					"desc": window.shareData.tContent,
+					"title": window.shareData.tTitle
+				}, function (res) {
+					_report('timeline', res.err_msg);
+				});
+			});
+
+			// 分享到微博
+			WeixinJSBridge.on('menu:share:weibo', function (argv) {
+				WeixinJSBridge.invoke('shareWeibo', {
+					"content": window.shareData.wContent,
+					"url": window.shareData.weiboLink
+				}, function (res) {
+					_report('weibo', res.err_msg);
+				});
+			});
+		}, false)
+	</script>
+     			<footer>
+				<div class="weimob-copyright">
+					<p align="center"><a href="/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&wecha_id={iMicms:$wecha_id}&iMicms=mp.weixin.qq.com">{iMicms:$copyright}</a></p>
+				</div>
+									<span class="weimob-support" style="display:none;">{iMicms::C('site_name')} 技术支持QQ8441010</span>
+							</footer>
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">{iMicms:$home.stat_code|htmlspecialchars_decode}
+					</div>
+		    </body>
+</html>

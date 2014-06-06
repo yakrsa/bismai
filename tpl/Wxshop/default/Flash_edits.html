@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" /> 
+<!-- Mobile Devices Support @begin -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- Mobile Devices Support @end -->
+
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-9-28-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-9-28-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-9-28-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-9-28-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css?2013-9-28-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css?2013-9-28-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/resource.css?2013-9-28-2" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-28-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-9-28-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js?2013-9-28-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js?2013-9-28-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js?2013-9-28-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js?2013-9-28-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/resource.js?2013-9-28-2"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <!--[if IE 7]>
+            <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="{iMicms::RES}/js/excanvas_min.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+            <script src="{iMicms::RES}/js/watermark.js"></script>
+        <![endif]-->
+</head>
+<script src="http://api.map.baidu.com/api?key=24ffad3855e675265336a4cfb46d32b4&v=1.1&services=true" type="text/javascript"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js?v=2013-9-28-2"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/cn.js?v=2013-9-28-2"></script>
+<script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js?v=2013-9-28-2"></script>
+<link href="{iMicms::STATICS}/kindeditors/themes/default/default.css?v=2013-9-28-2" rel="stylesheet" />
+<body>
+    <div id="main">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span12">
+                                <h3><i class="icon-cog"></i>编辑幻灯片</h3>
+                            </div>
+                        </div>
+                        <form action="{iMicms::U('Flash/upsave')}" method="post" class="form-horizontal form-validate">
+			<input type="hidden" name="id" value="{iMicms:$info.id}"/>
+                            <div class="box-content">
+                                <div class="control-group">
+                                    <label for="name" class="control-label">幻灯片名称：</label>
+                                    <div class="controls">
+                                        <input type="text" id="info" name="info" value="{iMicms:$info.info}" class="input-medium" data-rule-required="true" />
+                                        <span class="maroon">*</span><span class="help-inline"></span>
+                                    </div>
+                                </div>
+								 
+                                
+                                <div class="control-group">
+                                    <label for="insertimage" class="control-label">幻灯片封面:</label>
+                                    <div class="controls">
+                                   <img type="img" src="{iMicms:$info.img}" style="max-height:80px;" />
+                                        <input type="hidden" name="img" value="{iMicms:$info.img}" class="input-medium" />
+                                        <a class="btn insertimage">选择幻灯片</a>
+				       <span class="help-inline">建议尺寸：宽640像素，高425像素</span>
+                                    </div>
+                                </div>
+                                 
+                                <div id="res_block">
+                                    <div class="control-group">
+                                        <label for="ltype" class="control-label">类型：</label>
+                                        <div class="controls">
+                                            <select id="ltype" name="ltype" class="input-medium">
+												<option value="">选择类型</option>
+												 
+                                                <option value="link" <if condition="$info['url'] neq ''">selected</if> >链接</option>
+                                             
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="r_article" class="control-group r-module hide">
+                                        <div class="control-group">
+											<label class="control-label"></label>
+											<div class="controls choose">
+																									<span class="maroon">请选择图文</span>
+													<span class="help-inline">
+														<a href="javascript:void(0)" class="btn btn-mini ed_choose"><i class="icon-edit"></i></a>
+													</span>
+																							</div>
+										</div>
+                                    </div>
+                                    <div id="r_link" class="control-group r-module <if condition="$info['url'] eq ''">hide</if>">
+                                        <div class="control-group">
+                                            <label class="control-label" for="url">外链地址</label>
+                                            <div class="controls">
+                                                <input type="url" id="url" name="url" value="{iMicms:$info.url}" class="input-xlarge" data-rule-required="true" data-rule-url="true" />
+                                                <span class="maroon">*</span><span class="help-inline">(必填，必须是正确的URL格式,例如 {iMicms::C('site_url')})</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="r_tel" class="control-group r-module hide">
+                                        <div class="control-group">
+                                            <label class="control-label" for="tel">电话号码</label>
+                                            <div class="controls">
+                                                <input type="text" id="tel" name="tel" value="" class="input-large" data-rule-required="true" data-rule-phone="true" />
+                                                <span class="maroon">*</span><span class="help-inline">(必填，必须是正确的号码)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div id="r_car" class="control-group r-module hide">
+										<div class="control-group">
+											<label class="control-label" for="suggestId">微汽车模块</label>
+											<div class="controls">
+												<select id="suggestId"  name="car_type">
+													<option value="zixun" data-list="false" >最新资讯</option>
+													<option value="chexi" data-list="false" >全部车型</option>
+													<option value="xiaoshou" data-list="false" >联系销售</option>
+													<option value="shijia" data-list="false" >预约试驾</option>
+													<option value="baoyang" data-list="false" >预约保养</option>
+													<option value="gongju" data-list="false" >实用工具</option>
+												</select>
+											</div>
+											<div class="margin-top" style="display:none;">
+												<label class="control-label">模块业务:</label>
+												<div class="controls">
+													<table class="table table-bordered">
+														<thead>
+														<tr>
+															<th></th>
+															<th>业务标题</th>
+															<th>触发关键词</th>
+															<th>时间段</th>
+														</tr>
+														</thead>
+														<tbody>
+																												</tbody>
+													</table>
+													<div class="record hide"><a href="javascript:;" id="more_activity">加载更多模块业务...</a></div>
+													<div class="text-center no-record" style="display:none;">没有正在进行中的模块业务</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="r_business" class="control-group r-module hide"">
+                                    <label class="control-label">业务类型:</label>
+                                    <div class="controls">
+										<select id="business_func" name="business_type" class="input-medium">
+											<option value="official" data-list="false" >微官网</option>
+											<option value="vipcard" data-list="false" >会员卡</option>
+											<option value="reservation" data-list="true" >微预约</option>
+											<option value="medical" data-list="false" >微医疗</option>
+											<option value="hotels" data-list="true" >微酒店</option>
+											<option value="message" data-list="false" >微留言</option>
+											<option value="albums" data-list="false"  >微相册</option>
+											<option value="survey" data-list="true"  >微调研</option>
+											<option value="invitation" data-list="true" >微喜帖</option>
+											<option value="buy"  disabled="disabled">微商城</option>
+											<option value="food"  disabled="disabled">微餐饮</option>
+											<option value="estate"  disabled="disabled">微房产</option>
+											<option value="tourism"  disabled="disabled">微旅游</option>
+										</select>
+                                    </div>
+									<div class="margin-top" style="display:none;">
+										<label class="control-label">业务:</label>
+										<div class="controls">
+											<table class="table table-bordered">
+												<thead>
+												<tr>
+													<th></th>
+													<th>业务标题</th>
+													<th>触发关键词</th>
+													<th>时间段</th>
+												</tr>
+												</thead>
+												<tbody>
+																								</tbody>
+											</table>
+											<div class="record hide"><a href="javascript:;" id="more_activity">加载更多业务...</a></div>
+											<div class="text-center no-record" style="display:none;">没有正在进行中的业务</div>
+										</div>
+									</div>
+                                </div>
+                                <div id="r_activity" class="control-group r-module hide">
+                                    <label class="control-label">活动类型:</label>
+                                    <div class="controls">
+                                        <select id="act" name="activity_type" class="input-medium">
+                                            <option value="11" >优惠券</option>
+                                            <option value="12" >刮刮卡</option>
+                                            <option value="13" >大转盘</option>
+                                            <option value="17" >微投票</option>
+											<option value="15" >一战到底</option>
+                                        </select>
+                                    </div>
+                                    <div class="margin-top">
+                                        <label class="control-label">活动选择:</label>
+                                        <div class="controls">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>活动标题</th>
+                                                    <th>触发关键词</th>
+                                                    <th>活动时间</th>
+                                                </tr>
+                                                </thead>
+                                                                                            </table>
+                                            <div class="record hide"><a href="javascript:;" id="more_activity">加载更多活动...</a></div>
+                                            <div class="text-center no-record" style="display:none;">没有正在进行中的活动</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="r_map" class="control-group r-module hide">
+                                    <div class="control-group">
+                                        <label class="control-label" for="suggestId">经纬度</label>
+                                        <div class="controls">
+                                            <div class="input-append">
+                                                <input type="text" id="suggestId" name="place" class="input-xlarge" data-rule-required="true" />
+                                                <button class="btn" type="button" id="positioning">搜索</button>
+                                            </div>
+                                            <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                            <div id="l-map">
+                                                <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                            </div>
+                                            <div id="r-result">
+                                                <input type="text" id="lng" name="lng" />
+                                                <input type="text" id="lat" name="lat" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">保存</button>
+                                    <button type="button" class="btn" onclick="window.history.go(-1);">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div id="article_choose" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="add_code" action="" method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title"><i class="icon-table"></i>选择图文</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row-fluid">
+							图文标题：<input name="key" id="key" type="text" class="input-medium" placeholder="输入标题进行查找" />
+							<select name="classid" id="classid" class="input-medium">
+								<option value="0">请选择图文分类</option>
+															</select>
+							<button type="button" class="btn" id="_soso"><strong>查找</strong></button>
+						</div>
+						<p></p>
+
+						<div class="row-fluid">
+							共有 <span class="red" id="count_num">0</span> 条符合条件　
+							<button type="button" class="btn btn-mini" id="p_page"><strong>上一页</strong></button>
+							<span id="p_page_str">第1页/共1页</span>
+							<button type="button" class="btn btn-mini" id="n_page"><strong>下一页</strong></button>
+							<ul class="unstyled list-li-border" id="data-list"></ul>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+					</div>
+				</form>
+
+
+				<script type="text/javascript">
+					var _choose_init;
+					$(document).ready(function () {
+
+						var _isoso = false;
+
+						$("#_soso").click(function () { _isoso = true; $("#_soso").attr("disabled", ""); _page(1) });
+						$("#classid").change(function () { _this_page = 1; _page(1) });
+						$("#data-list input[name='radio']").live("click", function () {
+							var ck = $(this);
+							var _tmp = '图文标题: {0} <span class="help-inline"><a href="javascript:void(0)" class="btn btn-mini ed_choose"><i class="icon-edit"></i></a></span>  <input type="hidden"name="article_id" value="{1}" />'
+							$("div.choose").html(_tmp.format(ck.data("title"), ck.val()));
+
+						});
+						//删除
+						$("a.ed_choose").live("click", function (e) {
+							e.preventDefault();
+							article_choose_init();
+						});
+						function article_choose_init() {
+							$('#article_choose').modal('show');
+							_page(1);
+						};
+						_choose_init = function () {
+							article_choose_init();
+						}
+						$("#p_page").click(function () {
+							if (_this_page - 1 > 0) {
+								_this_page--;
+								_page(_this_page);
+							}
+						});
+						$("#n_page").click(function () {
+							if (_this_page + 1 <= _this_page_count) {
+								_this_page++;
+								_page(_this_page);
+							}
+						});
+						var _this_page = 1;//当前页
+						var _this_page_count = 0;//总页数
+						var _page = function (_index) {
+							var key;
+							if (_isoso) {
+								key = $("#key").val();
+							}
+							var classid = $("#classid").val();
+							$.get("/wechat/votetouser", {"key": key, "classid": classid, "page": _index , "aid":5455, "tid":0}, function (data, textStatus) {
+								$("#data-list").html("");
+								//console.log(data.list);
+								$.each(data.list, function (index, item) {
+									var _li_tmp = '<li> <label> <input type="radio" name="radio" data-title="' + item.title + '" value="' + item.id + '" />  ' + item.title + '</label></li>';
+									$("#data-list").append(_li_tmp);
+
+								});
+								_this_page_count = data.count;
+								$("#count_num").text(_this_page_count * 9);
+								$("#p_page_str").text("第" + _this_page + "页/共" + _this_page_count + "页");
+								$("#_soso").removeAttr("disabled")
+							}, "json");
+						}
+
+					})
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+    $(document).ready(function(){
+        var resource = Resource.create();
+        var ins = Resource.instance['res_block'];
+        ins.result = ins.result || {};
+        
+
+        
+        window.ICON();
+    });
+
+    KindEditor.ready(function(K){
+        var editor = K.editor({
+            themeType: 'simple',
+            allowFileManager: true
+        });
+        $('a.insertimage').live('click', function(e){
+            editor.loadPlugin('smimage', function(){
+                editor.plugin.imageDialog({
+                    imageUrl: $(e.target).prev().val(),
+                    clickFn: function(url, title, width, height, border, align){
+                        $(e.target).prev().val(url);
+                        if ('img' == $(e.target).prev().prev().attr('type')) {
+                            $(e.target).prev().hide();
+                            $(e.target).prev().prev().attr('src', url);
+                            $(e.target).prev().prev().show();
+                        }
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+    });
+</script>
+</html>

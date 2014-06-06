@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" /> 
+ <!-- Mobile Devices Support @begin -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <!-- Mobile Devices Support @end -->
+ 
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/iindex.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_switch.css?2013-10-21-2" media="all">
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css?2013-10-21-2" media="all">
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-10-21-2"></script>
+<style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
+<script type="text/javascript" src="{iMicms::RES}/js/iinside.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_switch.js?2013-10-21-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/zeroclipboard_min1.js?2013-10-21-2"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/miniplayer.css?v=2013-10-21-2" media="all"><style>
+a
+{
+	display:none!important;
+}
+.copy_button
+{
+	position:relative;
+	top:0px;
+	left:0px;
+}
+button.btn{
+	height:29px;
+	padding:2px 7px;
+}
+.copy-success
+{
+	position:absolute;
+	width:173px;
+	height:20px;
+	left:-173px;
+	top:-15px;
+	padding:5px 10px;
+}
+</style></head>
+    
+
+
+<body><div id="main">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="box">
+					<div class="box-title">
+						<div class="span10">
+							<h3><i class="icon-book"></i>实用工具管理</h3>
+						</div>
+						<div class="span2" style="text-align:right; padding-right:20px;">
+							<a class="btn" href="javascript:window.history.go(-1);">返回</a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="bs-docs-example">
+																																						<div class="span6">
+									<table class=" table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th class="span2">名称</th>
+												<th class="span3">简介</th>
+												<th class="span1">操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="info" id="vo" key="b">												
+										    	<tr>
+													<td>{iMicms:$vo.name}</td>
+													<td>{iMicms:$vo.info}</td>
+													<td>
+														<div class="copy_button">
+															<span class="copy_text"><span style="display:none;">{iMicms:$vo.url}</span></span>
+														</div>
+													</td>
+												</tr>
+										     </volist> 
+																					</tbody>
+									</table>
+								</div>
+																															<div class="span6">
+									<table class=" table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th class="span2">名称</th>
+												<th class="span3">简介</th>
+												<th class="span1">操作</th>
+											</tr>
+										</thead>
+										<tbody>
+                                                                                  <volist name="info1" id="vo1" key="b">												
+										    	<tr>
+													<td>{iMicms:$vo1.name}</td>
+													<td>{iMicms:$vo1.info}</td>
+													<td>
+														<div class="copy_button">
+															<span class="copy_text"><span style="display:none;">{iMicms:$vo1.url}</span></span>
+														</div>
+													</td>
+												</tr>
+										     </volist> 
+																					</tbody>
+									</table>
+								</div>
+													</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></html>

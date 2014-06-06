@@ -1,0 +1,30 @@
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="ListProduct">
+	<thead>
+		<tr>
+			<th>日期</th>
+			<th>3G网站浏览量</th>
+			<th>文本请求数</th>
+			<th>图文请求数</th>
+			<th>语音请求数</th>
+			<th>营销/电商请求</th>
+			<th>关注人数</th>				
+			<th>取消关注人数</th> 
+			<th>总请求数/日</th>
+		</tr>
+	</thead>
+	<tfoot>
+		 <volist id="list" name="list">                
+			<tr>
+				<td>{iMicms:$list.time|date='Y-m-d',###}</td>
+				<td>{iMicms:$list.3g}</td>
+				<td>{iMicms:$list.textnum}</td>
+				<td>{iMicms:$list.imgnum}</td>
+				<td>{iMicms:$list.videonum}</td>
+				<td>{iMicms:$list.other}</td>					
+				<td>{iMicms:$list.follownum}</td>
+				<td>{iMicms:$list.unfollownum}</td>											 
+				<td><?php echo $list['3g']+$list['textnum']+$list['imgnum']+$list['videonum']+$list['other']?></td>
+			</tr>
+		</volist>
+	</tfoot> 			
+</table>

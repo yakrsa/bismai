@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/weimob-ui-1-1.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/list-5.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/menu-1.css?2013-10-21-2" media="all" />
+
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/swipe.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/zepto.js"></script>
+<title>{iMicms:$home['webname']}</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="keywords" content="{iMicms::C('keyword')}" />
+        <meta name="description" content="{iMicms::C('content')}" />
+	<!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+        <style>
+            img{width:100%!important;}
+        </style>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css?v=2013-08-17" media="all" />
+<div class="weimob-page">
+   <div class="top_bar footer_bar">
+        <nav>
+            <ul class="top_menu">
+                <li onclick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
+                 <li onclick='location.href="{iMicms::C('site_url')}{iMicms::U('Wap/Index/index',array('token'=>$gtoken,'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}"'><span class="icon-home"></span></li>
+	      <volist name="plugmenu" id="vo">
+	         <if condition="$vo['ltype'] eq 'tel'">
+		<li><a href="tel:{iMicms:$vo.tel}"><span class="icon-phone"></span></a></li></if>
+		</volist>
+		<li onclick="$('#menu_font').toggleClass('hidden');">
+                    <span class="icon-list-ul"></span>
+                    <ul id="menu_font" class="menu_font hidden" onclick="$('#menu_font').toggleClass('hidden');">
+                        <include file="Public:Topaction"/>  
+		    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+	        <div class="weimob-content">
+            <div class="weimob-list">
+	    <div align="center" >{iMicms:$notice}</div>
+	      <volist name="res" id="so">  
+
+<if condition="$so['url']">
+<a  href="{iMicms:$so.url}" class="weimob-list-item">
+<else />
+<a  href="{iMicms::U('Index/content',array('id'=>$so['id'],'token'=>$so['token'],'wecha_id'=>$wecha_id,'iMicms'=>'mp.weixin.qq.com'))}" class="weimob-list-item">
+</if>
+	    
+	               <div class="weimob-list-item-title">{iMicms:$so.title}</div>
+                        <div class="weimob-list-item-image" style="background-image:url({iMicms:$so.pic})"></div>
+                        <div class="weimob-list-item-line">
+                            <div class="weimob-list-item-summary">{iMicms:$so.text}</div>
+                        </div>
+                        <div class="weimob-list-item-icon icon-arrow-r"></div>
+                    </a> 
+                    
+                       </volist>  
+                            
+			    
+			    </div>
+        </div>
+    </div>        			<footer>
+				<div class="weimob-copyright">
+					<a href="/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&wecha_id={iMicms:$wecha_id}&iMicms=mp.weixin.qq.com">{iMicms:$copyright}</a>
+				</div>
+									<span class="weimob-support" style="display:none;">{iMicms::C('site_name')} 技术支持QQ8441010</span>
+							</footer>
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">{iMicms:$home.stat_code|htmlspecialchars_decode}
+					</div>
+	</body>
+</html>

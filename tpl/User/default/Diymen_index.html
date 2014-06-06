@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="keywords" content="{iMicms::C('keyword')}" />
+<meta name="description" content="{iMicms::C('content')}" />   
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/todc_bootstrap.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/inside.css?2013-9-13-2" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/inside.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/jquery_form_min.js?2013-9-13-2"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	
+    <div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="box">
+                        <div class="box-title">
+                            <div class="span8">
+                                <h3><i class="icon-table"></i>自定义菜单管理  </h3>
+                            </div>
+
+                        </div>
+
+                        <div class="box-content">
+                            <div class="alert">
+                                <p>注意：1级菜单最多只能开启3个，2级子菜单最多开启5个!</p>
+                                <p>只有保存主菜单后才可以添加子菜单</p>
+                                <p>生成自定义菜单,必须在已经保存的基础上进行,临时勾选启用点击生成是无效的! 第一步必须先修改保存状态！第二步点击生成!</p>
+                                <p>当您为自定义菜单填写链接地址时请填写以"http://"开头，这样可以保证用户手机浏览的兼容性更好</p>
+                            </div>
+                            <div class="row-fluid">
+
+                                <div class="span8 control-group">
+                                    <a href="javascript:void(0)" class="btn" id="add_menu"><i class="icon-plus"></i>添加主菜单</a>
+                                </div>
+
+                            </div>
+
+                            <div class="row-fluid dataTables_wrapper">
+                                <form action="{iMicms::U('Diymen/upsaves')}" method="post" class="form-horizontal form-validate"  enctype="multipart/form-data">
+				     
+                                    <table id="listTable" class="table table-bordered table-hover dataTable">
+
+                                        <thead>
+                                            <tr>
+                                                <th>显示顺序</th>
+                                                <th>主菜单名称</th>
+                                                <th>触发关键词或链接地址</th>
+                                                <th>启用</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+					 
+
+					<volist id="class" name="class">					
+                                          <tr class="ptr">
+                                            <td>
+                                                <input type="text" class="input-mini" size="3" value="{iMicms:$class.sort}" name="ps[{iMicms:$class.id}][sort]"   data-rule-number="true"/></td>
+                                            <td>
+                                                <input type="text" class="input-medium" size="15" value="{iMicms:$class.title}"  name="ps[{iMicms:$class.id}][title]" data-rule-required="true" data-rule-maxlength="30" />
+												<i class="icon-plus cursor_p add" title="添加子菜单" rel="{iMicms:$class.id}"></i>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="input-medium type" size="15" value="{iMicms:$class.keyword}"  name="ps[{iMicms:$class.id}][keyword]" data-rule-required="true" data-rule-maxlength="200" />
+                                                <input type="hidden" value="{iMicms:$class.id}" name="ps[{iMicms:$class.id}][pid]"/>
+                                                <input type="hidden" class="key_type" value="1" name="ps[{iMicms:$class.id}][type]">
+ 
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="ps[{iMicms:$class.id}][is_show]" value="1" <if condition="$class.is_show eq 1">checked="checked"</if> /></td>
+                                            <td><a href="javascript:G.ui.tips.confirm('您确定要删除此菜单吗?', '{iMicms::C('site_url')}{iMicms::U('Diymen/class_del',array('id'=>$class['id']))}');">删除</a></td>
+                                        </tr>
+					
+					 <volist id="class1" name="class['class']">
+					 <tr class="ztr">
+                                            <td>
+                                                <input type="text" class="input-mini" size="3" value="{iMicms:$class1.sort}" name="ps[{iMicms:$class1.id}][sort]"   data-rule-number="true"/></td>
+                                            <td>
+												<i class='board'></i>
+                                                <input type="text" class="input-medium" size="15" value="{iMicms:$class1.title}"  name="ps[{iMicms:$class1.id}][title]" data-rule-required="true" data-rule-maxlength="30" />
+
+                                            </td>
+                                            <td>
+                                                <input type="text" class="input-medium type" size="15" value="{iMicms:$class1.keyword}"  name="ps[{iMicms:$class1.id}][keyword]" data-rule-required="true" data-rule-maxlength="200" />
+                                                <input type="hidden" value="{iMicms:$class1.pid}" name="ps[{iMicms:$class1.id}][pid]"/>
+                                                <input type="hidden" class="key_type" value="1" name="ps[{iMicms:$class1.id}][type]">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="ps[{iMicms:$class1.id}][is_show]" value="1" <if condition="$class1.is_show eq 1">checked="checked"</if> /></td>
+                                            <td><a href="javascript:G.ui.tips.confirm('您确定要删除此菜单吗?', '{iMicms::C('site_url')}{iMicms::U('Diymen/class_del',array('id'=>$class1['id']))}');">删除</a></td>
+                                        </tr>
+                                        </volist> 
+	                            </volist>
+				           
+
+ 
+				
+                                    </table>
+                                    <div>
+					<input type="hidden" name="token" id="token" value="{iMicms:$token}">
+					 
+                                        <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary"  style="cursor:pointer">保存</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button id="create_menu" type="button" class="btn btn-primary" style="cursor:pointer">生成微信自定义菜单</button>
+ 
+
+                                    </div>
+                                </form>
+
+
+                             <script type="text/javascript">
+                                 $().ready(function () {
+                                     var $add_menu = $("#add_menu");
+                                     var $add_zmenu = $("i.add");
+                                     var $menu_index = 0;
+
+
+                                     $add_menu.click(function (e) {
+                                         e.preventDefault();
+                                         $menu_index++;
+                                         var _menuPtrtmp = '<tr>'
+                                  + ' <td>'
+                                 + '  <input name="new[sort][' + $menu_index + ']" size="3" type="text" value="0" class="input-mini"ata-rule-number="true" /></td>'
+                                  + ' <td>'
+                                  + '<input name="new[title][' + $menu_index + ']" size="15" type="text" class="input-medium" data-rule-required="true" data-rule-maxlength="30" /></td>'
+                                  + '<td>'
+                                  + ' <input name="new[keyword][' + $menu_index + ']" size="15" type="text" class="input-medium type" data-rule-required="true" data-rule-maxlength="500" />'
+                                  + '   <input type="hidden" name="new[pid][' + $menu_index + ']" value="{pid}" /></td>'
+                                  + '  <input type="hidden" name="new[type][' + $menu_index + ']" class="key_type" value="1" /></td>'
+
+                                  + ' <td>'
+                                  + '  <input type="checkbox" name="new[is_show][' + $menu_index + ']" checked="checked" value="1"/></td>'
+                                  + ' <td><a href="javascript:void()" class="del">删除</a></td>'
+                                   + '</tr> ';
+                                         $("#listTable").append(_menuPtrtmp.replace("{pid}", 0));
+
+                                     })
+                                     $add_zmenu.click(function myfunction() {
+                                         var $pid = $(this).attr("rel");
+                                         var $thistr = $(this).parent().parent();
+                                         var next = $thistr.nextAll("tr");
+                                         $menu_index++;
+                                         var _menuPtrtmp = '<tr>'
+                                  + ' <td>'
+                                 + '  <input name="new[sort][' + $menu_index + ']" size="3" type="text" value="0" class="input-mini"ata-rule-number="true" /></td>'
+                                  + ' <td>{z}'
+                                  + '<input name="new[title][' + $menu_index + ']" size="15" type="text" class="input-medium" data-rule-required="true" data-rule-maxlength="30" /></td>'
+                                  + '<td>'
+                                  + ' <input name="new[keyword][' + $menu_index + ']" size="15" type="text" class="input-medium type" data-rule-required="true" data-rule-maxlength="500" />'
+                                  + '  <input type="hidden" name="new[pid][' + $menu_index + ']" value="{pid}" /></td>'
+                                  + '  <input type="hidden" name="new[type][' + $menu_index + ']" class="key_type" value="1" /></td>'
+
+                                  + ' <td>'
+                                  + '  <input type="checkbox" name="new[is_show][' + $menu_index + ']" checked="checked" value="1" /></td>'
+                                  + ' <td><a href="javascript:void()" class="del">删除</a></td>'
+                                   + '</tr> ';
+                                         var tp = _menuPtrtmp.replace("{pid}", $pid).replace("{z}", "<i class='board'></i>  ");
+                                         if (next.length > 0) {
+                                             next.first().before(tp);
+
+                                         } else {
+                                             $("#listTable").append(tp);
+                                         }
+
+
+                                     });
+                                     $("#listTable .del").live("click", (function () {
+                                         $(this).parents("tr").remove();
+                                     }));
+                                     $("input.type").live("change", function () {
+                                         var $this = $(this);
+                                         var $val = $this.val();
+                                         var $nex = $this.nextAll("input.key_type");
+                                         var re = /^((http|https|ftp):\/\/)?(\w(\:\w)?@)?([0-9a-z_-]+\.)*?([a-z0-9-]+\.[a-z]{2,6}(\.[a-z]{2})?(\:[0-9]{2,6})?)((\/[^?#<>\/\\*":]*)+(\?[^#]*)?(#.*)?)?$/i;
+                                         if (re.test($val)) { $nex.val(2) } else { $nex.val(1) };
+                                     });
+                                     $("#create_menu").click(function () {
+                                         var $idsCheck = $("#listTable :checkbox");
+                                         var $isnew = false;
+                                         $idsCheck.each(function () {
+                                             var $hidden_name = $(this).parents("tr").find("input[type=hidden]").attr("name");
+                                             if ($hidden_name.indexOf("new") >= 0) $isnew = true; return;
+                                         });
+                                         if ($isnew) {
+                                             G.ui.tips.info("当前页面存在有保存菜单 请保存后生成!")
+                                         } else {
+                                             var $p = 0;
+                                             var $z = 0;
+                                             var $ftr = $("#listTable .ptr");
+                                             $ftr.each(function (k, v) {
+                                                 if ($p > 3) { G.ui.tips.info("1级菜单最多只能开启3个"); return false };
+                                                 if ($z > 5) { G.ui.tips.info("2级菜单最多只能开启5个"); return false };
+                                                 $z = 0;
+                                                 var $this = $(this);
+                                                 if ($this.find("input[type='checkbox']:checked").length > 0) {
+                                                     $p++;
+                                                     $this.nextUntil(".ptr").each(function () {
+                                                         if ($(this).find("input[type='checkbox']:checked").length > 0) {
+                                                             $z++;
+                                                         }
+                                                     });
+                                                     if ($z == 0 && k == $ftr.length) {
+                                                         $this.nextAll(".ztr").each(function () {
+                                                             if ($(this).find("input[type='checkbox']:checked").length > 0) {
+                                                                 $z++;
+                                                             }
+                                                         });
+                                                     }
+                                                 }
+
+                                             });
+                                             if ($p > 3) { G.ui.tips.info("1级菜单最多只能开启3个"); return false };
+                                             if ($z > 5) { G.ui.tips.info("2级菜单最多只能开启5个"); return false };
+                                             $.get('/index.php?g=User&m=Diymen&a=class_send&token=' + $('#token').val(), {}, function (data) {
+                                                 if(data == 2)  alert('菜单创建成功');
+						 if(data == 1)  alert('操作失败,系统繁忙，请稍后再提交!');
+						 if(data == 0)  alert('非法操作');
+						 if(data == 40001)  alert('获取access_token时AppSecret错误，或者access_token无效');
+						 if(data == 40002)  alert('不合法的凭证类型');						 
+						 if(data == 40013)  alert('不合法的APPID');
+						 if(data == 40014)  alert('不合法的access_token');
+						 if(data == 40015)  alert('不合法的菜单类型');
+						 if(data == 40018)  alert('不合法的按钮名字长度');
+                                                 if(data == 40019)  alert('不合法的按钮KEY长度');
+                                                 if(data == 40020)  alert('不合法的按钮URL长度');
+                                                 if(data == 40021)  alert('不合法的菜单版本号');
+                                                 if(data == 40022)  alert('不合法的子菜单级数');
+                                                 if(data == 40023)  alert('不合法的子菜单按钮个数');
+                                                 if(data == 40024)  alert('不合法的子菜单按钮类型');
+                                                 if(data == 40025)  alert('不合法的子菜单按钮名字长度');
+                                                 if(data == 40026)  alert('不合法的子菜单按钮KEY长度');
+                                                 if(data == 40027)  alert('不合法的子菜单按钮URL长度');
+                                                 if(data == 40028)  alert('不合法的自定义菜单使用用户');						 
+						 if(data == 4)  alert('必须先填写微信【AppId】【 AppSecret】');
+                                             }, 'json');
+
+
+                                         }
+
+
+
+                                     });
+				     
+				     
+				     
+				    $("#create_ymenu").click(function () {
+                                         var $idsCheck = $("#listTable :checkbox");
+                                         var $isnew = false;
+                                         $idsCheck.each(function () {
+                                             var $hidden_name = $(this).parents("tr").find("input[type=hidden]").attr("name");
+                                             if ($hidden_name.indexOf("new") >= 0) $isnew = true; return;
+                                         });
+                                         if ($isnew) {
+                                             G.ui.tips.info("当前页面存在有保存菜单 请保存后生成!")
+                                         } else {
+                                             var $p = 0;
+                                             var $z = 0;
+                                             var $ftr = $("#listTable .ptr");
+                                             $ftr.each(function (k, v) {
+                                                 if ($p > 3) { G.ui.tips.info("1级菜单最多只能开启3个"); return false };
+                                                 if ($z > 5) { G.ui.tips.info("2级菜单最多只能开启5个"); return false };
+                                                 $z = 0;
+                                                 var $this = $(this);
+                                                 if ($this.find("input[type='checkbox']:checked").length > 0) {
+                                                     $p++;
+                                                     $this.nextUntil(".ptr").each(function () {
+                                                         if ($(this).find("input[type='checkbox']:checked").length > 0) {
+                                                             $z++;
+                                                         }
+                                                     });
+                                                     if ($z == 0 && k == $ftr.length) {
+                                                         $this.nextAll(".ztr").each(function () {
+                                                             if ($(this).find("input[type='checkbox']:checked").length > 0) {
+                                                                 $z++;
+                                                             }
+                                                         });
+                                                     }
+                                                 }
+
+                                             });
+                                             if ($p > 3) { G.ui.tips.info("1级菜单最多只能开启3个"); return false };
+                                             if ($z > 5) { G.ui.tips.info("2级菜单最多只能开启5个"); return false };
+                                             $.get('/index.php?g=User&m=Diymen&a=class_ysend&token=' + $('#token').val(), {}, function (data) {
+                                                 if(data == 2)  alert('菜单创建成功');
+						 if(data == 1)  alert('操作失败,系统繁忙，请稍后再提交!');
+						 if(data == 0)  alert('非法操作');
+						 if(data == 4)  alert('必须先填写易信【AppId】【 AppSecret】');
+                                             }, 'json');
+
+
+                                         }
+
+
+
+                                     });
+
+                                 });
+                                </script>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div></body>
+</html>
