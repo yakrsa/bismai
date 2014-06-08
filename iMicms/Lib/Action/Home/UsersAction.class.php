@@ -15,7 +15,7 @@ class UsersAction extends BaseAction{
 		if($res&&($pwd===$res['password'])){
 			if($res['status']==0){
 				echo 3;
-				//$this->error('请联系在线客户，为你人工审核帐号');
+				$this->error('请联系在线客户，为你人工审核帐号');
 				exit;
 			}
 
@@ -39,7 +39,7 @@ class UsersAction extends BaseAction{
 				$data['gongzhongnum']=0;
 				$db->save($data);
 			}
-			//$this->success('登录成功',U('Index/index'));
+			$this->success('登录成功',U('Index/index'));
 			 
 			echo 1;
 		}else{

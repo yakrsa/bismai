@@ -36,7 +36,7 @@ $(document).ready(function(){
             $.post('/index.php?m=Users&a=checklogin', {username:$('#username').val(), password:$('#password').val(), keepalive:$('#keepalive').attr('value')}, function(rs){
 	        if(rs == 3) var texts = '请联系在线客服，为你人工审核帐号!';
 		if(rs == 2) var texts = '帐号密码错误!';
-		if(rs == 1) var texts = '登录成功,艾米微管家欢迎您!';
+		if(rs == 1) var texts = '登录成功,比斯迈微管家欢迎您!';
                 $('#error_tips').text(texts);
                 $('#error_box').slideDown(400);
                 setTimeout(function(){
