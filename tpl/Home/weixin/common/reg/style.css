@@ -100,7 +100,7 @@ a:hover {
 
 body {
 
-	background: url(../img/quc_index_bg.jpg) no-repeat 50% 0
+	background: url(../img/background.jpg) no-repeat 50% 0
 
 }
 
@@ -276,7 +276,7 @@ body {
 
 #hd .logo {
 
-	background: url(../img/logo.png) no-repeat;
+	background: url(../img/logo.png) no-repeat ;
 
 	float: left;
 
