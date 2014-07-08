@@ -299,12 +299,12 @@ if($method == 'show_license') {//声明
 			} else {
 				show_msg('database_version_old', $error, 0);
 			}
-
+/*
 			if(mysql_errno()) {
 				show_msg('database_errno_1044', mysql_error(), 0);
 			}
 			//mysql_close();
-		}
+*/		}
 
 		if(strpos($tablepre, '.') !== false) {
 			show_msg('tablepre_invalid', $tablepre, 0);

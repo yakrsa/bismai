@@ -27,25 +27,35 @@ $(document).ready(function(){
                 $('#username').focus();
                 $('#error_tips').text('请输入账号');
                 $('#error_box').slideDown(400);
-                setTimeout(function(){
-                    $('#error_box').hide();
-                }, 1000);
+//                setTimeout(function(){
+  //                  $('#error_box').hide();
+    //            }, 1000);
                 return false;
             }
  
-            $.post('/index.php?m=Users&a=checklogin', {username:$('#username').val(), password:$('#password').val(), keepalive:$('#keepalive').attr('value')}, function(rs){
-	        if(rs == 3) var texts = '请联系在线客服，为你人工审核帐号!';
-		if(rs == 2) var texts = '帐号密码错误!';
-		if(rs == 1) var texts = '登录成功,比斯迈微管家欢迎您!';
-                $('#error_tips').text(texts);
+            $.post('/index.php?m=Users&a=checklogin', {username:$('#username').val(), password:$('#password').val() }, function(rs){
+		var texts="";
+	        if(rs==3 || rs.status == 3) 
+	        {
+	         	texts = '请联系在线客服，为你人工审核帐号!';
+	        }
+		 else if(rs==2 || rs.status == 2)
+	        {
+			texts = '帐号密码错误!';
+	        }
+		else if(rs==1 ||rs.status == 1)
+    {
+			texts = '登录成功,比斯迈微管家欢迎您!';
+		}    
+		$('#error_tips').text(texts);
                 $('#error_box').slideDown(400);
                 setTimeout(function(){
                     $('#error_box').hide();
                 }, 1000);
-                if(rs == 1){
-                    setTimeout(function(){
+                if(rs.status == 1){
+                    //setTimeout(function(){
                         location.href = '/index.php?g=User&m=Index&a=index';
-                    }, 600);
+                    //}, 600);
                 }
             }, 'json');
         });
