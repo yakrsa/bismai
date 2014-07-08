@@ -56,7 +56,8 @@
 						if(url.indexOf("http") > -1){
 							K('#picl').val(url);
 						}else{
-							K('#picl').val("{iMicms::C('site_url')}"+url);
+						//	K('#picl').val("{iMicms::C('site_url')}"+url);
+                                                        K('#picl').val(url);
 						}
 						editor.hideDialog();
 					}
@@ -76,7 +77,7 @@
                     <div class="box">
                         <div class="box-title">
                             <div class="span10">
-                                <h3><i class="icon-edit"></i>添加公众帐号     <small><a href="http://wpa.qq.com/msgrd?v=3&uin={iMicms::C('site_qq')}&site=qq&menu=yes" target="_blank"><img  src="/tpl/static/zs.jpg" alt="管家助手"/></a></small></h3>
+                                <h3><i class="icon-edit"></i>添加公众帐号</h3>
 
                             </div>
                             <div class="span2"><a class="btn" onclick="javascript:window.history.go(-1);">返回</a></div>
