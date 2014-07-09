@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>站点配置</title>
 <link href="{iMicms::RES}/images/main.css" type="text/css" rel="stylesheet">
-<link href="{iMicms::RES}/images/jquery-1.7.2.min.js" type="text/css" rel="stylesheet">
-<link href="{iMicms::RES}/images/jquery.form.js" type="text/css" rel="stylesheet">
+<link href="{iMicms::RES}/js/jquery-1.7.2.min.js" type="text/css" rel="stylesheet">
+<link href="{iMicms::RES}/js/jquery.form.js" type="text/css" rel="stylesheet">
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 </head>
 <body class="warp">
@@ -80,12 +80,6 @@
       <td  height="48" align="right"><strong>站长Email：</strong></td>
       <td><input type="text" name="site_email" value="{iMicms::C('site_email')}" class="ipt" size="45" /><span>&nbsp;&nbsp;例如:123456@qq.com</span>
     </tr>
-    <tr> 
-					<td height="48" align="right"><strong>百度地图API：</strong></td>
-					<td>
-						<input type="text" name="baidu_map_api" value="{iMicms::C('baidu_map_api')}" class="ipt" size="45" /><span>&nbsp;&nbsp;<a href="http://lbsyun.baidu.com/apiconsole/key?application=key" target="_blank">点击获取</a></span>
-					</td>
-   <tr>
    <tr> 
 					<td height="48" align="right"><strong>联系地址：</strong></td>
 					<td>
@@ -106,10 +100,6 @@
 	<tr> 
       <td  height="48" align="right"><strong>网站　描述：</strong></td>
       <td><textarea	 type="text" name="content" class="ipt" style="width:450px;height:60px;margin:5px 0 5px 0;" />{iMicms::C('content')}</textarea><span>&nbsp;&nbsp;一般不超过200个字符</span>
-    </tr>
-	<tr> 
-      <td  height="48" align="right"><strong>统计　代码：</strong></td>
-      <td><textarea	 type="text" name="counts" class="ipt" style="width:450px;height:60px;margin:5px 0 5px 0;" />{iMicms::C('counts')}</textarea><span>&nbsp;&nbsp;例:51啦统计,cnzz统计</span>
     </tr>
 	<tr> 
       <td  height="48" align="right"><strong>底部　版权：</strong></td>
