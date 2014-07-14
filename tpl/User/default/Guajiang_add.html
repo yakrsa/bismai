@@ -31,7 +31,7 @@
 		<br />
 		<input class="px" id="pic1" name="starpicurl" value="<if condition="$vo['starpicurl'] eq ''">{iMicms::C('site_url')}/tpl/User/default/common/images/img/activity-scratch-card-start.jpg<else/>{imicms:$vo.starpicurl}</if>"   onclick="document.getElementById('pic1_src').src=this.value;" style="width:363px;"  />
 		<br /><input name="type" value="2" type="hidden"   />
-		 <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',1000,500,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic1')">预览</a>&nbsp;活动开始图片
+		 <script src="/tpl/Static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',1000,500,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic1')">预览</a>&nbsp;活动开始图片
 	  </div>
   </TD>
 </TR>
@@ -88,7 +88,7 @@
   				<td rowspan="4" valign="top"><div style="margin-left:20px"><img  id="pic2_src" src="<if condition="$vo['endpicurl'] eq ''">{iMicms::C('site_url')}/tpl/User/default/common/images/img/activity-scratch-card-end.jpg<else/>{imicms:$vo.endpicurl}</if>"  width="373px"/> <br />
   					<input class="px" id="pic2" name="endpicurl" value="<if condition="$vo['endpicurl'] eq ''">{iMicms::C('site_url')}/tpl/User/default/common/images/img/activity-scratch-card-end.jpg<else/>{imicms:$vo.endpicurl}</if>"  onchange="document.getElementById('pic2_src').src=this.value;"  style="width:363px;"  />
   					<br />
-  					 <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',1000,500,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic2')">预览</a>&nbsp;活动结束图片</div></td>
+  					 <script src="/tpl/Static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',1000,500,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic2')">预览</a>&nbsp;活动结束图片</div></td>
   				</tr>
   			<tr>
   				<th valign="top">活动结束说明：</th>

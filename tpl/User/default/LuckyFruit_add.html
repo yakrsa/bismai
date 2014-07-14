@@ -1,7 +1,7 @@
 <include file="Public:head"/>
 <link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
 <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
-<script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
 <script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
 <script>
 	KindEditor.ready(function(K){
@@ -97,11 +97,11 @@
   </TD>
   <TD rowspan="7" valign="top">
 	  <div style="margin-left:20px">
-		<img id="pic1_src" src="<if condition="$vo['starpicurl'] eq ''">{iMicms::C('site_url')}/tpl/static/luckyFruit/user/start.jpg<else/>{imicms:$vo.starpicurl}</if>" width="373px" >	
+		<img id="pic1_src" src="<if condition="$vo['starpicurl'] eq ''">{iMicms::C('site_url')}/tpl/Static/luckyFruit/user/start.jpg<else/>{imicms:$vo.starpicurl}</if>" width="373px" >	
 		<br />
-		<input class="px"  name="starpicurl" value="<if condition="$vo['starpicurl'] eq ''">{iMicms::C('site_url')}/tpl/static/luckyFruit/user/start.jpg<else/>{imicms:$vo.starpicurl}</if>" id="pic1" style="width:363px;"  />
+		<input class="px"  name="starpicurl" value="<if condition="$vo['starpicurl'] eq ''">{iMicms::C('site_url')}/tpl/Static/luckyFruit/user/start.jpg<else/>{imicms:$vo.starpicurl}</if>" id="pic1" style="width:363px;"  />
 		<br />
-		  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',700,420,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic1')">预览</a>&nbsp;活动开始图片
+		  <script src="/tpl/Static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',700,420,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic1')">预览</a>&nbsp;活动开始图片
 	  </div>
   </TD>
 </TR>
@@ -160,10 +160,10 @@
   				<td><input type="input" class="px" id="endtite" value="<if condition="$vo['endtite'] eq ''">{imicms:$lotteryTypeName}活动已经结束了<else/>{imicms:$vo.endtite}</if>" name="endtite" style="width:400px" />
   					<br />
   					请不要多于50字! </td>
-  				<td rowspan="4" valign="top"><div style="margin-left:20px"><img  id="pic2_src" src="<if condition="$vo['endpicurl'] eq ''">{iMicms::C('site_url')}/tpl/static/luckyFruit/user/end.jpg<else/>{imicms:$vo.endpicurl}</if>"  width="373px"/> <br />
-  					<input class="px" id="pic2"  name="endpicurl" value="<if condition="$vo['endpicurl'] eq ''">{iMicms::C('site_url')}/tpl/static/luckyFruit/user/end.jpg<else/>{imicms:$vo.endpicurl}</if>"  style="width:363px;"  />
+  				<td rowspan="4" valign="top"><div style="margin-left:20px"><img  id="pic2_src" src="<if condition="$vo['endpicurl'] eq ''">{iMicms::C('site_url')}/tpl/Static/luckyFruit/user/end.jpg<else/>{imicms:$vo.endpicurl}</if>"  width="373px"/> <br />
+  					<input class="px" id="pic2"  name="endpicurl" value="<if condition="$vo['endpicurl'] eq ''">{iMicms::C('site_url')}/tpl/Static/luckyFruit/user/end.jpg<else/>{imicms:$vo.endpicurl}</if>"  style="width:363px;"  />
   					<br />
-  					  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',700,420,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic2')">预览</a>&nbsp; 活动结束图片网址 </div></td>
+  					  <script src="/tpl/Static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',700,420,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic2')">预览</a>&nbsp; 活动结束图片网址 </div></td>
   				</tr>
   			<tr>
   				<th valign="top">活动结束说明：</th>

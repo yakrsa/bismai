@@ -48,24 +48,16 @@
                 <li><a href="javascript:void(0)" data-toggle="dropdown" class='dropdown-toggle' data-hover="dropdown">
                     <span>帮助中心</span>
                     <span class="caret"></span>
-                </a>
+                </a><!--
                     <ul class="dropdown-menu">
-
                         <li><a href="http://wpa.qq.com/msgrd?v=3&uin={iMicms::C('site_qq')}&site=qq&menu=yes" target="_blank">在线客服</a></li>
                          <li><a href="/index.php?g=User&m=Index&a=userguide">使用指南</a></li>
                         <li><a href="/index.php?g=User&m=Index&a=about">关于我们</a></li>
                         <li><a href="/index.php?g=User&m=Index&a=help">常见问题</a></li>
-
-
-
                     </ul>
-
+                   -->
                 </li>
-
-
-
             </ul>
-
             <div class="user">
                 <ul class="icon-nav">
                     <li class='dropdown'>
@@ -192,7 +184,7 @@
                     </li>
                 </ul>
             </div>
-			<div class="subnav">
+<!--			<div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>订单提醒</span></a>
                 </div>
@@ -207,7 +199,7 @@
                     
                 </ul>
             </div>
-
+-->
 			<div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微官网</span></a>
@@ -225,9 +217,9 @@
                     <li>
                       <a href="{iMicms::U('Flash/index',array('token'=>$token))}">首页幻灯片<span class="new"></span></a>
                     </li>
-                      <li>
+                     <!-- <li>
                       <a href="{iMicms::U('Index/tools',array('token'=>$token))}">常用工具<span class="new"></span></a>
-                    </li>
+                    </li> -->
 		     <li>
                      <a href="{iMicms::U('Plugmenu/index',array('token'=>$token))}">一键拨号和版权<span class="new"></span></a>
                     </li>
@@ -253,6 +245,7 @@
 
                 </ul>
             </div>
+<!--
 		<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微相册</span></a>
@@ -265,7 +258,8 @@
 						<a href="{iMicms::U('Photo/index',array('token'=>$token))}">相册管理</a>
 					</li>
 				</ul>
-            </div>
+            </div> -->
+<!--
 	     <div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>360°全景</span></a>
@@ -277,7 +271,7 @@
 					</li>
 				</ul>
             </div>
-             
+    --> <!--         
 	     <div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微喜帖</span></a>
@@ -298,7 +292,7 @@
 					</li>
 				</ul>
 			</div>
-		<!--<div class="subnav">
+		<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微信墙</span></a>
 				</div>
@@ -307,7 +301,7 @@
 						<a href="{iMicms::U('Wxq/index',array('token'=>$token))}">微信墙管理</a>
 					</li>
 				</ul>
-			</div>-->
+			</div>
 		<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>摇一摇</span></a>
@@ -333,9 +327,9 @@
                      <a href="{iMicms::U('Guajiang/index',array('token'=>$token))}">刮刮卡</a>
                     </li>
                        
-		     <!--<li>
+		     <li>
                     <a href="{iMicms::U('Goldegg/index',array('token'=>$token))}">砸金蛋</a>
-                    </li>-->
+                    </li>
 					<li>
                     <a href="{iMicms::U('LuckyFruit/index',array('token'=>$token))}">水果机</a>
                     </li>
@@ -430,7 +424,7 @@
 				</ul>
             </div>
 
-			<!--<div class="subnav">
+			<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微留言</span></a>
 				</div>
@@ -439,7 +433,7 @@
 						<a href="{iMicms::U('Reply/index',array('token'=>$token))}">留言设置</a>
 					</li>
 				</ul>
-            </div>-->
+            </div>
 			<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微投票</span></a>
@@ -479,9 +473,9 @@
 					<li class="">
 						<a href="{iMicms::U('Estate/album',array('token'=>$token))}">楼盘相册</a>
 					</li>
-					<!--<li class="">
+					<li class="">
 						<a href="{iMicms::U('Estate/impress',array('token'=>$token))}">房友印象</a>
-					</li>-->
+					</li>
 					<li class="">
 						<a href="{iMicms::U('Estate/expert',array('token'=>$token))}">专家点评</a>
 					</li>
@@ -496,7 +490,7 @@
 					</li>
 				</ul>
 			</div>
-			<!--<div class="subnav">
+		<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微预约</span></a>
 				</div>
@@ -505,7 +499,7 @@
 						<a href="{iMicms::U('Reservation/index',array('token'=>$token))}">预约设置</a>
 					</li>
 				</ul>
-            </div>-->
+            </div>
 			<div class="subnav">
 				<div class="subnav-title">
 					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微汽车</span></a>
@@ -541,7 +535,7 @@
 				</ul>
             </div>
 			
-			<!-- <div class="subnav">
+		 <div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微路由</span></a>
                 </div>
@@ -561,7 +555,7 @@
                      
                    
                 </ul>
-            </div>-->
+            </div>
 
           <div class="subnav">
                 <div class="subnav-title">
@@ -570,9 +564,9 @@
                 <ul class="subnav-menu">
 		
 		    
-                    <!--<li>
+                    <li>
                         <a href="{iMicms::U('Taobao/index',array('token'=>$token))}">淘宝天猫店铺配置</a></li>
-                    </li>-->
+                    </li>
 
                     <li>
                        <a href="{iMicms::U('Api/index',array('token'=>$token))}">融合第三方</a></li>
@@ -583,7 +577,7 @@
                      
                    
                 </ul>
-            </div>
+            </div> -->
 			<div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>用户管理CRM</span></a>
@@ -606,6 +600,7 @@
                     </li>
                 </ul>
             </div>
+<!--
 	    <div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class="toggle-subnav"><i class="icon-angle-down"></i><span>微接入服务</span></a>
@@ -621,7 +616,7 @@
                     </li>   
 
                 </ul>
-            </div>
+            </div> -->
 			<div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class="toggle-subnav"><i class="icon-angle-down"></i><span></span></a>

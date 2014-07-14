@@ -1,16 +1,16 @@
 <include file="Public:head"/>
 <script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="/tpl/Static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/Static/artDialog/plugins/iframeTools.js"></script>
 
 <!--<link rel="stylesheet" href="{iMicms::STATICS}/kindeditor/themes/default/default.css" />
 <link rel="stylesheet" href="{iMicms::STATICS}/kindeditor/plugins/code/prettify.css" />
 <script src="{iMicms::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
-<script src="{iMicms::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{iMicms::STATICS}/kindeditor/lang/zh_cn.js" type="text/javascript"></script>
 <script src="{iMicms::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>-->
 <link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet" />
 <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
-<script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+<script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
 <script src="{iMicms::STATICS}/kindeditors/kindeditor.config-upfile.js"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/formCheck/formcheck.js"> </script>
 <script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-9-13-2"></script>
@@ -151,10 +151,10 @@ items : [
 	<div class="control-group">
 		<label for="coverurl" class="control-label">图文消息封面：</label>
 		<div class="controls">
-      <img class="thumb_img" id="cover" src="{iMicms:$es_data['cover']|default='./tpl/static/vhouse/iMicms02.jpg'}" style="max-height:100px;">
+      <img class="thumb_img" id="cover" src="{iMicms:$es_data['cover']|default='./tpl/Static/vhouse/iMicms02.jpg'}" style="max-height:100px;">
       
 		  <span class="help-inline">
-               <input type="text" name="cover" value="{iMicms:$es_data['cover']|default='./tpl/static/vhouse/iMicms02.jpg'}" class="input-xlarge"  id="pic" readonly="readonly" /><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+               <input type="text" name="cover" value="{iMicms:$es_data['cover']|default='./tpl/Static/vhouse/iMicms02.jpg'}" class="input-xlarge"  id="pic" readonly="readonly" /><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
        </div>
@@ -162,12 +162,12 @@ items : [
 	<div class="control-group">
          <label class="control-label">楼盘头部图片：</label>
                                     <div class="controls">
-                                        <img class="thumb_img" id="banner_src" src="{iMicms:$es_data['banner']|default='./tpl/static/vhouse/iMicms01.jpg'}" style="max-height:100px;"> 
+                                        <img class="thumb_img" id="banner_src" src="{iMicms:$es_data['banner']|default='./tpl/Static/vhouse/iMicms01.jpg'}" style="max-height:100px;"> 
                                         <span class="help-inline">
-               <input type="text" name="banner" value="{iMicms:$es_data['banner']|default='./tpl/static/vhouse/iMicms01.jpg'}" class="input-xlarge"  id="pic2" readonly="readonly" /><span class="ke-button-common" id="upload2" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+               <input type="text" name="banner" value="{iMicms:$es_data['banner']|default='./tpl/Static/vhouse/iMicms01.jpg'}" class="input-xlarge"  id="pic2" readonly="readonly" /><span class="ke-button-common" id="upload2" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
-                                            <!--<input type="text" id="banner" name="banner" class="px" value="{iMicms:$es_data['banner']|default='./tpl/static/vhouse/iMicms01.jpg'}"> 
+                                            <!--<input type="text" id="banner" name="banner" class="px" value="{iMicms:$es_data['banner']|default='./tpl/Static/vhouse/iMicms01.jpg'}"> 
                                             <span class="help-inline">  
                                             <a href="###" onclick="upyunPicUpload('banner',720,400,'{iMicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('banner')">预览</a>                          
                                             <span class="help-inline">建议尺寸：宽720像素，高350像素</span>
@@ -178,14 +178,14 @@ items : [
 		<div class="control-group">
                                     <label class="control-label">户型头部图片：</label>
                                     <div class="controls">
-                                        <img class="thumb_img" id="house_banner_src" src="{iMicms:$es_data['house_banner']|default='./tpl/static/vhouse/iMicms32.jpg'}" style="max-height:100px;">
+                                        <img class="thumb_img" id="house_banner_src" src="{iMicms:$es_data['house_banner']|default='./tpl/Static/vhouse/iMicms32.jpg'}" style="max-height:100px;">
 										<span class="help-inline">
-               <input type="text" name="house_banner" value="{iMicms:$es_data['house_banner']|default='./tpl/static/vhouse/iMicms32.jpg'}" class="input-xlarge"  id="pic3" readonly="readonly" /><span class="ke-button-common" id="upload3" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
+               <input type="text" name="house_banner" value="{iMicms:$es_data['house_banner']|default='./tpl/Static/vhouse/iMicms32.jpg'}" class="input-xlarge"  id="pic3" readonly="readonly" /><span class="ke-button-common" id="upload3" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
 
 
-                                        <!--<input type="text" name="house_banner" id="house_banner" class="px" value="{iMicms:$es_data['house_banner']|default='./tpl/static/vhouse/iMicms32.jpg'}">
+                                        <!--<input type="text" name="house_banner" id="house_banner" class="px" value="{iMicms:$es_data['house_banner']|default='./tpl/Static/vhouse/iMicms32.jpg'}">
                                         <span class="help-inline">
                                              <script src="{iMicms::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('house_banner',720,400,'{iMicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('house_banner')">预览</a>
                                             <span class="help-inline">建议尺寸：宽720像素，高350像素</span>

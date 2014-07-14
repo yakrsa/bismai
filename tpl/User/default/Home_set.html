@@ -31,7 +31,7 @@
 <script type="text/javascript" src="{iMicms::RES}/js/bootstrap_switch.js?2013-10-21-2"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/zeroclipboard_min1.js?2013-10-21-2"></script>
 <title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
-<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+<link rel="shortcut icon" href="/tpl/Static/favicon.ico" />
         <!--[if IE 7]>
             <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
         <![endif]-->
@@ -44,7 +44,7 @@
     <link href="{iMicms::STATICS}/kindeditors/themes/default/default.css" rel="stylesheet">
     <script src="{iMicms::STATICS}/kindeditors/kindeditor-min.js"></script>
    
-    <script src="{iMicms::STATICS}/kindeditors/lang/zh_CN.js"></script>
+    <script src="{iMicms::STATICS}/kindeditors/lang/zh_cn.js"></script>
 <script type="text/javascript" src="{iMicms::STATICS}/kindeditors/config.mp3.js"></script>
     <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/miniplayer.css" media="all">
     </head>
@@ -105,8 +105,8 @@
 				 <div class="control-group">
 									<label class="control-label" for="cover">图文消息封面</label>
 									<div class="controls">
-										 <img class="thumb_img" src="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/static/images/home-300300.jpg</if>" style="max-height:100px;">
-										<input id="thumb" type="text" name="picurl" class="hide" value="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/static/images/home-300300.jpg</if>">
+										 <img class="thumb_img" src="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/Static/images/home-300300.jpg</if>" style="max-height:100px;">
+										<input id="thumb" type="text" name="picurl" class="hide" value="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/Static/images/home-300300.jpg</if>">
 										<span class="help-inline">
                                             <button class="btn select_img" type="button">选择封面</button>
                                         </span>
@@ -121,8 +121,8 @@
 								<div class="control-group">
 									<label class="control-label" for="bg_img">官网背景</label>
 									<div class="controls">
-										 <img class="gwbg thumb_img" src="<if condition="$home['show_bg_img'] neq ''">{iMicms:$home.show_bg_img}<else/>/tpl/static/images/default.jpg</if>" style="max-height: 100px;">
-										<input class="input-xlarge" type="text" name="show_bg_img" id="bg_img" value="<if condition="$home['show_bg_img'] neq ''">{iMicms:$home.show_bg_img}<else/>/tpl/static/images/default.jpg</if>" style="display: none;">
+										 <img class="gwbg thumb_img" src="<if condition="$home['show_bg_img'] neq ''">{iMicms:$home.show_bg_img}<else/>/tpl/Static/images/default.jpg</if>" style="max-height: 100px;">
+										<input class="input-xlarge" type="text" name="show_bg_img" id="bg_img" value="<if condition="$home['show_bg_img'] neq ''">{iMicms:$home.show_bg_img}<else/>/tpl/Static/images/default.jpg</if>" style="display: none;">
                                         <span class="help-inline">
                                             <button class="btn select_img" type="button">自定义</button>
                                             建议大小(宽640高1200)
@@ -135,14 +135,14 @@
 									<div class="controls">
 										<select name="bg_img" id="select_bg" class="input-medium">
 											<option value="">选择官网背景图片</option>
-											<option value="/tpl/static/images/home-default1.jpg" >01</option>
-											<option value="/tpl/static/images/home-default2.jpg" >02</option>
-											<option value="/tpl/static/images/home-default3.jpg" >03</option>
-											<option value="/tpl/static/images/home-default4.jpg" >04</option>
-											<option value="/tpl/static/images/home-default5.jpg" >05</option>
-											<option value="/tpl/static/images/home-default6.jpg" >06</option>
-											<option value="/tpl/static/images/home-default7.jpg" >07</option>
-											<option value="/tpl/static/images/home-default8.jpg" >08</option>
+											<option value="/tpl/Static/images/home-default1.jpg" >01</option>
+											<option value="/tpl/Static/images/home-default2.jpg" >02</option>
+											<option value="/tpl/Static/images/home-default3.jpg" >03</option>
+											<option value="/tpl/Static/images/home-default4.jpg" >04</option>
+											<option value="/tpl/Static/images/home-default5.jpg" >05</option>
+											<option value="/tpl/Static/images/home-default6.jpg" >06</option>
+											<option value="/tpl/Static/images/home-default7.jpg" >07</option>
+											<option value="/tpl/Static/images/home-default8.jpg" >08</option>
 										</select>
 										<span class="help-inline">以预览背景图为标准</span>
 									</div>
@@ -151,7 +151,7 @@
 									<label class="control-label" for="mp3url">背景音乐</label>
 									<div class="controls">
 										<div class="inline mp3">
-								  <a id="m1" class="audio {skin:'blue'}" href="<if condition="$home['bg_audio'] neq ''">{iMicms:$home.bg_audio}<else/>/tpl/static/images/default.mp3</if>" style="display: none;">mp3背景音乐</a>
+								  <a id="m1" class="audio {skin:'blue'}" href="<if condition="$home['bg_audio'] neq ''">{iMicms:$home.bg_audio}<else/>/tpl/Static/images/default.mp3</if>" style="display: none;">mp3背景音乐</a>
 										</div>
 										<input type="hidden" name="bg_audio" id="mp3url" value="{iMicms:$home.bg_audio}"/>
                                         <span class="help-inline">
@@ -189,12 +189,12 @@
 										</select>
 									</div>
 								</div>
-								<div class="control-group">
+							<!--	<div class="control-group">
 									<label class="control-label" for="tj_code">统计代码 </label>
 									<div class="controls">
 										<textarea id="tj_code" name="stat_code" class="input-xxlarge" rows="4">{iMicms:$home.stat_code}</textarea>
 									</div>
-								</div>
+								</div> -->
                                  <div class="control-group">
                                     <label class="control-label" for="sites">微官网地址：</label>
                                     <div class="controls" style="padding-top:4px;">

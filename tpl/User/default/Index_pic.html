@@ -16,7 +16,7 @@
 <script type="text/javascript" src="{iMicms::RES}/js/FusionCharts.js"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/inside.js"></script>
 <title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
-	<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+	<link rel="shortcut icon" href="/tpl/Static/favicon.ico" />
     <!--[if lte IE 9]><script src="{iMicms::RES}/js/watermark.js"></script><![endif]-->
 	<!--[if IE 7]><link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
 </head>
@@ -59,11 +59,11 @@
 
 
 					<script type="text/javascript">
-                        var chart = new FusionCharts("/tpl/static/MSLine.swf", "ChartId", "100%", "400", "0", "0");
+                        var chart = new FusionCharts("/tpl/Static/MSLine.swf", "ChartId", "100%", "400", "0", "0");
                         chart.setXMLUrl('/index.php?g=User&m=Index&a=chat&month={iMicms:$month}');
                         chart.render("chartdiv");
                         chart.addEventListener("Rendered", function (e) {
-                            var chart = new FusionCharts("/tpl/static/MSLine.swf", "ChartId", "100%", "400", "0", "0");
+                            var chart = new FusionCharts("/tpl/Static/MSLine.swf", "ChartId", "100%", "400", "0", "0");
                             chart.setXMLUrl('/index.php?g=User&m=Index&a=chatuser&month={iMicms:$month}');
                             chart.render("chartdiv2");
                         })
