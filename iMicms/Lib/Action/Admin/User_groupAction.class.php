@@ -37,7 +37,7 @@
 			$id=$this->_get('id','intval',0);
 			if($id==0)$this->error('非法操作');
 			$info = D('User_group')->delete($id);
-			if($info==false){
+			if($info==true){
 				$this->success('操作成功');		
 			}else{
 				$this->error('操作失败');

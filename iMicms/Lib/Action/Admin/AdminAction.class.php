@@ -79,9 +79,9 @@ class AdminAction extends Action{
         if(session('?'.C('USER_AUTH_KEY'))) {
             session(C('USER_AUTH_KEY'),null);
            
-            redirect(U('Home/Index/index'));
+            redirect("http://www.bismai.com");
         }else {
-            $this->error('已经登出！',U('Home/Index/index'));
+            $this->error('已经登出！',"http://www.bismai.com");
         }
     }
 }

@@ -86,8 +86,8 @@ class GroupAction extends BackAction{
         $Tree = new Tree();
         $Tree->icon = array('&nbsp;&nbsp;&nbsp;│ ','&nbsp;&nbsp;&nbsp;├─ ','&nbsp;&nbsp;&nbsp;└─ ');
         $Tree->nbsp = '&nbsp;&nbsp;&nbsp;';
-
-        $NodeDB = D('Node');
+        $where['status']=1;
+        $NodeDB = D('Node')->where($where);
         $node = $NodeDB->getAllNode();
 
         $AccessDB = D('Access');

@@ -13,8 +13,8 @@
 		<td >自义定图文条数</td>
 		<td width="100">请求次数</td>
 		<td width="150">是否显示版权</td>
-		<td width="150">活动创建次数</td>
 		<td width="150">公众号创建个数</td>
+                <td width="70">包月数</td>
 		<td width="70">状态</td>
 		<td width="100">管理操作</td>
 	  </tr>
@@ -26,8 +26,8 @@
 				<td >{iMicms:$vo.diynum}</td>
 				<td align='center'>{iMicms:$vo.connectnum}</td>
 				<td align='center'><if condition="$vo['iscopyright'] eq 1">是<else/>否</if></td>
-				<td align='center'>{iMicms:$vo.activitynum}</td>
 				<td align='center'>{iMicms:$vo.gongzhongnum}</td>
+                                <td align='center'>{iMicms:$vo.expdate}</td>
 				<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
 				</td>
 				<td align='center'>
