@@ -20,7 +20,7 @@ class UsersModel extends Model{
 		array('createip','getip',self::MODEL_INSERT,'callback'),
 		array('lasttime','time',self::MODEL_BOTH,'function'),
 		array('lastip','getip',self::MODEL_BOTH,'callback'),
-		array('status','getstatus',self::MODEL_BOTH,'callback'),
+#		array('status','getstatus',self::MODEL_BOTH,'callback'),
 	);
 	
 	public function getip(){
@@ -28,8 +28,8 @@ class UsersModel extends Model{
 	}
 	
 	 
-	public function getstatus(){
-		return C('ischeckuser');
-	}
+#	public function getstatus(){
+#		return C('ischeckuser');
+#	}
 	
 }

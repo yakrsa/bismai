@@ -236,6 +236,7 @@ class YichatAction extends Action{
         $mapAction = new MapAction();
         return $mapAction->staticCompanyMap();
         }
+/*
 	function shenhe($name){	
 		$name=implode('',$name);		
 		if(empty($name)){
@@ -255,6 +256,7 @@ class YichatAction extends Action{
 			}
 		}
 	}
+*/
 	function huiyuanka($name){
 		return $this->member();
 	}

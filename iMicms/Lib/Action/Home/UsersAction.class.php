@@ -6,18 +6,20 @@ class UsersAction extends BaseAction{
 
 	public function checklogin(){
 		$db=D('Users');
-		$where['username']=$this->$_POST['username'];
+		$username=$this->_post('username');
+
+		$where['username']=$this->_post('username');
 		
 		// if($db->create()==false)
 		// $this->error($db->getError());
 		$pwd=$this->_post('password','trim,md5');
 		$res=$db->where($where)->find();
-		if($res&&($pwd===$res['password'])){
-			if($res['status']==0){
-				echo 3;
-				$this->error('请联系在线客户，为你人工审核帐号');
-				exit;
-			}
+		if($pwd===$res['password']){
+	       	#	if($res['status']==0){
+		#		echo 3;
+		#		$this->error('请联系在线客户，为你人工审核帐号');
+		#		exit;
+		#	}
 
 			session('uid',$res['id']);
 			session('gid',$res['gid']);
@@ -39,12 +41,13 @@ class UsersAction extends BaseAction{
 				$data['gongzhongnum']=0;
 				$db->save($data);
 			}
-			$this->success('登录成功',U('Index/index'));
+                        $this->success('登录成功',U('Index/index'));
+			#$this->success($res['id']);
 			 
 			echo 1;
 		}else{
-		        echo 2;
-			//$this->error('帐号密码错误',U('Index/login'));
+				echo 2;
+				#$this->ajaxReturn($username.$res['id'] . $res['username'],U('Index/login'),0);
 		}
 	}
 	
@@ -71,14 +74,35 @@ class UsersAction extends BaseAction{
 		$usergroupDB=D('User_group');
 		$ugwhere['id'] = $authcode['level'];
 		$info=$usergroupDB->where($ugwhere)->find();
-		if($db->create()){
-			$id=$db->n_add();
+		$gid = $info['id'];
+		$viptime= time()+30*$info['expdate']*86400;
+		
+		$user['username']=$this->_post('username','trim');
+		$user['email']=$this->_post('email','trim');
+		$user['gid']=$gid;
+		$user['viptime']=$viptime;
+		$user['password']=md5($this->_post('password'));
+		$user['createip']=$_SERVER['REMOTE_ADDR'];
+		$user['lastip']=$_SERVER['REMOTE_ADDR'];
+		$user['authcode']=$this->_post('authcode','trim');
+		$user['createtime']=date("Y-m-d H:i:s",time());
+		$user['lasttime']=date("Y-m-d H:i:s",time());
+		$user['status']=1;
+		$user['city']=$this->_post('city','trim');
+		$user['province']=$this->_post('province','trim');
+		$user['qq']=$this->_post('qq','trim');
+		$user['tusername']=$this->_post('tusername','trim');
+		$user['mobile']=$this->_post('mobile','trim');
+		$user['areaid']=$this->_post('areaid','trim');
+		$db->data($user);
+		
+			$id=$db->add();
 			if($id){				
-				if(!C('ischeckuser')){
-					 echo 4; exit;
-					}
-				$gid = $info['id'];
-				$viptime=date('Y-m-d',strtotime('+ '+$info['expdate'] +' month'));
+			#	if(!C('ischeckuser')){
+			#		 echo 4; exit;
+			#			}
+			#	$gid = $info['id'];
+			#	$viptime=date('Y-m-d',strtotime('+ '+$info['expdate'] +' month'));
 				session('uid',$id);
 				session('gid',$gid);
 				session('uname',$_POST['username']);
@@ -102,10 +126,7 @@ class UsersAction extends BaseAction{
 			         echo 2; exit;
 				 
 			}
-		}else{
-		          echo 3; exit;
 			 
-		}
 	}
 	
 	public function getpass(){

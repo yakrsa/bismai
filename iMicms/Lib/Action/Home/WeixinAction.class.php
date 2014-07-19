@@ -381,6 +381,7 @@ class WeixinAction extends Action{
         $mapAction = new MapAction();
         return $mapAction->staticCompanyMap();
         }
+/*
 	function shenhe($name){	
 		$name=implode('',$name);		
 		if(empty($name)){
@@ -400,6 +401,7 @@ class WeixinAction extends Action{
 			}
 		}
 	}
+*/
 	function huiyuanka($name){
 		return $this->member();
 	}

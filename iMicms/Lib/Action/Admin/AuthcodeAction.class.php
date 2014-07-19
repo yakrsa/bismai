@@ -1,7 +1,13 @@
 <?php
 
 class AuthcodeAction extends BackAction{
+public function test(){
+$info['expdate']=12;
+$date=date('Y-m-d',time()); 
+$viptime=date('Y-m-d' ,strtotime("$date + " +$info['expdate']+" month")); 
+$this->ajaxReturn($viptime,"success",1);
 
+}
 public function index(){
 #$code=md5(microtime());
 #cookie('name','bismiatest');

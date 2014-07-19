@@ -344,14 +344,14 @@ public function n_add($data='',$options=array(),$replace=false) {
         $options    =   $this->_parseOptions($options);
         // 数据处理
         $data       =   $this->_facade($data);
-		$data['gid'] = (C('user_first_grade') != "NULL") ? C('user_first_grade') : 4;//自动vip3
-		$user_first_grade_time = (C('user_first_grade_time') != "NULL") ? C('user_first_grade_time') : 30;//默认30天
-		$data['viptime'] = strtotime("+".$user_first_grade_time." day");
-		if(C('ischeckuser') == "true"){
-			$data['status'] = 1;//取消手动审核
-		}elseif(C('ischeckuser') == "false"){
-			$data['status'] = 0;//手动审核
-		}
+		#$data['gid'] = (C('user_first_grade') != "NULL") ? C('user_first_grade') : 4;//自动vip3
+		#$user_first_grade_time = (C('user_first_grade_time') != "NULL") ? C('user_first_grade_time') : 30;//默认30天
+		#$data['viptime'] = strtotime("+".$user_first_grade_time." day");
+		#if(C('ischeckuser') == "true"){
+		#	$data['status'] = 1;//取消手动审核
+		#}elseif(C('ischeckuser') == "false"){
+	#		$data['status'] = 0;//手动审核
+	#	}
         if(false === $this->_before_insert($data,$options)) {
             return false;
         }

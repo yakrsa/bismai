@@ -223,7 +223,6 @@ sup{
 	padding-left:3px;
 	padding-right:2px;
 	border:1px solid #bdbcbd;
-	background:#FFF url(../images/admin/inputbut_bg.gif) left center repeat-x;
 	height:22px;
 }
 /* input */
@@ -248,7 +247,6 @@ textarea {
 	padding-right:2px;
 	padding-top:2px;
 	border:1px solid #bdbcbd;
-	background:#FFF url(../images/admin/inputbut_bg.gif) left center repeat-x;
 	font-size:12px;
 	height:24px;
 }

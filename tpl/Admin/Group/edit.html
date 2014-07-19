@@ -25,7 +25,7 @@
 </head>
 <body class="warp">
 <div id="artlist" class="addn">
-<form id="form">
+<form id="form" method="post" action="index.php?g=Admin&m=Group&a=edit">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
   <tr>
     <th colspan="4">{iMicms:$title}</th>
@@ -47,7 +47,9 @@
       <td><input type="text" name="remark" value="{iMicms:$info.remark}"  class="ipt" size="45" /></td>
     </tr>
     <tr> 
-      <td height="48" colspan="2"><div id="addkey"></div><div class="fabu"><img src="{iMicms::RES}/images/main/addwz.gif" id="submit" /> <img src="{iMicms::RES}/images/main/addqx.gif" /></div></td>
+      <td height="48" colspan="2"><div id="addkey"></div><div class="fabu">
+      <input type="submit" value="修 改" name="dosubmit" class="bginput"><input type="button" value="返 回" onclick="javascript:history.back(-1);" class="bginput">
+	</div></td>
     </tr>
 </table>
 </form>
