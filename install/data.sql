@@ -5852,7 +5852,7 @@ CREATE TABLE `imicms_wxuser` (
   `tplcontentid` int(10) NOT NULL,
   `menuid` int(10) NOT NULL,
   `tplcontentname` varchar(20) NOT NULL COMMENT '内容模版名',
-  `copyright` varchar(255) NOT NULL default '艾米微管家 imicms.com 版权所有',
+  `copyright` varchar(255) NOT NULL default '比斯迈微管家 imicms.com 版权所有',
   `namecolor` varchar(20) NOT NULL default '#B2B789',
   `copyid` int(10) NOT NULL,
   `smtp_plat_status` int(1) NOT NULL default '0' COMMENT '邮件提醒|0为关闭|1为开启',

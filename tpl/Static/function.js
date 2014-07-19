@@ -54,3 +54,16 @@ function submit_confirm(id,msg,w,h){
       cancel: true
     });
 }
+
+
+function genAuthcode(id){
+$.ajax({
+type:"post",
+url:"index.php?g=Admin&m=Authcode&a=addAuth",
+dataType:"json",
+data:"level="+id,
+success:function(res){
+window.alert('授权码已生成:'+res.data)
+}
+});
+}

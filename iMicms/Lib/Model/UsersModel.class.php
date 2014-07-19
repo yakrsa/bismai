@@ -18,19 +18,13 @@ class UsersModel extends Model{
 		array('repassword','md5',self::MODEL_BOTH,'function'),
 		array('createtime','time',self::MODEL_INSERT,'function'),
 		array('createip','getip',self::MODEL_INSERT,'callback'),
-		array('viptime','getviptime',self::MODEL_INSERT,'callback'),
 		array('lasttime','time',self::MODEL_BOTH,'function'),
 		array('lastip','getip',self::MODEL_BOTH,'callback'),
 		array('status','getstatus',self::MODEL_BOTH,'callback'),
-		array('gid','getgid',self::MODEL_INSERT,'callback'),
 	);
 	
 	public function getip(){
 		return $_SERVER['REMOTE_ADDR'];
-	}
-	
-	public function getviptime(){
-		return time()+7*86400;;
 	}
 	
 	 
@@ -38,7 +32,4 @@ class UsersModel extends Model{
 		return C('ischeckuser');
 	}
 	
-	public function getgid(){
-		return isset($_POST['gid'])?(int)$_POST['gid']:4;
-	}
 }

@@ -36,7 +36,7 @@ line-height: 12px;
 }
 
 /* 公供 */
-a.logo,a.logo:visited {float:left;width:556px;display:block;line-height:240px;height:80px;overflow:hidden;background:url(logo.gif) no-repeat;margin-top:10px}
+a.logo,a.logo:visited {float:left;width:556px;display:block;line-height:240px;height:80px;overflow:hidden;margin-top:10px}
 .tm {line-height:29px;height:29px;padding:7px 0 7px 10px;clear:both;}
 .tm li {float:left;font-size:14px;width:85px;height:29px;line-height:29px;font-weight:bold;margin-left:12px;display:inline;text-align:center}
 .tm li a,.tm li a:visited {color:#fff;display:block;}

@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>权限管理</title>
 <include file="common:public" />
+</head>
 <div class="cr"></div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	  <tr>
@@ -32,7 +33,7 @@
 				<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
 				</td>
 				<td align='center'>
-                                        <a href="javascript:void(0)" onclick{iMicms::U('User/it/',array('id'=>$vo['id']))}">生成邀请码</a>
+                                        <a href="javascript:;" onclick="genAuthcode({iMicms:$vo.id})">生成邀请码</a>
 				</td>
 				<td align='center'>
 					<a href="('id'=>$vo['id']))}">修改</a>
@@ -46,6 +47,5 @@
     </tr>
    
 </table>
-
 </body>
 </html>

@@ -3,7 +3,7 @@ class YichatAction extends Action{
 	private $token;
 	private $fun;
 	private $data=array();
-	private $my='艾米';
+	private $my='比斯迈';
 	public function index(){
 
 	        

@@ -3,7 +3,7 @@ class WeixinAction extends Action{
 	private $token;
 	private $fun;
 	private $data=array();
-	private $my='艾米';
+	private $my='比斯迈';
 	public function index(){
         $this->token = $this->_get('token');
         $this->my = C('site_my');
@@ -1340,7 +1340,7 @@ class WeixinAction extends Action{
         $str  = str_replace('{br}', "\n", $json->content);
         //$str  = str_replace('mzxing_com', 'imicro', $str);
         $str  = str_replace('iMicms.com', 'bbs.iMicms.com', $str);
-        return str_replace('艾米', '小艾', $str);
+        return str_replace('比斯迈', '小迈', $str);
     }
 	function tianqi($n)
     {
@@ -1348,7 +1348,7 @@ class WeixinAction extends Action{
         @$str = 'http://api.bd001.com/iMicms_com/api.php?key=free&appid=0&msg=' . urlencode('天气' . $name);
         $json = json_decode(file_get_contents($str));
         $str  = str_replace('{br}', "\n", $json->content);
-        return str_replace('艾米', '小艾', $str);
+        return str_replace('比斯迈', '小迈', $str);
     }
 	function shouji($n){
 		$n=implode('',$n);
@@ -1480,7 +1480,7 @@ class WeixinAction extends Action{
         $json = json_decode(file_get_contents($str));
         $str  = str_replace('{br}', "\n", $json->content);
         $str  = str_replace('iMicms_com', 'iMicms', $str);
-        return str_replace('艾米', '小艾', $str);
+        return str_replace('比斯迈', '小迈', $str);
     }
 	function liaotian($name){
 		$name=array_merge($name);
@@ -1506,7 +1506,7 @@ class WeixinAction extends Action{
 		//if($str==false)return '让我休息一会,嘴巴干了!，待会聊';
 		$json=json_decode(file_get_contents($str));
 		F('CAHT',$json);
-		$str=str_replace('艾米',$this->my,str_replace('提示：',$this->my.'提醒您:',str_replace('{br}',"\n",$json->content)));
+		$str=str_replace('比斯迈',$this->my,str_replace('提示：',$this->my.'提醒您:',str_replace('{br}',"\n",$json->content)));
 		return str_replace('iMicms_com','iMicms',$str);
 	}
 	public function fistMe($data){

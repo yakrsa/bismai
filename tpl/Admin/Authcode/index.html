@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>权限管理</title>
+<include file="common:public" />
+</head>
+<div class="cr"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
+	  <tr>
+		<td align='center' width="70">ID</td>
+		<td  align='center'width="200">授权码</td>
+		<td  align='center'width="100">会员级别</td>
+		<td  align='center'width="200" >生成时间</td>
+		<td  align='center'width="100">是否注册</td>
+		<td  align='center'width="200">注册时间</td>
+		<td  align='center'width="100">管理操作</td>
+	  </tr>
+	    <volist name="list" id="vo">
+			<tr>
+				<td align='center'>{iMicms:$vo.id}</td>
+				<td align='center' >{iMicms:$vo.code}</td>
+				<td  align='center'>{iMicms:$vo.level}</td>
+				<td  align='center'>{iMicms:$vo.createtime}</td>
+				<td align='center'><if condition="$vo['status'] eq 1">是<else/>否</if></td>
+				<td align='center'>{iMicms:$vo.usetime}</td>
+				<td align='center'>
+					 <eq name="vo.username" value="admin"><font color="#cccccc">删除</font><else/><a href="javascript:void(0)" onclick="return confirmurl('{iMicms::U('Authcode/del/',array('id'=>$vo['id']))}','确定删除该授权码吗?')">删除</a></eq>
+				</td>
+			</tr>
+	    </volist>
+     <tr bgcolor="#FFFFFF"> 
+      <td colspan="10"><div class="listpage">{iMicms:$page}</div></td>
+	  <td></td>
+    </tr>
+   
+</table>
+
+</body>
+</html>

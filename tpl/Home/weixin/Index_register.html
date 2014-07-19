@@ -11,14 +11,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/bootstrap.css?2013-10-15-2" media="all" />
-<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/reg.css?2013-10-15-2" media="all" />
-<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/style.css?2013-10-15-2" media="all" />
-<script type="text/javascript" src="{iMicms::RES}/reg/jQuery.js?2013-10-15-2"></script>
-<script type="text/javascript" src="{iMicms::RES}/reg/bootstrap.js?2013-10-15-2"></script>
-<script type="text/javascript" src="{iMicms::RES}/reg/omvalidate.js?2013-10-15-2"></script>
-<script type="text/javascript" src="{iMicms::RES}/reg/reg.js?2013-10-15-2"></script>
-<script type="text/javascript" src="{iMicms::RES}/js/placeholder.js?v=2c99b443.js"></script>
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/bootstrap.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/reg.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/reg/style.css" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/reg/jQuery.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/bootstrap.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/omvalidate.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/reg/reg.js"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/placeholder.js"></script>
 <!--[if IE 6]><script src="{iMicms::RES}/js/DD_belatedPNG.js?v=cb43010f.js" type="text/javascript"></script><![endif]-->
  
 <title>注册-{iMicms::C('site_name')}</title>
@@ -51,24 +51,31 @@
 		</div>
      <div class="reg-wrapper2">
 	<form id="regform" class="form-horizontal" action="#" method="post">
+		<div class="control-group error">
+                    <label class="control-label" for="authcode">邀请码</label>
+                    <div class="controls">
+                      <input type="text" name="authcode" id="authcode" title="请输入授权码" style="width:300px" onblur="javascript:void(this.value=$.trim(this.value))">
+                      <span class="maroon">*</span><span class="help-inline">邀请码是比斯迈科技提供给您的一串字符</span>
+                    </div>
+                  </div>
 		  <div class="control-group error">
 		    <label class="control-label" for="username">用户名</label>
 		    <div class="controls">
-		      <input type="text" name="username" id="username" title="请输入用户名">
+		      <input type="text" name="username" id="username" title="请输入用户名" style="width:300px">
 		      <span class="maroon">*</span><span class="help-inline">长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成</span>
 		    </div>
 		  </div>
 		  <div class="control-group error">
 		    <label class="control-label" for="password">设置密码</label>
 		    <div class="controls">
-		      <input type="password" name="password" id="password"  title="请输入密码">
+		      <input type="password" name="password" id="password"  title="请输入密码" style="width:300px">
 		      <span class="maroon">*</span><span class="help-inline">长度为6~16位字符</span>
 		    </div>
 		  </div>
 		  <div class="control-group error">
 		    <label class="control-label" for="repassword">确认密码</label>
 		    <div class="controls">
-		      <input type="password" name="repassword" id="repassword"  title="请输入密码">
+		      <input type="password" name="repassword" id="repassword"  title="请输入密码" style="width:300px">
 		    </div>
 		  </div>
             <div class="control-group">
@@ -87,28 +94,28 @@
             <div class="control-group error">
 		    <label class="control-label" for="mobile">手机</label>
 		    <div class="controls">
-		      <input type="text" name="mobile" id="mobile"  title="请输入手机">
+		      <input type="text" name="mobile" id="mobile"  title="请输入手机" style="width:300px">
 		      <span class="maroon">*</span><span class="help-inline">请输入正确的手机号码</span>
 		    </div>
 		  </div>
 		  <div class="control-group error">
 		    <label class="control-label" for="email">邮箱</label>
 		    <div class="controls">
-		      <input type="text" name="email" id="email" title="请输入邮箱">
+		      <input type="text" name="email" id="email" title="请输入邮箱" style="width:300px">
 		      <span class="maroon">*</span><span class="help-inline">忘记密码会用到邮箱，请填写正确的邮箱</span>
 		    </div>
 		  </div>
 		  <div class="control-group">
 		    <label class="control-label" for="qq">QQ</label>
 		    <div class="controls">
-		      <input type="text" name="qq" id="qq">
+		      <input type="text" name="qq" id="qq" style="width:300px">
 		    </div>
 		  </div>
 		 
                     <div class="control-group">
 		    <label class="control-label" for="randcode">验证码</label>
 		    <div class="controls">
-		      <input type="text" name="captcha" id="captcha" maxlength="4"   title="请输入验证码">
+		      <input type="text" name="captcha" id="captcha" maxlength="4"   title="请输入验证码" style="width:300px">
 		      <span class="maroon">*</span>
 		      <span name="show_captcha" id="show_captcha" >
 				<img title="看不清？点击更换" id="imgCheckB" style="cursor: pointer;" onclick="javascript:refresh();" src="/index.php?g=Admin&m=Admin&a=verify" width="60" height="20" border="0">

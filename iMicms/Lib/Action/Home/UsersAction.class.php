@@ -54,12 +54,7 @@ class UsersAction extends BaseAction{
 	         $vcode              =$this->_post('captcha','intval,md5',0);
 		 $ewhere['email']    =$this->_post('email','trim');
 		 $uwhere['username'] =$this->_post('username','trim');
-		
-		
-		
-		 
-		 
-		  $uinfo=$db->where($uwhere)->find();
+		 $uinfo=$db->where($uwhere)->find();	
 		  if($uinfo == true) {echo 7; exit;}
 		 
 		   $einfo=$db->where($ewhere)->find();
@@ -67,17 +62,23 @@ class UsersAction extends BaseAction{
 		 if($vcode != $_SESSION['verify']){
 		 	echo 5; exit;
 		 }
-		 
-		
-		
-		$info=M('User_group')->find(1);
+		$authwhere['code']=$this->_post('authcode','trim');
+		$authwhere['status']=0;
+		$authcodeDB=D('Authcode');
+		$authcode=$authcodeDB->where($authwhere)->find();
+		if($authcode == false){echo 8; exit;}
+
+		$usergroupDB=D('User_group');
+		$ugwhere['id'] = $authcode['level'];
+		$info=$usergroupDB->where($ugwhere)->find();
 		if($db->create()){
 			$id=$db->n_add();
 			if($id){				
 				if(!C('ischeckuser')){
 					 echo 4; exit;
 					}
-				$gid = (C('user_first_grade') != "") ? C('user_first_grade') : 4;
+				$gid = $info['id'];
+				$viptime=date('Y-m-d',strtotime('+ '+$info['expdate'] +' month'));
 				session('uid',$id);
 				session('gid',$gid);
 				session('uname',$_POST['username']);
@@ -85,8 +86,16 @@ class UsersAction extends BaseAction{
 				session('connectnum',0);
 				session('activitynum',0);
 				session('gongzhongnum',0);
-				session('gname',$info['name']);
+				session('gname',$info.name);
 				
+		#update authcode status=0
+				$data['id']=$authcode['id'];
+				$data['status']=1;
+				$data['usetime']=date("Y-m-d H:i:s",time());
+				$usedauthcode=M(Authcode);
+				$usedauthcode->data($data);
+				$usedauthcode->save();
+
 			        echo 1; exit;	
 				 
 			}else{

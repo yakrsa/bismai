@@ -1,6 +1,12 @@
 $(function(){
 	 var a=$("#regform").validate({
 		rules:{
+                        authcode:{
+                                required:true,
+                                chkUserName:true,
+                                minlength:32,
+                                maxlength:32
+                        },
 			username:{
 				required:true,
 				chkUserName:true,
@@ -28,6 +34,11 @@ $(function(){
 			}
 		},
 		messages:{
+                        authcode:{
+                                required:"请输入邀请码",
+                                minlength:"邀请码长度不够",
+                                maxlength:"邀请码长度不能超过32",
+                        },
 			username:{
 				required:"请输入用户名",
 				minlength:"用户名长度不够",
@@ -73,6 +84,7 @@ $(function(){
 			 
 			  if(d.hasClass("disabled")){return}
 			var c={
+                                authcode:$("input[name='authcode']",b).val(),
 				username:$("input[name='username']",b).val(),
 				password:$("input[name='password']",b).val(),
                                 province:$('#province').val(),
@@ -111,7 +123,11 @@ $(function(){
 				       if(e == 5){
 				                        $("input[name='captcha']").focus();
 							alert('验证码错误！')
-						}	
+						}
+                                       if(e == 8){
+                                                        $("input[name='authcode']").focus();
+                                                        alert('邀请码错误！')
+                                                }	
 					if(e == 4){
 							alert('注册成功,请联系在线客服审核帐号')
 							window.location.href="/index.php";

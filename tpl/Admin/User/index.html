@@ -10,9 +10,6 @@
 		<td width="70">ID</td>
 		<td width="150">用户名称</td>
 		<td width="150">角色名称</td>
-		<td >用户描述</td>
-		<td width="100">最后登录IP</td>
-		<td width="150">最后登录位置</td>
 		<td width="150">最后登录时间</td>
 		<td width="70">状态</td>
 		<td width="100">管理操作</td>
@@ -22,9 +19,6 @@
 				<td align='center'>{iMicms:$vo.id}</td>
 				<td >{iMicms:$vo.username}</td>
 				<td >{iMicms:$role[$vo['role']]}</td>
-				<td >{iMicms:$vo.remark}</td>
-				<td align='center'>{iMicms:$vo.last_login_ip}</td>
-				<td align='center'>{iMicms:$vo.last_location}</td>
 				<td align='center'><php>echo date('Y-m-d H:i:s', $vo['last_login_time'])</php></td>
 				<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
 				</td>
@@ -35,7 +29,7 @@
 			</tr>
 	    </volist>
      <tr bgcolor="#FFFFFF"> 
-      <td colspan="8"><div class="listpage">{iMicms:$page}</div></td>
+      <td colspan="6"><div class="listpage">{iMicms:$page}</div></td>
     </tr>
    
 </table>
