@@ -7,7 +7,6 @@
 <div class="cr"></div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	  <tr>
-		<td width="70">ID</td>
 		<td width="150">用户名称</td>
 		<td width="150">角色名称</td>
 		<td width="150">最后登录时间</td>
@@ -16,7 +15,6 @@
 	  </tr>
 	    <volist name="list" id="vo">
 			<tr>
-				<td align='center'>{iMicms:$vo.id}</td>
 				<td >{iMicms:$vo.username}</td>
 				<td >{iMicms:$role[$vo['role']]}</td>
 				<td align='center'><php>echo date('Y-m-d H:i:s', $vo['last_login_time'])</php></td>

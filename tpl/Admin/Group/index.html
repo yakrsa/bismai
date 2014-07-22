@@ -8,20 +8,13 @@
 <form action="{iMicms::U('Group/role_sort')}" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	<tr>
-		<td width="70">排序权重</td>
-		<td width="70">ID</td>
-		<td width="350">角色名称</td>
-		<td >角色描述</td>
-		<td width="70">状态</td>
+		<td width="200">角色名称</td>
+		<td width="200">状态</td>
 		<td width="200">管理操作</td>
 	</tr>
 	<volist name="list" id="vo">
 		<tr>
-			<td align='center'>
-				<input type='text' value='{iMicms:$vo.sort}' size='3' name='sort[{iMicms:$vo.id}]'></td>
-			<td align='center'>{iMicms:$vo.id}</td>
 			<td >{iMicms:$vo.name}</td>
-			<td >{iMicms:$vo.remark}</td>
 			<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
 			</td>
 			<td align='center'>
@@ -39,9 +32,6 @@ function setting_access(id, name) {
 	window.top.art.dialog.open('{iMicms::U("Group/access")}'+'&roleid='+id,{title: name+'权限设置', width: 600, height: 500});
 }
 </script>
-<div class="bottom">
-<input type="submit" value="排序" class="bginput" />
-</div>
 </form>
 </body>
 </html>

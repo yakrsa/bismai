@@ -36,7 +36,7 @@ a.isub,a.isub:visited,a.isub:hover {background:url(isub.png) no-repeat;display:i
 .kjinfo li {background:url(main/j.gif) no-repeat 0 7px;padding-left:20px;}
 
 .kjnav {height:29px;padding:10px 0 20px 0;}
-.kjnav a,.kjnav a:visited {text-indent:12px;display:inlein-block;float:left;margin-right:10px;widtH:79px;line-height:29px;height:29px;background:url(main/kjico.png) no-repeat;color:#255C85;}
+.kjnav a,.kjnav a:visited {text-indent:12px;display:inlein-block;float:left;margin-right:10px;width:100px;line-height:29px;height:29px;background:url(main/kjico.png) no-repeat;color:#255C85;}
 .kjnav a:hover {color:#f00; text-decoration:none}
 
 .news,.count {padding:6px 10px;clear:both;height:322px;}

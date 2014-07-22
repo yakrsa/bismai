@@ -32,6 +32,8 @@ class UsersAction extends BaseAction{
 			session('viptime',$res['viptime']);
 			session('gname',$info['name']);
 			$tt=getdate();
+                        $data['id']=$res['id'];
+			$data['lasttime']=date("Y-m-d H:i:s",time());
 			if($tt['mday']===1){
 				$data['id']=$res['id'];
 				$data['imgcount']=0;
@@ -39,8 +41,9 @@ class UsersAction extends BaseAction{
 				$data['musiccount']=0;
 				$data['activitynum']=0;
 				$data['gongzhongnum']=0;
-				$db->save($data);
 			}
+			#$db->data($data);
+			$db->save($data);
                         $this->success('登录成功',U('Index/index'));
 			#$this->success($res['id']);
 			 

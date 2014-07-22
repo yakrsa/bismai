@@ -7,10 +7,9 @@
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 </head>
 <body class="warp">
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
 <div id="artlist" class="addn">
 <gt name="info.id" value="0">
-<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
-
 			<form action="{iMicms::U('Users/edit')}" method="post" name="form" id="myform">
 			<input type="hidden" name="id" value="{iMicms:$info.id}">
 		<else />
@@ -31,12 +30,6 @@
 					<td height="48" align="right"><strong>联系电话：</strong></td>
 					<td colspan="3" class="lt">
 						<input type="text" name="mobile" class="ipt" size="45" value="{iMicms:$info.mobile}"  >
-					</td>
-				</tr>
-				<tr>
-					<td height="48" align="right"><strong>用户QQ：</strong></td>
-					<td colspan="3" class="lt">
-						<input type="text" name="qq" class="ipt" size="45" value="{iMicms:$info.qq}"  >
 					</td>
 				</tr>
 				<tr>
@@ -67,22 +60,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<td height="48" align="right"><strong>用户状态：</strong></td>
-					<td colspan="3" class="lt">
-						<input type="radio" class="radio" class="ipt" value="1" name="status" id="status1" <if condition="($info.status eq 1) OR ($info['status'] eq '') ">checked=""</if> >
-							启用
-							<input type="radio" class="radio" class="ipt"  value="0" name="status" id="status2" <eq name="info.status" value="0">checked=""</eq> >
-							关闭
-					</td>
-				</tr>
-				
-				<tr>
-					<td height="48" align="right"><strong>活动创建数：</strong></td>
-					<td colspan="3" class="lt">
-						<input type="text" name="activitynum" class="ipt" size="45" value="{imicms:$info.activitynum}">
-					</td>
-				</tr>
+				<!--
 				<tr>
 					<td height="48" align="right"><strong>首页推荐：</strong></td>
 					<td colspan="3" class="lt">
@@ -97,7 +75,7 @@
 					<td colspan="3" class="lt">
 						<input type="text" name="money" class="ipt" size="45" value="{iMicms:$info.money}">
 					</td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td height="48" align="right"><strong>到期时间：</strong></td>
 					<td colspan="3" class="lt">

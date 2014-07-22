@@ -13,7 +13,6 @@
 			<select name="type">
 				
 				<option value="1"  <if condition="$Type eq 1">selected</if> >公众号名称</option>
-				<option value="2"  <if condition="$Type eq 2">selected</if> >公众号原始ID</option>
 				<option value="3"  <if condition="$Type eq 3">selected</if> >微信号</option>
 				<option value="4"  <if condition="$Type eq 4">selected</if> >所属用户名</option>
 				 
@@ -22,7 +21,7 @@
 			<input type="submit" class="ksub" value="">
 			</form>
         </div>
-        <div class="fl">
+<!--        <div class="fl">
 			<b>排序方式：</b>
 			<select>
 				<option value="">注册时间（降序）</option>
@@ -34,13 +33,12 @@
 			<select>
 				<option value="">按分类查看</option>
 			</select>
-		</div>
+-->		</div>
     </div>
  	
 </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	  <tr>
-		<td >ID</td>
 		<td>公众号名称</td>
 		<td>公众号原始ID</td>
 		<td>微信号</td>
@@ -53,7 +51,6 @@
 	  </tr>
 	    <volist name="list" id="vo">
 			<tr>
-				<td align='center'>{iMicms:$vo.id}</td>
 				<td >{iMicms:$vo.wxname}</td>
 				<td >{iMicms:$vo.wxid}</td>
 				<td >{iMicms:$vo.weixin}</td>

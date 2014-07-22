@@ -78,10 +78,18 @@ class AdminAction extends Action{
 		unset($_SESSION);
         if(session('?'.C('USER_AUTH_KEY'))) {
             session(C('USER_AUTH_KEY'),null);
-           
+          if($this->_get("lg")!="1"){ 
             redirect("http://www.bismai.com");
+	  }else{
+	    redirect("/index.php?g=Admin&m=Admin&a=index");	
+	}	
+	
         }else {
-            $this->error('已经登出！',"http://www.bismai.com");
+         if($this->_get("lg")!="1"){
+		redirect("http://www.bismai.com");
+	 }else{
+            $this->error('已经登出！',"/index.php?g=Admin&m=Admin&a=index");
+	 }
         }
     }
 }

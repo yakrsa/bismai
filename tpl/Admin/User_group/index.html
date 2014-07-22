@@ -8,21 +8,19 @@
 <div class="cr"></div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	  <tr>
-		<td width="70">ID</td>
-		<td width="150">用户组名称</td>
+		<td width="150">权限组名称</td>
 		<td width="30">价格</td>
 		<td width="100" >自义定图文条数</td>
 		<td width="100">请求次数</td>
 		<td width="100">是否显示版权</td>
 		<td width="100">公众号创建个数</td>
                 <td width="70">包月数</td>
-		<td width="70">状态</td>
+                <td width="70">创建会员数</td>
                 <td width="100">申请账号</td>
 		<td width="100">管理操作</td>
 	  </tr>
 	    <volist name="list" id="vo">
 			<tr>
-				<td align='center'>{iMicms:$vo.id}</td>
 				<td >{iMicms:$vo.name}</td>
 				<td >{iMicms:$vo['price']}</td>
 				<td >{iMicms:$vo.diynum}</td>
@@ -30,8 +28,7 @@
 				<td align='center'><if condition="$vo['iscopyright'] eq 1">是<else/>否</if></td>
 				<td align='center'>{iMicms:$vo.gongzhongnum}</td>
                                 <td align='center'>{iMicms:$vo.expdate}</td>
-				<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
-				</td>
+				<td align='center'>{iMicms:$vo.create_card_num}</td>
 				<td align='center'>
                                         <a href="javascript:;" onclick="genAuthcode({iMicms:$vo.id})">生成邀请码</a>
 				</td>
@@ -42,7 +39,7 @@
 			</tr>
 	    </volist>
      <tr bgcolor="#FFFFFF"> 
-      <td colspan="10"><div class="listpage">{iMicms:$page}</div></td>
+      <td colspan="9"><div class="listpage">{iMicms:$page}</div></td>
 	  <td></td>
     </tr>
    

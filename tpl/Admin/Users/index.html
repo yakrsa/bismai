@@ -3,6 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>权限管理</title>
+</head>
+<body>
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
 <include file="common:public" />
 <div class="cr"></div>
 <div id="artlist">
@@ -13,9 +16,7 @@
 			<b class="kserico">快速搜索：</b>搜索类型：
 			<select name="type">
 				<option value="1" <if condition="$Type eq 1">selected</if> >用户名称</option>
-				<option value="2"  <if condition="$Type eq 2">selected</if> >用户ID</option>
 				<option value="3"  <if condition="$Type eq 3">selected</if> >联系电话</option>
-				<option value="4"  <if condition="$Type eq 4">selected</if> >用户QQ</option> 
 				<option value="5"  <if condition="$Type eq 5">selected</if> >用户邮箱</option>
 				
 			</select> 
@@ -28,25 +29,23 @@
 </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	  <tr>
-		<td width="70">ID</td>
-		<td width="100">用户名称</td>
-		<td width="100">角色组</td>
-		<td width="100">联系电话</td>
-		<td width="120">qq</td>
+		<td width="120">用户名称</td>
+		<td width="80">权限组</td>
+		<td width="80">联系电话</td>
 		<td width="150">邮箱</td>
-		<td width="150">最后登录时间</td>
-		<td width="150">到期时间</td>
+		<td width="100">最后登录时间</td>
+		<td width="100">注册时间</td>
+		<td width="100">到期时间</td>
 		<td width="100">管理操作</td>
 	  </tr>
 	    <volist name="info" id="vo">
 			<tr>
-				<td align='center'>{iMicms:$vo.id}</td>
 				<td >{iMicms:$vo.username}</td>
 				<td >{iMicms:$group[$vo['gid']]}</td>
 				<td >{iMicms:$vo.mobile}</td>
-				<td >{iMicms:$vo.qq}</td>
 				<td >{iMicms:$vo.email}</td>				
                                 <td align='center'>{iMicms:$vo['lasttime']}</php></td>
+                                <td align='center'>{iMicms:$vo['createtime']}</php></td>
 				<td align='center'><php>echo date('Y-m-d H:i:s', $vo['viptime'])</php></td>
 				</td>
 				<td align='center'>
