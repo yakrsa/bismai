@@ -85,8 +85,6 @@
 
                         <div class="box-content">
                             <div id="validateErrorContainer" class="validateErrorContainer ">
-                                <h5>以下信息填写有误,请重新填写</h5>
-                                <ul></ul>
                             </div>
 
                             <form action="{iMicms::U('User/Index/insert')}" method="POST" class="form-horizontal form-validate">
@@ -113,13 +111,13 @@
 								<div class="control-group">
                                     <label for="wechat_id" class="control-label">AppID：</label>
                                     <div class="controls">
-                                        <input type="text" name="appid" value="{iMicms:$info.appid}" id="wechat_id" class="input-medium" data-rule-required="true"><span class="maroon">用于微客服等高级功能，可以不填</span>
+                                        <input type="text" name="appid" value="{iMicms:$info.appid}" id="wechat_id" class="input-medium" data-rule-required="true"><span class="maroon">必填</span>
                                     </div>
                                 </div>
 								<div class="control-group">
                                     <label for="wechat_id" class="control-label">AppSecret：</label>
                                     <div class="controls">
-                                        <input type="text" name="appsecret" value="{iMicms:$info.appsecret}" id="wechat_id" class="input-medium" data-rule-required="true"><span class="maroon">用于微客服等高级功能，可以不填</span>
+                                        <input type="text" name="appsecret" value="{iMicms:$info.appsecret}" id="wechat_id" class="input-medium" data-rule-required="true"><span class="maroon">必填</span>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -142,51 +140,18 @@
 
                                 </div>
                                 <div class="control-group">
-                                    <label for="email" class="control-label">公众号邮箱：</label>
-                                    <div class="controls">
-                                        <input type="text" value="{iMicms:$info.qq}" name="qq" id="email" class="input-medium"  data-rule-email="true" data-rule-required="true"><span class="maroon">*</span>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label for="funs" class="control-label">粉丝数：</label>
-                                    <div class="controls">
-                                        <input type="text" name="wxfans" value="{iMicms:$info.wxfans}"  id="funs" class="input-medium"  data-rule-required="true"><span class="maroon">*</span>
-                                    </div>
-                                </div>
-                                <div class="control-group">
                                     <label for="type" class="control-label">微信号类型：</label>
                                     <div class="controls">
                                         <select id="winxintype" name="winxintype">                  
                   <option value="1">订阅号</option>
-                  <option value="2">服务号</option>
-                  <option value="3">高级服务号</option>
-                  </select>高级服务号是指每年向微信官方交300元认证费的公众号
+                  <option value="2">认证订阅号</option>
+                  <option value="3">服务号</option>
+                  <option value="4">认证服务号</option>
+                  </select>认证订阅号和服务号需要每年300元认证费(微信官方收取)
 				  
                                     </div>
                                 </div>
-								<div class="control-group">
-                                    <label for="type" class="control-label">类型：</label>
-                                    <div class="controls">
-                                        <select id="type" name="type" class="input-medium" data-nosearch="true"  data-rule-required="true"><span class="maroon">*</span>
-                                            <option value="0">选择类型</option>
-                   <option value="1,情感" <eq name="info.typeid" value="1">selected</eq> >情感</option>
-                  <option value="2,数码" <eq name="info.typeid" value="2">selected</eq> >数码</option>
-                  <option value="3,娱乐" <eq name="info.typeid" value="3">selected</eq> >娱乐</option>
-                  <option value="4,IT" <eq name="info.typeid" value="4">selected</eq> >IT</option>
-                  <option value="5,数码" <eq name="info.typeid" value="5">selected</eq> >数码</option>
-                  <option value="6,购物" <eq name="info.typeid" value="6">selected</eq> >购物</option>
-                  <option value="7,生活" <eq name="info.typeid" value="7">selected</eq> >生活</option>
-                  <option value="8,服务" selected >服务</option>
-				  </select>
-                                    </div>
-                                <div class="control-group hide">
-                                    <label for="tongji" class="control-label">图文页统计代码：</label>
-                                    <div class="controls">
-                                        <input type="text" name="tongji"  value="" id ="tongji" style="width: 600px; height: 40px;" maxlength="300">
-                                    </div>
-                                </div>
-								<div id="tongji" style="border:1px solid #C0C0C0;display:none"><script src="http://s23.cnzz.com/stat.php?id=5821504&web_id=5821504" language="JavaScript"></script></div>
-                                <div class="form-actions">
+				<div class="form-actions">
 				    <input type="hidden" name="token" id="token" value="">
                                     <button type="submit" class="btn btn-primary">保存</button>
                                     <a class="btn" href="Javascript:window.history.go(-1)">取消</a>

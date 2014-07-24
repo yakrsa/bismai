@@ -85,9 +85,8 @@
 
                         <div class="box-content">
                             <div id="validateErrorContainer" class="validateErrorContainer ">
-                                <h5>以下信息填写有误,请重新填写</h5>
-                                <ul></ul>
-                            </div>
+                        	<ul></ul>    
+			</div>
 
                             <form action="{iMicms::U('User/Index/upsave')}" method="POST" class="form-horizontal form-validate">
 			     <input type="hidden" name="id" value="{iMicms:$info.id}">
@@ -114,13 +113,13 @@
 								<div class="control-group">
                                     <label for="wechat_id" class="control-label">AppID：</label>
                                     <div class="controls">
-                                        <input type="text"  name="appid" value="{iMicms:$info.appid}" id="wechat_id" class="input-medium"  value="sjtftx"><span class="maroon">用于微客服等高级功能，可以不填</span>
+                                        <input type="text"  name="appid" value="{iMicms:$info.appid}" id="wechat_id" class="input-medium"  value="sjtftx"><span class="maroon">必填</span>
                                     </div>
                                 </div>
 								<div class="control-group">
                                     <label for="wechat_id" class="control-label">appsecret</label>
                                     <div class="controls">
-                                        <input type="text"  name="appsecret" value="{iMicms:$info.appsecret}" id="wechat_id" class="input-medium"  value="sjtftx"><span class="maroon">用于微客服等高级功能，可以不填</span>
+                                        <input type="text"  name="appsecret" value="{iMicms:$info.appsecret}" id="wechat_id" class="input-medium"  value="sjtftx"><span class="maroon">必填</span>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -161,32 +160,14 @@
 
                                 </div>
                                 <div class="control-group">
-                                    <label for="email" class="control-label">公众号邮箱：</label>
-                                    <div class="controls">
-                                        <input type="text" value="{iMicms:$info.qq}" name="qq" id="email" class="input-medium" data-rule-email="true" data-rule-required="true"><span class="maroon">*</span>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label for="funs" class="control-label">粉丝数：</label>
-                                    <div class="controls">
-                                        <input type="text" name="wxfans" value="{iMicms:$info.wxfans}"  id="funs" class="input-medium" data-rule-required="true"><span class="maroon">*</span>
-                                    </div>
-                                </div>
-                                <div class="control-group">
                                     <label for="type" class="control-label">微信号类型：</label>
                                     <div class="controls">
                                         <select id="winxintype" name="winxintype">                  
                   <option value="1" <eq name="info.winxintype" value="1">selected</eq>>订阅号</option>
-                  <option value="2" <eq name="info.winxintype" value="2">selected</eq>>服务号</option>
-                  <option value="3" <eq name="info.winxintype" value="3">selected</eq>>高级服务号</option>
-                  </select>　高级服务号是指每年向微信官方交300元认证费的公众号
-                                    </div>
-                                </div>
-                                  <div class="control-group hide">
-
-                                    <label for="tongji" class="control-label">图文页统计代码：</label>
-                                    <div class="controls">
-                                        <input type="text" name="tongji"  value="{iMicms:$info.tongji}" id ="tongji" style="width: 600px; height: 40px;" maxlength="300">
+                  <option value="2" <eq name="info.winxintype" value="2">selected</eq>>认证订阅号</option>
+                  <option value="3" <eq name="info.winxintype" value="3">selected</eq>>服务号</option>
+                  <option value="4" <eq name="info.winxintype" value="4">selected</eq>>认证服务号</option>
+                  </select>认证订阅号和服务号需要每年300元认证费(微信官方收取)
                                     </div>
                                 </div>
                                 <div class="form-actions">

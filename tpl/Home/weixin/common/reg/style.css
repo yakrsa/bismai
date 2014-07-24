@@ -112,7 +112,7 @@ body {
 
 .info {
 
-	color: #54C11A;
+	color: #fff; 
 
 	float: right
 
@@ -175,16 +175,17 @@ body {
 .info span {
 
 	display: inline-block;
-
+        padding-top:15px;
 	text-align: center
 
 }
 
 .info span a {
 
-	color: #54c11a;
+	color: #fff;
 
-	font-size: 16px
+	font-size: 16px;
+	font-weight:bold;
 
 }
 
@@ -257,8 +258,6 @@ body {
 	float: left;
 
 	height: 127px;
-
-	margin-bottom: 5px;
 
 	width: 400px
 
@@ -364,7 +363,7 @@ body {
 
 	float: right;
 
-	padding: 40px 10px;
+	padding: 20px 8px;
 
 	text-align: center;
 

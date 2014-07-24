@@ -9,6 +9,15 @@ class FunctionAction extends UserAction{
 		$this->assign('id',$id);
 		$this->assign('token',$token);
 		$this->display();
+		$login_info=array();
+		#$login_info['user']='user';
+		$login_info['weichatid']=$token;
+		header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"'); 
+		session_start();
+		session("login_info",$login_info);	
+		$wxid=md5($info['wxid']);
+		$tkey=$wxid.$id;
+		cookie("tkey",$tkey,"expire=80000&path=/&domain=.bismai.com");
 	}
 	
 	public function fclist(){

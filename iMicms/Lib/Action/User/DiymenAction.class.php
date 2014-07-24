@@ -146,7 +146,11 @@ public function  class_send(){
 				if($c!=false){
 					$data.='"sub_button":[';
 				}else{
+					if(strncasecmp($vo['keyword'],"http://",7)==0){
+					$data.='"type":"view","url":"'.$vo['keyword'].'"';
+					}else{
 					$data.='"type":"click","key":"'.$vo['title'].'"';
+					}
 				}
 				$i=1;
 				foreach($c as $voo){					
@@ -178,6 +182,7 @@ public function  class_send(){
 			}
 	                $data.=']}';
                          
+			cookie('data',$data);
                       //  file_put_contents("d:/phpnow/vhosts/lexun.cc/cc1.txt",serialize($data));
 			 
 			file_get_contents("https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=".$json->access_token);

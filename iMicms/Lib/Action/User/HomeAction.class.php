@@ -27,6 +27,15 @@ class HomeAction extends UserAction{
                                 }
 				$this->all_save('Home','/set');				
 			}
+			
+			#$img=D('Img');
+			#$data['uid']=session['uid'];
+			#$data['token']=session('token');
+			#$data['createtime']=time();
+			#$data['keyword']=$this->_post['title'];
+			#$data['url']=$this->_post['farword'];
+			#$data['text']=$this->_post['info']
+			
 		}else{
 		        $this->assign('TOKEN',session('token'));
 			$this->assign('home',$home);

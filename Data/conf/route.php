@@ -13,6 +13,6 @@ return array(
 		'api/:token'        => 'Home/Weixin/index',
 		'yiapi/:token'        => 'Home/Yichat/index',
 		'show/:token'        => 'Home/Adma/index',
-		
+		'home/:token'	=>'Wap/Index/index'	
 	),
 );
