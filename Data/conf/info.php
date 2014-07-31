@@ -2,7 +2,7 @@
 return array (
   'site_name' => '比斯迈科技',
   'site_title' => '微信公众服务平台',
-  'site_url' => 'http://win.bismai.com',
+  'site_url' => 'http://home.bismai.com',
   'site_my' => '比斯迈',
   'ischeckuser' => '1',
   'user_first_grade' => '4',

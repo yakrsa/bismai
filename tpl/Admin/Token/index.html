@@ -42,9 +42,7 @@
 		<td>公众号名称</td>
 		<td>公众号原始ID</td>
 		<td>微信号</td>
-		<td >所属等级</td>
 		<td >所属用户名</td>
-		<td >使用次数</td>
 		
 		<td>状态</td>
 		<td>管理操作</td>
@@ -54,9 +52,7 @@
 				<td >{iMicms:$vo.wxname}</td>
 				<td >{iMicms:$vo.wxid}</td>
 				<td >{iMicms:$vo.weixin}</td>
-				<td ><if condition="$vo['usr']['gid'] eq -1">0<else/>{iMicms:$vo.user.gid}</if></td>
 				<td >{iMicms:$vo.user.username}</td>
-				<td align='center'>{iMicms:$vo.user.connectnum}</td>
 				<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
 				</td>
 				<td align='center'>

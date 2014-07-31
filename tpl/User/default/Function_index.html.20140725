@@ -1,0 +1,786 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <base target="mainFrame" />
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/iindex.css?2013-12-17-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-12-17-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-12-17-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-12-17-1" media="all" />
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-12-17-1" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-12-17-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/application.js?2013-12-17-1"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-12-17-1"></script>
+<title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
+    <!--[if IE 7]>
+       <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
+    <![endif]-->
+    <link rel="shortcut icon" href="/tpl/Static/favicon.ico" />
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{iMicms::RES}/js/excanvas_min.js"></script><![endif]-->
+</head>
+
+<body>
+	<div id="navigation">
+        <div class="container-fluid">
+            <div>
+                <a href="javascript:void(0)"  id="brand"></a>
+                <a href="/index.php?g=User&m=Function&a=index&id={iMicms:$id}&token={iMicms:$token}" target="_self" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
+            </div>
+            <ul class='main-nav'>
+	        
+	    
+                <li class='active'>
+                    <a href="/index.php?g=User&m=Function&a=index&id={iMicms:$id}&token={iMicms:$token}" target="_self">
+                        <span>管理平台</span>
+                    </a>
+                </li>
+		
+				<li><a href="/index.php?g=User&m=Index&a=index" target="_self">公众帐号管理</a></li>
+                <li><a href="/index.php?g=User&m=Index&a=packageintr">套餐介绍</a></li>
+                <li><a href="/index.php?g=User&m=Index&a=info">功能介绍</a> </li>
+
+                <li><a href="javascript:void(0)" data-toggle="dropdown" class='dropdown-toggle' data-hover="dropdown">
+                    <span>帮助中心</span>
+                    <span class="caret"></span>
+                </a><!--
+                    <ul class="dropdown-menu">
+                        <li><a href="http://wpa.qq.com/msgrd?v=3&uin={iMicms::C('site_qq')}&site=qq&menu=yes" target="_blank">在线客服</a></li>
+                         <li><a href="/index.php?g=User&m=Index&a=userguide">使用指南</a></li>
+                        <li><a href="/index.php?g=User&m=Index&a=about">关于我们</a></li>
+                        <li><a href="/index.php?g=User&m=Index&a=help">常见问题</a></li>
+                    </ul>
+                   -->
+                </li>
+            </ul>
+            <div class="user">
+                <ul class="icon-nav">
+                    <li class='dropdown'>
+                        <a href="#" class='dropdown-toggle' data-toggle="dropdown" title="消息" style="display:none;"><i class="icon-envelope"></i><span class="label label-lightred">4</span></a>
+                    </li>
+                    <li class="dropdown sett" style="display:none;">
+                        <a href="#" class='dropdown-toggle' data-toggle="dropdown" title="系统设置"><i class="icon-cog"></i></a>
+                    </li>
+                    <li class='dropdown colo'>
+                        <a href="#" class='dropdown-toggle' data-toggle="dropdown" title="选择颜色"><i class="icon-tint"></i></a>
+                        <ul class="dropdown-menu pull-right theme-colors">
+                            <li class="subtitle">选择颜色
+                            </li>
+                            <li>
+                                <span class='red'></span>
+                                <span class='orange'></span>
+                                <span class='green'></span>
+                                <span class="brown"></span>
+                                <span class="blue"></span>
+                                <span class='lime'></span>
+                                <span class="teal"></span>
+                                <span class="purple"></span>
+                                <span class="pink"></span>
+                                <span class="magenta"></span>
+                                <span class="grey"></span>
+                                <span class="darkblue"></span>
+                                <span class="lightred"></span>
+                                <span class="lightgrey"></span>
+                                <span class="satblue"></span>
+                                <span class="satgreen"></span>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <div class="dropdown">
+                    <a href="#" class='dropdown-toggle' data-toggle="dropdown" style="width:127px;"><nobr>{iMicms:$info.wxname}                        <img src="{iMicms:$wecha.headerpic}" style="width: 27px; height: 27px" alt=""><span class="caret"></span></nobr></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a  href="/index.php?g=User&m=Index&a=index" target="_self">管理帐号</a>
+                        </li>
+                        <li>
+                           <a href="/#" onclick="Javascript:window.open('{iMicms::U('Admin/Admin/logout')}','_self')" >退出</a> 
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="content">
+        <div id="left">
+            <div class="subnav">
+                <div class="subnav-title ">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>我的管家</span></a>
+                </div>
+                <ul class="subnav-menu" style="display: block">
+                    <li class="active">
+                        <a href="{iMicms::U('Function/fcindex',array('token'=>$token,'id'=>$id))}" >账户信息</a>
+
+                    </li>
+		   <!-- 
+		     <li class="">
+                        <a href="/index.php?g=User&m=Alipay&a=index">会员充值</a>
+
+                    </li>
+
+		     
+                    <li  style="display:none;">
+                        <a href="/index.php?g=User&m=Index&a=pic">运营图表</a>
+                    </li>
+		     <li  style="display:;">
+                        <a href="{iMicms::U('Stats/index',array('token'=>$token))}">运营图表</a>
+                    </li>
+		    <li class="">
+                        <a href="/index.php?g=User&m=Ndisk&a=index">网盘</a>
+
+                    </li>
+-->
+                </ul>
+            </div>
+	    
+	    
+	    <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class="toggle-subnav"><i class="icon-angle-down"></i><span>自定义菜单</span></a>
+                </div>
+                <ul class="subnav-menu" style="display: ">
+                    <li class="">
+                        <a href="{iMicms::U('Diymen/menuset',array('token'=>$token))}">授权设置</a>
+                    </li>
+                  <li>
+                     <a href="{iMicms::U('Diymen/index',array('token'=>$token))}">自定义菜单<span class="new"></span></a>
+                  </li>
+
+
+                </ul>
+            </div>
+	    
+	    
+            <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>回复设置</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li  style="display:">
+                        <a href="{iMicms::U('Other/index',array('token'=>$token))}">无法识别回复</a>
+                    </li>
+                    <li>
+                        <a href="{iMicms::U('Areply/index',array('token'=>$token))}">首次关注回复</a>
+                    </li>
+
+                    <li>
+                        <a href="{iMicms::U('Text/index',array('token'=>$token))}">文本回复</a>
+                    </li>
+                    <li>
+                        <a href="{iMicms::U('Img/index',array('token'=>$token))}">图文回复</a>
+                    </li>
+                    <li>
+                        <a href="{iMicms::U('Voiceresponse/index',array('token'=>$token))}">语音回复</a>
+                    </li>
+                    <li style="display:;">
+                        <a href="{iMicms::U('Company/index',array('token'=>$token))}">LBS回复</a>
+                    </li>
+                </ul>
+            </div>
+<!--			<div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>订单提醒</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li  style="display:">
+                        <a href="{iMicms::U('Index/sms_plat',array('token'=>$token))}">短信提醒设置</a>
+                    </li>
+                    <li>
+                        <a href="{iMicms::U('Index/smtp_plat',array('token'=>$token))}">邮件提醒设置</a>
+                    </li>
+
+                    
+                </ul>
+            </div>
+-->
+			<div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微官网</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li>
+                        <a href="{iMicms::U('Home/set',array('token'=>$token))}">微官网首页配置</a>
+                    </li>
+                    <li>
+                       <a href="{iMicms::U('Classify/index',array('token'=>$token))}">分类管理</a>
+                    </li>
+                    <li>
+                              <a href="{iMicms::U('Tmpls/index',array('token'=>$token))}">模板管理</a>
+                    </li>
+                    <li>
+                      <a href="{iMicms::U('Flash/index',array('token'=>$token))}">首页幻灯片<span class="new"></span></a>
+                    </li>
+                     <!-- <li>
+                      <a href="{iMicms::U('Index/tools',array('token'=>$token))}">常用工具<span class="new"></span></a>
+                    </li> -->
+		     <li>
+                     <a href="{iMicms::U('Plugmenu/index',array('token'=>$token))}">一键拨号和版权<span class="new"></span></a>
+                    </li>
+                </ul>
+            </div>
+	    <div class="subnav">
+		<div class="subnav-title">
+			<a href="http://shop.bismai.com/admin.php" class='toggle-subnav' target="_blank"><i class="icon-angle-right"></i><span>微商城</span></a>
+		</div>
+            </div>
+           
+	    <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微会员</span></a>
+                </div>
+                <ul class="subnav-menu">
+				    <li>
+                      <a href="{iMicms::U('Member_card/replyInfoSet',array('token'=>$token))}">回复配置</a>
+                    </li>
+					<li>
+                      <a href="{iMicms::U('Member_card/info',array('token'=>$token))}">商家设置</a>
+                    </li>
+                    <li>
+                       <a href="{iMicms::U('Member_card/index',array('token'=>$token))}">会员卡设计</a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+<!--
+		<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微相册</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Photo/set',array('token'=>$token))}">相册设置</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Photo/index',array('token'=>$token))}">相册管理</a>
+					</li>
+				</ul>
+            </div> -->
+<!--
+	     <div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>360°全景</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					 
+					<li class="">
+						<a href="{iMicms::U('Panoramic/index',array('token'=>$token))}">360°全景管理</a>
+					</li>
+				</ul>
+            </div>
+    --> <!--         
+	     <div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微喜帖</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Wcard/index',array('token'=>$token))}">功能管理</a>
+					</li>
+				</ul>
+			</div>
+		<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微贺卡</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Heka/index',array('token'=>$token))}">功能管理</a>
+					</li>
+				</ul>
+			</div>
+		<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微信墙</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Wxq/index',array('token'=>$token))}">微信墙管理</a>
+					</li>
+				</ul>
+			</div>
+		<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>摇一摇</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Shake/index',array('token'=>$token))}">摇一摇管理</a>
+					</li>
+				</ul>
+			</div>
+		<div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微活动</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li>
+                      <a href="{iMicms::U('Lottery/index',array('token'=>$token))}">幸运大转盘</a><span class="new"></span>
+                    </li>
+                     <li>
+                     <a href="{iMicms::U('Coupon/index',array('token'=>$token))}">优惠券</a>
+                    </li>
+		     <li>
+                     <a href="{iMicms::U('Guajiang/index',array('token'=>$token))}">刮刮卡</a>
+                    </li>
+                       
+		     <li>
+                    <a href="{iMicms::U('Goldegg/index',array('token'=>$token))}">砸金蛋</a>
+                    </li>
+					<li>
+                    <a href="{iMicms::U('LuckyFruit/index',array('token'=>$token))}">水果机</a>
+                    </li>
+					<li>
+                    <a href="{iMicms::U('GoldenEgg/index',array('token'=>$token))}">砸金蛋</a>
+                    </li>
+		    
+                </ul>
+            </div>
+	    
+	     
+	     
+            
+	      
+	    
+	    
+	   <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微电商</span></a>
+                </div>
+                <ul class="subnav-menu">
+		    <li>
+                        <a href="{iMicms::U('Alipay_config/index',array('token'=>$token))}">在线支付配置</a></li>
+                    </li>
+					
+		               <li>
+                      <a href="{iMicms::U('Host/index',array('token'=>$token))}">通用订单(酒店,KTV)</a><span class="new"></span>
+                    </li>  
+                    <li>
+                      <a href="{iMicms::U('Product/orders',array('token'=>$token,'dining'=>1))}">无线订餐（网络打印）</a><span class="new"></span>
+                    </li>
+                    <li>
+                      <a href="{iMicms::U('Selfform/index',array('token'=>$token))}">万能表单,报名,留言,预约</a><span class="new"></span>
+                    </li>   		    
+	     </ul>
+            </div>
+	  <div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微团购</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Reply_info/set',array('token'=>$token,'infotype'=>Groupon))}">团购设置</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Groupon/products',array('token'=>$token))}">团购管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Groupon/index',array('token'=>$token))}">团购订单</a>
+					</li>
+				</ul>
+            </div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微商城</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Reply_info/set',array('token'=>$token,'infotype'=>Shop))}">商城设置</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Product/cats',array('token'=>$token,'dining'=>0))}">商品分类</a>
+					</li>
+					<li class="">
+						<a href="/index.php?g=Wxadmin&m=item&a=index&token={iMicms:$token}">商品管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Product/orders',array('token'=>$token,'dining'=>0))}">商品订单</a>
+					</li>
+				</ul>
+            </div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微订餐</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Reply_info/set',array('token'=>$token,'infotype'=>Dining))}">订餐设置</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Product/cats',array('token'=>$token,'dining'=>1))}">菜品分类</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Product/index',array('token'=>$token,'dining'=>1))}">菜品管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Product/orders',array('token'=>$token,'dining'=>1))}">菜品订单</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Product/tables',array('token'=>$token,'dining'=>1))}">桌台管理</a>
+					</li>
+				</ul>
+            </div>
+
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微留言</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Reply/index',array('token'=>$token))}">留言设置</a>
+					</li>
+				</ul>
+            </div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微投票</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Vote/index',array('token'=>$token))}">投票设置</a>
+					</li>
+				</ul>
+            </div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微调研</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Diaoyan/index',array('token'=>$token))}">调研设置</a>
+					</li>
+				</ul>
+            </div>
+			
+			
+	      <div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微房产</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Estate/index',array('token'=>$token))}">楼盘简介</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/son',array('token'=>$token))}">子楼盘</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/housetype',array('token'=>$token))}">楼盘户型</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/album',array('token'=>$token))}">楼盘相册</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/impress',array('token'=>$token))}">房友印象</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/expert',array('token'=>$token))}">专家点评</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Panoramic/index',array('token'=>$token))}">楼盘360全景</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/reservation',array('token'=>$token))}">预约看房</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Estate/aboutus',array('token'=>$token))}">关于我们</a>
+					</li>
+				</ul>
+			</div>
+		<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微预约</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Reservation/index',array('token'=>$token))}">预约设置</a>
+					</li>
+				</ul>
+            </div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="javascript:void(0);" class="toggle-subnav"><i class="icon-angle-right"></i><span>微汽车</span></a>
+				</div>
+				<ul class="subnav-menu" style="display: none;">
+					<li class="">
+						<a href="{iMicms::U('Car/carset',array('token'=>$token))}">回复设置</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/index',array('token'=>$token))}">品牌管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/series',array('token'=>$token))}">车系管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/carmodel',array('token'=>$token))}">车型管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/salers',array('token'=>$token))}">销售管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/reservation',array('token'=>$token))}">预约管理</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/carowner',array('token'=>$token))}">车主关怀</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/carnews',array('token'=>$token))}">汽车文章</a>
+					</li>
+					<li class="">
+						<a href="{iMicms::U('Car/caronwers',array('token'=>$token))}">车主</a>
+					</li>
+				</ul>
+            </div>
+			
+		 <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微路由</span></a>
+                </div>
+                <ul class="subnav-menu">
+		
+		    
+                    <li>
+                        <a href="{iMicms::U('AP/index',array('token'=>$token))}">设备列表</a></li>
+                    </li>
+
+                    <li>
+                       <a href="{iMicms::U('Policy/index',array('token'=>$token))}">策略设置</a></li>
+                    </li>
+                    <li>
+                         <a href="{iMicms::U('Terminal/index',array('token'=>$token))}">终端管理</a><span class="new"></span>
+                    </li>
+                     
+                   
+                </ul>
+            </div>
+
+          <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>VIP功能</span></a>
+                </div>
+                <ul class="subnav-menu">
+		
+		    
+                    <li>
+                        <a href="{iMicms::U('Taobao/index',array('token'=>$token))}">淘宝天猫店铺配置</a></li>
+                    </li>
+
+                    <li>
+                       <a href="{iMicms::U('Api/index',array('token'=>$token))}">融合第三方</a></li>
+                    </li>
+                    <li>
+                         <a href="{iMicms::U('Adma/index',array('token'=>$token))}">DIY宣传页</a><span class="new"></span>
+                    </li>
+                     
+                   
+                </ul>
+            </div> -->
+			<div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>用户管理CRM</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li>
+                        <a href="{iMicms::U('ServiceUser/index',array('token'=>$token))}">人工客服</a></li>
+                    </li>
+                    <li>
+                       <a href="{iMicms::U('Recognition/index',array('token'=>$token))}">渠道二维码</a></li>
+                    </li>
+                    <li>
+                         <a href="{iMicms::U('Wechat_behavior/statistics',array('token'=>$token))}">粉丝行为分析</a><span class="new"></span>
+                    </li>
+					<li>
+                         <a href="{iMicms::U('Wechat_group/groups',array('token'=>$token))}">分组管理</a><span class="new"></span>
+                    </li>
+					<li>
+                         <a href="{iMicms::U('Wechat_group/index',array('token'=>$token))}">粉丝管理</a><span class="new"></span>
+                    </li>
+                </ul>
+            </div>
+<!--
+	    <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class="toggle-subnav"><i class="icon-angle-down"></i><span>微接入服务</span></a>
+                </div>
+                <ul class="subnav-menu" style="display: none;">
+                    <li>
+		    
+                        <a href="{iMicms::U('Function/fclist',array('token'=>$token,'id'=>$id))}">基础应用管理</a>
+                    </li>
+                    <li>
+		    
+                        <a href="{iMicms::U('Function/adlist',array('token'=>$token,'id'=>$id))}">高级应用管理</a>
+                    </li>   
+
+                </ul>
+            </div> -->
+			<div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class="toggle-subnav"><i class="icon-angle-down"></i><span></span></a>
+                </div>
+                <ul class="subnav-menu" style="display: none;">
+                
+
+                </ul>
+            </div>
+			<div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class="toggle-subnav"><i class="icon-angle-down"></i><span></span></a>
+                </div>
+                <ul class="subnav-menu" style="display: none;">
+                
+
+                </ul>
+            </div>
+  
+
+<!--   <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0);" class='toggle-subnav'><i class="icon-angle-right"></i><span>微预约</span></a>
+                </div>
+                <ul class="subnav-menu">
+					<li>
+                        <a href="/Wereserve/ReserveInfo/aid/1990">预约管理</a>
+                    </li>
+                    <li>
+                        <a href="/Wereserve/Microreserve/aid/1990">预约统计</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微医疗</span></a>
+                </div>
+                <ul class="subnav-menu">
+                	<li>
+                        <a href="/Wemedical/microReg/aid/1990">挂号设置</a>
+                    </li>
+                     <li>
+                        <a href="/Wemedical/InfoCollection/aid/1990">内容设置</a>
+                    </li>
+			        <li>
+                        <a href="/Wemedical/ViewReservation/aid/1990">预约查询</a>
+                    </li>
+                    <li>
+                        <a href="/Wemedical/Micromdical/aid/1990">预约统计</a>
+                    </li>
+                </ul>
+            </div>
+               <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微推送</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+
+             <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微商城</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li>
+                        <a href="javascript:;alert('没有权限');">微商城设置</a>
+                    </li>
+                        <li>
+                        <a href="javascript:;alert('没有权限');">我的微商城</a>
+                    </li>
+
+                </ul>
+            </div>
+             <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微团购</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+               <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:void(0);" class='toggle-subnav'><i class="icon-angle-right"></i><span>微酒店</span></a>
+                </div>
+                <ul class="subnav-menu">
+					<li>
+					 <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>酒店管理</span>
+ 
+					</li>
+                </ul>
+            </div>
+               <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微餐饮</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+
+               <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微喜贴</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+               <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微旅游</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+               <div class="subnav">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微房产</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+               <div class="subnav bottom">
+                <div class="subnav-title">
+                    <a href="javascript:;alert('没有权限');" class='toggle-subnav'><i class="icon-angle-right"></i><span>微相册</span></a>
+                </div>
+                <ul class="subnav-menu">
+
+
+                </ul>
+            </div>
+ -->
+
+        </div>
+        <div class="right">
+            <div class="main">
+
+                <iframe frameborder="0" id="mainFrame" name="mainFrame" src="{iMicms::U('Function/fcindex',array('token'=>$token,'id'=>$id))}" style="background: url('/tpl/Static/loading.gif') center no-repeat"></iframe>
+
+            </div>
+        </div>
+
+    </div>
+
+<script type="text/javascript">  P.skn();  </script>
+</body>
+
+</html>

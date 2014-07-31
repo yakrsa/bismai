@@ -10,6 +10,7 @@ class IndexAction extends ChatAction{
         $Page = new Page($count, 50);
         $show = $Page -> show();
         $list = $data -> where(array('token' => $_SESSION['token'], 'uid' => session('userId'))) -> order('enddate  desc') -> limit($Page -> firstRow . ',' . $Page -> listRows) -> select();
+cookie("test",$count);
         foreach($list as $key => $limen){
             $dataUp['joinUpDate'] = time();
             $dataUp['uid'] = session('userId');
