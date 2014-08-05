@@ -8,7 +8,7 @@ class Wechat_groupAction extends UserAction{
         if (!$this -> thisWxUser['appid'] || !$this -> thisWxUser['appsecret']){
             $this -> error('请先设置AppID和AppSecret再使用本功能，谢谢', '?g=User&m=Index&a=edit&id=' . $this -> thisWxUser['id']);
         }
-        if ($this -> thisWxUser['winxintype'] != 3){
+        if ($this -> thisWxUser['winxintype'] != 4){
             $this -> error('只有微信官方认证的高级服务号才能使用本功能', '?g=User&m=Index&a=edit&id=' . $this -> thisWxUser['id']);
         }
     }
@@ -17,6 +17,7 @@ class Wechat_groupAction extends UserAction{
         if (isset($_GET['p']) || isset($_POST['keyword'])){
             $showStatistics = 0;
         }
+Log::write("@@@@".$showStatistics);
         $this -> assign('showStatistics', $showStatistics);
         $group_list_db = M('Wechat_group_list');
         $where = array('token' => $this -> token);

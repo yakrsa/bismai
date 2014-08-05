@@ -96,10 +96,12 @@
                                         <label class="radio">
                                             <input type="radio" name="matchtype" value="1" <eq name="info.status" value="1"> checked="checked"</eq> <eq name="info.status" value=""> checked="checked"</eq> >完全匹配（用户输入的和此关键词一样才会触发!）
                                         </label>
+<!--
                                         <label class="radio ">
                                             <input type="radio" name="matchtype" value="0" <eq name="info.status" value="0"> checked="checked"</eq> >包含匹配 (只要用户输入的文字包含本关键词就触发！)
                                         </label>
-                                    </div>
+        -->
+                            </div>
                                 </div>
                                
 				 <div class="control-group">
@@ -147,6 +149,7 @@
 										<span class="help-inline">以预览背景图为标准</span>
 									</div>
 								</div>
+<!--
 								<div class="control-group">
 									<label class="control-label" for="mp3url">背景音乐</label>
 									<div class="controls">
@@ -161,6 +164,7 @@
 									</div>
 									
 								</div>
+-->
 								<div class="control-group">
 									<label class="control-label" for="select_animation">功能选择</label>
 									<div class="controls ">
@@ -168,13 +172,15 @@
 											<input type="checkbox" name="play_img" value="1" <eq name="home.play_img" value="on"> checked="checked"</eq>>
 											开启背景图片
 										</label>
+										<!--
 										<label class="checkbox inline">
 											<input type="checkbox" name="play_audio" value="1"  <eq name="home.play_audio" value="on"> checked="checked"</eq>>
 											开启背景音乐
-										</label>
-										<span class="help-inline">(只有开启背景音乐或图片,前台页面才会显示或播放)</span>
+										</label> -->
+										<span class="help-inline">(只有开启背景图片,前台页面才会显示)</span>
 									</div>
 								</div>
+								<!--
 								<div class="control-group">
 									<label class="control-label" for="select_animation">开场动画</label>
 									<div class="controls">
@@ -188,7 +194,7 @@
  											<option value="3"    <eq name="home.animation" value="3"> selected="selected"</eq>>倒计时-上下展开</option>
 										</select>
 									</div>
-								</div>
+								</div> -->
 							<!--	<div class="control-group">
 									<label class="control-label" for="tj_code">统计代码 </label>
 									<div class="controls">

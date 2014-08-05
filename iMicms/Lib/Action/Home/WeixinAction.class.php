@@ -4,29 +4,32 @@ class WeixinAction extends Action{
 	private $fun;
 	private $data=array();
 	private $my='比斯迈';
+
 	public function index(){
-        $this->token = $this->_get('token');
-        $this->my = C('site_my');
+	        $this->token = $this->_get('token');
+        	$this->my = C('site_my');
+//Log::record('weixinmsg',Log::DEBUG);
+//Log::record('weixinmsg',$this->token,Log::DEBUG);
+//Log::save();
+     	   	//$this->siteName = C('site_name');
+      		 $weixin = new Wechat($this->token);
+			//$data = $weixin->request();
+    	    	//$this->xml = $weixin->xml;
+       		 $this->data = $weixin->request();
 
-        //$this->siteName = C('site_name');
-        $weixin = new Wechat($this->token);
-		//$data = $weixin->request();
-        //$this->xml = $weixin->xml;
-        $this->data = $weixin->request();
-
-        //是否是在上墙中
-        if($this->data){
-            $data = $this->data;
-            $users = S($data['FromUserName'] . 'wxq');
-            if($users != false){
-                $res = $this->wxq($users);
-            }else{
-                $res = $this->reply($data);
-            }
-            list($content, $type) = $res;
-            $weixin->response($content, $type);
-        }
-    }
+        	//是否是在上墙中
+    	    if($this->data){
+        	    $data = $this->data;
+            	$users = S($data['FromUserName'] . 'wxq');
+            	if($users != false){
+                	$res = $this->wxq($users);
+         	   }else{
+                	$res = $this->reply($data);
+            	}
+           	 list($content, $type) = $res;
+            	$weixin->response($content, $type);
+ 	       }
+	    }
 
 	private function reply($data) 
 
@@ -90,7 +93,8 @@ class WeixinAction extends Action{
                 );
             }
 			if($data['home']==1){				
-				$like['keyword']=array('like','%'.$data['keyword'].'%');
+			//	$like['keyword']=array('like','%'.$data['keyword'].'%');
+				$like['keyword']=array('eq',$data['keyword']);
 				$like['token']=$this->token;
 				$back=M('Img')->field('id,text,pic,url,title')->limit(9)->order('id desc')->where($like)->select();
 					foreach($back as $keya=>$infot){
@@ -492,7 +496,9 @@ class WeixinAction extends Action{
 	}
 	
 	function keyword($key){
-		$like['keyword']=array('like','%'.$key.'%');
+#		$like['keyword']=array('like','%'.$key.'%');
+                Log::write($key);
+                $like['keyword']=array('eq',$key);
 		$like['token']=$this->token;
 	 
 		$data=M('keyword')->where($like)->order('id desc')->find();

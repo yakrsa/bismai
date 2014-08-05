@@ -153,6 +153,7 @@
                     <li>
                         <a href="{iMicms::U('Img/index',array('token'=>$token))}">图文素材</a>
                     </li>
+<!--
                     <li>
                         <a href="{iMicms::U('Voiceresponse/index',array('token'=>$token))}">语音素材</a>
                     </li>
@@ -162,7 +163,7 @@
                     <li style="display:;">
                         <a href="{iMicms::U('Company/index',array('token'=>$token))}">LBS地理位置回复</a>
                     </li>
-
+-->
                 </ul>
             </div>
 	    
@@ -224,7 +225,7 @@
            
 	    <div class="subnav">
                 <div class="subnav-title">
-                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微信会员卡</span></a>
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微会员</span></a>
                 </div>
                 <ul class="subnav-menu">
 				    <li>
@@ -237,14 +238,22 @@
                        <a href="{iMicms::U('Member_card/index',array('token'=>$token))}">会员卡设计</a>
                     </li>
                     
+		   <li>
+                         <a href="{iMicms::U('Wechat_group/groups',array('token'=>$token))}">分组管理</a><span class="new"></span>
+                    </li>
+                                        <li>
+                         <a href="{iMicms::U('Wechat_group/index',array('token'=>$token))}">粉丝管理</a><span class="new"></span>
+                    </li>
+
 
                 </ul>
             </div>
 			<div class="subnav">
                 <div class="subnav-title">
-                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>用户管理CRM</span></a>
+                    <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微数据</span></a>
                 </div>
                 <ul class="subnav-menu">
+<!--
                     <li>
                         <a href="{iMicms::U('ServiceUser/index',array('token'=>$token))}">人工客服</a></li>
                     </li>
@@ -253,13 +262,7 @@
                     </li>
                     <li>
                          <a href="{iMicms::U('Wechat_behavior/statistics',array('token'=>$token))}">粉丝行为分析</a><span class="new"></span>
-                    </li>
-					<li>
-                         <a href="{iMicms::U('Wechat_group/groups',array('token'=>$token))}">分组管理</a><span class="new"></span>
-                    </li>
-					<li>
-                         <a href="{iMicms::U('Wechat_group/index',array('token'=>$token))}">粉丝管理</a><span class="new"></span>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 

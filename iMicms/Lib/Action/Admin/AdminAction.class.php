@@ -13,10 +13,13 @@ class AdminAction extends Action{
 		if(empty($username)||empty($password)){
 			$this->error('请输入帐号密码',U('Admin/index'));
 		}
-		$code=$this->_post('code','intval,md5',0);
-		if($code != $_SESSION['verify']){
-			$this->error('验证码错误',U('Admin/index'));
-		}
+	//验证码改为固定验证 zmy
+	//	$code=$this->_post('code','intval,md5',0);
+	//	if($code != $_SESSION['verify']){
+//		$code=$this->_post('code');
+//		if($code !="zmy"){
+//			$this->error('验证码错误',U('Admin/index'));
+//		}
         //生成认证条件
         $map            =   array();
         // 支持使用绑定帐号登录
