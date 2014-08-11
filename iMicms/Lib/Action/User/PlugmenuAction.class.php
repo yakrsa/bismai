@@ -48,7 +48,8 @@ class PlugmenuAction extends UserAction{
 	        $data['id']         =$this->_post('id','intval');
 		$data['namecolor']  =$this->_post('namecolor','trim');
 		$data['copyright']  =$this->_post('copyright','trim');
-		$data['copyid']     =$this->_post('homemenu','intval');
+		//$data['copyid']     =$this->_post('homemenu','intval');
+                $data['copyid']=0;
 	        
 		 
 		
