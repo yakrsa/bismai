@@ -89,13 +89,12 @@
                                                     <p>到期时间:{iMicms:$thisUser.viptime|date="Y-m-d",###}</p>
                                                 </td>
                                                 <td>
-                                                    <p>活动：{iMicms:$Think.session.activitynum}/{iMicms:$userinfo.activitynum}</p>
                                                     <p>图文：{iMicms:$thisUser.diynum}/{iMicms:$userinfo.diynum}</p>
                                                     <p>公众号个数：{iMicms:$total}/{iMicms:$userinfo.gongzhongnum}</p>
                                                 </td>
                                                 <td>
-                                                    <p>总请求数:<php>echo $_SESSION['connectnum']</php></p>
-                                                    <p>本月请求数:{iMicms:$userinfo.connectnum}</p>
+                                                    <p>总请求数:{iMicms:$userinfo.connectnum}</p>
+                                                    <p>本月请求数:<php>echo $_SESSION['connectnum']</php></p>
                                                 </td>
                                                 <td>
                                                     <p>请求数剩余：<php>echo ($userinfo['connectnum']-$_SESSION['connectnum']);</php></p>

@@ -41,14 +41,12 @@
                                 <table class="table noborder">
 								                                    <tr>
                                         <td>套餐有效期：{iMicms:$thisUser.viptime|date="Y-m-d",###}</td>
-                                        <td>活动自定义：{iMicms:$Think.session.activitynum}/{iMicms:$userinfo.activitynum}</td>
                                         <td>图文自定义：{iMicms:$thisUser.diynum}/{iMicms:$userinfo.diynum}</td>
                                         <td>公众号配额：{iMicms:$total}/{iMicms:$userinfo.gongzhongnum}</td>
                                     </tr>
                                     <tr>
                                         <td>请求数剩余：
 					 <php>echo ($userinfo['connectnum'] - $_SESSION['connectnum'])</php>										</td>
-                                        <td>总请求数：<php>echo $_SESSION['diynum'];</php></td>
                                         <td>本月请求数：<php>echo $_SESSION['connectnum']</php></td>
                                         <td>每月可请求总数：{iMicms:$userinfo.connectnum}</td>
                                     </tr>
