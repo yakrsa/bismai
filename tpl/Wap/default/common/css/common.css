@@ -13,13 +13,11 @@ footer .weimob-copyright{
     color:#000;}
 footer a{color:#000!important; font-size:12px;}
 .weimob-page{
-    height:0px;
     min-height: 1%;
     padding-bottom: 70px;
     -webkit-box-sizing: border-box;
     word-wrap: break-word;
     word-break: keep-all;
-    display:none;
 }
 
 
@@ -303,6 +301,7 @@ footer a{color:#000!important; font-size:12px;}
 .plug-menu:checked{
 	-webkit-transform:rotate(135deg);
 }
+
 
 .plug-phone>div {
 	width:32px;

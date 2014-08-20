@@ -47,10 +47,11 @@ media="all" />
 <TR>
   <TH valign="top"><label for="keyword">关键词：</label></TH>
   <TD><input type="input" class="px" id="keyword" value="{iMicms:$info.keyword}" name="keyword" style="width:500px" ><br />
-                  多个关键词请用空格格开：例如: 美丽&nbsp;漂亮&nbsp;好看   </TD>
+             如需不同关键词回复同一信息，请使用不同关键词一一建立文本素材   </TD>
+
   <TD>&nbsp;</TD>
 </TR>
-                            <TR>
+                            <TR style="display:none;">
   <TH valign="top">是否匹配关键词：</TH>
   <TD><label for="radio1">
   <input id="radio1"  type="radio" name="type" value="1" <if condition="$info['type'] eq 1"> checked="checked"</if>/>是</label>

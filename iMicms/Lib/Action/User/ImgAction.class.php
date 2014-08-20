@@ -11,7 +11,7 @@ class ImgAction extends UserAction
 		$where['token']=session('token');
 		$count=$db->where($where)->count();
 		$page=new Page($count,25);
-		$info=$db->where($where)->order('sorts asc')->limit($page->firstRow.','.$page->listRows)->select();
+		$info=$db->where($where)->order('classid asc,createtime asc')->limit($page->firstRow.','.$page->listRows)->select();
 		$this->assign('page',$page->show());
 		$this->assign('info',$info);
 		$this->display();

@@ -178,6 +178,10 @@ class IndexAction extends UserAction{
 		$id=$this->_get('id','intval');
 		$where['uid']=session('uid');
 		$res=M('Wxuser')->where($where)->find($id);
+		$data=M('Diymen_set')->where(array('token'=>$_SESSION['token']))->find();
+		$res['appid']=$data['appid'];
+		$res['appsecret']=$data['appsecret'];
+	
 		$this->assign('info',$res);
 		$this->display();
 	}

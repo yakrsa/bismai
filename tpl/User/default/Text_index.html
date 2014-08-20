@@ -62,7 +62,7 @@
                   <td><eq name="vo.type" value="1">完全匹配<else/>模糊匹配</eq></td>
                   <td>{iMicms:$vo.click}</td>
                     <td><php>echo date('Y-m-d',$vo['updatetime']);</php></td>
-                   <td class="norightborder"> <a href="{iMicms::U('Text/edit',array('id'=>$vo['id']))}" title="编辑文本">编辑</a> <a href="{iMicms::U('Text/del',array('id'=>$vo['id']))}">删除</a></td>
+                   <td class="norightborder"> <a style="margin-left:7px;" href="{iMicms::U('Text/edit',array('id'=>$vo['id']))}" title="编辑文本">编辑</a> <a  style="margin-left:7px;" href="{iMicms::U('Text/del',array('id'=>$vo['id']))}">删除</a></td>
           
                 </tr>
 				</volist>
