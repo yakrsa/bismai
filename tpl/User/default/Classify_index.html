@@ -28,19 +28,16 @@
 <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
 <thead>
 <tr>
-                    <th style=" width:120px;">分类名称</th>
-                   <th style=" width:120px;">分类描述</th>
+                    <th style=" width:100px;">分类名称</th>
+                   <th style=" width:100px;">分类描述</th>
 <th style=" width:70px;">显示顺序</th>
-<th>分类图片外链地址(宽720高400) <a target="999" class="tooltips" ><img src="{iMicms::RES}/images/price_help.png" align="absmiddle" /><span>
-<p>分类图片最佳尺寸：宽720高400</p>
-<p>不支持上传图片，请把图片上传到腾讯微博，再这里填写图片的外链地址。</p>
-<p>如果不填写分类图片地址系统将随机分配默认图片。</p>
-</span></a></th>
-<th>URL或活动外链代码 <span class="tooltips" ><img src="{iMicms::RES}/images/price_help.png" align="absmiddle" /><span>
+<th style="width:300px;">分类图片:
+根据选择的首页模版自定义图片大小，建议不超过：宽720像素，高400像素或宽300像素，高300像素，小于200k
+</th>
+<th style="width:100px;">URL外链 <span class="tooltips" ><img src="{iMicms::RES}/images/price_help.png" align="absmiddle" /><span>
 <p>比如你想跳转到百度</p>
 <p>就填写<a class="red">http://www.baidu.com</a></p>
-<p>不需要跳转就不用填写，还可以外链活动，</p>
-<p><a class="red">直接选择活动外链地址</a></p>
+<p>不需要跳转就不用填写</p>
 </span></span></th>
 <th style=" width:80px;"  >首页显示</th>
                         <th style=" width:100px;" class="norightborder">操作</th>
@@ -55,9 +52,9 @@
 <td>{iMicms:$vo.n_ltype}</td>
 <td><eq name="vo.status" value="1">显示<else/>不显示</eq></td>
 <td class="norightborder">
-	<a href="{iMicms::U('Wap/Index/classify',array('token'=>$_SESSION['token']))}">查看</a>
-	<a href="{iMicms::U('Classify/edit',array('id'=>$vo['id']))}">编辑</a>
-	<a href="{iMicms::U('Classify/del',array('id'=>$vo['id']))}">删除</a>
+	<a href="{iMicms::U('Wap/Index/classify',array('token'=>$_SESSION['token']))}" style="margin-left:7px;">查看</a>
+	<a href="{iMicms::U('Classify/edit',array('id'=>$vo['id']))}" style="margin-left:7px;">编辑</a>
+	<a href="{iMicms::U('Classify/del',array('id'=>$vo['id']))}" style="margin-left:7px;">删除</a>
 </td>
 </tr>
 <volist id="subCat" name="vo['class']">

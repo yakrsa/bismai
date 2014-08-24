@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/iinside.css?2013-12-06-5" media="all" />
 <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/colorpicker.css?2013-12-06-5" media="all" />
 <script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-12-06-5"></script>
-<script type="text/javascript" src="{iMicms::RES}/new/js/bootstrap-colorpicker.js?2013-12-06-5"></script>
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap_colorpicker.js?2013-12-06-5"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-12-06-5"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_min.js?2013-12-06-5"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/jquery_validate_methods.js?2013-12-06-5"></script>
@@ -22,7 +22,7 @@
 <script type="text/javascript" src="{iMicms::RES}/js/jscolor.js?2013-12-06-5"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/iinside.js?2013-12-06-5"></script>
 <title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
- <link rel="shortcut icon" href="/tpl/Static/favicon.ico" />
+ <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
         <!--[if IE 7]>
             <link href="{iMicms::RES}/css/font_awesome_ie7.css" rel="stylesheet" />
         <![endif]-->
@@ -102,8 +102,7 @@ $(document).ready(function(){
                         <div class="box-content">
                             <ul class="nav nav-tabs">
                               <li class="active"><a href="#menu" data-toggle="tab">快捷菜单</a></li>
-                            <!--    <li class=""><a href="#color" data-toggle="tab">样式和版权</a></li> -->
-				 <li class=""><a href="#color" data-toggle="tab">版权</a></li>
+                                <li class=""><a href="#color" data-toggle="tab">样式和版权</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane in active" id="menu">
@@ -145,10 +144,10 @@ $(document).ready(function(){
                                                                  <input type="hidden" name="id" value="{iMicms:$user['id']}" >	
 										<table>
 											<tbody>
-												<tr style="height:60px; display:none;">
+												<tr style="height:60px;">
 													<td>
 														<label class="radio">
-															<input type="radio" name="homemenu" value="1"  <eq name="user.copyid" value="0"> checked="checked"</eq> />样式0
+															<input type="radio" name="homemenu" value="0"  <eq name="user.copyid" value="0"> checked="checked"</eq> />样式0
 														</label>
 													</td>
 													
@@ -157,17 +156,17 @@ $(document).ready(function(){
 													 
 													</td>
 												</tr>
-												<tr style="height:60px;display:none;">
+												<tr style="height:60px;">
 													<td>
 														<label class="radio">
-															<input type="radio" name="homemenu" value="0" <eq name="user.copyid" value="1"> checked="checked"</eq> />样式1
+															<input type="radio" name="homemenu" value="1" <eq name="user.copyid" value="1"> checked="checked"</eq> />样式1
 														</label>
 													</td>
 													<td colspan="2">
 														<img src="{iMicms::RES}/img/plugmenu_b_1.jpg?v=SOURCEVERSON" style="width:255px; height:44px;" />
 													</td>
 												</tr>
-												<tr style="height: 60px;display:none;">
+												<tr style="height: 60px;">
 													<td>
 														<label class="radio">
 															<input type="radio" name="homemenu" value="2" <eq name="user.copyid" value="2"> checked="checked"</eq> />样式2
@@ -178,7 +177,7 @@ $(document).ready(function(){
 													</td>
 												</tr>
 											 
-												<tr style="height: 60px;display:none;" >
+												<tr style="height: 60px;" >
 													<td>
 														<label class="radio">
 															<input type="radio" name="homemenu" value="3" <eq name="user.copyid" value="3"> checked="checked"</eq> />样式3
@@ -188,7 +187,7 @@ $(document).ready(function(){
 														<img src="{iMicms::RES}/img/plugmenu_b3.png?v=SOURCEVERSON" style="width:255px; height:44px;" />
 													</td>
 												</tr>
-												<tr style="height: 60px;display:none;">
+												<tr style="height: 60px;" style="display:none;">
 													<td>
 														<label class="radio">
 															<input type="radio" name="homemenu" value="4" <eq name="user.copyid" value="4"> checked="checked"</eq> />样式4
@@ -198,7 +197,7 @@ $(document).ready(function(){
 														<img src="{iMicms::RES}/img/plugmenu_b4.png?v=SOURCEVERSON" style="width:255px; height:44px;" />
 													</td>
 												</tr>
-												<tr style="height: 60px;display:none;">
+												<tr style="height: 60px;">
 													<td>
 														<label class="radio">
 															<input type="radio" name="homemenu" value="5" <eq name="user.copyid" value="5"> checked="checked"</eq> />样式5
@@ -208,7 +207,7 @@ $(document).ready(function(){
 														<img src="{iMicms::RES}/img/plugmenu_b5.png?v=SOURCEVERSON" style="width:255px; height:44px;" />
 													</td>
 												</tr>
-												<tr style="height: 60px;display:none;">
+												<tr style="height: 60px;">
 													<td>
 														<label class="radio">
 															<input type="radio" name="homemenu" value="6" <eq name="user.copyid" value="6"> checked="checked"</eq> />样式6

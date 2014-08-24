@@ -45,7 +45,7 @@
 			<div id="scroller">
 				<ul id="thelist"> 
 				<volist name="flash" id="so">
-						<li><p>{iMicms:$so.info}</p><a href="{iMicms:$so.url}"><img src="{iMicms:$so.img}" /></a></li>
+						<li><p>{iMicms:$so.info}</p><a  <if condition="$so.url neq ''">href="{iMicms:$so.url}" <else/> href="javascript:void()" </if>  ><img src="{iMicms:$so.img}" /></a></li>
 					</volist>
 				</ul>
 			</div>

@@ -86,11 +86,10 @@
                                 <div class="control-group">
                                     <label class="control-label" for="title">触发官网关键词:</label>
                                     <div class="controls">
-                                        <input type="text" name="title" id="title" value="{iMicms:$home.title}" class="input-xlarge" data-rule-required="true" data-rule-maxlength="60">
-					<span class="help-inline">首页 或者 home —— 当用户输入该关键词时，将会触发此回复。</span>
+					<span class="help-inline">"首页" 或者 "微官网"  —— 当用户输入该关键词时，将会触发此回复。</span>
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                <div class="control-group" style="display:none;">
                                     <label class="control-label">匹配模式：</label>
                                     <div class="controls">
                                         <label class="radio">
@@ -111,7 +110,7 @@
 										<input id="thumb" type="text" name="picurl" class="hide" value="<if condition="$home['picurl'] neq ''">{iMicms:$home.picurl}<else/>/tpl/Static/images/home-300300.jpg</if>">
 										<span class="help-inline">
                                             <button class="btn select_img" type="button">选择封面</button>
-                                        </span>
+                                      (建议尺寸：宽720像素，高400像素，小于500k)  </span>
 									</div>
 								</div>
                                 <div class="control-group">

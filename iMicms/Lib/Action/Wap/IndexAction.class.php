@@ -367,6 +367,7 @@ class IndexAction extends BaseAction{
 		 $model =  $Tpl['tpltypeid'];
 		 $tplname = "index".$model;
 	         $flash=M('Flash')->where($where)->select();
+cookie('flash',$flash);
 		 $count=count($flash);
 		$list = $UserDB->where($wheres)->order('oid ASC')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$list2 = $UserDB->where($wheres)->order('oid ASC')->limit(0,2)->select();

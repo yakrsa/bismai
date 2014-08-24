@@ -149,7 +149,7 @@
                                             <label class="control-label" for="link">外链地址</label>
                                             <div class="controls">
                                                 <input type="url" id="link" name="url" value="{iMicms:$info.url}" class="input-xlarge" data-rule-required="true"   />
-												<a href="#" onclick="addLink('link',0)" class="btn btn-primary">从功能库添加</a><br /><span class="red">如需跳转到其他网址，请在这里填写网址(例如：http://baidu.com，记住必须有http://)</span>如果填写了图文详细内容，这里请留空，不要设置！
+												<a href="#" onclick="addLink('link',0)" class="btn btn-primary" style="display:none;">从功能库添加</a><br /><span class="red">如需跳转到其他网址，请在这里填写网址(例如：http://baidu.com，记住必须有http://)</span>如果填写了图文详细内容，这里请留空，不要设置！
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary">保存</button>
-                                    <button type="button" class="btn" onclick="window.history.go(-1);">取消</button>
+                                    <button type="button" class="btn" onclick="window.history.go(-1);" style="margin-left:10px;">取消</button>
                                 </div>
                             </div>
                         </form>
