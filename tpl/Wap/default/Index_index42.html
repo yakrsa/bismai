@@ -39,7 +39,7 @@
 		<div id="banner_box" class="box_swipe">
 			<ul>
 				<volist name="flash" id="so"><li>
-					<a onclick="return false;">
+					<a <if condition="$so.url neq ''">href="{iMicms:$so.url}" <else/> href="javascript:void()" </if>> 
 						<img src="{iMicms:$so.img}" alt="1" style="width:100%;" />
 					</a>
 				</li>

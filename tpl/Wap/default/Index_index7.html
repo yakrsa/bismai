@@ -61,7 +61,7 @@
 				<ul id="thelist"> 
 				<volist name="flash" id="so">
 				           <li>
-						 <a onclick="return false;">
+						 <a <if condition="$so.url neq ''">href="{iMicms:$so.url}" <else/> href="javascript:void()" </if> >
 						 <img src="{iMicms:$so.img}" alt="{iMicms:$so.info}" style="width:100%;" />
 						 </a>
 					           </li>
