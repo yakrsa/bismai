@@ -367,7 +367,6 @@ class IndexAction extends BaseAction{
 		 $model =  $Tpl['tpltypeid'];
 		 $tplname = "index".$model;
 	         $flash=M('Flash')->where($where)->select();
-cookie('flash',$flash);
 		 $count=count($flash);
 		$list = $UserDB->where($wheres)->order('oid ASC')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$list2 = $UserDB->where($wheres)->order('oid ASC')->limit(0,2)->select();
@@ -378,9 +377,9 @@ cookie('flash',$flash);
 		
 		$this->assign('gtoken',$this->_get('token'));
 		$this->assign('mb',$mb['mobile']);
-		$this->assign('plugmenu',$list);
-		$this->assign('plugmenu2',$list2);
-		$this->assign('plugmenu3',$list3);
+		#$this->assign('plugmenu',$list);
+		#$this->assign('plugmenu2',$list2);
+		#$this->assign('plugmenu3',$list3);
 		$this->assign('flash',$flash);
 		$this->assign('sid',$ssid['id']);
         $this->assign('wechat_id',$this->wecha_id);
