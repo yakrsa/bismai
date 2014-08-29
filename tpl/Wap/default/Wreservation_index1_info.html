@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{iMicms:$info.title}</title>
+    <meta name="keywords" content="{iMicms::C('keyword')}" />
+    <meta name="description" content="{iMicms::C('content')}" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/weimob-ui-1-1.css?2013-10-21-2" media="all" />
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/common.css?2013-10-21-2" media="all" />
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/peak-1.css?2013-10-21-2" media="all" />
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/menu-3.css?2013-10-21-2" media="all" />
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/wreservation1.css" media="all" />
+    <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+    <script type="text/javascript" src="{iMicms::RES}/js/jquery.numeric.js"></script>
+    <script type="text/javascript" src="{iMicms::RES}/js/fastclick.min.js"></script>
+    <style>
+    img {
+        width: 100%!important;
+    }
+    </style>
+</head>
+
+<body onselectstart="return true;" ondragstart="return false;">
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css?v=2013102616" media="all" />
+    <div class="weimob-page">
+        <article id="shareCover" class="share" onclick="$('#shareCover').toggleClass('on')">
+            <table>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        <img src="{iMicms::RES}/img/share_1.png?v=2013-10-21-2" style="width:120px!important;" />
+                        <img src="{iMicms::RES}/img/share_2.png?v=2013-10-21-2" style="width:30px!important;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        <img src="{iMicms::RES}/img/share_4.png?v=2013-10-21-2" />
+                        <div>发送给朋友</div>
+                    </td>
+                    <td>
+                        <img src="{iMicms::RES}/img/share_3.png?v=2013-10-21-2" />
+                        <div>分享到朋友圈</div>
+                    </td>
+                </tr>
+            </table>
+        </article>
+
+        <!--
+        分享前控制
+        --> 
+        <script>
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            window.shareData = {
+                "imgUrl": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
+                "timeLineLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
+                "sendFriendLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
+                "weiboLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
+                "tTitle": "{iMicms:$info.title}",
+                "tContent": "{iMicms:$info.info|htmlspecialchars_decode}",
+                "fTitle": "{iMicms:$info.title}",
+                "fContent": "{iMicms:$info.info|htmlspecialchars_decode}",
+                "wContent": "{iMicms:$info.info|htmlspecialchars_decode}"
+            };
+
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "img_url": window.shareData.imgUrl,
+                    "img_width": "640",
+                    "img_height": "640",
+                    "link": window.shareData.sendFriendLink,
+                    "desc": window.shareData.fContent,
+                    "title": window.shareData.fTitle
+                }, function(res) {
+                    _report('send_msg', res.err_msg);
+                })
+            });
+
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv) {
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "img_url": window.shareData.imgUrl,
+                    "img_width": "640",
+                    "img_height": "640",
+                    "link": window.shareData.timeLineLink,
+                    "desc": window.shareData.tContent,
+                    "title": window.shareData.tTitle
+                }, function(res) {
+                    _report('timeline', res.err_msg);
+                });
+            });
+
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv) {
+                WeixinJSBridge.invoke('shareWeibo', {
+                    "content": window.shareData.wContent,
+                    "url": window.shareData.weiboLink,
+                }, function(res) {
+                    _report('weibo', res.err_msg);
+                });
+            });
+        }, false)
+        </script>
+
+        <div class="weimob-content">
+
+            <div id="bookBody" class="body">
+                <header>
+                    <ul>
+                        <li>
+                            <img src="{iMicms:$info.headpic}" style="width:100%;">
+                        </li>
+                    </ul>
+                </header>
+                <section>
+                    <div class="pb_5 pl_10 pr_10 pt_10">
+                        <dl class="list_book list_book_des">
+                            <dd>
+                                <div>
+                                    <label>活动说明</label>
+                                </div>
+                                <div style="word-break:break-all;word-wrap:nowrap;white-space:normal;padding: 15px 0;">
+                                    {iMicms:$info.info|htmlspecialchars_decode}
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                    <if condition="$info['limit'] neq null">
+                        <div class="pb_5 pl_10 pr_10">
+                            <dl class="list_book list_book_contact">
+                                <dd>
+                                    <if condition="$deadlineStr neq null">
+                                        <span>报名截止日期： {iMicms:$deadlineStr}</span>
+                                    </if>
+                                    <if condition="$lastnum egt 0">
+                                        <div style="padding-top: 3px;">
+                                            <span>剩余名额： {iMicms:$lastnum}</span>
+                                        </div>
+                                    </if>
+                                </dd>
+                            </dl>
+                        </div>
+                    </if>
+                    <div class="pb_5 pl_10 pr_10">
+                        <dl class="list_book">
+                            <dt>
+                                <label>请填写联系方式</label>
+                            </dt>
+                            <dd class="tbox">
+                                <div>
+                                    <label>联系人:</label>
+                                </div>
+                                <div>
+                                    <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['truename']}">
+                                </div>
+                            </dd>
+
+                            <dd class="tbox">
+                                <div>
+                                    <label>联系电话：</label>
+                                </div>
+                                <div>
+                                    <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['phone']}">
+                                </div>
+                            </dd>
+
+                            <dd class="tbox">
+                                <div>
+                                    <label>参与人数：</label>
+                                </div>
+                                <div>
+                                    <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['num']}">
+                                </div>
+                            </dd>
+
+                            <dd class="tbox">
+                                <div>
+                                    <label>备注：</label>
+                                </div>
+                                <div>
+                                    <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['remark']}">
+                                </div>
+                            </dd>
+                        </dl>
+                        <div style="margin:10px;text-align: center;">
+
+                            <form id="form1" action="javascript:;" method="post">
+                                <input type="hidden" name="wecha_id" value="{iMicms:$wecha_id}">
+                                <input type="hidden" name="wid" value="{iMicms:$info.id}">
+                                <input type="hidden" name="token" value="{iMicms:$info.token}">
+                                <input id="join-btn" type="submit" value="我要退出" class="btn_submit" style="margin:10px auto;text-align: center;">
+                            </form>
+                        </div>
+                        <script type="text/javascript">
+                            $(function(){
+                                $("#join-btn").click(function(){
+                                    if (confirm("你确定要退出这次活动吗？")){
+                                        var submitData = $("#form1").serialize();
+                                        $.post('{iMicms::U('Wap/Wreservation/quit',array('token'=>$token,'wecha_id'=>$wecha_id))}', submitData,
+                                            function(data) {
+                                                if (0 == data.errno) {
+                                                    alert(data.msg);
+                                                    setTimeout(function(){
+                                                        // window.location.href = data.url;
+                                                        history.go(0);
+                                                    },1500);
+                                                    return;
+                                                } else {
+                                                    alert(data.msg);
+                                                }
+                                            },
+                                        "json")
+                                    }
+                                });
+                            });
+                        </script>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+        <section>
+            <div id="mcover" class="mcover" onclick="document.getElementById('mcover').style.display='';" style="display:none;">
+                <img src="{iMicms::RES}/img/guide.png">
+            </div>
+            <div id="mcover2" class="mcover" onclick="document.getElementById('mcover2').style.display='';" style="display:none;">
+                <img src="{iMicms::RES}/img/instruction.png">
+            </div>
+            <div class="text" id="content">
+                <div id="mess_share">
+                    <div id="share_1">
+                        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
+                            <img src="{iMicms::RES}/img/icon_msg.png">&nbsp;发送或分享
+                        </button>
+                    </div>
+                    <div id="share_2">
+                        <button class="button2" onclick="document.getElementById('mcover2').style.display='block';">
+                            <img src="{iMicms::RES}/img/icon_follow.png">&nbsp;关注公众号
+                        </button>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </section>
+        <div style="padding-bottom:0!important;">
+            <a href="javascript:window.scrollTo(0,0);" style="font-size:12px;margin:5px auto;display:block;color:#fff;text-align:center;line-height:35px;background:#333;margin-bottom:-10px;">返回顶部</a>
+        </div>
+    </div>
+    <footer>
+        <div class="weimob-copyright">
+            <a href="/index.php?g=Wap&m=Index&a=index&token={iMicms:$gtoken}&wecha_id={iMicms:$wecha_id}&iMicms=mp.weixin.qq.com">{iMicms:$copyright}</a>
+        </div>
+        <span class="weimob-support" style="display:none;">{iMicms::C('site_name')}</span>
+    </footer>
+    <div mark="stat_code" style="width:0px; height:0px; display:none;">{iMicms:$home.stat_code|htmlspecialchars_decode}
+    </div>
+</body>
+
+</html>

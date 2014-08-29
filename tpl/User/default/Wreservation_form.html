@@ -1,0 +1,235 @@
+<link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/datepicker.css?2013-11-08-1" media="all" />
+<script type="text/javascript" src="{iMicms::RES}/js/bootstrap-datepicker.js?2013-10-21-2"></script>
+
+<style>
+.form-horizontal .controls {
+    margin-left: 0px;
+}
+.add-on {
+    height: 20px;
+}
+.input-medium {
+    height: 20px;
+    padding: 14px 5px;
+}
+</style>
+<div class="msgWrap form">
+    <TABLE class="userinfoArea" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <THEAD>
+            <TR>
+                <TH style="width:120px" valign="top">
+                    <label for="keyword">关键词：</label>
+                </TH>
+                <TD>
+                    <input type="input" class="px" id="keyword" value="{iMicms:$res.keyword}" name="keyword" style="width:580px;" />
+                </TD>
+            </TR>
+            <TR style="display:none;">
+                <TH valign="top">关键词类型：</TH>
+                <TD>
+                    <if condition="$res['type'] eq null">
+                        <label for="radio1">
+                            <input id="radio1" type="radio" name="type" value="2" checked="checked"/>
+                            <span class="help-inline">完全匹配 用户输入的和此关键词一样才会触发!</span>
+                        </label>
+                        <br />
+                        <label for="radio2">
+                            <input id="radio2" type="radio" name="type" value="1" />
+                            <span class="help-inline">包含匹配 (只要用户输入的文字包含本关键词就触发!v2用户才生效)</span>
+                        </label>
+                    <else/>
+                        <label for="radio1">
+                            <input id="radio1" type="radio" name="type" value="2" <eq name="res.type" value="2">checked="checked"</eq>/>
+                            <span class="help-inline">完全匹配 用户输入的和此关键词一样才会触发!</span>
+                        </label>
+                        <br />
+                        <label for="radio2">
+                            <input id="radio2" type="radio" name="type" value="1" <eq name="res.type" value="1">checked="checked"</eq>/>
+                            <span class="help-inline">包含匹配 (只要用户输入的文字包含本关键词就触发!v2用户才生效)</span>
+                        </label>
+                    </if>
+                </TD>
+            </TR>
+        </THEAD>
+        <TBODY>
+            <TR>
+                <TH>
+                    <label for="title">
+                        <span class="red">*</span>标题：</label>
+                </TH>
+                <TD>
+                    <input type="input" class="px" id="title" value="{iMicms:$res.title}" name="title" style="width:580px;" />
+                </TD>
+            </TR>
+            <TR>
+                <TH valign="top">
+                    <label for="text">简介：</label>
+                </TH>
+                <TD>
+                    <textarea class="px" id="Hfcontent" name="text" style="width:580px;  height:100px">{iMicms:$res.text}</textarea>
+                    <br />限制200字内
+                </TD>
+            </TR>
+            <TR>
+                <TH>
+                    <label for="sorts">排序：</label>
+                </TH>
+                <TD>
+                    <input type="input" class="px" id="sorts" value="{iMicms:$res.sorts}" name="sorts" style="width:30px;" />
+                </TD>
+            </TR>
+            <TR>
+                <TH valign="top">
+                    <label for="picurl">封面图片：</label>
+                </TH>
+                <TD>
+                    <div class="control-group">
+                        <div class="controls">
+                            <img class="thumb_img" src="{iMicms:$res.pic}" style="max-height:100px;" />
+                            <input type="hidden" name="pic" value="{iMicms:$res.pic}" class="input-xlarge js-select_img" data-rule-required="true" data-rule-url="true" />
+                            <span class="help-inline"><a class="btn select_img">选择封面</a>（尺寸：宽720像素，高400像素） 小于500k;</span>
+                        </div>
+                    </div>
+                </TD>
+            </TR>
+            <TR>
+                <TH valign="top">
+                    <label for="picurl">详细页顶部图片：</label>
+                </TH>
+                <TD>
+                    <div class="control-group">
+                        <div class="controls">
+                            <img class="thumb_img" src="{iMicms:$res.headpic}" style="max-height:100px;" />
+                            <input type="hidden" name="headpic" value="{iMicms:$res.headpic}" class="input-xlarge js-select_img" data-rule-required="true" data-rule-url="true" />
+                            <span class="help-inline"><a class="btn select_img">选择图片</a>（尺寸：宽720像素，高400像素） 小于500k;</span>
+                        </div>
+                    </div>
+                </TD>
+            </TR>
+            <TR>
+                <TH>
+                    <label for="maxpeople">最大人数：
+                        <span style="color:#F00">(不输入则无限制)</span></label>
+                </TH>
+                <TD>
+                    <input type="input" class="px" id="maxpeople" value="{iMicms:$res.maxpeople}" name="maxpeople" style="width:90px;" />
+                </TD>
+            </TR>
+            <TR>
+                <TH>
+                    <label for="maxpeople">报名时限：</br>
+                        <span style="color:#F00">(选中开启报名时间限制)</span></label>
+                </TH>
+                <TD>
+                    <if condition="$res['deadline'] eq '0000-00-00'">
+                        <input name="allowdeadline" type="checkbox" onclick="javascript:document.getElementById('deadline-box').style.display=(document.getElementById('deadline-box').style.display=='none')?'inline-block':'none'" />
+                        <div id="deadline-box" class="input-prepend" style="display:none;">
+                            <span class="add-on"><i class="icon-calendar"></i>
+                            </span>
+                            <input type="text" name="deadline" class="datepick input-medium" value="" data-rule-required="true" readonly="" />
+                        </div>
+                        <else/>
+                        <input name="allowdeadline" type="checkbox" onclick="javascript:document.getElementById('deadline-box').style.display=(document.getElementById('deadline-box').style.display=='none')?'inline-block':'none'" checked="checked" />
+                        <div id="deadline-box" class="input-prepend">
+                            <span class="add-on"><i class="icon-calendar"></i>
+                            </span>
+                            <input type="text" name="deadline" class="datepick input-medium" value="{iMicms:$res.deadline}" data-rule-required="true" readonly="" />
+                        </div>
+                    </if>
+                </TD>
+            </TR>
+            <TR>
+                <TH valign="top">
+                    <label for="info">详细内容：</br>
+                        <span style="color:#F00">(注意:HTML代码会被转码,请保存后查看效果.)</span>
+                    </label>
+                </TH>
+                <TD>
+                    <input type="hidden" name="id" value="{iMicms:$res.id}" />
+                    <textarea name="info" id="info" class="px" rows="5" style="width:590px;height:360px">{iMicms:$res.info}</textarea>
+                </TD>
+            </TR>
+
+            <TR>
+                <TH valign="top">活动状态：</TH>
+                <TD>
+                    <if condition="$res['status'] eq 0">
+                        <label for="radio_status1">
+                            <input id="radio_status1" type="radio" name="status" value="0" checked="checked"/>
+                            <span class="help-inline">停止</span>
+                        </label>
+                        <br />
+                        <label for="radio_status2">
+                            <input id="radio_status2" type="radio" name="status" value="1" />
+                            <span class="help-inline">进行中</span>
+                        </label>
+                    <else/>
+                        <label for="radio_status1">
+                            <input id="radio_status1" type="radio" name="status" value="0" <eq name="res.status" value="0">checked="checked"</eq>/>
+                            <span class="help-inline">停止</span>
+                        </label>
+                        <br />
+                        <label for="radio_status2">
+                            <input id="radio_status2" type="radio" name="status" value="1" <eq name="res.status" value="1">checked="checked"</eq>/>
+                            <span class="help-inline">进行中</span>
+                        </label>
+                    </if>
+
+                </TD>
+            </TR>
+            <TR>
+                <TH></TH>
+                <TD>
+                    <input type="submit" value="保存" name="sbmt" class="btn btn-primary" />　<a href="{iMicms::U('Wreservation/index')}" class="btn">取消</a>
+                </TD>
+            </TR>
+        </TBODY>
+    </TABLE>
+
+</div>
+
+<script>
+KindEditor.ready(function(K) {
+    var editor = K.editor({
+        themeType: "simple",
+        allowFileManager: true
+
+    });
+    K('.select_img').click(function(e) {
+        editor.loadPlugin('smimage', function() {
+            editor.plugin.imageDialog({
+                imageUrl: $(e.target).parent().prevAll("input.js-select_img").val(),
+                clickFn: function(url, title, width, height, border, align) {
+                    var $input = $(e.target).parent().prevAll("input.js-select_img")
+                    $input.val(url)
+                    $input.hide();
+                    var t_img = $(e.target).parent().prevAll(".thumb_img:first");
+                    if (t_img.length == 0) {
+                        var tmp = '<img class="thumb_img" src="{0}" style="max-height: 100px;">';
+                        $input.before(tmp.format(url))
+                    } else {
+                        t_img.attr("src", url);
+                    }
+
+                    editor.hideDialog();
+                }
+            });
+        });
+    });
+});
+
+
+var editor;
+KindEditor.ready(function(K) {
+    editor = K.create('#info', {
+        resizeType: 1,
+        allowPreviewEmoticons: false,
+        allowImageUpload: false,
+        items: [
+            'source', 'undo', 'clearhtml', 'hr', 'fontsize', 'forecolor', 'hilitecolor',
+            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+            'insertunorderedlist', '|', 'emoticons', 'image', 'link', 'unlink', 'baidumap', 'lineheight', 'table', 'anchor', 'preview', 'print', 'template', 'code', 'cut'
+        ]
+    })
+});
+</script>

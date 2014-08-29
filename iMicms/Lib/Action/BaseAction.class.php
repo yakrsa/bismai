@@ -71,7 +71,8 @@ class BaseAction extends Action
 					'Selfform',
 					'Marrycard',
 					'Goldegg',
-					'Panoramic'
+					'Panoramic',
+					'Wreservation'
                 );
                 if (in_array($name, $m_arr)) {
                     $data['pid']     = $id;

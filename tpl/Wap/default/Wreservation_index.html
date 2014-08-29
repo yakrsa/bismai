@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class=" mobile">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="{iMicms::C('keyword')}" />
+    <meta name="description" content="{iMicms::C('content')}" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <title>{iMicms:$info.title} - {iMicms:$tpl.wxname}</title>
+    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/wreservation.css" media="all" />
+    <script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
+    <script type="text/javascript" src="{iMicms::RES}/js/jquery_easing.js"></script>
+
+    <!-- Safely console -->
+    <script>
+    (function(b) {
+        function c() {}
+        for (var d = "assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","), a; a = d.pop();) b[a] = b[a] || c
+    })(window.console = window.console || {});
+    </script>
+
+    <script src="__STATIC__/weixin/js/tp2/jquery.js"></script>
+    <script src="__STATIC__/weixin/js/tp2/fastclick.min.js"></script>
+    <script type="text/javascript">
+    window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+    }, false);
+    </script>
+</head>
+
+<body class="" style="padding-bottom: 40px;">
+    <div class="container">
+        <div class="content">
+            <div class="content-body">
+
+                <div id="bookBody" class="body">
+                    <header>
+                        <ul>
+                            <li>
+                                <img src="http://stc.weimob.com/img/default/car2.png" style="width:100%;">
+                            </li>
+                        </ul>
+                    </header>
+                    <section>
+                        <div class="pb_5 pl_10 pr_10">
+                            <dl class="list_book list_book_des">
+                                <dd>
+                                    <div>
+                                        <label>活动说明</label>
+                                    </div>
+                                    <div style="word-break:break-all;word-wrap:nowrap;white-space:normal;padding: 15px 0;">
+                                        {iMicms:$info.info|htmlspecialchars_decode}
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="pb_5 pl_10 pr_10">
+                            <dl class="list_book list_book_contact">
+                                <dd>
+                                    <div>
+                                        <span>活动时间： 2014-08-20 周三 13:30-15:30</span>
+                                    </div>
+                                    <div style="padding-top: 3px;">
+                                        <span>报名截止日期： 2014-08-18 周一 18:00</span>
+                                    </div>
+                                    <div style="padding-top: 3px;">
+                                        <span>人数上限： 25</span>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="pb_5 pl_10 pr_10">
+                            <form id="form1" action="javascript:submit();" method="post">
+                                <input type="hidden" name="wechatid" id="uid" value="">
+                                <input type="hidden" name="rid" id="rid" value="2605">
+                                <input type="hidden" name="aid" id="aid" value="257510">
+                                <input type="hidden" name="pid" id="pid" value="257510">
+                                <input type="hidden" name="type" id="type" value="1">
+                                <input type="hidden" name="autoid" id="autoid" value="">
+                                <dl class="list_book">
+                                    <dt>
+                                        <label>请填写联系方式</label>
+                                    </dt>
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>联系人:</label>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="truename" placeholder="请输入您的真实姓名" value="">
+                                        </div>
+                                    </dd>
+
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>联系电话：</label>
+                                        </div>
+                                        <div>
+                                            <input type="tel" name="tel" placeholder="请输入您的电话" value="">
+                                        </div>
+                                    </dd>
+
+
+
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>备注：</label>
+                                        </div>
+                                        <div>
+                                            <textarea name="info" placeholder="请输入备注信息" style="height:80px;"></textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <div style="margin:10px;text-align: center;">
+                                    <input type="submit" value="立即预约" class="btn_submit" onclick="$('.masklayer').addClass('on');return false;" style="margin:10px auto;text-align: center;">
+                                </div>
+                            </form>
+                        </div>
+                        <footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;">
+                            <a href="" style="color:#000;"></a>
+                        </footer>
+                    </section>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="copyright">
+                <div class="ft-copyright">
+                    <a target="_blank">由 比斯迈 提供技术支持</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

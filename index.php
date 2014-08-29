@@ -2,7 +2,7 @@
 define('DOMAIN','bismai.com');
 ini_set('session.cookie_path', '/');
 ini_set('session.cookie_domain', DOMAIN);
-define('APP_DEBUG',False);
+define('APP_DEBUG',True);
 define('APP_NAME', 'iMicms');
 define('CONF_PATH','./Data/conf/');
 define('RUNTIME_PATH','./Data/logs/');

@@ -65,9 +65,9 @@ class UsersAction extends BaseAction{
 		 
 		   $einfo=$db->where($ewhere)->find();
 		 if($einfo == true) {echo 6; exit;}
-		 if($vcode != $_SESSION['verify']){
-		 	echo 5; exit;
-		 }
+		# if($vcode != $_SESSION['verify']){
+		# 	echo 5; exit;
+		# }
 		$authwhere['code']=$this->_post('authcode','trim');
 		$authwhere['status']=0;
 		$authcodeDB=D('Authcode');
