@@ -61,7 +61,7 @@
 			<form action="" method="post">
 			<tbody>
 				<tr>
-					<td width="500px" rowspan="4" valign="top">商家简介：<br>
+					<td width="500px" rowspan="4" valign="top">商家简介：(在会员卡说明中显示)<br>
 						<textarea class="px" id="info" name="info" style="width: 450px; height: 230px; ">{imicms:$info.info}</textarea>
 					</td>
 					<td valign="top">商家logo外链地址(图片尺寸100x100)<br>
@@ -74,6 +74,7 @@
 					<th>回复图片：</th>
 					<td><input type="text" name="clogo" value="{iMicms:$info.clogo}" class="px" style="width:550px;" id="pic" readonly="readonly"><span class="ke-button-common" id="upload" style="margin-top: 3px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span><br/> 填写图片外链地址，大小为720x400</td>
 				</tr>-->
+<!--
 				<tr>
 				<td valign="top">选择分类：<br>
 					<label for="select"></label>
@@ -85,7 +86,7 @@
 					</select>
 				</td>
 				</tr>
-				<tr>
+-->				<tr>
 					<td valign="top">会员卡优惠简短描述：（12个字以内）<br>
 					<input name="description" type="input"  class="px" id="logo2" style="width:250px;" onblur="document.getElementById('cardlogo').src=document.getElementById('logo').value;" value="{imicms:$info.description}"></td>
 				</tr>
@@ -93,7 +94,7 @@
 					<td valign="top">消费确认密码：<br>
 					<input type="input" class="px" id="title" value="{imicms:$info.password}" name="password" style="width:150px;">
 					<br>
-					商家用来确认用户代金券，优惠券和礼品券使用的密码</td>
+				(商家用来确认用户代金券，优惠券和礼品券使用的密码)</td>
 				</tr>
 					 <tbody>
 			 <tr>
