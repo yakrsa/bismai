@@ -31,10 +31,11 @@
               <thead>
                 <tr>
 					<th class="select">选择</th>
-					<th class="answer">标题</th>
+					<th style="width:150px;">标题</th>
 					<th class="time" style="width:80px;">使用次数</th>
 					<th class="category" style="display:none">会员级别</th>
 					<th class="time">创建时间</th>
+                                         <th class="time">开始时间</th>
 					<th class="time">过期时间</th>
 					<th class="edit norightborder">操作</th>
                 </tr>
@@ -53,8 +54,9 @@
 							<case value="4">钻石卡会员</case>
 						</switch>					  
 					  </td>
-					  <td><if condition="$data_vip['type'] eq 1">无时间限制<else/>{imicms:$data_vip.statdate|date='Y-m-d',###}</if></td>
-					  <td><if condition="$data_vip['type'] eq 1">无时间限制<else/>{imicms:$data_vip.enddate|date='Y-m-d',###}</if></td>
+					  <td>{imicms:$data_vip.create_time|date='Y-m-d',###}</td>
+                                           <td>{imicms:$data_vip.statdate|date='Y-m-d',###}</td>
+					  <td>{imicms:$data_vip.enddate|date='Y-m-d',###}</td>
 					  <td class="norightborder">
 						<a href="{imicms::U('Member_card/useRecords',array('id'=>$thisCard['id'],'type'=>'coupon','itemid'=>$data_vip['id']))}">使用统计</a> <a href="{imicms::U('Member_card/coupon_edit',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">编辑</a> <a href="{imicms::U('Member_card/coupon_del',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">删除</a>
 					  </td>

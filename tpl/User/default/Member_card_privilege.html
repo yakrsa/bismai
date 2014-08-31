@@ -57,12 +57,9 @@
 
 					<th class="answer">标题</th>
 
-					<th class="time" style="width:80px;">使用次数</th>
-
-					<th class="category" style="display:none">会员级别</th>
-
 					<th class="time" style="width:160px;">创建时间</th>
 
+                                         <th class="time">开始时间</th>
 					<th class="time" style="width:150px;">过期时间</th>
 
 					<th class="edit norightborder">操作</th>
@@ -81,29 +78,9 @@
 
 					  <td><div class="answer_text">{imicms:$data_vip.title}</div></td>
 
-					  <td>{imicms:$data_vip.usetime}</td>
-
-					  <td style="display:none">
-
-						<switch name="data_vip.group">
-
-							<case value="1">所有会员</case>
-
-							<case value="2">普通会员</case> 
-
-							<case value="3">银卡会员</case> 
-
-							<case value="4">金卡会员</case>
-
-							<case value="5">钻石卡会员</case>
-
-						</switch>					  
-
-					  </td>
-
 					  <td>{imicms:$data_vip.create_time|date='Y-m-d H:i:s',###}</td>
-
-					  <td><if condition="$data_vip['type'] eq 1">无时间限制<else/>{imicms:$data_vip.enddate|date='Y-m-d',###}</if></td>
+                                          <td>{imicms:$data_vip.statdate|date='Y-m-d',###}</td>
+					  <td>{imicms:$data_vip.enddate|date='Y-m-d',###}</td>
 
 					  <td class="norightborder">
 

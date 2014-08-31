@@ -9,12 +9,12 @@
     <!-- Apple devices fullscreen -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <base target="mainFrame" />
+<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-12-17-1"></script>
     <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/iindex.css?2013-12-17-1" media="all" />
 <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_min.css?2013-12-17-1" media="all" />
 <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/bootstrap_responsive_min.css?2013-12-17-1" media="all" />
 <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/sstyle.css?2013-12-17-1" media="all" />
 <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/themes.css?2013-12-17-1" media="all" />
-<script type="text/javascript" src="{iMicms::RES}/js/jQuery.js?2013-12-17-1"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/application.js?2013-12-17-1"></script>
 <script type="text/javascript" src="{iMicms::RES}/js/bootstrap_min.js?2013-12-17-1"></script>
 <title>{iMicms::C('site_name')}-{iMicms::C('site_title')}</title>
@@ -224,7 +224,7 @@
                       <a href="{iMicms::U('Member_card/info',array('token'=>$token))}">商家设置</a>
                     </li>
                     <li>
-                       <a href="{iMicms::U('Member_card/index',array('token'=>$token))}">会员卡设计</a>
+                       <a href="{iMicms::U('Member_card/index',array('token'=>$token))}">会员卡管理</a>
                     </li>
                     
 		   <li>
@@ -237,14 +237,14 @@
 
                 </ul>
             </div>
-
+<!--
 	<div class="subnav">
 		<div class="subnav-title">
 		<a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微活动</span></a>
 		</div>
 		<ul class="subnav-menu"><li><a href="{iMicms::U('Wreservation/index',array('token'=>$token))}">预约活动</a></li></ul>
 	</div>
-
+-->
 		<div class="subnav">
                 <div class="subnav-title">
                     <a href="javascript:void(0)" class='toggle-subnav'><i class="icon-angle-right"></i><span>微数据</span></a>

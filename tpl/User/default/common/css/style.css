@@ -112,6 +112,9 @@ textarea {
 	color:#fff;
 	font-size:18px;
 }
+pg_CURMODULE {
+background:none repeat scroll 0 0 #fff;
+}
 /*????????*/
 .qtcontent {
 	 margin: 0 auto;
@@ -1030,7 +1033,7 @@ TABLE.ListProduct .edit{
 
 
 /*????*/
-#nv_member { background:#ebedf0 url(../images/img/bg_home.png) repeat; }
+#nv_member { background:none repeat scroll 0 0 #fff; }
 .homebg { background: url(../images/img/bg_home1.png) repeat-x scroll 0 0 transparent; }
 .homebg2 { background: url(../images/img/bg_home2.jpg) no-repeat scroll center 0 transparent; }
 #nv_member #hd .wp { width: 960px; margin: 0 auto;}

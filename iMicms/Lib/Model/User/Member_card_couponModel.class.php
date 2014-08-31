@@ -1,6 +1,7 @@
 <?php
 class Member_card_couponModel extends Model{
 	protected $_validate = array(
+
 			array('title','require','优惠卷名称不能为空',1),
 			array('group','require','优惠卷会员组必须选择',1),
 			array('type','require','优惠卷有效期必须选择',1),

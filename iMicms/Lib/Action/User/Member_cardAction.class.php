@@ -380,18 +380,19 @@ class Member_cardAction extends UserAction
             $_POST['token']       = $this->thisCard['token'];
             $_POST['create_time'] = time();
             $enddates             = explode('-', $_POST['enddate']);
-            $_POST['enddate']     = 0;
+            $_POST['enddate']     = strtotime($this->_post('enddate'));;
             if (!$_POST['type']) {
                 $_POST['enddate'] = mktime(23, 59, 59, $enddates[1], $enddates[2], $enddates[0]);
             }
             $startdates        = explode('-', $_POST['statdate']);
-            $_POST['statdate'] = 0;
+	    $_POST['statdate'] = strtotime($this->_post('statdate'));;
             if (!$_POST['type']) {
                 $_POST['statdate'] = mktime(0, 0, 0, $startdates[1], $startdates[2], $startdates[0]);
             }
             if (!isset($_GET['itemid'])) {
                 $member_card_vip->add($_POST);
             } else {
+Log::write("save privilege");
                 $member_card_vip->where(array(
                     'id' => intval($_GET['itemid'])
                 ))->save($_POST);
@@ -444,8 +445,24 @@ class Member_cardAction extends UserAction
         if (IS_POST) {
             $_POST['cardid'] = $this->thisCard['id'];
             if (!isset($_GET['itemid'])) {
-                $this->all_insert('Member_card_coupon', '/coupon?id=' . $this->thisCard['id']);
+		Log::write("insert");
+            #    $this->all_insert('Member_card_coupon', '/coupon?id=' . $this->thisCard['id']);
+                $data['info']=$this->_post('info');
+		$data['title']=$this->_post('title');
+                $data['people']=$this->_post('people');
+                $data['group']=$this->_post('group');
+                $data['type']=$this->_post('type');
+                $data['token']=session('token');
+                $data['cardid']=$this->_get('id');
+                $data['price']=$this->_post('price');
+                $data['title']=$this->_post('title');
+                $data['create_time']=time();
+                $data['statdate']=strtotime($this->_post('statdate'));
+                $data['enddate']=strtotime($this->_post('enddate'));	
+		$member_card_coupon_db->data($data)->add();
+		$this->success('操作成功','/index.php?g=User&m=Member_card&a=coupon&token'.session('token').'&id='.$this->_get('id'));
             } else {
+Log::write('save coupon');
                 $this->all_save('Member_card_coupon', '/coupon?id=' . $this->thisCard['id']);
             }
         } else {

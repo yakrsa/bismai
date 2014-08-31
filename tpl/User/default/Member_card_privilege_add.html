@@ -102,14 +102,7 @@ items : [
 			<th>有效期：</th>
 
 			<td><label>
-
-			<input name="type" type="radio" id="RadioGroup1_1" onclick="document.getElementById('cktime').style.display='none';" value="1" <if  condition="$vip['statdate'] eq false">checked="checked"</if>>
-
-			无时间期限</label>　
-
-			<label>
-
-			<input name="type" type="radio" id="RadioGroup1_0" <if  condition="$vip['statdate'] neq false">checked="checked"</if> onclick="document.getElementById('cktime').style.display='';;" value="0">
+			<input name="type" type="radio" id="RadioGroup1_0" checked="checked"  value="1">
 
 			选择时间期限</label>
 
@@ -117,7 +110,7 @@ items : [
 
 		</tr>
 
-		<tr id="cktime" <if  condition="$vip['statdate'] eq false">style="display:none"</if>>
+		<tr id="cktime">
 
 		<th></th>
 
