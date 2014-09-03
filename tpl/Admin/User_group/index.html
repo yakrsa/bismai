@@ -16,6 +16,7 @@
 		<td width="100">公众号创建个数</td>
                 <td width="70">包月数</td>
                 <td width="70">创建会员数</td>
+                <td width="70">包含功能</td>
                 <td width="100">申请账号</td>
 		<td width="100">管理操作</td>
 	  </tr>
@@ -29,6 +30,7 @@
 				<td align='center'>{iMicms:$vo.gongzhongnum}</td>
                                 <td align='center'>{iMicms:$vo.expdate}</td>
 				<td align='center'>{iMicms:$vo.create_card_num}</td>
+                                <td align='center'><if condition="$vo['func'] eq 1">微商城<else/>微官网</if></td>
 				<td align='center'>
                                         <a href="javascript:;" onclick="genAuthcode({iMicms:$vo.id})">生成邀请码</a>
 				</td>
@@ -39,7 +41,7 @@
 			</tr>
 	    </volist>
      <tr bgcolor="#FFFFFF"> 
-      <td colspan="9"><div class="listpage">{iMicms:$page}</div></td>
+      <td colspan="10"><div class="listpage">{iMicms:$page}</div></td>
 	  <td></td>
     </tr>
    

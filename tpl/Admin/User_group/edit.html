@@ -83,6 +83,15 @@
 						<input type="text" name="create_card_num" class="ipt" size="45" value="{iMicms:$info.create_card_num}"/>
 					</td>
 				</tr>
+ <tr>
+                                        <td height="48" align="right"><strong>功能模块</strong></td>
+                                        <td colspan="3" class="lt">
+                                                <input type="radio" class="radio" class="ipt" value="1" name="func"  <if condition="($info.func eq 1) OR ($info['func'] eq '') ">checked=""</if> >
+                                                        微商城
+                                                        <input type="radio" class="radio" class="ipt"  value="0" name="func"  <eq name="info.func" value="0">checked=""</eq> >
+                                                        微官网
+                                        </td>
+                                </tr>
 	<tr>
 		<td colspan="4" style="padding:10px 0 10px 230px;">
 			<gt name="info.id" value="0">

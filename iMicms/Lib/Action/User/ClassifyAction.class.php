@@ -91,8 +91,8 @@ class ClassifyAction extends UserAction{
 		if($activity_value ==5 ) $list=M('Wcard')->field('id,keyword,title,date,hour,min')->where(array('token'=>session('token'),'status'=>1))->select();
 		else
 		if($activity_value ==6 ) $list=M('Goldegg')->field('id,keyword,title,startdate,enddate')->where(array('token'=>session('token'),'status'=>1))->select();
-		else
-		$list=M('Lottery')->field('id,keyword,title,statdate,enddate')->where(array('token'=>session('token'),'type'=>$activity_type))->select();
+		//else
+		//$list=M('Lottery')->field('id,keyword,title,statdate,enddate')->where(array('token'=>session('token'),'type'=>$activity_type))->select();
 		$this->assign('activity_value',$activity_value);
 		$this->assign('list',$list);
 		

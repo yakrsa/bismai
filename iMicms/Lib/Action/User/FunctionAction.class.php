@@ -5,9 +5,14 @@ class FunctionAction extends UserAction{
 		$id=$this->_get('id','intval');
 		$token=$this->_get('token','trim');	
 	        $info=M('Wxuser')->find($id);
+                $gid = session('gid');
+                $ufunc=M('User_group')->field('func')->find($gid);
+//Log::write("xxxxxxxxxxxxxxxxx");
+//Log::write("gid:".$gid."  ufunc:".$ufunc['func']);
 		$this->assign('info',$info); 
 		$this->assign('id',$id);
 		$this->assign('token',$token);
+		$this->assign('ufunc',$ufunc['func']);
 		$this->display();
 		$login_info=array();
 		#$login_info['user']='user';
