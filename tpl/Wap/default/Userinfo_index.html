@@ -194,6 +194,7 @@ $("#showcard").bind("click",function() {
 
 		}else if(data==4){
 			alert('会员卡升级成功');
+                        location.href = "{iMicms::U('Card/vip',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}";
 		}else{  
 			 
 			alert('稍后再试.');
