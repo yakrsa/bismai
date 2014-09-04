@@ -2,10 +2,10 @@
 class UserinfoAction extends BaseAction{
 	public function index(){
 		$agent = $_SERVER['HTTP_USER_AGENT'];
-		if(!strpos($agent,"MicroMessenger")) {
-			echo '此功能只能在微信浏览器中使用';exit;
-		}
-
+//		if(!strpos($agent,"MicroMessenger")) {
+//			echo '此功能只能在微信浏览器中使用';exit;
+//		}
+Log::write("++++++++++++++ begin:");
 		$card = D('Member_card_create'); 
 		$data['wecha_id']=$this->_get('wecha_id');
 		$data['token']=$this->_get('token');
@@ -22,6 +22,7 @@ class UserinfoAction extends BaseAction{
 		$this->assign('cardnum',$cardinfo['number']);
 		$this->assign('homepic',$img);
 		$this->assign('info',$userinfo);
+		$this->assign('cardid',$this->_get('cardid'));
 		if(IS_POST){
 			
 			//如果有post提交，说明是修改
@@ -38,18 +39,44 @@ class UserinfoAction extends BaseAction{
  			//如果会员卡不为空[更新]
  			//写入两个表 Userinfo Member_card_create 
 			if($cardinfo){ //如果Member_card_create 不为空，说明领过卡，但是可以修改会员信息
-				$update['wecha_id']=$data['wecha_id'];
-				$update['token']=$data['token'];
-				unset($data['wecha_id']);
-				unset($data['token']);
-				if(M('Userinfo')->where($update)->save($data)){
-					echo 1;exit;
+				//如果当前cardid和之前的不同，则代表申请第二张卡，需要换掉原来的卡,要申请新卡id
+				if($cardinfo['cardid']!=$this->_post('cardid')){
+					Log::write("当前cardid和之前的不同".$this->_post('cardid'));
+					//申请新卡id
+					$newcard=M('Member_card_create')->field('id,number')->where("token='".$this->_get('token')."' and wecha_id ='' and cardid=".$this->_post('cardid'))->order('id')->find();
+					if($newcard != false){
+						 Log::write("new card no:".$newcard['id']);
+						$card->where("id=".$newcard['id'])->delete();
+						$cardinfo['cardid']=$this->_post('cardid');
+						$cardinfo['number']=$newcard['number'];
+						$card->data($cardinfo)->save();	
+              	 	                 	$update['wecha_id']=$data['wecha_id'];
+           	  	              	        $update['token']=$data['token'];
+   	                 	           	unset($data['wecha_id']);
+	                        	       	unset($data['token']);
+	                       	        	if(M('Userinfo')->where($update)->save($data)){
+	                              	        	 echo 4;exit;
+	                                	}else{
+	                                        	echo 4;exit;
+	 	                               	}
+					}else{
+						echo 3;exit;
+						
+					}
 				}else{
-					echo 0;exit;
+					$update['wecha_id']=$data['wecha_id'];
+					$update['token']=$data['token'];
+					unset($data['wecha_id']);
+					unset($data['token']);
+					if(M('Userinfo')->where($update)->save($data)){
+						echo 1;exit;
+					}else{
+						echo 0;exit;
+					}
 				}
 			}else{
 				//还没有会员卡，领卡
-				$card=M('Member_card_create')->field('id,number')->where("token='".$this->_get('token')."' and wecha_id = ' '")->find();
+				$card=M('Member_card_create')->field('id,number')->where("token='".$this->_get('token')."' and wecha_id = '' and cardid=".$this->_post('cardid'))->order('id')->find();
 				//如果商家还有会员卡，可以领
 					if($card != false){
 						//微信与会员卡绑定
@@ -132,6 +159,7 @@ class UserinfoAction extends BaseAction{
 		$this->display();		
 	}
 	*/
+Log::write("+++++++++++++++++++++end");
     } //end function index
 } // end class UserinfoAction
 

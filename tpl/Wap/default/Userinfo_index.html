@@ -7,7 +7,7 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 <link href="{iMicms::RES}/css/userinfo/fans.css" rel="stylesheet" type="text/css"> 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="http://home.bismai.com/tpl/Wap/default/common/js/jquery.min.js"></scripst> 
 <script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="{iMicms::RES}/css/guajiang/js/jquery.js">\x3C/script>')</script>
 <style>
 .footFix{width:100%;text-align:center;position:absolute;left:0;bottom:0;z-index:99;}
@@ -119,12 +119,16 @@ onblur="check3(this)" name="tel"  class="px" id="tel" value="{iMicms:$info.tel}"
 <th>年龄</th>
 <td><input name="age"  type="text" class="px" id="age" value="{iMicms:$info.age}" placeholder="请输入您的年龄"></td>
 </tr>
+<tr style="display:none;">
+<th></th>
+<td><input name="cardid" class="px" type="hidden" id="cardid" value="{iMicms:$cardid}"></td>
+</tr>
 </table>
 </li>
 </ul>
 
 <div class="footReturn">
-<a id="showcard"  class="submit" ><if condition="$info['wechaname'] neq false">保 存<else/>领取会员卡</if></a>
+<a id="showcard"  class="submit" style="margin-bottom:20px;"><if condition="$info['wechaname'] neq false">保 存<else/>领取会员卡</if></a>
 <div class="window" id="windowcenter" >
 <div id="title" class="wtitle"><span class="close" id="alertclose"></span></div>
 <div class="content">
@@ -152,6 +156,7 @@ $("#showcard").bind("click",function() {
 	var address   = $("#address").val();
 	var info  	  = $("#info").val();
 	var age       = $("#age").val();
+	var cardid	=$("#cardid").val();
     if (tel == '') {
         alert("请认真输入手机号");
         return
@@ -172,6 +177,7 @@ $("#showcard").bind("click",function() {
         address   : address,
         info 	  : info,
         age 	  : age,
+	cardid	  : cardid,
         action: "index"
     };
     $.post('index.php?g=Wap&m=Userinfo&a=index&token={iMicms:$Think.get.token}&wecha_id={iMicms:$Think.get.wecha_id}', submitData,
@@ -185,6 +191,9 @@ $("#showcard").bind("click",function() {
 		}else if(data==3){
 			 
 			alert('该商家会员卡缺货了');
+
+		}else if(data==4){
+			alert('会员卡升级成功');
 		}else{  
 			 
 			alert('稍后再试.');

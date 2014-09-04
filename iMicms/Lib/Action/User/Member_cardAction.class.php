@@ -143,6 +143,8 @@ class Member_cardAction extends UserAction
     public function design()
     {
         $data = $this->thisCard;
+Log::write("*****************bg:".$data['bg']);
+Log::write("*****************sbg:".C('site_url').$data['bg']);
         if (IS_POST) {
             $_POST['token'] = $this->token;
             if ($data == false) {
@@ -156,9 +158,9 @@ class Member_cardAction extends UserAction
                 $data = array(
                     'token' => $this->token,
                     'cardname' => C('site_name') . '会员卡',
-                    'clogo' => C('site_url').'/tpl/User/default/common/images/cart_info/logo-card.png',
+                    #'clogo' => C('site_url').'/tpl/User/default/common/images/cart_info/logo-card.png',
                     'bg' => C('site_url').'./tpl/User/default/common/images/card/card_bg15.png',
-                    'diybg' => C('site_url').'/tpl/User/default/common/images/card/card_bg17.png',
+                    #'diybg' => C('site_url').'/tpl/User/default/common/images/card/card_bg17.png',
                     'msg' => '微时代会员卡，方便携带收藏，永不挂失',
                     'numbercolor' => '#000000',
                     'vipnamecolor' => '#121212',

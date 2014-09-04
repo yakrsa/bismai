@@ -255,7 +255,7 @@ display:block; width:213px; border:0;
 <th width="303" rowspan="5" valign="top">
 	<div class="vipcard">
 		<img id="cardbg" src="<if condition="$card.diybg neq ''">{imicms:$card.diybg}<else/>{imicms:$card.bg}</if>">
-		<img id="cardlogo" class="logo" src="{imicms:$card.clogo}">
+		<img id="cardlogo" class="logo" <if condition="$card.clogo neq ''">src={imicms:$card.clogo}<else/> style="display:none;"</if> >
 		<h1 id="vipname" style="color:{imicms:$card.vipnamecolor};">{imicms:$card.cardname}会员卡</h1>
 		<strong class="pdo verify" id="number" style="color:{imicms:$card.numbercolor}"><span><em>会员卡号</em>6537 1998</span></strong>
 	</div>
@@ -279,7 +279,7 @@ document.getElementById("vipname").innerHTML=document.getElementById("cardname")
 <tr>
 <td colspan="2">会员卡的图标：
 
-<input type="text" name="clogo" value="{imicms:$card.clogo}" class="px" style="width:200px;" id="pic" readonly="readonly" />
+<input type="text" name="clogo" value="{imicms:$card.clogo}" class="px" style="width:200px;" id="pic" />
 <span class="help-inline">
 <span class="ke-button-common" id="upload" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 </td>
@@ -309,7 +309,7 @@ document.getElementById("vipname").innerHTML=document.getElementById("cardname")
 </tr>
 <td colspan="2">自己设计背景：
 
-<input type="text" name="diybg" value="{imicms:$card.diybg}" class="px" style="width:200px;" id="pic1" readonly="readonly" />
+<input type="text" name="diybg" value="{imicms:$card.diybg}" class="px" style="width:200px;" id="pic1" />
 <span class="help-inline">
 <span class="ke-button-common" id="upload1" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 </td>
@@ -388,22 +388,22 @@ document.getElementById("tishi").innerHTML=document.getElementById("tishi2").val
 	<td align="center">
 		<!--<textarea name="Lastmsg" class="px" id="news2" style="width:210px; height:36px" onblur="document.getElementById('news2_src').src=document.getElementById('news2').value;">{imicms:$card.Lastmsg}</textarea>
 		<br><script src="/tpl/Static/upyun.js"></script><a href="###" onclick="upyunPicUpload('news2',700,420,'{imicms:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('news2')">预览</a>-->
-		<input type="text" name="Lastmsg" value="{imicms:$card.Lastmsg}" class="px" style="width:150px;" id="pic2" readonly="readonly" />
+		<input type="text" name="Lastmsg" value="{imicms:$card.Lastmsg}" class="px" style="width:150px;" id="pic2"  />
         <span class="help-inline">
         <span class="ke-button-common" id="upload2" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 	</td>
 	<td align="center">
-		<input type="text" name="vip" value="{imicms:$card.vip}" class="px" style="width:150px;" id="pic3" readonly="readonly" />
+		<input type="text" name="vip" value="{imicms:$card.vip}" class="px" style="width:150px;" id="pic3"  />
         <span class="help-inline">
         <span class="ke-button-common" id="upload3" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 	</td>
 	<td align="center">
-		<input type="text" name="qiandao" value="{imicms:$card.qiandao}" class="px" style="width:150px;" id="pic4" readonly="readonly" />
+		<input type="text" name="qiandao" value="{imicms:$card.qiandao}" class="px" style="width:150px;" id="pic4"  />
         <span class="help-inline">
         <span class="ke-button-common" id="upload4" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 	</td>
 	<td align="center">
-		<input type="text" name="shopping" value="{imicms:$card.shopping}" class="px" style="width:150px;" id="pic5" readonly="readonly" />
+		<input type="text" name="shopping" value="{imicms:$card.shopping}" class="px" style="width:150px;" id="pic5"  />
         <span class="help-inline">
         <span class="ke-button-common" id="upload5" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 	</td>
@@ -448,17 +448,17 @@ document.getElementById("tishi").innerHTML=document.getElementById("tishi2").val
 </tr>
 <tr>
 <td align="center">
-	<input type="text" name="memberinfo" value="{imicms:$card.memberinfo}" class="px" style="width:150px;" id="pic6" readonly="readonly" />
+	<input type="text" name="memberinfo" value="{imicms:$card.memberinfo}" class="px" style="width:150px;" id="pic6"  />
         <span class="help-inline">
         <span class="ke-button-common" id="upload6" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 </td>
 <td align="center">
-	<input type="text" name="membermsg" value="{imicms:$card.membermsg}" class="px" style="width:150px;" id="pic7" readonly="readonly" />
+	<input type="text" name="membermsg" value="{imicms:$card.membermsg}" class="px" style="width:150px;" id="pic7" />
         <span class="help-inline">
         <span class="ke-button-common" id="upload7" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 </td>
 <td align="center">
-	<input type="text" name="contact" value="{imicms:$card.contact}" class="px" style="width:150px;" id="pic8" readonly="readonly" />
+	<input type="text" name="contact" value="{imicms:$card.contact}" class="px" style="width:150px;" id="pic8"  />
         <span class="help-inline">
         <span class="ke-button-common" id="upload8" style="margin-top: -7px;margin-left: 5px;"><input type="button" class="ke-button-common ke-button" value="上传"></span>
 </td>

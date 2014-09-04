@@ -22,7 +22,7 @@
 <div id="overlay"></div>
 <div class="cardcenter">
 <div class="card"><img src="<?php if($thisCard['diybg']!=''){?>{imicms:$thisCard.diybg}<?php }else{?>{imicms:$thisCard.bg}<?php }?>" class="cardbg" />
-<if condition="$card.clogo"><img id="cardlogo" class="logo" src="{imicms:$thisCard.clogo}"></if>
+<if condition="$card.clogo neq ''"><img id="cardlogo" class="logo" src="{imicms:$thisCard.clogo}"></if>
 <h1 style="color:{imicms:$card.vipnamecolor}">{imicms:$thisCard.cardname}</h1>
 <strong class="pdo verify" style="color:{imicms:$card.numbercolor}"><span id="cdnb" ><em>会员卡号</em>{imicms:$thisMember.number}</span></strong> </div>
 <p class="explain"><span>{imicms:$thisCard.msg}</span></p>
