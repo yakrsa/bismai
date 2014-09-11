@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-    <include file="head" />
+    <include file="Bismai:head" />
 
     <link rel="stylesheet" type="text/css" href="./tpl/User/default/common/weimeng-js/css/resource.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{iMicms::STATICS}/kindeditors/themes/default/default.css" />
-
-
 </head>
-
-<body id="nv_member" class="pg_CURMODULE" onkeydown="if(event.keyCode==27) return false;">
+<body id="nv_member" class="pg_CURMODULE">
   <div id="main">
     <div class="container-fluid">
       <div class="row-fluid">
@@ -18,119 +14,116 @@
           <div class="box">
             <div class="box-title">
               <div class="span8">
-                <h3><i class="icon-table"></i>微预约管理</h3>
+                <h3><i class="icon-table"></i>活动管理</h3>
               </div>
             </div>
             <link rel="stylesheet" href="{iMicms::RES}/css/diymen/tipswindown.css" type="text/css" media="all" />
             <script type="text/javascript" src="{iMicms::RES}/css/diymen/tipswindown.js"></script>
-          <div class="content">
-            <div class="cLine">
-              <div class="pageNavigator left">
-                <a href='{iMicms::U("Wreservation/add")}' title='新增微预约' class='btn'><i class="icon-plus"></i>添加</a>
+            <div class="content">
+              <div class="cLine">
+                <div class="pageNavigator left">
+                  <a href='{iMicms::U("Wreservation/add")}' title='新增微预约' class='btn'><i class="icon-plus"></i>添加</a>
+                </div>
+                <div class="clr"></div>
               </div>
-              <div class="clr"></div>
-            </div>
-            <div class="msgWrap">
-              <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
-                <THEAD>
-                  <TR>
-                    <TH class="keywords">关键词</TH>
-                    <TH class="answer">回答</TH>
-                    <TH class="time">浏览次数</TH>
-                    <TH class="time">排序</TH>
-                    <TH class="time">创建时间</TH>
-                    <TH class="edit norightborder">操作</TH>
-                  </TR>
-                </THEAD>
-                <TBODY>
-                  <TR></TR>
-                  <volist name="info" id="vo">
-                    <tr>
+              <div class="msgWrap">
+                <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+                  <THEAD>
+                    <TR>
+                      <TH class="keywords">关键词</TH>
+                      <TH class="answer">回答</TH>
+                      <TH class="time">浏览次数</TH>
+                      <TH class="time">排序</TH>
+                      <TH class="time">创建时间</TH>
+                      <TH class="edit norightborder">操作</TH>
+                    </TR>
+                  </THEAD>
+                  <TBODY>
+                    <TR></TR>
+                    <volist name="info" id="vo">
+                      <tr>
 
-                      <td>{iMicms:$vo.keyword}</td>
-                      <td>
-                        <div class="answer_text">
-                          <img src="{iMicms::RES}/images/pic.png" class="vm" title="活动内容">{iMicms:$vo.text}</div>
-                        </td>
-                        <td>{iMicms:$vo.click}</td>
-                        <td>{iMicms:$vo.sorts}</td>
+                        <td>{iMicms:$vo.keyword}</td>
                         <td>
-                          <php>echo date('Y-m-d',$vo['uptatetime']);</php>
-                        </td>
+                          <div class="answer_text">
+                            <img src="{iMicms::RES}/images/pic.png" class="vm" title="活动内容">{iMicms:$vo.text}</div>
+                          </td>
+                          <td>{iMicms:$vo.click}</td>
+                          <td>{iMicms:$vo.sorts}</td>
+                          <td>
+                            <php>echo date('Y-m-d',$vo['uptatetime']);</php>
+                          </td>
 
-                        <td class="norightborder">
-                          <a class="btn" href="{iMicms::U('Wreservation/record',array('token'=>$_SESSION['token'],'wid'=>$vo['id']))}" title="查看"><i class="icon-search"></i></a>
-                          <a class="btn" href="{iMicms::U('Wreservation/edit',array('id'=>$vo['id']))}" title="编辑"><i class="icon-edit"></i></a>
+                          <td class="norightborder">
+                            <a class="btn" href="{iMicms::U('Wreservation/record',array('token'=>$_SESSION['token'],'wid'=>$vo['id']))}" title="查看"><i class="icon-search"></i></a>
+                            <a class="btn" href="{iMicms::U('Wreservation/edit',array('id'=>$vo['id']))}" title="编辑"><i class="icon-edit"></i></a>
 
-                          <if condition="$vo['status'] eq 1">
-                            <a class="btn" title="开始活动" href="javascript:startBtn('您确定要开始活动吗？',{iMicms:$vo.id},0);"><i class="icon-play"></i></a>
-                          <else/>
-                            <a class="btn" title="停止活动" href="javascript:startBtn('您确定要停止活动吗？',{iMicms:$vo.id},1);"><i class="icon-stop"></i></a>
-                          </if>
-                          
+                            <if condition="$vo['status'] eq 1">
+                              <a class="btn" title="开始活动" href="javascript:startBtn('您确定要开始活动吗？',{iMicms:$vo.id},0);"><i class="icon-play"></i></a>
+                            <else/>
+                              <a class="btn" title="停止活动" href="javascript:startBtn('您确定要停止活动吗？',{iMicms:$vo.id},1);"><i class="icon-stop"></i></a>
+                            </if>
+                            
 
-                          <a class="btn" href="javascript: G.ui.tips.confirm('确定删除？','{iMicms::U('Wreservation/del',array('id'=>$vo['id']))}')" title="删除"><i class="icon-remove"></i></a>
+                            <a class="btn" href="javascript: G.ui.tips.confirm('确定删除？','{iMicms::U('Wreservation/del',array('id'=>$vo['id']))}')" title="删除"><i class="icon-remove"></i></a>
 
-                          <script type="text/javascript">
-                            function startBtn(t,id,s){
-                              $.fallr('show', {
-                                  buttons: {
-                                      button1: {
-                                          text: '确定', 
-                                          danger: true, 
-                                          onclick: function(){$.fallr('hide');startWr(id,s);}
-                                      },
-                                      button2: {
-                                          text: '取消'
-                                      }
-                                  },
-                                  content: '<p>'+t+'</p>',
-                                  icon: 'trash'
-                              });
-                            }
+                            <script type="text/javascript">
+                              function startBtn(t,id,s){
+                                $.fallr('show', {
+                                    buttons: {
+                                        button1: {
+                                            text: '确定', 
+                                            danger: true, 
+                                            onclick: function(){$.fallr('hide');startWr(id,s);}
+                                        },
+                                        button2: {
+                                            text: '取消'
+                                        }
+                                    },
+                                    content: '<p>'+t+'</p>',
+                                    icon: 'trash'
+                                });
+                              }
 
-                            function startWr(id,s){
-                              console.log(id+"  "+s);
-                              $.post('{iMicms::U('Wreservation/start')}&id='+id+'&status='+s,null,
-                                  function(data) {
-                                      if (0 == data.errno) {
-                                          alert(data.msg);
-                                          setTimeout(function(){
-                                              location.reload();
-                                          },500);
-                                          return;
-                                      } else {
-                                          alert("服务器忙，请稍候再试！");
-                                      }
-                                  },
-                              "json")
-                            }
-                          </script>
+                              function startWr(id,s){
+                                console.log(id+"  "+s);
+                                $.post('{iMicms::U('Wreservation/start')}&id='+id+'&status='+s,null,
+                                    function(data) {
+                                        if (0 == data.errno) {
+                                            alert(data.msg);
+                                            setTimeout(function(){
+                                                location.reload();
+                                            },500);
+                                            return;
+                                        } else {
+                                            alert("服务器忙，请稍候再试！");
+                                        }
+                                    },
+                                "json")
+                              }
+                            </script>
 
-                        </td>
-                      </tr>
-                    </volist>
+                          </td>
+                        </tr>
+                      </volist>
 
-                  </TBODY>
-                </TABLE>
+                    </TBODY>
+                  </TABLE>
 
-            </div>
-            <div class="cLine">
-              <div class="pageNavigator right">
-                <div class="pages1">{iMicms:$page}</div>
               </div>
-              <div class="clr"></div>
+              <div class="cLine">
+                <div class="pageNavigator right">
+                  <div class="pages1">{iMicms:$page}</div>
+                </div>
+                <div class="clr"></div>
+              </div>
             </div>
-          </div>
 
-          <div class="clr"></div>
+            <div class="clr"></div>
+          </div>
         </div>
       </div>
     </div>
-  <!--底部-->
   </div>
-
-    <include file="Public:footer" />
-    </div>
 </body>
 </html>

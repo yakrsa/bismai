@@ -1,123 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{iMicms:$info.title}</title>
-    <meta name="keywords" content="{iMicms::C('keyword')}" />
-    <meta name="description" content="{iMicms::C('content')}" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
-    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
-    <meta content="no-cache" http-equiv="pragma">
-    <meta content="0" http-equiv="expires">
-    <meta content="telephone=no, address=no" name="format-detection">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/weimob-ui-1-1.css?2013-10-21-2" media="all" />
-    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/common.css?2013-10-21-2" media="all" />
-    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/peak-1.css?2013-10-21-2" media="all" />
-    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/menu-3.css?2013-10-21-2" media="all" />
-    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/wreservation1.css" media="all" />
-    <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
-    <script type="text/javascript" src="{iMicms::RES}/js/jQuery.js"></script>
-    <script type="text/javascript" src="{iMicms::RES}/js/jquery.numeric.js"></script>
-    <script type="text/javascript" src="{iMicms::RES}/js/fastclick.min.js"></script>
-    <style>
-    img {
-        width: 100%!important;
-    }
-    </style>
+    <include file="index1_head"/>
 </head>
 
 <body onselectstart="return true;" ondragstart="return false;">
-    <link rel="stylesheet" type="text/css" href="{iMicms::RES}/css/font-awesome.css?v=2013102616" media="all" />
     <div class="weimob-page">
-        <article id="shareCover" class="share" onclick="$('#shareCover').toggleClass('on')">
-            <table>
-                <tr>
-                    <td colspan="2" style="text-align:right;">
-                        <img src="{iMicms::RES}/img/share_1.png?v=2013-10-21-2" style="width:120px!important;" />
-                        <img src="{iMicms::RES}/img/share_2.png?v=2013-10-21-2" style="width:30px!important;" />
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:50%;">
-                        <img src="{iMicms::RES}/img/share_4.png?v=2013-10-21-2" />
-                        <div>发送给朋友</div>
-                    </td>
-                    <td>
-                        <img src="{iMicms::RES}/img/share_3.png?v=2013-10-21-2" />
-                        <div>分享到朋友圈</div>
-                    </td>
-                </tr>
-            </table>
-        </article>
-
-        <!--
-        分享前控制
-        --> 
-        <script>
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            window.shareData = {
-                "imgUrl": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
-                "timeLineLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
-                "sendFriendLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
-                "weiboLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Index&a=Wreservation&id={iMicms:$info.id}&token={iMicms:$token}",
-                "tTitle": "{iMicms:$info.title}",
-                "tContent": "{iMicms:$info.info|htmlspecialchars_decode}",
-                "fTitle": "{iMicms:$info.title}",
-                "fContent": "{iMicms:$info.info|htmlspecialchars_decode}",
-                "wContent": "{iMicms:$info.info|htmlspecialchars_decode}"
-            };
-
-            // 发送给好友
-            WeixinJSBridge.on('menu:share:appmessage', function(argv) {
-                WeixinJSBridge.invoke('sendAppMessage', {
-                    "img_url": window.shareData.imgUrl,
-                    "img_width": "640",
-                    "img_height": "640",
-                    "link": window.shareData.sendFriendLink,
-                    "desc": window.shareData.fContent,
-                    "title": window.shareData.fTitle
-                }, function(res) {
-                    _report('send_msg', res.err_msg);
-                })
-            });
-
-            // 分享到朋友圈
-            WeixinJSBridge.on('menu:share:timeline', function(argv) {
-                WeixinJSBridge.invoke('shareTimeline', {
-                    "img_url": window.shareData.imgUrl,
-                    "img_width": "640",
-                    "img_height": "640",
-                    "link": window.shareData.timeLineLink,
-                    "desc": window.shareData.tContent,
-                    "title": window.shareData.tTitle
-                }, function(res) {
-                    _report('timeline', res.err_msg);
-                });
-            });
-
-            // 分享到微博
-            WeixinJSBridge.on('menu:share:weibo', function(argv) {
-                WeixinJSBridge.invoke('shareWeibo', {
-                    "content": window.shareData.wContent,
-                    "url": window.shareData.weiboLink,
-                }, function(res) {
-                    _report('weibo', res.err_msg);
-                });
-            });
-        }, false)
-        </script>
-
-        <div class="weimob-content">
-
+        <div class="new-content">
             <div id="bookBody" class="body">
                 <header>
                     <ul>
                         <li>
-                            <img src="{iMicms:$info.headpic}" style="width:100%;">
+                            <eq name="info.showpic" value="1">
+                                <div ><img src="{iMicms:$info.headpic}"  style="width:100%;"/></div> 
+                            </eq>
                         </li>
                     </ul>
                 </header>
@@ -150,206 +46,284 @@
                             </dl>
                         </div>
                     </if>
-                    <div class="pb_5 pl_10 pr_10">
-                        <form id="form1" action="javascript:;" method="post">
-                            <input type="hidden" name="wecha_id" value="{iMicms:$wecha_id}">
-                            <input type="hidden" name="wid" value="{iMicms:$info.id}">
-                            <input type="hidden" name="token" value="{iMicms:$info.token}">
+
+                    <eq name="from" value="event">
+                    <!-- 来自图文点击 -->
+                        <notempty name="player">
+                        <!-- 已参加 -->
+                            <div class="pb_5 pl_10 pr_10">
+                                <dl class="list_book">
+                                    <dt>
+                                        <label>请填写联系方式</label>
+                                    </dt>
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>联系人:</label>
+                                        </div>
+                                        <div>
+                                            <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['truename']}">
+                                        </div>
+                                    </dd>
+
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>联系电话：</label>
+                                        </div>
+                                        <div>
+                                            <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['phone']}">
+                                        </div>
+                                    </dd>
+
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>参与人数：</label>
+                                        </div>
+                                        <div>
+                                            <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['num']}">
+                                        </div>
+                                    </dd>
+
+                                    <dd class="tbox">
+                                        <div>
+                                            <label>备注：</label>
+                                        </div>
+                                        <div>
+                                            <input class="input disabled" type="text" disabled="disabled" value="{iMicms:$player['remark']}">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <div style="margin:10px;text-align: center;">
+
+                                    <form id="form1" action="javascript:;" method="post">
+                                        <input type="hidden" name="wecha_id" value="{iMicms:$wecha_id}">
+                                        <input type="hidden" name="wid" value="{iMicms:$info.id}">
+                                        <input type="hidden" name="token" value="{iMicms:$info.token}">
+                                        <input id="join-btn" type="submit" value="取消预约" class="btn_submit" style="margin:10px auto;text-align: center;">
+                                    </form>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function(){
+                                        $("#join-btn").click(function(){
+                                            if (confirm("你确定要取消吗？")){
+                                                var submitData = $("#form1").serialize();
+                                                $.post('{iMicms::U('Wap/Wreservation/quit',array('token'=>$token,'wecha_id'=>$wecha_id))}', submitData,
+                                                    function(data) {
+                                                        if (0 == data.errno) {
+                                                            alert(data.msg);
+                                                            setTimeout(function(){
+                                                                // window.location.href = data.url;
+                                                                history.go(0);
+                                                            },1500);
+                                                            return;
+                                                        } else {
+                                                            alert(data.msg);
+                                                        }
+                                                    },
+                                                "json")
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        <else/>
+                        <!-- 未参加 -->
+                            <div class="pb_5 pl_10 pr_10">
+                                <form id="form1" action="javascript:;" method="post">
+                                    <input type="hidden" name="wecha_id" value="{iMicms:$wecha_id}">
+                                    <input type="hidden" name="wid" value="{iMicms:$info.id}">
+                                    <input type="hidden" name="token" value="{iMicms:$info.token}">
+                                    <dl class="list_book">
+                                        <dt>
+                                            <label>请填写联系方式</label>
+                                        </dt>
+                                        <dd class="tbox">
+                                            <div>
+                                                <label>联系人:</label>
+                                            </div>
+                                            <div>
+                                                <input class="input" id="truename" type="text" name="truename" placeholder="请输入您的真实姓名" value="">
+                                            </div>
+                                        </dd>
+
+                                        <dd class="tbox">
+                                            <div>
+                                                <label>联系电话：</label>
+                                            </div>
+                                            <div>
+                                                <input class="input" id="phone" type="tel" name="phone" placeholder="请输入您的电话" value="">
+                                            </div>
+                                        </dd>
+
+                                        <if condition="$info['maxpeople'] neq null">
+                                            <dd class="tbox">
+                                                <div>
+                                                    <label>参与人数：</label>
+                                                </div>
+                                                <div>
+                                                    <style type="text/css">
+                                                        .num_wrap {
+                                                            float: left;
+                                                            width: 150px;
+                                                            padding-top: 10px;
+                                                        }
+                                                        .num_wrap span,
+                                                        .num_wrap input {
+                                                            float: left;
+                                                            width: 38px;
+                                                            height: 38px;
+                                                            line-height: 38px;
+                                                            border: 1px solid #ddd;
+                                                            background-color: #eee;
+                                                            text-align: center;
+                                                            position: relative;
+                                                        }
+                                                        .num_wrap .num {
+                                                            -webkit-appearance: none;
+                                                            border-radius: 0;
+                                                            width: 70px;
+                                                            line-height: normal;
+                                                            border-left: 0;
+                                                            border-right: 0;
+                                                            font-size: 16px;
+                                                            background: #fff;
+                                                            text-align: center;
+                                                        }
+                                                        .num_wrap .plus:before {
+                                                            content: "";
+                                                            position: absolute;
+                                                            background: #39312f;
+                                                            border-radius: 2px;
+                                                            left: 50%;
+                                                            width: 4px;
+                                                            height: 16px;
+                                                            top: 50%;
+                                                            margin-top: -8px;
+                                                            margin-left: -2px;
+                                                        }
+                                                        .num_wrap .minus:after,
+                                                        .num_wrap .plus:after {
+                                                            content: "";
+                                                            width: 16px;
+                                                            height: 4px;
+                                                            position: absolute;
+                                                            background: #39312f;
+                                                            border-radius: 2px;
+                                                            left: 50%;
+                                                            top: 50%;
+                                                            margin-top: -2px;
+                                                            margin-left: -8px;
+                                                        }
+                                                        .num_wrap .minus_disabled:after,
+                                                        .num_wrap .plus_disabled:before,
+                                                        .num_wrap .plus_disabled:after {
+                                                            background: #938f8e;
+                                                        }
+                                                    </style>
+                                                    <div class="num_wrap">
+                                                        <span class="minus" id="minus"></span>
+                                                        <input class="num" id="num" type="number" value="1" min="1" name="num">
+                                                        <span class="plus" id="plus"></span>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function(){
+                                                            $("#num").numeric();
+                                                            var minusBtn = document.getElementById("minus");
+                                                            var plusBtn = document.getElementById("plus");
+                                                            window.addEventListener('load', function() {
+                                                                FastClick.attach(minusBtn);
+                                                                minusBtn.addEventListener('click', function(event) {
+                                                                    var num = parseInt($('#num').val());
+                                                                    if(num>1){
+                                                                        $('#num').attr('value',--num);
+                                                                    }
+                                                                }, false);
+                                                                FastClick.attach(plusBtn);
+                                                                plusBtn.addEventListener('click', function(event) {
+                                                                    var num = parseInt($('#num').val());
+                                                                    $('#num').attr('value',++num);
+                                                                }, false);
+                                                            }, false);
+                                                        })
+                                                    </script>
+                                                </div>
+                                            </dd>
+                                        </if>
+
+                                        <dd class="tbox">
+                                            <div>
+                                                <label>备注：</label>
+                                            </div>
+                                            <div>
+                                                <textarea class="input" name="info" placeholder="请输入备注信息" style="height:80px;"></textarea>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <div style="margin:10px;text-align: center;">
+                                        <if condition="$info['status'] eq 1">
+                                            <input type="submit" value="活动已停止" class="btn_submit" style="margin:10px auto;text-align: center;background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, #A0A0A0), color-stop(1, #CACACA) );">
+                                        <else/>
+                                            <input id="join-btn" type="submit" value="立即参加" class="btn_submit" style="margin:10px auto;text-align: center;">
+                                        </if>
+                                    </div>
+                                </form>
+                                <script type="text/javascript">
+                                    $(function(){
+                                        $("#join-btn").click(function(){
+
+                                            <if condition="$isdeadline neq null">
+                                                isDeadLine = {iMicms:$isdeadline};
+                                                if(isDeadLine!=0){alert('已过期');return;}
+                                            </if>
+
+                                            if($("#truename").val()==''){alert('联系人不能为空');return;}
+                                            if($("#phone").val()==''){alert('电话不能为空');return;} 
+                                            <if condition="$info['maxpeople'] neq null">
+                                            if($("#num").val()=='' || $("#num").val()<1){alert('请选择参与人数');return;}
+                                            </if>
+                                            var submitData = $("#form1").serialize();
+                                            $.post('{iMicms::U('Wap/Wreservation/join',array('token'=>$token,'wecha_id'=>$wecha_id))}', submitData,
+                                                function(data) {
+                                                    if (0 == data.errno) {
+                                                        alert(data.msg);
+                                                        setTimeout(function(){
+                                                            // window.location.href = data.url;
+                                                            history.go(0);
+                                                        },1500);
+                                                        return;
+                                                    } else {
+                                                        alert(data.msg);
+                                                    }
+                                                },
+                                            "json")
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </notempty>
+
+                    <else/>
+                    <!-- 非来自图文 -->
+                        <div class="pb_5 pl_10 pr_10">
                             <dl class="list_book">
                                 <dt>
-                                    <label>请填写联系方式</label>
+                                    <label>参与方式</label>
                                 </dt>
                                 <dd class="tbox">
-                                    <div>
-                                        <label>联系人:</label>
-                                    </div>
-                                    <div>
-                                        <input class="input" id="truename" type="text" name="truename" placeholder="请输入您的真实姓名" value="">
-                                    </div>
-                                </dd>
-
-                                <dd class="tbox">
-                                    <div>
-                                        <label>联系电话：</label>
-                                    </div>
-                                    <div>
-                                        <input class="input" id="phone" type="tel" name="phone" placeholder="请输入您的电话" value="">
-                                    </div>
-                                </dd>
-
-                                <if condition="$info['maxpeople'] neq null">
-                                    <dd class="tbox">
-                                        <if condition="$info['maxpeople'] neq null">
-                                            <div>
-                                                <label>参与人数：</label>
-                                            </div>
-                                            <div>
-                                                <style type="text/css">
-                                                    .num_wrap {
-                                                        float: left;
-                                                        width: 150px;
-                                                        padding-top: 10px;
-                                                    }
-                                                    .num_wrap span,
-                                                    .num_wrap input {
-                                                        float: left;
-                                                        width: 38px;
-                                                        height: 38px;
-                                                        line-height: 38px;
-                                                        border: 1px solid #ddd;
-                                                        background-color: #eee;
-                                                        text-align: center;
-                                                        position: relative;
-                                                    }
-                                                    .num_wrap .num {
-                                                        -webkit-appearance: none;
-                                                        border-radius: 0;
-                                                        width: 70px;
-                                                        line-height: normal;
-                                                        border-left: 0;
-                                                        border-right: 0;
-                                                        font-size: 16px;
-                                                        background: #fff;
-                                                        text-align: center;
-                                                    }
-                                                    .num_wrap .plus:before {
-                                                        content: "";
-                                                        position: absolute;
-                                                        background: #39312f;
-                                                        border-radius: 2px;
-                                                        left: 50%;
-                                                        width: 4px;
-                                                        height: 16px;
-                                                        top: 50%;
-                                                        margin-top: -8px;
-                                                        margin-left: -2px;
-                                                    }
-                                                    .num_wrap .minus:after,
-                                                    .num_wrap .plus:after {
-                                                        content: "";
-                                                        width: 16px;
-                                                        height: 4px;
-                                                        position: absolute;
-                                                        background: #39312f;
-                                                        border-radius: 2px;
-                                                        left: 50%;
-                                                        top: 50%;
-                                                        margin-top: -2px;
-                                                        margin-left: -8px;
-                                                    }
-                                                    .num_wrap .minus_disabled:after,
-                                                    .num_wrap .plus_disabled:before,
-                                                    .num_wrap .plus_disabled:after {
-                                                        background: #938f8e;
-                                                    }
-                                                </style>
-                                                <div class="num_wrap">
-                                                    <span class="minus" id="minus"></span>
-                                                    <input class="num" id="num" type="number" value="1" min="1" name="num">
-                                                    <span class="plus" id="plus"></span>
-                                                </div>
-                                                <script type="text/javascript">
-                                                    $(document).ready(function(){
-                                                        $("#num").numeric();
-                                                        var minusBtn = document.getElementById("minus");
-                                                        var plusBtn = document.getElementById("plus");
-                                                        window.addEventListener('load', function() {
-                                                            FastClick.attach(minusBtn);
-                                                            minusBtn.addEventListener('click', function(event) {
-                                                                var num = parseInt($('#num').val());
-                                                                if(num>1){
-                                                                    $('#num').attr('value',--num);
-                                                                }
-                                                            }, false);
-                                                            FastClick.attach(plusBtn);
-                                                            plusBtn.addEventListener('click', function(event) {
-                                                                var num = parseInt($('#num').val());
-                                                                $('#num').attr('value',++num);
-                                                            }, false);
-                                                        }, false);
-                                                    })
-                                                </script>
-                                            </div>
-                                        </if>
-                                    </dd>
-                                </if>
-
-                                <dd class="tbox">
-                                    <div>
-                                        <label>备注：</label>
-                                    </div>
-                                    <div>
-                                        <textarea class="input" name="info" placeholder="请输入备注信息" style="height:80px;"></textarea>
-                                    </div>
+                                    <p>
+                                        1、打开微信关注“{iMicms:$tpl.wxname}”微信公众号<br>
+                                        2、向公众号“{iMicms:$tpl.wxname}”发送信息关键字“{iMicms:$info.keyword}”，稍候便会收到来自公众号的图文回复。<br>
+                                        3、点击图文进入活动页面，填写必要信息并提交即可完成参与。<br>
+                                    </p>
                                 </dd>
                             </dl>
-                            <div style="margin:10px;text-align: center;">
-                                <if condition="$info['status'] eq 1">
-                                    <input type="submit" value="活动已停止" class="btn_submit" style="margin:10px auto;text-align: center;background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, #A0A0A0), color-stop(1, #CACACA) );">
-                                <else/>
-                                    <input id="join-btn" type="submit" value="立即参加" class="btn_submit" style="margin:10px auto;text-align: center;">
-                                </if>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </eq>
                 </section>
-                <script type="text/javascript">
-                    $(function(){
-                        $("#join-btn").click(function(){
-
-                            <if condition="$isdeadline neq null">
-                                isDeadLine = {iMicms:$isdeadline};
-                                if(isDeadLine!=0){alert('已过期');return;}
-                            </if>
-
-                            if($("#truename").val()==''){alert('联系人不能为空');return;}
-                            if($("#phone").val()==''){alert('电话不能为空');return;} 
-                            <if condition="$info['maxpeople'] neq null">
-                            if($("#num").val()=='' || $("#num").val()<1){alert('请选择参与人数');return;}
-                            </if>
-                            var submitData = $("#form1").serialize();
-                            $.post('{iMicms::U('Wap/Wreservation/join',array('token'=>$token,'wecha_id'=>$wecha_id))}', submitData,
-                                function(data) {
-                                    if (0 == data.errno) {
-                                        alert(data.msg);
-                                        setTimeout(function(){
-                                            // window.location.href = data.url;
-                                            history.go(0);
-                                        },1500);
-                                        return;
-                                    } else {
-                                        alert(data.msg);
-                                    }
-                                },
-                            "json")
-                        });
-                    });
-                </script>
             </div>
         </div>
-        <section>
-            <div id="mcover" class="mcover" onclick="document.getElementById('mcover').style.display='';" style="display:none;">
-                <img src="{iMicms::RES}/img/guide.png">
-            </div>
-            <div id="mcover2" class="mcover" onclick="document.getElementById('mcover2').style.display='';" style="display:none;">
-                <img src="{iMicms::RES}/img/instruction.png">
-            </div>
-            <div class="text" id="content">
-                <div id="mess_share">
-                    <div id="share_1">
-                        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
-                            <img src="{iMicms::RES}/img/icon_msg.png">&nbsp;发送或分享
-                        </button>
-                    </div>
-                    <div id="share_2">
-                        <button class="button2" onclick="document.getElementById('mcover2').style.display='block';">
-                            <img src="{iMicms::RES}/img/icon_follow.png">&nbsp;关注公众号
-                        </button>
-                    </div>
-                    <div class="clr"></div>
-                </div>
-            </div>
-        </section>
+
+        <include file="index1_share"/>
+
         <div style="padding-bottom:0!important;">
             <a href="javascript:window.scrollTo(0,0);" style="font-size:12px;margin:5px auto;display:block;color:#fff;text-align:center;line-height:35px;background:#333;margin-bottom:-10px;">返回顶部</a>
         </div>

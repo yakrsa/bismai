@@ -92,6 +92,14 @@
                     </div>
                 </TD>
             </TR>
+
+               <TR>
+                  <TH valign="top"><label for="showpic">详细页是否显示封面：</label></TH>
+                  <TD>
+                  是<input type="radio" name="showpic" value="1" style="margin:0 5px;" <eq name="res['showpic']" value="1" > checked="checked"</eq> />&nbsp;&nbsp;&nbsp;&nbsp;
+                  否<input type="radio" name="showpic" value="0" style="margin:0 5px;" <eq name="res['showpic']" value="0"> checked="checked"</eq> />
+                </TD>
+            </TR>
             <TR>
                 <TH valign="top">
                     <label for="picurl">详细页顶部图片：</label>
@@ -126,16 +134,23 @@
                         <div id="deadline-box" class="input-prepend" style="display:none;">
                             <span class="add-on"><i class="icon-calendar"></i>
                             </span>
-                            <input type="text" name="deadline" class="datepick input-medium" value="" data-rule-required="true" readonly="" />
+                            <input type="text" name="deadline" class="datepick2 input-medium" value="" data-rule-required="true" readonly="" />
                         </div>
                         <else/>
                         <input name="allowdeadline" type="checkbox" onclick="javascript:document.getElementById('deadline-box').style.display=(document.getElementById('deadline-box').style.display=='none')?'inline-block':'none'" checked="checked" />
                         <div id="deadline-box" class="input-prepend">
                             <span class="add-on"><i class="icon-calendar"></i>
                             </span>
-                            <input type="text" name="deadline" class="datepick input-medium" value="{iMicms:$res.deadline}" data-rule-required="true" readonly="" />
+                            <input type="text" name="deadline" class="datepick2 input-medium" value="{iMicms:$res.deadline}" data-rule-required="true" readonly="" />
                         </div>
                     </if>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            $('.datepick2').datepicker({
+                                startDate: '+1d'
+                            });
+                        })
+                    </script>
                 </TD>
             </TR>
             <TR>
@@ -156,22 +171,22 @@
                     <if condition="$res['status'] eq 0">
                         <label for="radio_status1">
                             <input id="radio_status1" type="radio" name="status" value="0" checked="checked"/>
-                            <span class="help-inline">停止</span>
+                            <span class="help-inline">进行中</span>
                         </label>
                         <br />
                         <label for="radio_status2">
                             <input id="radio_status2" type="radio" name="status" value="1" />
-                            <span class="help-inline">进行中</span>
+                            <span class="help-inline">停止</span>
                         </label>
                     <else/>
                         <label for="radio_status1">
                             <input id="radio_status1" type="radio" name="status" value="0" <eq name="res.status" value="0">checked="checked"</eq>/>
-                            <span class="help-inline">停止</span>
+                            <span class="help-inline">进行中</span>
                         </label>
                         <br />
                         <label for="radio_status2">
                             <input id="radio_status2" type="radio" name="status" value="1" <eq name="res.status" value="1">checked="checked"</eq>/>
-                            <span class="help-inline">进行中</span>
+                            <span class="help-inline">停止</span>
                         </label>
                     </if>
 

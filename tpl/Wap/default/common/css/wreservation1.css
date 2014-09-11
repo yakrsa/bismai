@@ -670,7 +670,17 @@ ol{
     color: #999
 }
 
+.new-content {
+    position: relative;
+}
 @media (min-width: 360px) {
+    .new-content {
+        margin: 0px;
+        padding: 0px;
+        min-height: 100%:;
+        background: #fff;
+        border-radius: 10px;
+    }
     .wrapper {
         width:360px;
         margin: 0 auto
@@ -684,6 +694,13 @@ ol{
 }
 
 @media (min-width: 540px) {
+    .new-content {
+        margin: 0px;
+        padding: 15px;
+        min-height: 100%:;
+        background: #fff;
+        border-radius: 10px;
+    }
     .wrapper {
         width:540px;
         margin: 0 auto
@@ -697,6 +714,14 @@ ol{
 }
 
 @media (min-width: 760px) {
+    .new-content {
+        margin: 10px;
+        padding: 15px;
+        min-height: 100%:;
+        background: #fff;
+        border-radius: 10px;
+    }
+
     .wrapper {
         width:760px;
         margin: 0 auto
@@ -727,6 +752,14 @@ ol{
 }
 
 @media (min-width: 800px) {
+    .new-content {
+        margin: 10px;
+        padding: 15px;
+        min-height: 100%:;
+        background: #fff;
+        border-radius: 10px;
+    }
+
     .content {
         width:760px;
         margin: 30px auto 20px
@@ -803,7 +836,7 @@ ol{
 
 .list_book dd>div:first-of-type label{
 	display:inline-block;
-	width:100px;
+	width:80px;
 	margin:0 5px;
 }
 
@@ -858,7 +891,7 @@ ol{
 	border-bottom:1px dotted #ccc;
 }
 .list_book_des div:nth-of-type(2){
-	text-indent:5px;color:#666;
+    color:#666;
 	margin-top:5px;
 }
 /*.list_book_contact div:first-of-type{
@@ -903,4 +936,9 @@ select{
     width: 260px!important;
     height: 180px!important;
     z-index: 20001;
+}
+
+.margin5{
+    margin: 0 5px;
+    display: block;
 }

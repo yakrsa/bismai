@@ -1,0 +1,78 @@
+
+        <!-- 分享前控制 --> 
+        <script>
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            window.shareData = {
+                "imgUrl": "{iMicms:$info.pic}",
+                "timeLineLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Wreservation&a=index&id={iMicms:$info.id}&token={iMicms:$token}",
+                "sendFriendLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Wreservation&a=index&id={iMicms:$info.id}&token={iMicms:$token}",
+                "weiboLink": "{iMicms::C('site_url')}/index.php?g=Wap&m=Wreservation&a=index&id={iMicms:$info.id}&token={iMicms:$token}",
+                "tTitle": "{iMicms:$info.title}",
+                "tContent": "{iMicms:$info.text|htmlspecialchars_decode}",
+                "fTitle": "{iMicms:$info.title}",
+                "fContent": "{iMicms:$info.text|htmlspecialchars_decode}",
+                "wContent": "{iMicms:$info.text|htmlspecialchars_decode}"
+            };
+
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "img_url": window.shareData.imgUrl,
+                    "img_width": "640",
+                    "img_height": "640",
+                    "link": window.shareData.sendFriendLink,
+                    "desc": window.shareData.fContent,
+                    "title": window.shareData.fTitle
+                }, function(res) {
+                    _report('send_msg', res.err_msg);
+                })
+            });
+
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv) {
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "img_url": window.shareData.imgUrl,
+                    "img_width": "640",
+                    "img_height": "640",
+                    "link": window.shareData.timeLineLink,
+                    "desc": window.shareData.tContent,
+                    "title": window.shareData.tTitle
+                }, function(res) {
+                    _report('timeline', res.err_msg);
+                });
+            });
+
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv) {
+                WeixinJSBridge.invoke('shareWeibo', {
+                    "content": window.shareData.wContent,
+                    "url": window.shareData.weiboLink,
+                }, function(res) {
+                    _report('weibo', res.err_msg);
+                });
+            });
+        }, false)
+        </script>
+        <section>
+            <div id="mcover" class="mcover" onclick="document.getElementById('mcover').style.display='';" style="display:none;">
+                <img src="{iMicms::RES}/img/guide.png">
+            </div>
+            <div id="mcover2" class="mcover" onclick="document.getElementById('mcover2').style.display='';" style="display:none;">
+                <img src="{iMicms::RES}/img/instruction.png">
+            </div>
+            <div class="margin5">
+                <div id="mess_share">
+                    <div id="share_1">
+                        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
+                            <img src="{iMicms::RES}/img/icon_msg.png">&nbsp;发送给朋友
+                        </button>
+                    </div>
+                    <div id="share_2">
+                        <button class="button2" onclick="document.getElementById('mcover2').style.display='block';">
+                            <img src="{iMicms::RES}/img/icon_follow.png">&nbsp;关注公众号
+                        </button>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </section>

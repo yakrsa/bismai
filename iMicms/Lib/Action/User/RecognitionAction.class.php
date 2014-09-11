@@ -2,25 +2,48 @@
 class RecognitionAction extends UserAction{
     public function _initialize(){
         parent :: _initialize();
-        $diymen = M('Diymen_set') -> where(array('token' => $_SESSION['token'])) -> find();
+        $diymen = M('Diymen_set')->where(array('token'=>$_SESSION['token']))->find();
         if($diymen == false){
-            $this -> error('只有微信官方认证的高级服务号才能使用本功能', '?g=User&m=Index&a=edit&id=' . $this -> thisWxUser['id']);
+            $this->error('只有微信官方认证的高级服务号才能使用本功能', '?g=User&m=Index&a=edit&id=' . $this -> thisWxUser['id']);
         }
     }
     public function index(){
         if(IS_POST){
-            $this -> all_insert('Recognition');
+            $this->all_insert('Recognition','/index?g=User&m=Recognition&a=index&token='.session('token'));
         }else{
             $db = D('Recognition');
-            $where = array('token' => session('token'));
-            $count = $db -> where($where) -> count();
+            $where = array('token'=>session('token'));
+            $count = $db->where($where)->count();
             $page = new Page($count, 25);
-            $list = $db -> where($where) -> limit($page -> firstRow . ',' . $page -> listRows) -> order('id desc') -> select();
-            $this -> assign('page', $page -> show());
-            $this -> assign('list', $list);
-            $this -> display();
+            $list = $db->where($where)->limit($page->firstRow.','.$page->listRows)->order('id desc')->select();
+            $listDb = D('Recognition_group_list');
+            foreach ($list as $key => $value) {
+                $where['rid'] = $value['id'];
+                $sum = (int)$listDb->where($where)->sum('attention_num');
+                $list[$key]['attention_num'] = $sum>0?$sum:0;
+
+                $count = (int)$listDb->where('rid='.$where['rid'].' and subscribe_time>0')->count('id');
+                $list[$key]['subscribe_num'] = $count>0?$count:0;
+            }
+
+            $this->assign('page', $page->show());
+            $this->assign('list', $list);
+            $this->display();
         }
     }
+    public function group_list(){
+        $rid=(int)$this->_get('rid','trim');
+        $db = D('Recognition_group_list');
+        $where['rid'] = $rid;
+
+        $count = $db->where($where)->count();
+        $page = new Page($count, 25);
+        $list = $db->where($where)->limit($page->firstRow.','.$page->listRows)->order('id desc')->select();
+        $this->assign('page', $page->show());
+        $this->assign('list', $list);
+        $this->display();
+    }
+
     public function get_code(){
         $where = array('id' => $this -> _get('id', 'intval'), 'token' => session('token'));
         $GetDb = M('Recognition');
@@ -32,17 +55,17 @@ class RecognitionAction extends UserAction{
             exit;
         }
         $url_get = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $api['appid'] . '&secret=' . $api['appsecret'];
-        $json = json_decode($this -> curlGet($url_get));
+        $json = json_decode($this->curlGet($url_get));
         $qrcode_url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=' . $json -> access_token;
         $data['action_name'] = 'QR_LIMIT_SCENE';
         $data['action_info']['scene']['scene_id'] = $recognition['id'];
-        $post = $this -> api_notice_increment($qrcode_url, json_encode($data));
-        if($post == false) $this -> error('微信接口返回信息错误，请联系管理员');
-        $update = $GetDb -> where(array_merge(array('id' => $recognition['id']), $where)) -> save(array('code_url' => $post));
-        if($update != false){
-            $this -> success('获取成功');
+        $post = $this->api_notice_increment($qrcode_url, json_encode($data));
+        if($post == false) $this->error('微信接口返回信息错误，请联系管理员');
+        $update = $GetDb->where(array_merge(array('id' => $recognition['id']), $where)) -> save(array('code_url' => $post));
+        if($update){
+            $this->success('获取成功');
         }else{
-            $this -> error('操作失败');
+            $this->error('操作失败');
         }
     }
     public function del(){
@@ -51,10 +74,11 @@ class RecognitionAction extends UserAction{
         if($where['id'] == false) $this -> error('非法操作');
         $where['token'] = $this -> token;
         $back = $data -> where($where) -> delete();
-        if($back == false){
-            $this -> error('操作失败');
+        if($back){
+            D('Recognition_group_list')->where(array('rid'=>$where['id']))->delete();
+            $this->success('操作成功');
         }else{
-            $this -> success('操作成功');
+            $this->error('操作失败');
         }
     }
     public function status(){

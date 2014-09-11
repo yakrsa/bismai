@@ -416,23 +416,34 @@ class WeixinAction extends Action
                     
                     break;
                 case 'Wreservation':
-                	Log::write("Wreservation","yuyuehuodong");
-                	 $Wreservation=M('Wreservation')->where(array(
-                	 'id' => $data['pid']
-                    ))->find();
+                    $this->requestdata('other');
+                    $back = M('Wreservation')->limit(9)->order('sorts desc')->where($like)->select();
+                    $ids = array();
+                    foreach ($back as $keya => $infot) {
+                    	$ids[] = $infot['id'];
+                        $url = rtrim(C('site_url'), '/') . U('Wap/Wreservation/index', array(
+                            'token' => $this->token,
+                            'id' => $infot['id'],
+                            'wecha_id' => $this->data['FromUserName'],
+                            'from' => 'event'
+                        ));
+                        $return[] = array(
+                            $infot['title'],
+                            $infot['text'],
+                            $infot['pic'],
+                            $url
+                        );
+                    }
+                    $idsWhere = array('in',$ids);
+                    if ($back) {
+                        M('Wreservation')->where($idsWhere)->setInc('click');
+                    }
+                    
                     return array(
-                        array(
-                            array(
-                                $Wreservation['title'],
-                                $Wreservation['info'],
-                                $Wreservation['pic'],
-                                C('site_url') . '/index.php?g=Wap&m=Wreservation&a=index&token=' . $this->token . '&wecha_id=' . $this->data['FromUserName'] . '&id=' . $data['pid'] . '&iMicms=mp.weixin.qq.com'
-                            )
-                        ),
+                        $return,
                         'news'
                     );
-                
-                break;
+                    break;
                 
                 
                 case 'Text':
@@ -739,255 +750,10 @@ class WeixinAction extends Action
             'news'
         );
     }
-    function vote($name)
-    {
-        
-        $back = D('Vote')->field('id,vpicurl,title,instructions')->limit(9)->order('id asc')->where(array(
-            'token' => $this->token,
-            'status' => 1
-        ))->select();
-        if ($back) {
-            foreach ($back as $keya => $infot) {
-                
-                $url = rtrim(C('site_url'), '/') . U('Wap/Vote/index', array(
-                    'token' => $this->token,
-                    'id' => $infot['id'],
-                    'wecha_id' => $this->data['FromUserName'],
-                    'iMicms' => 'mp.weixin.qq.com'
-                ));
-                if (stristr($infot['vpicurl'], "http:"))
-                    $purl = $infot['vpicurl'];
-                else
-                    $purl = rtrim(C('site_url'), '/') . $infot['vpicurl'];
-                $return[] = array(
-                    $infot['title'],
-                    $infot['instructions'],
-                    $purl,
-                    $url
-                );
-            }
-            return array(
-                $return,
-                'news'
-            );
-        } else
-            return array(
-                '商家没有投票活动，请稍后再试',
-                'text'
-            );
-    }
-    function hotel($name)
-    {
-        
-        $back = D('host')->field('id,ppicurl,picurl,title,info')->limit(9)->order('id asc')->where(array(
-            'token' => $this->token
-        ))->select();
-        if ($back) {
-            foreach ($back as $keya => $infot) {
-                
-                $url = rtrim(C('site_url'), '/') . U('Wap/Host/index', array(
-                    'token' => $this->token,
-                    'id' => $infot['id'],
-                    'hid' => $infot['id'],
-                    'wecha_id' => $this->data['FromUserName'],
-                    'iMicms' => 'mp.weixin.qq.com'
-                ));
-                if (stristr($infot['ppicurl'], "http:"))
-                    $purl = $infot['ppicurl'];
-                else
-                    $purl = rtrim(C('site_url'), '/') . $infot['ppicurl'];
-                $return[] = array(
-                    $infot['title'],
-                    $infot['info'],
-                    $purl,
-                    $url
-                );
-            }
-            return array(
-                $return,
-                'news'
-            );
-        } else
-            return array(
-                '商家没有设置酒店预订业务，请稍后再试',
-                'text'
-            );
-    }
-    function ding($name)
-    {
-        
-        $back = M('reply_info')->field('id,picurl,title,info')->where(array(
-            'token' => $this->token,
-            'infotype' => 'Dining'
-        ))->find();
-        if ($back) {
-            
-            
-            $url = rtrim(C('site_url'), '/') . U('Wap/Product/dining', array(
-                'token' => $this->token,
-                'dining' => 1,
-                'wecha_id' => $this->data['FromUserName'],
-                'iMicms' => 'mp.weixin.qq.com'
-            ));
-            if (stristr($back['picurl'], "http:"))
-                $purl = $back['picurl'];
-            else
-                $purl = rtrim(C('site_url'), '/') . $back['picurl'];
-            $return[] = array(
-                $back['title'],
-                $back['info'],
-                $purl,
-                $url
-            );
-            
-            return array(
-                $return,
-                'news'
-            );
-        } else
-            return array(
-                '商家没有设置订餐业务，请稍后再试',
-                'text'
-            );
-    }
-    function shop($name)
-    {
-        
-        $back = M('reply_info')->field('id,picurl,title,info')->where(array(
-            'token' => $this->token,
-            'infotype' => 'Shop'
-        ))->find();
-        if ($back) {
-            
-            
-            $url = rtrim(C('site_url'), '/') . U('Wap/Product/cats', array(
-                'token' => $this->token,
-                'wecha_id' => $this->data['FromUserName'],
-                'iMicms' => 'mp.weixin.qq.com'
-            ));
-            if (stristr($back['picurl'], "http:"))
-                $purl = $back['picurl'];
-            else
-                $purl = rtrim(C('site_url'), '/') . $back['picurl'];
-            $return[] = array(
-                $back['title'],
-                $back['info'],
-                $purl,
-                $url
-            );
-            
-            return array(
-                $return,
-                'news'
-            );
-        } else
-            return array(
-                '商家没有设置商城业务，请稍后再试',
-                'text'
-            );
-    }
-    function xitie($name)
-    {
-        
-        $back = D('Wcard')->field('id,coverurl,picurl,title,word')->limit(1)->order('id desc')->where(array(
-            'token' => $this->token
-        ))->select();
-        if ($back) {
-            foreach ($back as $keya => $infot) {
-                
-                $url = rtrim(C('site_url'), '/') . U('Wap/Wcard/index', array(
-                    'token' => $this->token,
-                    'id' => $infot['id'],
-                    'hid' => $infot['id'],
-                    'wecha_id' => $this->data['FromUserName'],
-                    'iMicms' => 'mp.weixin.qq.com'
-                ));
-                if (stristr($infot['coverurl'], "http:"))
-                    $purl = $infot['coverurl'];
-                else
-                    $purl = rtrim(C('site_url'), '/') . $infot['coverurl'];
-                $return[] = array(
-                    $infot['title'],
-                    $infot['word'],
-                    $purl,
-                    $url
-                );
-                $urlmd    = rtrim(C('site_url'), '/') . U('Wap/Wcard/webmd', array(
-                    'token' => $this->token,
-                    'id' => $infot['id'],
-                    'hid' => $infot['id'],
-                    'wecha_id' => $this->data['FromUserName'],
-                    'type' => 1,
-                    'iMicms' => 'mp.weixin.qq.com'
-                ));
-                $urlzf    = rtrim(C('site_url'), '/') . U('Wap/Wcard/webmd', array(
-                    'token' => $this->token,
-                    'id' => $infot['id'],
-                    'hid' => $infot['id'],
-                    'wecha_id' => $this->data['FromUserName'],
-                    'type' => 2,
-                    'iMicms' => 'mp.weixin.qq.com'
-                ));
-                
-            }
-            $return[] = array(
-                '查看赴宴名单',
-                '',
-                '',
-                $urlmd
-            );
-            $return[] = array(
-                '查看祝福名单',
-                '',
-                '',
-                $urlzf
-            );
-            return array(
-                $return,
-                'news'
-            );
-        } else
-            return array(
-                '商家没有设置微喜帖，请稍后再试',
-                'text'
-            );
-    }
-    function groupon($name)
-    {
-        
-        $back = M('reply_info')->field('id,picurl,title,info')->where(array(
-            'token' => $this->token,
-            'infotype' => 'Groupon'
-        ))->find();
-        if ($back) {
-            
-            
-            $url = rtrim(C('site_url'), '/') . U('Wap/Groupon/grouponIndex', array(
-                'token' => $this->token,
-                'wecha_id' => $this->data['FromUserName'],
-                'iMicms' => 'mp.weixin.qq.com'
-            ));
-            if (stristr($back['picurl'], "http:"))
-                $purl = $back['picurl'];
-            else
-                $purl = rtrim(C('site_url'), '/') . $back['picurl'];
-            $return[] = array(
-                $back['title'],
-                $back['info'],
-                $purl,
-                $url
-            );
-            
-            return array(
-                $return,
-                'news'
-            );
-        } else
-            return array(
-                '商家没有设置团购业务，请稍后再试',
-                'text'
-            );
-    }
+    
+
+    
+   
     function kuaidi($data)
     {
         $data = array_merge($data);
@@ -1201,28 +967,7 @@ class WeixinAction extends Action
             }
         }
     }
-    function baike($name)
-    {
-        $name = implode('', $name);
-        if ($name == 'sjtftx') {
-            return '世界上最牛B的微信营销系统，两天前被腾讯收购，当然这只是一个笑话';
-        }
-        $name_gbk         = iconv('utf-8', 'gbk', $name); //将字符转换成GBK编码，若文件为GBK编码可去掉本行
-        $encode           = urlencode($name_gbk); //对字符进行URL编码
-        $url              = 'http://baike.baidu.com/list-php/dispose/searchword.php?word=' . $encode . '&pic=1';
-        $get_contents     = $this->httpGetRequest_baike($url); //获取跳转页内容
-        $get_contents_gbk = iconv('gbk', 'utf-8', $get_contents); //将获取的网页转换成UTF-8编码，若文件为GBK编码可去掉本行
-        preg_match("/URL=(\S+)'>/s", $get_contents_gbk, $out); //获取跳转后URL
-        $real_link = 'http://baike.baidu.com' . $out[1];
-        
-        $get_contents2 = $this->httpGetRequest_baike($real_link); //获取跳转页内容
-        preg_match('#"Description"\scontent="(.+?)"\s\/\>#is', $get_contents2, $matchresult);
-        if (isset($matchresult[1]) && $matchresult[1] != "") {
-            return htmlspecialchars_decode($matchresult[1]);
-        } else {
-            return "抱歉，没有找到与“" . $name . "”相关的百科结果。";
-        }
-    }
+
     function getRecognition($id)
     {
         $GetDb = D('Recognition');

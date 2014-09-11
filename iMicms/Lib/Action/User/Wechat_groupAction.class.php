@@ -326,5 +326,34 @@ Log::write("@@@@".$showStatistics);
         }
         return $json -> access_token;
     }
+    /* 140909 */
+    function _getAccessToken(){
+        $wxid = $this->thisWxUser['wxid'];
+        $access_token = cache($wxid.'weixin_access_token');
+        if($access_token) {
+            return $access_token;
+        }
+        else {
+            $where = array('wxid'=>$wxid);
+            $url_get = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$this->thisWxUser['appid'].'&secret='.$this->thisWxUser['appsecret'];
+
+            $ch1 = curl_init();
+            $timeout = 5;
+            curl_setopt($ch1, CURLOPT_URL, $url_get);
+            curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch1, CURLOPT_CONNECTTIMEOUT, $timeout);
+            curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, FALSE);
+            curl_setopt($ch1, CURLOPT_SSL_VERIFYHOST, false);
+            $accesstxt = curl_exec($ch1);
+            curl_close ($ch1);
+            $access = json_decode($accesstxt, true);
+            if (!$access->errmsg){
+                cache($wxid.'weixin_access_token', $access['access_token'], $access['expires_in']);
+                return $access['access_token'];
+            }else{
+                $this->error('获取access_token发生错误：错误代码'.$json->errcode.',微信返回错误信息：'.$json->errmsg);
+            }
+        }
+    }
 }
 ?>
