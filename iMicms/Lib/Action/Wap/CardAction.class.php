@@ -306,8 +306,8 @@ class CardAction extends BaseAction
         );
         $sign        = $cardsign_db->where($where)->order('sign_time desc')->find();
         if ($sign == null) {
-            $cardsign_db->add($where);
-            $sign = $cardsign_db->where($where)->order('id desc')->find();
+       //     $cardsign_db->add($where);
+        //    $sign = $cardsign_db->where($where)->order('id desc')->find();
         }
         $get_card = M('member_card_create')->where(array(
             'wecha_id' => $this->wecha_id,
@@ -364,6 +364,7 @@ class CardAction extends BaseAction
         $itoday              = date('Y-m-d', intval($sign['sign_time']));
         if ($sign && $itoday == $today) {
             $signined = 1;
+		Log::write("***************have signed,$sign:".$sign."    $today:".$today."  $itoday:".$itoday);
         }
         return $signined;
     }
