@@ -34,7 +34,7 @@ class WreservationAction extends UserAction{
 		$where['id']=$this->_get('id','intval');
 		$where['uid']=session('uid');
 		if(D(MODULE_NAME)->where($where)->delete()){
-			M('Keyword')->where(array('pid'=>$id,'token'=>session('token'),'module'=>MODULE_NAME))->delete();
+			D('Keyword')->where(array('pid'=>$where['id'],'token'=>session('token'),'module'=>MODULE_NAME))->delete();
 			$this->success('操作成功',U(MODULE_NAME.'/index'));
 		}
 		else {
@@ -89,13 +89,14 @@ class WreservationAction extends UserAction{
         } else {
             $id = $db->save();
             if ($id) {
-                $data['pid']    = $_POST['id'];
-                $data['module'] = $name;
+                $data['pid']    = $this->_POST('id','trim');
+                $data['module'] = MODULE_NAME;
                 $data['token']  = session('token');
                 $da['keyword']  = $_POST['keyword'];
                 M('Keyword')->where($data)->save($da);
-                $this->success('操作成功', U(MODULE_NAME . "/index"));
-            } else {
+                $this->success('操作成功 >>'.$data['pid'], U(MODULE_NAME . "/index"));
+            } 
+            else {
                 $this->error('操作失败', U(MODULE_NAME . "/index"));
             }
         }
@@ -122,11 +123,15 @@ class WreservationAction extends UserAction{
 
 			$count=$db_list->where($where_list)->count();
 			$page=new Page($count,25);
-
-			$db_list->alias("list");
+			// $db_list->alias("list");
+			// $db_list->where($where_list);
+			// $db_list->join('LEFT JOIN '.$pr.'wechat_group_list as wechat ON list.wechatid=wechat.openid');
+			// $db_list->field('list.*,wechat.nickname,wechat.sex,wechat.province,wechat.city');
+			// $db_list->limit($page->firstRow.','.$page->listRows);
+			// $info_list = $db_list->select();
+			
+			/* 140909 */
 			$db_list->where($where_list);
-			$db_list->join('LEFT JOIN '.$pr.'wechat_group_list as wechat ON list.wechatid=wechat.openid');
-			$db_list->field('list.*,wechat.nickname,wechat.sex,wechat.province,wechat.city');
 			$db_list->limit($page->firstRow.','.$page->listRows);
 			$info_list = $db_list->select();
 

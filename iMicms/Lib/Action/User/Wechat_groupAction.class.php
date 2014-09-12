@@ -317,7 +317,7 @@ Log::write("@@@@".$showStatistics);
     }
     function groupDelete(){
     }
-    function _getAccessToken(){
+/*    function _getAccessToken(){
         $url_get = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $this -> thisWxUser['appid'] . '&secret=' . $this -> thisWxUser['appsecret'];
         $json = json_decode($this -> curlGet($url_get));
         if (!$json -> errmsg){
@@ -325,7 +325,7 @@ Log::write("@@@@".$showStatistics);
             $this -> error('获取access_token发生错误：错误代码' . $json -> errcode . ',微信返回错误信息：' . $json -> errmsg);
         }
         return $json -> access_token;
-    }
+    }*/
     /* 140909 */
     function _getAccessToken(){
         $wxid = $this->thisWxUser['wxid'];
